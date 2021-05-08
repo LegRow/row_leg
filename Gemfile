@@ -25,6 +25,8 @@ gem "paranoia", "~> 2.2"#假刪除  bundle而已
 gem 'redis', '~> 4.0' 
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 #上面兩個後台工具 bundle而已
+gem 'rails-i18n', '~> 6.0'
+#轉中文用
 
 
 group :development, :test do

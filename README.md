@@ -1,3 +1,5 @@
+5/8號  更改時區台北
+
 以下是新增的gem  
 
 gem 'devise' 會員 bundle而已  
@@ -9,6 +11,9 @@ gem "paranoia", 假刪除  bundle而已
 gem 'redis'  
 gem 'sidekiq'  
 #上面兩個後台工具 bundle而已  
+5/8 gem 'rails-i18n', '~> 6.0' 翻譯器 翻譯檔已加入  config/locales/zh-TW.yml  
+因為我偷懶 直接複製貼上 有可能失敗 沒生效實作時我再改
+
 
 
 group :development, :test do  
