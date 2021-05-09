@@ -18,7 +18,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'#會員 bundle而已
 gem 'kaminari'#分頁  bundle而已
-gem "figaro"#安全Key  bundle而已
 gem 'hotwire-rails'#先進技術  bundle而已
 gem "paranoia", "~> 2.2"#假刪除  bundle而已
 # Use Redis adapter to run Action Cable in production
