@@ -25,8 +25,13 @@ gem "paranoia", "~> 2.2"#假刪除  bundle而已
 gem 'redis', '~> 4.0' 
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 #上面兩個後台工具 bundle而已
+gem 'pundit', '~> 2.1'
+#建立管理者工具 bundle而已
 gem 'rails-i18n', '~> 6.0'
-#轉中文用
+#轉中文用 bundle
+gem 'geocoder', '~> 1.6', '>= 1.6.7'
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+#上兩個 串接googlemap相關
 
 
 group :development, :test do
