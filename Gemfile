@@ -32,7 +32,10 @@ gem 'rails-i18n', '~> 6.0'
 gem 'geocoder', '~> 1.6', '>= 1.6.7'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 #上兩個 串接googlemap相關
-
+gem "aasm", "~> 5.2"
+# 狀態機
+gem "figaro", "~> 1.2"
+# 管理機密資訊
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
