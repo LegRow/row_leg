@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_060111) do
+ActiveRecord::Schema.define(version: 2021_05_10_075900) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "brief_description"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_060111) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_tasks_on_deleted_at"
   end
 
 end
