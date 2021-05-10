@@ -36,6 +36,8 @@ gem "aasm", "~> 5.2"
 gem "figaro", "~> 1.2"
 # 管理機密資訊
 
+gem 'pg'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2' #快速開發(設定好了 foreman s 就可以了)
