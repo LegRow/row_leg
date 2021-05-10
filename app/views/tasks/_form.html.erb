@@ -1,0 +1,69 @@
+<%= form_for(@task) do |f| %>
+
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "任務簡介" %>
+    <%= f.text_field :brief_description, placeholder: '任務簡介' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "內容描述" %>
+    <%= f.text_area :description, placeholder: '請說明詳細內容' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "任務所在城市" %>
+    <%= f.text_field :address_city, placeholder: '目前只開放台北市' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "任務所在區" %>
+    <%= f.text_field :address_district, placeholder: '請填入區' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "街道完整訊息" %>
+    <%= f.text_area :address_street, placeholder: '街道完整訊息' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "店名/其他訊息" %>
+    <%= f.text_field :store_name, placeholder: '店名/其他訊息' %>
+  </div>
+
+  <div class="field">
+    <%= f.label "酬勞新台幣:" %>
+    <%= f.number_field :reward ,nclass: "f-control", min: 200 %>
+  </div>
+
+  <div class="field">
+    <%= f.label "代買金額新台幣:" %>
+    <%= f.number_field :behalf ,nclass: "f-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "任務起始時間" %>
+    <%= f.datetime_select :task_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label "任務結束時間" %>
+    <%= f.datetime_select :task_end %>
+  </div>
+
+  <div class="field">
+    <%= f.label "備註欄" %>
+    <%= f.text_field :remarks, placeholder: '備註事項' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
