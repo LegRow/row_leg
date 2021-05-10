@@ -3,13 +3,15 @@ zh-TW:
   activerecord:
     attributes:
       task:
-        brief_description: "任務簡介"
-        description: "任務描述"
-        address_city: "城市名稱"
-        address_district: "區"
-        address_street: "街道名稱"
-        store_name: "店名/地點"
-        reward: "報酬"
+        brief_description: "任務簡介:"
+        description: "任務描述:"
+        address_city: "城市名稱:"
+        address_district: "區:"
+        address_street: "街道名稱:"
+        store_name: "店名/地點:"
+        reward: "報酬:"
+        task_at: "任務開始時間:"
+        task_end: "任務結束時間:"
     errors:
       messages:
         record_invalid: '校驗失敗: %{errors}'
