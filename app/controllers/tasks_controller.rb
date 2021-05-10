@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
   
+  before_action :find_task, only:[:show, :edit, :update, :destroy]
+
   def index
     @tasks = Task.all
   end
@@ -20,6 +22,14 @@ class TasksController < ApplicationController
 
   def edit
     
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to task_path(@task), notice: '成功修改資料'
+    else
+      render :edit
+    end
   end
 
   def destroy
