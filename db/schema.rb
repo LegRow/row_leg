@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_062230) do
+ActiveRecord::Schema.define(version: 2021_05_10_075900) do
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "brief_description"
+    t.text "description"
+    t.string "address_city"
+    t.string "address_district"
+    t.string "address_street"
+    t.string "store_name"
+    t.integer "reward", default: 200
+    t.integer "behalf"
+    t.datetime "task_at"
+    t.datetime "task_end"
+    t.string "remarks"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_tasks_on_deleted_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
