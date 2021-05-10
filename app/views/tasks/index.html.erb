@@ -30,7 +30,7 @@
         <td><%= task.store_name %></td>
         <td><%= task.reward %></td>
         <td><%= task.task_at.to_s(:db) %></td>
-        <td><%= task.task_end.to_s(:db) %></td>
+        <td><%= task.task_end.to_formatted_s(:month_and_year) %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
