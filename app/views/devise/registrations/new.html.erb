@@ -10,8 +10,8 @@
   
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.radio_button :gender, autofocus: true %><span> 男 </span>
-    <%= f.radio_button :gender, autofocus: true %><span> 女 </span>
+    <%= f.radio_button(:gender, "male") %><span> 男 </span>
+    <%= f.radio_button(:gender, "female") %><span> 女 </span>
   </div>
 
   <div class="field">
