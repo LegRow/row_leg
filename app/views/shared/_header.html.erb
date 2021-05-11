@@ -1,8 +1,10 @@
 <header class="">
   <nav class="nav-container">
+    <div class="logo-box">
+      <%= image_tag("fake-logo.png", size: "32x20")%>
+      <h1><%= link_to "ROW_LEG", root_path, class:"menu-link" %></h1>
+    </div>
     <ul class="menu ">
-      <li class="menu-item"><%= link_to "首頁", root_path, class:"menu-link" %></li>
-      <li class="menu-item"><%= link_to '任務列', tasks_path, class:"menu-link" %></li>
       <% if user_signed_in? %>
       <li class="menu-item">
         <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
@@ -18,6 +20,7 @@
         <%= link_to "註冊", new_user_registration_path, class:"menu-link" %>
       </li>
       <% end %>
+      <li class="menu-item"><%= link_to '任務列', tasks_path, class:"menu-link" %></li>
       <li class="menu-item"><a href="#" class="menu-link">關於我們</a></li>
       <li class="menu-item"><a href="#" class="menu-link">常見問題</a></li>
     </ul>

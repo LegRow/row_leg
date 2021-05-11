@@ -3,19 +3,21 @@
 }
 
 .btn-default {
-  background: #EA702B;
-  background: -webkit-linear-gradient(top left, #EA702B, #E0A141);
-  background: -moz-linear-gradient(top left, #EA702B, #E0A141);
-  background: linear-gradient(to bottom right, #EA702B, #E0A141);
-
+  background-color: $color-primary;
 
   &:hover {
     @apply  opacity-60;
   }
 }
 
-a {
-  &:hover {
-    @apply opacity-60;
-  }   
+.btn-text {
+  display: inline-block;
+  background: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: $color-primary;
+  border: none;
+  border-bottom: 1px solid $color-primary;
+  padding-bottom: 2px;
+  cursor: pointer;
 }
