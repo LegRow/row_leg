@@ -1,0 +1,13 @@
+.nav-container {
+  @apply fixed top-0 right-0 w-full flex justify-end;
+}
+
+.menu {
+  @apply flex text-gray-700;
+  .menu-item {
+    @apply mx-4;
+    .menu-link {
+      @apply block text-3xl font-medium;
+    }
+  } 
+}
