@@ -1,9 +1,8 @@
 class Task < ApplicationRecord
   
   acts_as_paranoid
-  
   validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
-  
+  belongs_to :user
   validate :buffer_time, :correct_time, :end_time, :reward_less
   
   
