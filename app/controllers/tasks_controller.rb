@@ -42,9 +42,8 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to tasks_path, notice: '任務已刪除'
   end
-  
-  private
 
+  private
   def find_task
     @task = Task.find(params[:id])
   end
