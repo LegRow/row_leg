@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_075900) do
+ActiveRecord::Schema.define(version: 2021_05_11_033817) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "tasks", force: :cascade do |t|
     t.string "brief_description"
@@ -28,11 +31,10 @@ ActiveRecord::Schema.define(version: 2021_05_10_075900) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.bigint "user_id", null: false
     t.index ["deleted_at"], name: "index_tasks_on_deleted_at"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,4 +48,5 @@ ActiveRecord::Schema.define(version: 2021_05_10_075900) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tasks", "users"
 end
