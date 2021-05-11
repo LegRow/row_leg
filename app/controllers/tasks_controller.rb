@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   
   before_action :find_task, only:[:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @tasks = Task.all
@@ -12,6 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
 
     if @task.save
       redirect_to tasks_path, notice: '任務成功建立'
