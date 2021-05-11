@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @tasks = Task.all
+    if user_signed_in?
+      @tasks = Task.where.not(user_id: current_user.id)
+    else
+      @tasks = Task.all
+    end
   end
 
   def new
