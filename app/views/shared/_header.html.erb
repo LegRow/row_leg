@@ -1,15 +1,12 @@
 <header class="">
   <nav class="">
     <div class="">
-      <%= link_to "Marketplace", root_path, class:"" %>
+      <%= link_to "首頁", root_path, class:"" %>
     </div>
     <div>
-      <%= link_to 'Add Task', new_task_path, class: "" %>
+      <%= link_to '發佈任務', new_task_path, class: "" %>
     </div>
     <div class="">
-      <button class="">
-        <svg class="" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d=""/></svg>
-      </button>
     </div>
     <div class="">
       <div class="">
@@ -22,5 +19,27 @@
         <% end %>
       </div>
     </div>
+  </nav>
+  <nav class="nav-container">
+    <ul class="menu flex bg-yellow-500 text-white">
+      <li><%= link_to "首頁", root_path, class:"" %></li>
+      <% if user_signed_in? %>
+      <li>
+        <%= link_to "Edit account", edit_user_registration_path, class: "" %>
+      </li>
+      <li>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"" %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to "Login", new_user_session_path, class:"" %>
+      </li>
+      <li>
+        <%= link_to "Sign Up", new_user_registration_path, class:"" %>
+      </li>
+      <% end %>
+      <li><a href="#">關於我們</a></li>
+      <li><a href="#">常見問題</a></li>
+    </ul>
   </nav>
 </header>
