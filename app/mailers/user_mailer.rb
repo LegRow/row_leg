@@ -5,9 +5,9 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.someone_apply_note.subject
   #
-  def someone_apply_note
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def someone_apply_note(user)
+    @greeting = "您的任務有人應徵"
+    email_address = user.email
+    mail to: email_address
   end
 end
