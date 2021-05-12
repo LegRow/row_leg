@@ -1,26 +1,28 @@
 <header class="">
-  <nav class="">
-    <div class="">
-      <%= link_to "Marketplace", root_path, class:"" %>
+  <nav class="nav-container">
+    <div class="logo-box">
+      <%= image_tag("fake-logo.png", size: "32x20")%>
+      <h1><%= link_to "ROW_LEG", root_path, class:"menu-link" %></h1>
     </div>
-    <div>
-      <%= link_to 'Add Task', new_task_path, class: "" %>
-    </div>
-    <div class="">
-      <button class="">
-        <svg class="" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d=""/></svg>
-      </button>
-    </div>
-    <div class="">
-      <div class="">
-        <% if user_signed_in? %>
-          <%= link_to "Edit account", edit_user_registration_path, class: "" %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"" %>
-        <% else %>
-          <%= link_to "Login", new_user_session_path, class:"" %>
-          <%= link_to "Sign Up", new_user_registration_path, class:"" %>
-        <% end %>
-      </div>
-    </div>
+    <ul class="menu ">
+      <% if user_signed_in? %>
+      <li class="menu-item">
+        <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
+      </li>
+      <li class="menu-item">
+        <%= link_to "登出", destroy_user_session_path, method: :delete, class:"menu-link" %>
+      </li>
+      <% else %>
+      <li class="menu-item">
+        <%= link_to "登入", new_user_session_path, class:"menu-link" %>
+      </li>
+      <li class="menu-item">
+        <%= link_to "註冊", new_user_registration_path, class:"menu-link" %>
+      </li>
+      <% end %>
+      <li class="menu-item"><%= link_to '任務列', tasks_path, class:"menu-link" %></li>
+      <li class="menu-item"><a href="#" class="menu-link">關於我們</a></li>
+      <li class="menu-item"><a href="#" class="menu-link">常見問題</a></li>
+    </ul>
   </nav>
 </header>
