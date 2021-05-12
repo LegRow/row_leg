@@ -19,7 +19,6 @@
         <div class="chat-room">
          <p><%= @room.name %></p>
          <% @room.messages.each do |message| %>
-             <%= test() %>
           <p><%= message.content %></p>
           <% end %>
          <div class="chat-box">
