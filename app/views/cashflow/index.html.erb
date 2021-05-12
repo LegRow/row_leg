@@ -1,13 +1,16 @@
 <%= testing_data = [
   ['MerchantID', 'MS119996394'],
   ['RespondType', 'JSON'],
-  ['TimeStamp', '1620215508'],
+  ['TimeStamp', Time.now.to_i.to_s],
   ['Version', '1.5'],
-  ['MerchantOrderNo', '1620215508'],
+  ['MerchantOrderNo', Time.now.to_i.to_s],
   ['Amt', '93'],
   ['ItemDesc', 'TEST'],
-  ['Email', 't5204713910@gmail.com']
+  ['Email', 't5204713910@gmail.com'],
+  ['ReturnURL' ,"https://75caf3fb05bf.ngrok.io/cashflow/thankyou"]
 ] %>
+
+<%= Time.now.to_i %>
 
 <%= form_tag('https://ccore.newebpay.com/MPG/mpg_gateway', method: "post", id:"newebpay") do %>
   <%= label_tag("MerchantID") %>

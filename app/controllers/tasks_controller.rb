@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  
   before_action :find_task, only:[:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -20,7 +19,7 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      redirect_to tasks_path, notice: '任務成功建立'
+      redirect_to cashflow_index_path, notice: '任務成功建立'
     else
       render :new
     end
