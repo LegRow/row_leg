@@ -21,11 +21,11 @@ class MessagesController < ApplicationController
 
   # POST /messages or /messages.json
   def create
+    p params
     @message = Message.new(message_params)
     @message.user = current_user
     @message.save
     redirect_to request.referrer
-
   end
 
   # PATCH/PUT /messages/1 or /messages/1.json
