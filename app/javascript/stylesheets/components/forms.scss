@@ -3,7 +3,7 @@
 }
 
 .field {
-  @apply mb-3;
+  @apply mb-4;
 }
 .form-container {
   @apply flex justify-center mt-20;
@@ -14,3 +14,15 @@
     }
   }   
 }
+
+//  task_new form
+
+.task-form-container {
+  @apply flex-col items-center;
+
+  .task-input-special {
+    @apply mb-4 ;
+  }
+}
+
+
