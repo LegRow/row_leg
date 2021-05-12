@@ -2,10 +2,9 @@
   overflow-y: scroll;
   height: 100%;
   .message{
-    min-height: 50px;
+    min-height: 59px;
     .content-container{
       display: inline-block;
-      float: right;
     }
     .content{
       background-color: rgb(158, 135, 222);
@@ -17,11 +16,19 @@
       color:rgb(135, 141, 222);
     }
   }
+  .me{
+    .content-container{
+      float: right;
+      .content{
+        background-color: blue;
+        color: white;
+      }
+    }
+  }
   .chat-box {
-    position: absolute;
     bottom: 0;
     padding: 15px;
-    width: 50%;
+    width: 100%;
     input[type=text]{
       height: 45px;
       font-size: 18px;
