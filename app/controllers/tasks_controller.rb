@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      redirect_to tasks_path, notice: '任務成功建立'
+      redirect_to cashflow_index_path, notice: '任務成功建立'
     else
       render :new
     end
