@@ -1,54 +1,33 @@
-<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-    <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-      <div class="max-w-md mx-auto">
-        
-        <div class="divide-y divide-gray-200">
-          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-            <p>測試tailwind有沒有成功而已</p>
-            <ul class="list-disc space-y-2">
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg class="flex-shrink-0 h-5 w-5 text-cyan-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-                <p class="ml-2">
-                  大家加油
-                  <code class="text-sm font-bold text-gray-900">大家加油</code> 大家加油
-                </p>
-              </li>
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg class="flex-shrink-0 h-5 w-5 text-cyan-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-                <p class="ml-2">
-                  大家加油
-                  <code class="text-sm font-bold text-gray-900">大家加油</code>
-                </p>
-              </li>
-              <li class="flex items-start">
-                <span class="h-6 flex items-center sm:h-7">
-                  <svg class="flex-shrink-0 h-5 w-5 text-cyan-500" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-                <p class="ml-2">大家加油</p>
-              </li>
-            </ul>
-            <p>大家加油大家加油大家加油大家加油大家加油大家加油大家加油大家加油</p>
-          </div>
-          <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
-            <p>大家加油</p>
-            <p>
-              <a href="https://tailwindcss.com/docs" class="text-cyan-600 hover:text-cyan-700"> 大家加油 &rarr; </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+<section class="header-about">
+  <div class="about-title">
+    <h1>阿美 <span class="highlight">小明</span><br><span class="highlight">共四</span>隻腳</h1>
+    <h2>專業代排，值得信賴</h2>
+    <button class="btn-text">知道更多&DownArrow;</button>
   </div>
-</div>
+  <div class="about-img">
+    <%= image_tag("homepage-img", size: "600x350")%>
+  </div>
+</section>
+<section class="index-task">
+  <h2>這邊會是首頁任務列</h2>
+</section>
+<footer class="footer-container">
+  <ul class="footer">
+    <li class="footer-item">
+      <a href="#" class="footer-link">合作店家</a>
+    </li>
+    <li class="footer-item">
+      <a href="#" class="footer-link">聯絡客服</a>
+    </li>
+    <li class="footer-item">
+      <a href="#" class="footer-link">關於我們</a>
+    </li>
+    <li class="footer-item">
+      <a href="#" class="footer-link">常見問題</a>
+    </li>
+  </ul>
+  <%= image_tag("fake-logo.png", size: "32x20", :class => "footer-img")%>
+  <p class="footer-copyright">
+    © Copyright by
+  </p>
+</footer>
