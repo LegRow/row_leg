@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @tasks = Task.all
+    if user_signed_in?
+      @tasks = Task.where.not(user_id: current_user.id)
+    else
+      @tasks = Task.all
+    end
   end
 
   def new
@@ -38,9 +42,8 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to tasks_path, notice: '任務已刪除'
   end
-  
-  private
 
+  private
   def find_task
     @task = Task.find(params[:id])
   end
