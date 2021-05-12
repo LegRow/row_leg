@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
     redirect_to request.referrer
+
   end
 
   # PATCH/PUT /messages/1 or /messages/1.json
