@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'cashflow/index'
   post 'cashflow/thankyou'
-  root 'tasks#index'
+  root 'tests#index'
   devise_for :users
   resources :tests, only: [:index]
 
