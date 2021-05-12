@@ -1,5 +1,11 @@
 .input {
-  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight ;
+  @apply appearance-none border-0 border-b-2 border-solid border-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight transition duration-500;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, .1);
+    border-bottom: 3px solid $color-primary;
+  }
 }
 
 .field {
