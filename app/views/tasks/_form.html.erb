@@ -62,6 +62,10 @@
     <%= f.label "備註欄" %>
     <%= f.text_field :remarks, placeholder: '備註事項' %>
   </div>
+  
+  <div class="field">
+    <%= f.hidden_field :merchant_order_number, :value => Time.now.to_i.to_s %>
+  </div>
 
   <%= button_to "新增", action: "create" %>
 
