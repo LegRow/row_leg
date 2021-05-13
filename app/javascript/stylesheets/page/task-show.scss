@@ -18,8 +18,12 @@
       .task-show-inf {
         @apply px-5 py-5 w-8/12;
 
+        & p {
+          @apply my-2;
+        }
+
         .task-show-link {
-          @apply flex justify-between;
+          @apply flex justify-between text-xl;
         }
       }
 

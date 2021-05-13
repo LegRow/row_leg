@@ -1,23 +1,30 @@
-
 .footer-container {
   padding: 100px 30px;
   background-color: #37383d;
   margin-top: 40px;
-  
+
   .footer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 
-  .footer-item {
-    margin-right: 40px;
+    .footer-item {
+      margin-right: 40px;
 
-    .footer-link {
-      color: #fff;
-      font-size: 20px;
+      .footer-link {
+        color: #fff;
+        font-size: 20px;
+        display: inline-block;
+        padding: 10px;
+        transition: all 1;
+
+        &:hover {
+          background-color: rgba(225, 225, 225, 0.05);
+          transform: translateY(-5px);
+        }
+      }
     }
   }
-}
   .footer-img {
     display: block;
     margin: 0 auto;
