@@ -2,8 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "variables";
-@import "main";
+@import "base/variables";
+@import "base/main";
 
 @import "components/forms";
 @import "components/buttons";
