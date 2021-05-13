@@ -1,9 +1,13 @@
 class Task < ApplicationRecord
   include AASM
+  
   acts_as_paranoid
+
   belongs_to :user
-  validates  :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
-  validate   :buffer_time, :correct_time, :end_time, :reward_less
+  has_one :order
+
+  validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
+  validate :buffer_time, :correct_time, :end_time, :reward_less
 
   aasm column: :state do
     state :pending, initial: true
