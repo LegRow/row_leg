@@ -1,8 +1,9 @@
-
-  <%= form_for(@message) do |form| %>
+ <%= form_for(@message) do |form| %>
     <%= form.hidden_field :room_id, value: @room.id %> 
-    <div >
-      <%= form.text_field :content, placeholder: "說說話"%>
-      <%= form.submit "發送" %>
+    <div class="flex w-52 ">
+      
+        <%= form.text_field :content, placeholder: "說說話", class:'w-32'%>
+        <%= form.submit "發送", class:'w-16' %>
+      
     </div>
   <% end %>

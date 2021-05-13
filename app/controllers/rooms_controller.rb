@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
 
   def show
     @rooms = Room.all
-    @message = Message.new
+    @message = @room.messages.new
     render 'index'
   end
 

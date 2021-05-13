@@ -19,6 +19,8 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
+      room = Room.new(room_params)
+      task.store_name = room.name
       redirect_to cashflow_index_path, notice: '任務成功建立'
     else
       render :new
@@ -49,6 +51,10 @@ class TasksController < ApplicationController
 
   def task_params
       params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
+  end
+
+  def room_params
+    params.require(:task).permit(:brief_description)
   end
 
 end

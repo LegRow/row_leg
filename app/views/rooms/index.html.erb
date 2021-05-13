@@ -1,4 +1,4 @@
-<div class="container w-full h-screen flex">
+<div class=" md:w-full h-96 flex">
   <div class="list w-1/4 bg-red-300 h-full">hi</div>
   <div class="list w-1/4 bg-yellow-500 h-full">hi
   <%= render 'form' %> <br>
@@ -8,15 +8,16 @@
     <% end %>
   </div>
   </div>
-  <div class="list w-1/2 bg-green-400 h-full">
-    <%= @room.name %>
-    <div>
-      <%= @room.messages.each do |message| %>
-      <p><%= message.content %></p>
+  <div class="list w-1/2 bg-green-400 h-full relative">
+    <div class="flex-col"> 
+      <% @room.messages.each do |message| %>
+      <div class="<%= 'me' if message.user == current_user %>">
+        <%= message.content %>
+      </div>
       <% end %>
-    </div>
-    <div class='relative'>
-      <%= render 'messages/form', message: Message.new, room: @room %>
+      <div class="absolute bottom-0">
+        <%= render 'messages/form', message: Message.new, room: @room %>
+      </div>
     </div>
     
   </div>
