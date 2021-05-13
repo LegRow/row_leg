@@ -11,8 +11,12 @@
     .task-list {
       @apply relative leading-6 my-5 border-solid border-t-2 border-b-2 border-gray-700 bg-white px-3 py-4;
 
-      .task-item-title a {
-        @apply hover:text-gray-600;
+      .task-item-title {
+        @apply mb-4;
+
+        .task-item-title a {
+          @apply hover:text-gray-600;
+        }
       }
 
       .task-inf .inf-title {
@@ -24,7 +28,7 @@
       }
 
       .task-desc {
-        @apply h-20 overflow-scroll;
+        @apply h-40 overflow-scroll text-gray-500;
       }
 
       .task-edit-link {
@@ -32,4 +36,8 @@
       }
     }
   }
+}
+
+.inf-title {
+  @apply font-bold text-gray-800;
 }
