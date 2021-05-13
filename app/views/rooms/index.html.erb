@@ -1,0 +1,23 @@
+<div class="container w-full h-screen flex">
+  <div class="list w-1/4 bg-red-300 h-full">hi</div>
+  <div class="list w-1/4 bg-yellow-500 h-full">hi
+  <%= render 'form' %> <br>
+  <div>
+    <% @rooms.each do |room| %> 
+    <h3><%= link_to room.name, room_path(room) %></h3>
+    <% end %>
+  </div>
+  </div>
+  <div class="list w-1/2 bg-green-400 h-full">
+    <%= @room.name %>
+    <div>
+      <%= @room.messages.each do |message| %>
+      <p><%= message.content %></p>
+      <% end %>
+    </div>
+    <div class='relative'>
+      <%= render 'messages/form', message: Message.new, room: @room %>
+    </div>
+    
+  </div>
+</div>
