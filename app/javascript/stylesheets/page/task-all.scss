@@ -1,0 +1,35 @@
+.task-title {
+  @apply w-full flex justify-between py-3;
+}
+
+.task-container {
+  @apply flex flex-col items-center mx-0 leading-6;
+
+  .task-row {
+    @apply max-w-4xl flex flex-col justify-center;
+
+    .task-list {
+      @apply relative leading-6 my-5 border-solid border-t-2 border-b-2 border-gray-700 bg-white px-3 py-4;
+
+      .task-item-title a {
+        @apply hover:text-gray-600;
+      }
+
+      .task-inf .inf-title {
+        @apply text-right;
+      }
+
+      .task-inf p {
+        @apply my-2;
+      }
+
+      .task-desc {
+        @apply h-20 overflow-scroll;
+      }
+
+      .task-edit-link {
+        @apply absolute top-0 right-0;
+      }
+    }
+  }
+}
