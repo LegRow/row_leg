@@ -2,7 +2,7 @@
   <nav class="nav-container">
     <div class="logo-box">
       <%= image_tag("fake-logo.jpg", size: "32x20")%>
-      <h1><%= link_to "ROW_LEG", root_path, class:"menu-link" %></h1>
+      <h1 class="text-xl"><%= link_to "ROW_LEG", root_path, class:"menu-link" %></h1>
     </div>
     <ul class="menu ">
       <% if user_signed_in? %>
