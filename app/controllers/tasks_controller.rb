@@ -3,15 +3,12 @@ class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    if user_signed_in?
-      @tasks = Task.where.not(user_id: current_user.id)
-    else
-      @tasks = Task.all
-    end
+    @tasks = Task.all
   end
 
   def new
     @task = Task.new
+    @order = Order.new
   end
 
   def create
@@ -19,7 +16,12 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      redirect_to cashflow_index_path, notice: '任務成功建立'
+      order = Order.new(order_params)
+      order.task_id = @task.id
+      order.save
+
+      redirect_to controller: 'cashflow', action: 'to_newebpay',
+        for_newebpay: {reward: @task.attributes["reward"], behalf: @task.attributes["behalf"], order_number: order.attributes["merchant_order_number"]}
     else
       render :new
     end
@@ -48,7 +50,11 @@ class TasksController < ApplicationController
   end
 
   def task_params
-      params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
+    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
   end
+
+  def order_params
+    params.require(:task).permit(:merchant_order_number)
+  end  
 
 end
