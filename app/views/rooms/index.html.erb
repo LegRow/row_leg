@@ -11,9 +11,7 @@
   <div class="list w-1/2 bg-green-400 h-full relative">
     <div class="flex-col"> 
       <% @room.messages.each do |message| %>
-      <div class="<%= 'me' if message.user == current_user %>">
-        <%= message.content %>
-      </div>
+        <%= render 'messages/message', message: message %>
       <% end %>
       <div class="absolute bottom-0">
         <%= render 'messages/form', message: Message.new, room: @room %>

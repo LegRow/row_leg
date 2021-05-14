@@ -17,6 +17,8 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     @room.save
     redirect_to rooms_path
+
+  
   end
 
   def show
