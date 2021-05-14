@@ -19,8 +19,8 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      room = Room.new(room_params)
-      task.store_name = room.name
+      # room = Room.new(room_params)
+      # task.store_name = room.name
       redirect_to cashflow_index_path, notice: '任務成功建立'
     else
       render :new
