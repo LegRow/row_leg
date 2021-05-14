@@ -60,6 +60,10 @@
     <%= f.label "備註欄" %>
     <%= f.text_field :remarks, placeholder: '備註事項', class: "input" %>
   </div>
+  
+  <div class="field">
+    <%= f.hidden_field :merchant_order_number, :value => Time.now.to_i.to_s %>
+  </div>
 
   <div class="flex justify-center">
     <%= button_to "新增", {action: "create"}, {class: 'btn btn-default'} %>
