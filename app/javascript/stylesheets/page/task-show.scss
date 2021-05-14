@@ -1,0 +1,35 @@
+.task-show-container {
+  @apply max-w-5xl mx-auto my-20;
+
+  .task-show-row {
+    @apply flex flex-col;
+
+    .task-show-title {
+      @apply bg-gray-600 mb-4;
+
+      & h2 {
+        @apply text-center text-5xl text-white;
+      }
+    }
+
+    .task-show-box {
+      @apply flex;
+
+      .task-show-inf {
+        @apply px-5 py-5 w-8/12;
+
+        & p {
+          @apply my-2;
+        }
+
+        .task-show-link {
+          @apply flex justify-between text-xl;
+        }
+      }
+
+      .task-show-map {
+        @apply px-5 py-5 border-black border-2 w-4/12;
+      }
+    }
+  }
+}
