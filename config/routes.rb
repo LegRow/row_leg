@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  get 'cashflow/index'
-  post 'cashflow/thankyou'
+
   root 'tasks#index'
+
+  get 'cashflow/to_newebpay'
+  post 'cashflow/thankyou'
+  post 'cashflow/from_newebpay'
+
   devise_for :users
   resources :tests, only: [:index]
 
   resources :tasks do
-    put :approve
-    put :disapprove
   end
 
 end
