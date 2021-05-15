@@ -11,6 +11,11 @@
     </div>
     
     <div class="field">
+      <%= f.label :name, "姓名"%><br />
+      <%= f.text_field :name, autofocus: true, class:"input" %>
+    </div>
+
+    <div class="field">
     <%= f.label :tel, "電話" %><br />
     <%= f.telephone_field :tel, autofocus: true, class:"input" %>
     </div>
@@ -25,7 +30,7 @@
     <% end %>
 
     <div class="field">
-    <%= f.label :password, "密碼" %> <br>
+    <%= f.label :password, "新密碼" %> <br>
     <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder:"至少6碼"%>
     <% if @minimum_password_length %><br>
       <small>無須更改密碼時，此處請留空</small>
@@ -33,13 +38,13 @@
     </div>
 
     <div class="field">
-    <%= f.label :password_confirmation, "確認密碼"%><br />
+    <%= f.label :password_confirmation, "確認新密碼"%><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
     </div>
 
     <div class="field">
     <%= f.label :current_password, "舊密碼" %> <br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class:"input" %><br>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"input", placeholder:"請輸入舊密碼以便核對" %><br>
       <small>為了成功修改資料，請提供舊密碼</small>
     </div>
 
