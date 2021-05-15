@@ -1,7 +1,10 @@
-<div class='mt-28'>
-  <h1>新增任務</h1>
-
-  <%= render 'form', task: @task %> 
-  <%= link_to "返回任務列表", tasks_path %>
-</div>
+<section class="form-container task-form-container">
+  <div class="form-box">
+    <h1 class="form-title">新增任務</h1>
+  
+    <%= render 'form', task: @task %> 
+    <%= link_to "返回任務列表", tasks_path, class:"link" %>
+  </div>
+  
+</section>
 

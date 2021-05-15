@@ -1,53 +1,55 @@
-<h2>編輯</h2>
+<section class='form-container'>
+  <div class='form-box'>
+    <h2 class="form-title">編輯會員資料</h2>
+    <hr>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field">
+      <%= f.label :email, "信箱" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full", class:"input" %>
+    </div>
+    
+    <div class="field">
+    <%= f.label :tel, "電話" %><br />
+    <%= f.telephone_field :tel, autofocus: true, class:"input" %>
+    </div>
+    
+    <div class="field">
+    <%= f.label :bank_account, "銀行帳戶"%><br />
+    <%= f.text_field :bank_account, autofocus: true, class:"input" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :tel %><br />
-    <%= f.telephone_field :tel, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bank_account %><br />
-    <%= f.text_field :bank_account, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+    <%= f.label :password, "密碼" %> <br>
+    <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder:"至少6碼"%>
+    <% if @minimum_password_length %><br>
+      <small>無須更改密碼時，此處請留空</small>
+    <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+    <%= f.label :password_confirmation, "確認密碼"%><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+    <div class="field">
+    <%= f.label :current_password, "舊密碼" %> <br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"input" %><br>
+      <small>為了成功修改資料，請提供舊密碼</small>
+    </div>
 
-<h3>Cancel my account</h3>
+    <div class="actions flex justify-center">
+    <%= f.submit "更新", class: "btn btn-default" %>
+    </div>
+    <% end %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <%= link_to "返回首頁", root_path, class:"link" %>
+    </div>
+</section>
 
-<%= link_to "Back", root_path %>
+

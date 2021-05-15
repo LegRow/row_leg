@@ -7,12 +7,12 @@
       
     <div class="field mt-2">
       <%= f.label :email, "信箱" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input", placeholder: "信箱" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input"  %>
     </div>
 
     <div class="field">
       <%= f.label :name, "姓名"%><br />
-      <%= f.text_field :name, autofocus: true, class:"input", placeholder: "姓名"%>
+      <%= f.text_field :name, autofocus: true, class:"input" %>
     </div>
     
     <div class="field">
@@ -23,30 +23,29 @@
 
     <div class="field">
       <%= f.label :age, "年齡"%><br />
-      <%= f.number_field :age, autofocus: true, class:"input", placeholder: "年齡" %>
+      <%= f.number_field :age, autofocus: true, class:"input" %>
     </div>
 
     <div class="field">
       <%= f.label :tel, "電話"%><br />
-      <%= f.telephone_field :tel, autofocus: true, class:"input", placeholder: "電話" %>
+      <%= f.telephone_field :tel, autofocus: true, class:"input" %>
     </div>
 
     <div class="field">
       <%= f.label :bank_account, "銀行帳戶"%><br />
-      <%= f.text_field :bank_account, autofocus: true, class:"input", placeholder: "銀行帳戶" %>
+      <%= f.text_field :bank_account, autofocus: true, class:"input" %>
     </div>
 
     <div class="field">
       <%= f.label :password, "密碼"%>
       <% if @minimum_password_length %>
-      <em>(至少<%= @minimum_password_length %>碼)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder: "密碼" %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder:"至少6碼" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation, "確認密碼"%><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input", placeholder: "確認密碼" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
 
     </div>
 

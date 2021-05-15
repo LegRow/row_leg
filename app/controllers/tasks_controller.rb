@@ -16,12 +16,18 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
+
+      # room = Room.new(room_params)
+      # task.store_name = room.name
+      
+
       order = Order.new(order_params)
       order.task_id = @task.id
       order.save
 
       redirect_to controller: 'cashflow', action: 'to_newebpay',
         for_newebpay: {reward: @task.attributes["reward"], behalf: @task.attributes["behalf"], order_number: order.attributes["merchant_order_number"]}
+
     else
       render :new
     end
@@ -53,8 +59,14 @@ class TasksController < ApplicationController
     params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
   end
 
+
+  def room_params
+    params.require(:task).permit(:brief_description)
+  end
+
   def order_params
     params.require(:task).permit(:merchant_order_number)
   end  
+
 
 end

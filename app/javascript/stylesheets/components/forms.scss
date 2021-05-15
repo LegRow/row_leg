@@ -1,16 +1,36 @@
 .input {
-  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  @apply appearance-none border-solid border-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight transition duration-500;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+    border-bottom: 3px solid $color-primary;
+  }
 }
 
 .field {
-  @apply mb-3;
+  @apply mb-4;
 }
 .form-container {
   @apply flex justify-center mt-20;
+
   .form-box {
-    @apply border-gray-700 border-2 border-solid px-8 py-1;
+    @apply border-gray-700 border-2 border-solid px-8 py-1 rounded;
     .form-title {
       @apply font-bold text-2xl text-center mb-1 text-gray-700;
     }
-  }   
+  }
+}
+
+.form-box {
+  background-color: #fafafa;
+}
+//  task_new form
+
+.task-form-container {
+  @apply flex-col items-center;
+
+  .task-input-special {
+    @apply mb-4;
+  }
 }
