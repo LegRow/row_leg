@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  
+  root to: "tasks#index"
   get 'cashflow/to_newebpay'
   post 'cashflow/thankyou'
   post 'cashflow/from_newebpay'
@@ -12,5 +13,4 @@ Rails.application.routes.draw do
 
   resources :tasks do
   end
-
 end
