@@ -1,0 +1,9 @@
+ <%= form_for(@message, remote: true) do |form| %>
+    <%= form.hidden_field :room_id, value: @room.id %> 
+    <div class="flex w-52 ">
+      
+        <%= form.text_field :content, placeholder: "說說話", class:'w-32'%>
+        <%= form.submit "發送", class:'w-16' %>
+      
+    </div>
+  <% end %>
