@@ -5,6 +5,7 @@ class Task < ApplicationRecord
 
   belongs_to :user
   has_one :order
+  has_one :room
 
   validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
   validate :buffer_time, :correct_time, :end_time, :reward_less

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :tasks
+  has_many :messages
 
   # validates :name, :age, presence: true
   # validates :tel, length: { minimum: 10, too_short: "請確實填寫！"}
