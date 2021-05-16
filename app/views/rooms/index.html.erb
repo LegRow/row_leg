@@ -9,7 +9,7 @@
   </div>
   </div>
   <div class="list w-1/2 bg-green-400 h-full relative overflow-scroll">
-    <div id="messages" class="flex-col" data-user-id="<%= current_user.id %>">
+    <div id="messages" class="flex-col" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
       <% @room.messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>

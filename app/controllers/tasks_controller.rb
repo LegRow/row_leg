@@ -16,12 +16,14 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-
+      
+      #-----自動建立此任務專屬聊天室----
       @room = Room.new(room_params)
       @room.task_id = @task.id 
       @room.name = @task.store_name
       @room.save
       redirect_to tasks_path
+      #-----自動建立此任務專屬聊天室----
 
       # order = Order.new(order_params)
       # order.task_id = @task.id
@@ -48,7 +50,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @room = @task.room
     @task.destroy
+    @room.destroy
     redirect_to tasks_path, notice: '任務已刪除'
   end
 
@@ -56,6 +60,7 @@ class TasksController < ApplicationController
   def find_task
     @task = Task.find(params[:id])
   end
+  
 
   def task_params
     params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
