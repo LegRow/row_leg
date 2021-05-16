@@ -22,7 +22,9 @@
             <%= link_to '回到任務列', tasks_path, class: "btn-text my-2" %>
           </div>
           <div>
-            <%= link_to '應徵', "/cashflow/index", class: "link-spec" %>
+            <% if not_author_of @task %>
+              <%= link_to '應徵', controller: 'cashflow', action: 'to_newebpay', for_newebpay: {applicant: true, reward: @task.reward, behalf: @task.behalf, order_number: @task.order.merchant_order_number} %>
+            <% end %>
           </div>
         </div>
       </div>
