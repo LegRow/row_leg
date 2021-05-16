@@ -1,3 +1,4 @@
-<div id="newmessage" class="<%= 'me' if message.user == current_user %>">
-    <%= message.content %>
+<div id="newmessage" class="flex-col <%= 'me' if message.user == current_user %>">
+    <div class="text-4xl"><%= message.content%></div>
+    <div><%= message.created_at %></div>
 </div>

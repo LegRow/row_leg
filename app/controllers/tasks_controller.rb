@@ -22,15 +22,15 @@ class TasksController < ApplicationController
       @room.task_id = @task.id 
       @room.name = @task.store_name
       @room.save
-      redirect_to tasks_path
+      
       #-----自動建立此任務專屬聊天室----
 
-      # order = Order.new(order_params)
-      # order.task_id = @task.id
-      # order.save
+      order = Order.new(order_params)
+      order.task_id = @task.id
+      order.save
 
-      # redirect_to controller: 'cashflow', action: 'to_newebpay',
-      #   for_newebpay: {reward: @task.attributes["reward"], behalf: @task.attributes["behalf"], order_number: order.attributes["merchant_order_number"]}
+      redirect_to controller: 'cashflow', action: 'to_newebpay',
+        for_newebpay: {reward: @task.attributes["reward"], behalf: @task.attributes["behalf"], order_number: order.attributes["merchant_order_number"]}
 
     else
       render :new

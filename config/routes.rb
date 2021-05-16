@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   post 'cashflow/thankyou'
   post 'cashflow/from_newebpay'
   
-  resources :rooms, only: [:index, :new, :create, :show]
-  resources :messages
+  resources :rooms, only: [:index, :show]
+  resources :messages, only: [:index, :new, :create]
 
   devise_for :users
   resources :tests, only: [:index]
