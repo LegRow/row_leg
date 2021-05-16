@@ -17,16 +17,18 @@ class TasksController < ApplicationController
 
     if @task.save
 
-      # room = Room.new(room_params)
-      # task.store_name = room.name
-      
+      @room = Room.new(room_params)
+      @room.task_id = @task.id 
+      @room.name = @task.store_name
+      @room.save
+      redirect_to tasks_path
 
-      order = Order.new(order_params)
-      order.task_id = @task.id
-      order.save
+      # order = Order.new(order_params)
+      # order.task_id = @task.id
+      # order.save
 
-      redirect_to controller: 'cashflow', action: 'to_newebpay',
-        for_newebpay: {reward: @task.attributes["reward"], behalf: @task.attributes["behalf"], order_number: order.attributes["merchant_order_number"]}
+      # redirect_to controller: 'cashflow', action: 'to_newebpay',
+      #   for_newebpay: {reward: @task.attributes["reward"], behalf: @task.attributes["behalf"], order_number: order.attributes["merchant_order_number"]}
 
     else
       render :new
@@ -61,7 +63,7 @@ class TasksController < ApplicationController
 
 
   def room_params
-    params.require(:task).permit(:brief_description)
+    params.require(:task).permit(:id, :name)
   end
 
   def order_params
