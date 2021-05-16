@@ -7,6 +7,6 @@ class QrcodesController < ApplicationController
 
   private
   def message
-  params[:messge].nil? ? 'http://127.0.0.1:3000/tasks' : params[:message]
+  params[:messge].nil? ? '交易完成' : params[:message]
   end
 end

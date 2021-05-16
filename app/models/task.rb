@@ -2,7 +2,7 @@ class Task < ApplicationRecord
   include AASM
   
   acts_as_paranoid
-
+  has_one :qrcode
   belongs_to :user
   has_one :order
   has_one :room
@@ -15,7 +15,12 @@ class Task < ApplicationRecord
     state :employer_paid, :employee_applied, :employer_mailed, :employer_confirmed, :employee_paid, :deal
 
     event :deal do
-      transitions from: :employer_mailed to: :deal
+      transitions from: :employer_mailed, to: :deal
+
+      after do
+        render 'qrcodes/show'
+      end
+
     end
 
 
