@@ -12,7 +12,12 @@ class Task < ApplicationRecord
 
   aasm column: :state do
     state :pending, initial: true
-    state :employer_paid, :employee_applied, :employer_mailed, :employer_confirmed, :employee_paid
+    state :employer_paid, :employee_applied, :employer_mailed, :employer_confirmed, :employee_paid, :deal
+
+    event :deal do
+      transitions from: :employer_mailed to: :deal
+    end
+
 
     event :employer_pay do
       transitions from: :pending, to: :employer_paid
@@ -29,6 +34,8 @@ class Task < ApplicationRecord
     event :employer_confirm do
       transitions from: :employer_mailed, to: :employee_paid
     end
+
+
 
   end
   
