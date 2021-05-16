@@ -23,7 +23,8 @@
           </div>
           <div>
             <% if not_author_of @task %>
-              <%= link_to '應徵', controller: 'cashflow', action: 'to_newebpay', for_newebpay: {applicant: true, reward: @task.reward, behalf: @task.behalf, order_number: @task.order.merchant_order_number} %>
+              <%= link_to '應徵', controller: "tasks", action: "send_applicant_apply_email",
+                  apply_information: {applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state} %>
             <% end %>
           </div>
         </div>
