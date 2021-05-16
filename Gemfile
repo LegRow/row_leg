@@ -18,14 +18,29 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'#會員 bundle而已
 gem 'kaminari'#分頁  bundle而已
-gem "figaro"#安全Key  bundle而已
 gem 'hotwire-rails'#先進技術  bundle而已
 gem "paranoia", "~> 2.2"#假刪除  bundle而已
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0' 
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 #上面兩個後台工具 bundle而已
+gem 'pundit', '~> 2.1'
+#建立管理者工具 bundle而已
+gem 'rails-i18n', '~> 6.0'
+#轉中文用 bundle
+gem 'geocoder', '~> 1.6', '>= 1.6.7'
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+#上兩個 串接googlemap相關
+gem "aasm", "~> 5.2"
+# 狀態機
+gem "figaro", "~> 1.2"
+# 管理機密資訊
 
+gem 'pg'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

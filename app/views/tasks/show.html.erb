@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<section class="task-show-container">
+  <div class="task-show-row">
+    <div class="task-show-title">
+      <h2>任務詳情</h2>
+    </div>
+    <div class="task-show-box">
+      <div class="task-show-inf">
+        <p class="text-2xl"><strong>任務:</strong><%= @task.brief_description %></p>
+        <p><strong>任務內容:</strong><br><%= @task.description %></p>
+        <p><strong>地址:</strong><%= @task.address %></p>
+        <p><strong>店名/位置:</strong><%= @task.store_name %></p>
+        <p><strong>酬勞:</strong><%= "新台幣#{@task.reward}" %></p>
+        <p><strong>代買費用:</strong><%= "新台幣#{@task.behalf}" %></p>
+        <p><strong>起始:</strong><%= @task.task_at %></p>
+        <p><strong>結束:</strong><%= @task.task_end %></p>
+        <p><strong>備註:</strong><%= @task.remarks %></p>
+        <div class="task-show-link">
+          <div>
+            <%= link_to '編輯', edit_task_path(@task), class: "btn-text my-2" %> |
+            <%= link_to '回到任務列', tasks_path, class: "btn-text my-2" %>
+          </div>
+          <div>
+            <%= link_to '應徵', "/cashflow/index", class: "link-spec" %>
+          </div>
+        </div>
+      </div>
+      <div class="task-show-map">
+        <p>Goole Map擺放位置</p>
+      </div>
+    </div>
+  </div>
+</section>

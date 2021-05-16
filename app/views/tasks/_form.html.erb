@@ -1,0 +1,73 @@
+<%= form_for(@task) do |f| %>
+
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "任務簡介" %>
+    <%= f.text_field :brief_description, placeholder: '任務簡介(不能空白)', class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "內容描述" %>
+    <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容(不能空白)', class: "input task-form-textarea" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "任務所在城市" %>
+    <%= f.text_field :address_city, placeholder: '目前只開放台北市(不能空白)', class: "input" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "任務所在區" %>
+    <%= f.text_field :address_district, placeholder: '請填入區(不能空白)', class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "街道完整訊息" %>
+    <%= f.text_field :address_street, placeholder: '街道完整訊息(不能空白)', class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "店名/其他訊息" %>
+    <%= f.text_field :store_name, placeholder: '店名/其他訊息(不能空白)', class: "input" %>
+  </div>
+
+  <div class="field task-input-special">
+    <%= f.label "酬勞新台幣:(一小時200)" %>
+    <%= f.number_field :reward, min: 200 %>  
+
+    <%= f.label "代買金額新台幣:" %>
+    <%= f.number_field :behalf %>
+  </div>
+
+  <div class="field task-input-special">
+    <%= f.label "任務起始時間(發布時間要在起始時間3小時前)" %>
+    <%= f.datetime_select :task_at %>
+  </div>
+
+  <div class="field task-input-special">
+    <%= f.label "任務結束時間(要比起始間晚,最少一小時)" %>
+    <%= f.datetime_select :task_end %>
+  </div>
+
+  <div class="field">
+    <%= f.label "備註欄" %>
+    <%= f.text_field :remarks, placeholder: '備註事項', class: "input" %>
+  </div>
+  
+  <div class="field">
+    <%= f.hidden_field :merchant_order_number, :value => Time.now.to_i.to_s %>
+  </div>
+
+  <div class="flex justify-center">
+    <%= button_to "新增", {action: "create"}, {class: 'btn btn-default'} %>
+  </div>
+  
+
+<% end %>

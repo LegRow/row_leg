@@ -1,0 +1,18 @@
+<%= form_tag('https://ccore.newebpay.com/MPG/mpg_gateway', method: "post", id:"newebpay") do %>
+  <%= label_tag("MerchantID") %>
+  <%= text_field_tag("MerchantID", 'MS119996394') %>
+  <br>
+  <%= label_tag("TradeInfo") %>
+  <%= text_field_tag("TradeInfo", encrypt_aes(@data_for_newebpay, Rails.application.credentials.newebpay[:key], Rails.application.credentials.newebpay[:iv])) %>
+  <br>
+  <%= label_tag("TradeSha") %>
+  <%= text_field_tag("TradeSha", encrypt_aes_sha256_uppercase(@data_for_newebpay, Rails.application.credentials.newebpay[:key], Rails.application.credentials.newebpay[:iv])) %>
+  <br>
+  <%= label_tag("Version") %>
+  <%= text_field_tag("Version", '1.5') %>
+  <br>
+  <%= submit_tag("go") %>
+<% end %>
+
+
+

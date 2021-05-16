@@ -1,0 +1,27 @@
+.btn {
+  @apply py-2 px-4 block cursor-pointer text-white font-bold rounded hover:opacity-60;
+}
+
+.btn-default {
+  background-color: $color-primary;
+}
+
+.btn-edit {
+  @apply bg-yellow-700 inline-block mx-2 my-2;
+}
+
+.btn-destroy {
+  @apply bg-red-600 inline-block mx-2 my-2;
+}
+
+.btn-text {
+  display: inline-block;
+  background: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: $color-primary;
+  border: none;
+  border-bottom: 1px solid $color-primary;
+  padding-bottom: 2px;
+  cursor: pointer;
+}

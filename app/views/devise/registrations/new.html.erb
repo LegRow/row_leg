@@ -1,0 +1,58 @@
+<section class='form-container'>
+  <div class='form-box'>
+    <h2 class='form-title'>註冊</h2>
+    <hr>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+      
+    <div class="field mt-2">
+      <%= f.label :email, "信箱" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input"  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name, "姓名"%><br />
+      <%= f.text_field :name, autofocus: true, class:"input" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :gender, "性別"%><br />
+      <%= f.radio_button(:gender, "male") %><span> 男 </span>
+      <%= f.radio_button(:gender, "female") %><span> 女 </span>
+    </div>
+
+    <div class="field">
+      <%= f.label :age, "年齡"%><br />
+      <%= f.number_field :age, autofocus: true, class:"input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tel, "電話"%><br />
+      <%= f.telephone_field :tel, autofocus: true, class:"input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :bank_account, "銀行帳戶"%><br />
+      <%= f.text_field :bank_account, autofocus: true, class:"input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "密碼"%>
+      <% if @minimum_password_length %>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder:"至少6碼" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "確認密碼"%><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
+
+    </div>
+
+    <div class="actions flex justify-center">
+      <%= f.submit "提交", class: "btn btn-default" %>
+    </div>
+    <% end %>
+  </div>
+</section>
+
