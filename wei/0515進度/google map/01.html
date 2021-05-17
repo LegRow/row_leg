@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 判斷使用者所在位置資訊 </title>
+<body>
+<h1> 獲得使用者的位置(經度和緯度)資訊</h1>
+<button onclick="getLocation()"> Get Location </button>
+<p id="ex"></p>
+<p id="exTime"></p>
+<script>
+    var loc = document.getElementById("ex");
+    var locTime = document.getElementById("exTime");
+    function getLocation() {           // 是否可取得位置資訊
+        if ( navigator.geolocation ) {
+            navigator.geolocation.getCurrentPosition(displayPosition);
+        } else {
+            loc.innerHTML = "瀏覽器不支援顯示位置資訊";
+        }
+    }
+    function displayPosition(position) {      // 取得與列出經緯度資訊
+        loc.innerHTML = "經度 : " + position.coords.longitude + "<br>緯度 : " + position.coords.latitude;
+        var x = new Date(position.timestamp);     // 取得時間字串
+        locTime.innerHTML = x.toLocaleDateString() + " " + x.toLocaleTimeString();    // 轉成可閱讀模式
+    }
+</script>
+</body>
+</html>

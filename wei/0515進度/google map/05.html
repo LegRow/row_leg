@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <title> 申請金鑰後第一支API Map </title>
+        <style>
+            #officeMap { width: 800px; height: 500px;}
+        </style>
+<body>
+    <h1> 我的第一個Google Map </h1>
+    <div id="officeMap"></div>
+<script>
+    function displayMap() {
+        var mapInfo= {     
+            center:new google.maps.LatLng(25.042629589152828, 121.51379677038983),    // center表示將經緯度放置顯示地圖中央
+            zoom:10     // 表示放大地圖倍數
+        };
+        var map=new google.maps.Map(document.getElementById("officeMap"),mapInfo);    // .Map後為定義
+    }
+</script>
+<!-- 請輸入自己申請好的金鑰，並且勿外流！ -->
+<script src="&callback=displayMap"></script>
+</body>
+</html>
