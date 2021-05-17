@@ -1,4 +1,4 @@
-<div class="text-3xl">
+<div class="chat_room text-3xl">
   Hello,<%= current_user.name %>
 </div>
 <div class="chat_box w-full flex ">
@@ -32,6 +32,7 @@
   
   </div>
   <div class="chat_inside w-1/2">
+    
     <div id="messages" class="flex-col chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
       <% @room.messages.each do |message| %>
         <%= render 'messages/message', message: message %> 

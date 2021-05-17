@@ -43,7 +43,10 @@ class TasksController < ApplicationController
   end
 
   def edit
-    
+    #擋手動輸入edit,不是自己的任務會被轉走
+    if current_user.id != @task.user_id
+      redirect_to tasks_path
+    end
   end
 
   def update
