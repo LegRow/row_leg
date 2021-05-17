@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
   post 'cashflow/from_newebpay'
-  
+  resources :aboutuss, only: [:show, :new]
   resources :rooms, only: [:index, :new, :create, :show]
   resources :messages
 
