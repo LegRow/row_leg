@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :show]
   resources :messages, only: [:index, :new, :create]
 
-  devise_for :users
-  resources :tests, only: [:index]
-
   resources :tasks do
     member do
       get 'confirm_applicant'
