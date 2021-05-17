@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
 
   before_action :find_room, only: [:show]
+  before_action :authenticate_user!
 
   def index
     @rooms = Room.all
@@ -17,8 +18,6 @@ class RoomsController < ApplicationController
     @room = Room.new(room_params)
     @room.save
     redirect_to rooms_path
-
-  
   end
 
   def show

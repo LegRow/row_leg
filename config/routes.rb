@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   
-  resources :rooms, only: [:index, :new, :create, :show]
-  resources :messages
+  resources :rooms, only: [:index, :show]
+  resources :messages, only: [:index, :new, :create]
 
   devise_for :users
   resources :tests, only: [:index]
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
       get 'send_applicant_apply_email'
     end
   end
-
+  #測試用等暫時用不上路徑
+  resources :tests, only: [:index]
 end
