@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   post 'cashflow/thankyou'
   root 'home#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
-  resources :aboutus
+  
+  resources :aboutus, only: [:index, :new]
   post 'cashflow/from_newebpay'
  
   resources :rooms, only: [:index, :new, :create, :show]
