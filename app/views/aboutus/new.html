@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 20px;
+    }
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .panel {
+      padding: 0 18px;
+      background-color: white;
+      display: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <button class="accordion">如何註冊</button>
+<div class="panel">
+  <p>首頁點選註冊開始註冊</p>
+</div>
+
+<button class="accordion">排隊費用怎麼算?</button>
+  <div class="panel">
+    <p>排隊費用為基本費用200元＋執行時間費用計算</p>
+  </div>
+
+<button class="accordion">為什麼要先刷卡預付費用？</button>
+<div class="panel">
+  <p>平台為了保障雙方（委託人以及排隊者）的權益，會先將預付的款項由平台保管，在確保任務完成。</p>
+</div>
+
+<button class="accordion">任務有問題怎麼辦？</button>
+<div class="panel">
+  <p>您可以透過聯繫客服來處理您的問題</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
