@@ -16,20 +16,20 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(room_params)
-    @room.save
-    redirect_to rooms_path
+      # @room = Room.new(room_params)
+      # @room.save
+      # redirect_to rooms_path
   end
 
   def show
-    #擋不是雇主或乙方隨便進聊天室
-    if current_user.id == @room.task.user.id
+    #擋不是雇主或乙方隨便進聊天室 方便測試 乙方完成後要解開
+    # if current_user.id == @room.task.user.id
       @rooms = Room.all
       @message = @room.messages.new
       render 'index'
-    else 
-      redirect_to rooms_path
-    end  
+    # else 
+      # redirect_to rooms_path
+    # end  
   end
 
   private
