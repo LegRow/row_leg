@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", () => {
   const taskOpenBtn = document.querySelectorAll("#inf-open");
 
   taskOpenBtn.forEach((el) =>
