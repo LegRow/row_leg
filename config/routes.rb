@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   post 'cashflow/thankyou'
   root 'home#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
-
+  get 'aboutss/show'
   post 'cashflow/from_newebpay'
-  resources :aboutuss, only: [:show, :new]
-  resources :rooms, only: [:index, :new, :create, :show]
+ 
+  # resources :rooms, only: [:index, :new, :create, :show]
   resources :messages
 
   resources :tests, only: [:index]
