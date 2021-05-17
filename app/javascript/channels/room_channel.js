@@ -7,13 +7,12 @@ document.addEventListener('turbolinks:load', () => {
 
   consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
     connected() {
-      console.log("connected....." + room_id)
       const messageContainer = document.getElementById('messages')
       messageContainer.innerHTML = messageContainer.innerHTML
     },
 
     disconnected() {
-      // Called when the subscription has been terminated by the server
+
     },
 
     received(data) {
@@ -27,7 +26,6 @@ document.addEventListener('turbolinks:load', () => {
         html = data.theirs
       }
 
-      // console.log(html) 除錯器
       const messageContainer = document.getElementById('messages')
       messageContainer.innerHTML = messageContainer.innerHTML + html
     }

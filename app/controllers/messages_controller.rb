@@ -9,12 +9,6 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @message.save
     
-    # html = render(
-    #   partial: 'messages/message',
-    #   locals: { message: @message }
-    # )
-
-    # ActionCable.server.broadcast "room_channel_#{@message.room_id}", html: html
     SendMessageJob.perform_now(@message, current_user)
     
   end

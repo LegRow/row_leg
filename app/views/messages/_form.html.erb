@@ -2,8 +2,9 @@
     <%= form.hidden_field :room_id, value: @room.id %> 
     <div class="flex chat_btn">
       
-        <%= form.text_field :content, placeholder: "說說話", class:'w-1/2'%>
-        <%= form.submit "發送", class:'w-16' %>
+        <%= form.text_field :content, placeholder: " 輸入框", class:' text-3xl rounded-lg w-9/12 focus:ring-2 focus:ring-yellow-500'%>
+        
+        <%= form.submit "發送", class: "text-3xl bg-yellow-50 w-3/12 rounded-lg hover:bg-yellow-100 active:bg-yellow-500 " %>
       
     </div>
   <% end %>
