@@ -91,8 +91,9 @@ class TasksController < ApplicationController
     task.employer_confirm
     task.save
 
-    # 將 employee 寫入？應該寫在哪裡？
-
+    # 將 employee 寫入
+    employee_id = "test123"
+    employee_id.save
   end
 
   private
