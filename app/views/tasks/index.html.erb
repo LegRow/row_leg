@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
+<div class="flex">
+  <div class="m-auto">
+    <%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '您發布的', lists_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '您接下的', works_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '聊天室', rooms_path, class:"task-new link-spec" %>
+  </div>
+</div>
 
 <section class="task-container">
   <div class="task-row">
