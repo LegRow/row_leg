@@ -64,6 +64,7 @@ class CashflowController < ApplicationController
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
       task.employer_pay
+      task.save
     else
       puts "did not succeed"
     end

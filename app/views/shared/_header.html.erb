@@ -7,10 +7,7 @@
     <ul class="menu ">
       <% if user_signed_in? %>
         <li class="menu-item">
-          <%= current_user.email %>
-        </li>
-        <li class="menu-item">
-          <%= link_to '新增任務', new_task_path %>
+          讓我先知道目前是誰登入：<%= current_user.email %>
         </li>
         <li class="menu-item">
           <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
