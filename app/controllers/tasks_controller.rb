@@ -59,8 +59,10 @@ class TasksController < ApplicationController
 
   def destroy
     @room = @task.room
-    @task.destroy
+    @messages = @room.messages
+    @messages.each { |message| message.delete }
     @room.destroy
+    @task.destroy
     redirect_to tasks_path, notice: '任務已刪除'
   end
 
