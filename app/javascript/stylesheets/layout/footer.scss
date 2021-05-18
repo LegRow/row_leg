@@ -39,12 +39,13 @@
 }
 
   .form-popup{
-    height:100%;
+    height: 200%;
     width: 100%;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0, 0.9);
     position: fixed;
     z-index: 1px;
+    visibility: hidden;
   }
   .text{
     text-align: center;
@@ -72,5 +73,7 @@
   .form-popup .closebtn:hover {
     color: #ccc;
   }
+
+  
 
 
