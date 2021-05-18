@@ -1,12 +1,15 @@
-import Rails from "@rails/ujs";
-import Turbolinks from "turbolinks";
-import * as ActiveStorage from "@rails/activestorage";
-import "channels";
-
-Rails.start();
-Turbolinks.start();
-ActiveStorage.start();
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+import "channels"
+import "stylesheets/application"
+import "google_map"
+import "controllers"
 
 import "@fortawesome/fontawesome-free/css/all"
-import "stylesheets/application";
-import "../task/index";
+import "../task/index"
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+

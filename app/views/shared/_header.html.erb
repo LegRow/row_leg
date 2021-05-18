@@ -7,6 +7,7 @@
     </div>
     <ul class="menu ">
       <% if user_signed_in? %>
+
       <li class="menu-item">
         <!-- 看之後要不要用這條路徑連到個人任務業or個人聊天室之類的 -->
         <a href="#" class="menu-link relative -top-2">
@@ -14,6 +15,7 @@
           <%= current_user.email %>
         </a>
       </li>
+
         <li class="menu-item">
           <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
         </li>
@@ -29,8 +31,8 @@
         </li>
       <% end %>
       <li class="menu-item"><%= link_to '任務列', tasks_path, class:"menu-link" %></li>
-      <li class="menu-item"><a href="#" class="menu-link">關於我們</a></li>
-      <li class="menu-item"><a href="#" class="menu-link">常見問題</a></li>
+      <li class="menu-item"><a href="aboutus" class="menu-link">關於我們</a></li>
+      <li class="menu-item"><a href="aboutus/new" class="menu-link">常見問題</a></li>
     </ul>
   </nav>
   <div class='mt-24'></div>
