@@ -7,8 +7,8 @@ class Task < ApplicationRecord
   has_one :order
   has_one :room
 
-  # validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
-  # validate :buffer_time, :correct_time, :end_time, :reward_less
+  validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
+  validate :buffer_time, :correct_time, :end_time, :reward_less
 
   # 阿美是雇主，小明是受僱者
   aasm column: :state do

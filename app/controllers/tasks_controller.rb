@@ -21,8 +21,7 @@ class TasksController < ApplicationController
       @room = Room.new(room_params)
       @room.task_id = @task.id 
       @room.name = @task.store_name
-      @room.save
-      
+      @room.save     
       #-----自動建立此任務專屬聊天室----
 
       # task 一創立就要有訂單
