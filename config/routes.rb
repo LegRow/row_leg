@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
 
+  root 'tasks#index'
+
+
   root 'home#index'
-  
+
   get 'cashflow/to_newebpay'
   post 'cashflow/thankyou'
   post 'cashflow/from_newebpay'
   
+
+  resources :qrcodes, only: [:show]
+  resources :rooms, only: [:index, :new, :create, :show]
+  resources :messages
+  resources :tests, only: [:index]
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   
-  resources :rooms, only: [:index, :show]
-  resources :messages, only: [:index, :new, :create]
   resources :lists, only: [:index]
   resources :works, only: [:index]
   
