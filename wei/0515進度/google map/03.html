@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 增加使用者否決判斷 </title>
+<body>
+<h1> 獲得使用者的位置(經度和緯度)資訊 </h1>
+<button onclick="getLocation()"> Get Location </button>
+<p id="ex"></p>
+<script>
+    var loc = document.getElementById("ex");
+    function getLocation() {    // 是否可取得位置資訊
+        if ( navigator.geolocation ) {
+            navigator.geolocation.getCurrentPosition(displayPosition,displayError);
+        } else {
+            loc.innerHTML = "瀏覽器不支援顯示位置資訊";
+        }
+    }
+    function displayPosition(position) {     // 取得與列出經緯度資訊
+        loc.innerHTML = "經度 : " + position.coords.longitude + "<br>緯度 : " + position.coords.latitude;
+    }
+    function displayError(error) {          // 列出無法取得位置資訊原因
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                loc.innerHTML = "使用者拒絕提供"
+                break;
+            case error.POSITION_UNAVAILABLE:
+                loc.innerHTML = "目前沒有位置訊息"
+                break;
+            case error.TIMEOUT:
+                loc.innerHTML = "要求提供訊息時間已超過"
+            case error.UNKNOWN_ERROR:
+                loc.innerHTML = "不明原因錯誤"
+                break;
+        }
+    }
+</script>
+</body>
+</html>
