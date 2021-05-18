@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
 
   root 'home#index'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  
+  resources :aboutus, only: [:index, :new]
+  post 'cashflow/from_newebpay'
+ 
 
   get 'cashflow/to_newebpay'
   post 'cashflow/thankyou'
