@@ -23,12 +23,12 @@
           <p><span class="inf-title">店名:</span><%= task.store_name %></p>
           <p><span class="inf-title">酬勞:</span><%= task.reward %></p>
           <p>
-            <span class="inf-title">任務開始時間:</span><%= task.task_at.to_s(:db)
+            <span class="inf-title">任務開始時間:</span><%= task.task_at
             %>
           </p>
           <p>
             <span class="inf-title">任務結束時間:</span><%=
-            task.task_end.to_formatted_s(:month_and_year) %>
+            task.task_end %>
           </p>
           <p><span class="inf-title">任務地點:</span><%= task.address %></p>
         </div>
