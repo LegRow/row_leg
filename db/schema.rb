@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_070044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "room_id", null: false
@@ -38,6 +39,8 @@ ActiveRecord::Schema.define(version: 2021_05_16_070044) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_orders_on_task_id"
   end
+
+
 
   create_table "qrcodes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false

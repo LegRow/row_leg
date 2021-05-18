@@ -1,9 +1,10 @@
 .btn {
-  @apply py-2 px-4 block cursor-pointer text-white font-bold rounded hover:opacity-60;
+  @apply py-2 px-4 block cursor-pointer font-bold rounded hover:opacity-60;
 }
 
 .btn-default {
   background-color: $color-primary;
+  color: $color-white;
 }
 
 .btn-edit {
