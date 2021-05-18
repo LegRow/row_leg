@@ -4,6 +4,10 @@ class Task < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :user
+
+  # 加上關聯，並作為選填
+  belongs_to :employee, class_name: 'User', optional: true
+
   has_one :order
   has_one :room
 

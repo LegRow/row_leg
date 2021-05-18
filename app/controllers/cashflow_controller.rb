@@ -17,7 +17,11 @@ class CashflowController < ApplicationController
     applicant = params_for_newbpay["applicant"]
 
     if applicant
+      # 受雇者押金 20%
       paying_amount = params_for_newbpay["reward"].to_f * 0.2
+      
+      #受雇者的訂單編號要 + B
+      params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
     else
       paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
     end
@@ -64,6 +68,9 @@ class CashflowController < ApplicationController
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
       task.employer_pay
+      
+      #小明狀態更改
+      # task.employee_pay
     else
       puts "did not succeed"
     end
