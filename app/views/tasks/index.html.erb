@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
+<div class="flex">
+  <div class="m-auto">
+    <%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '您發布的', lists_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '您接下的', works_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '聊天室', rooms_path, class:"task-new link-spec" %>
+  </div>
+</div>
 
 <section class="task-container">
   <div class="task-row">
@@ -38,20 +51,24 @@
         </p>
       </div>
       <% if author_of task %>
-      <div class="task-edit-link">
-        <%= link_to '編輯', edit_task_path(task), class: 'btn btn-edit' %> <%=
-        link_to '刪除任務', task, class: 'btn btn-destroy', method: :delete,
-        data: { confirm: 'Are you sure?' } %>
-      </div>
-      <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
-        目前此任務狀態：<%= task.state %>
-        <br>
-        <%= link_to 'Pay', "/cashflow/index" %>
-      </div>
-       <% else %>
-      <div class="text-right mt-2 pr-3">
-        <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
-      </div>
+        <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+          目前此任務狀態：<%= task.state %>
+          <br>
+          <%= link_to 'Pay', controller: 'cashflow', action: 'to_newebpay',for_newebpay: {reward: task.reward, behalf: task.behalf, order_number: task.order.merchant_order_number} %>
+        </div>
+        <div class="text-right mt-2 pr-3">
+          <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
+        </div>
+        <div class="text-right mt-2 pr-3">
+          <%= link_to '刪除此任務 x', task, class: "link-spec", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% else %>
+        <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <%= link_to '應徵', task %>
+        </div>
+        <div class="text-right mt-2 pr-3">
+          <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
+        </div>
       <% end %>
     </div>
     <% end %>
@@ -60,6 +77,3 @@
 
 <br />
 
-        
-     
- 

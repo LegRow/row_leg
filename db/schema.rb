@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_094215) do
+
+
+ActiveRecord::Schema.define(version: 2021_05_16_070044) do
+
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_messages_on_deleted_at"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.string "merchant_order_number"
@@ -22,6 +40,22 @@ ActiveRecord::Schema.define(version: 2021_05_12_094215) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_orders_on_task_id"
+  end
+
+
+  create_table "qrcodes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.bigint "task_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_rooms_on_deleted_at"
+    t.index ["task_id"], name: "index_rooms_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -46,6 +80,12 @@ ActiveRecord::Schema.define(version: 2021_05_12_094215) do
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,10 +99,13 @@ ActiveRecord::Schema.define(version: 2021_05_12_094215) do
     t.string "tel"
     t.integer "age"
     t.string "bank_account"
+    t.string "provider", limit: 50, default: "", null: false
+    t.string "uid", limit: 500, default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["gender"], name: "index_users_on_gender"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "rooms"
   add_foreign_key "tasks", "users"
 end

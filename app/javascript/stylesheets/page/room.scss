@@ -1,0 +1,19 @@
+.me{
+  text-align: right;
+  background-color: bisque;
+  margin-right: 10px;
+}
+
+.chat_box {
+  height: 600px;
+  .chat_inside {
+    height: 600px;
+    .chat_scroll {
+      height: 544px;
+    }
+    .chat_btn {
+      margin: 0;
+      height: 48px;
+    }
+  }
+}
