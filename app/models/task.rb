@@ -7,13 +7,42 @@ class Task < ApplicationRecord
   has_one :order
   has_one :room
 
-  validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
-  validate :buffer_time, :correct_time, :end_time, :reward_less
+  # validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
+  # validate :buffer_time, :correct_time, :end_time, :reward_less
 
+  # 阿美是雇主，小明是受僱者
   aasm column: :state do
+    
+    # 阿美創任務，任務 state 為 pending
     state :pending, initial: true
+
     state :employer_paid, :employee_applied, :employer_mailed, :employer_confirmed, :employee_paid, :deal
 
+    state :employer_paid,
+          # :employee_applied,
+          # :employer_mailed,
+          :employer_confirmed,
+          :deal
+    
+    
+
+
+    # 阿美匯款，任務 state 轉為 employer_paid，這時候這個任務會出現在其他人的頁面上，大家可以來應徵。有人點應徵，且該任務目前狀態還沒到 employer_confirm，就可以一直寄信給阿美
+    event :employer_pay do
+      transitions from: :pending, to: :employer_paid
+    end
+
+    # 阿美將會收到很多應徵信，但最後他只能確認一個，確認後，狀態轉為 employer_confirm，就會鎖定小明
+    event :employer_confirm do
+      transitions from: :employer_paid, to: :employer_confirmed
+    end
+
+    # 小明付完錢，訂單轉為成立
+    event :employee_pay do
+      transitions from: :employer_confirmed, to: :deal
+    end
+    
+    # 訂單完成後，出現qrcode
     event :deal do
       transitions from: :employer_mailed, to: :deal
 
@@ -21,23 +50,6 @@ class Task < ApplicationRecord
         render 'qrcodes/show'
       end
 
-    end
-
-
-    event :employer_pay do
-      transitions from: :pending, to: :employer_paid
-    end
-
-    event :employee_apply, after: :send_email_to_employer do
-      transitions from: :employer_paid, to: :employee_applied
-    end
-
-    event :mail_to_employer do
-      transitions from: :employee_applied, to: :employer_mailed
-    end
-
-    event :employer_confirm do
-      transitions from: :employer_mailed, to: :employee_paid
     end
 
 

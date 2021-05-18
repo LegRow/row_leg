@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
+<div class="flex">
+  <div class="m-auto">
+    <%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '您發布的', lists_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '您接下的', works_path, class:"task-new link-spec" %>
+  </div>
+  <div class="m-auto">
+    <%= link_to '聊天室', rooms_path, class:"task-new link-spec" %>
+  </div>
+</div>
 
 <section class="task-container">
   <div class="task-row">
@@ -47,8 +60,7 @@
         <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
           目前此任務狀態：<%= task.state %>
           <br>
-          <%= link_to 'Pay', controller: 'cashflow', action: 'to_newebpay',
-      for_newebpay: {reward: task.reward, behalf: task.behalf, order_number: task.order.merchant_order_number} %>
+          <%# <%= link_to 'Pay', controller: 'cashflow', action: 'to_newebpay',for_newebpay: {reward: task.reward, behalf: task.behalf, order_number: task.order.merchant_order_number} %> %>
         </div>
       <% else %>
         <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -65,6 +77,3 @@
 
 <br />
 
-        
-     
- 

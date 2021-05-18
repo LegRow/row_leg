@@ -52,12 +52,4 @@ module CashflowHelper
     return data.first.strip
   end
 
-  def update_employer_paid()
-    # get the task which just posted by user
-    @task = Task.where(user_id: current_user.id).last
-    
-    # change the state of the task
-    @task.employer_pay
-  end
-
 end

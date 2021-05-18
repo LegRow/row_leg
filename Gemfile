@@ -37,6 +37,10 @@ gem "figaro", "~> 1.2"
 # 管理機密資訊
 gem 'rqrcode', '~> 0.10.1'
 gem 'pg'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

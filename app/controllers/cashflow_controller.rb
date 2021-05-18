@@ -14,7 +14,13 @@ class CashflowController < ApplicationController
     # ['ReturnURL' ,"/cashflow/thankyou"]
 
     params_for_newbpay = params["for_newebpay"]
-    employer_needs_to_pay = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
+    applicant = params_for_newbpay["applicant"]
+
+    if applicant
+      paying_amount = params_for_newbpay["reward"].to_f * 0.2
+    else
+      paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
+    end
 
     @data_for_newebpay = [
       ['MerchantID', 'MS119996394'],
@@ -22,7 +28,7 @@ class CashflowController < ApplicationController
       ['TimeStamp', Time.now.to_i.to_s],
       ['Version', '1.5'],
       ['MerchantOrderNo', params_for_newbpay["order_number"]],
-      ['Amt', employer_needs_to_pay.to_s],
+      ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
       ['Email', 't5204713910@gmail.com'],
       ['ReturnURL' , ENV["ngrok_https"] + "/cashflow/thankyou"],
