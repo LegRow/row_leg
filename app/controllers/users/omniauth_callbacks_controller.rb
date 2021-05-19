@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def github
@@ -33,11 +31,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
   end
-
-  # protected
-
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
 end

@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
 
-  get 'cashflow/to_newebpay'
-  post 'cashflow/thankyou'
+
+
   root 'home#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
-  
-  resources :aboutus, only: [:index, :new]
-  post 'cashflow/from_newebpay'
- 
-  resources :rooms, only: [:index, :new, :create, :show]
-  resources :messages
 
-  resources :tests, only: [:index]
+  get 'cashflow/to_newebpay'
+  post 'cashflow/thankyou'
+  post 'cashflow/from_newebpay'
+  
+  resources :qrcodes, only: [:show]
+  resources :rooms, only: [:index, :new, :create, :show]
+  resources :messages, only: [:create]
+  
+  resources :lists, only: [:index]
+  resources :works, only: [:index]
 
   resources :tasks do
+    member do
+      get 'confirm_applicant'
+      get 'send_applicant_apply_email'
+    end
   end
+  
+  resources :aboutus, only: [:index]
 
 end

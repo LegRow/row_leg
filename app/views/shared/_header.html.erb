@@ -1,17 +1,21 @@
 <header class="">
   <nav class="nav-container">
     <div class="logo-box">
-      <%= image_tag("fake-logo.jpg", size: "32x20")%>
-      <h1 class="text-xl"><%= link_to "ROW_LEG", root_path, class:"menu-link" %></h1>
+      <%= link_to root_path, class:"menu-link" do %>
+      <%= image_tag("logo.png", size: "150x100")%>
+      <% end %>
     </div>
     <ul class="menu ">
       <% if user_signed_in? %>
-        <li class="menu-item">
+
+      <li class="menu-item">
+        <!-- 看之後要不要用這條路徑連到個人任務業or個人聊天室之類的 -->
+        <a href="#" class="menu-link relative -top-2">
+          <i class="fas fa-user-ninja text-3xl"></i>
           <%= current_user.email %>
-        </li>
-        <li class="menu-item">
-          <%= link_to '新增任務', new_task_path %>
-        </li>
+        </a>
+      </li>
+
         <li class="menu-item">
           <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
         </li>

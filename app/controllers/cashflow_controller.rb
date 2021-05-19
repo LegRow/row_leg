@@ -1,6 +1,5 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token
-  
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
@@ -14,7 +13,18 @@ class CashflowController < ApplicationController
     # ['ReturnURL' ,"/cashflow/thankyou"]
 
     params_for_newbpay = params["for_newebpay"]
-    employer_needs_to_pay = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
+    applicant = params_for_newbpay["applicant"]
+
+    if applicant
+      # 受雇者押金 20%
+      paying_amount = params_for_newbpay["reward"].to_f * 0.2
+      
+      #受雇者的訂單編號 + B
+      params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
+      
+    else
+      paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
+    end
 
     @data_for_newebpay = [
       ['MerchantID', 'MS119996394'],
@@ -22,7 +32,7 @@ class CashflowController < ApplicationController
       ['TimeStamp', Time.now.to_i.to_s],
       ['Version', '1.5'],
       ['MerchantOrderNo', params_for_newbpay["order_number"]],
-      ['Amt', employer_needs_to_pay.to_s],
+      ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
       ['Email', 't5204713910@gmail.com'],
       ['ReturnURL' , ENV["ngrok_https"] + "/cashflow/thankyou"],
@@ -57,12 +67,12 @@ class CashflowController < ApplicationController
       target_order_number = result.partition('=').last
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
-      task.employer_pay
+      # 訂單號碼有無 B，執行event
+      target_order_number.include?("B")? task.employee_pay : task.employer_pay
+      task.save
     else
       puts "did not succeed"
     end
-
-
   end
 
   private
@@ -85,7 +95,7 @@ class CashflowController < ApplicationController
     result = cipher.update(string)
     return result
   end
-
+  
   # def strippadding(string)
   #   slast = string[-1].ord
   #   slastc = slast.chr
