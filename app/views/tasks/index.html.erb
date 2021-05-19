@@ -25,7 +25,7 @@
         <option value="2">任務時間</option>
       </select>
     </div>
-    <hr>
+    <hr />
     <% @tasks.each do |task| %>
     <div class="task-list">
       <h3 class="task-item-title">
@@ -35,12 +35,12 @@
         <p><span class="inf-title">店名:</span><%= task.store_name %></p>
         <p><span class="inf-title">酬勞:</span><%= task.reward %></p>
         <p>
-          <span class="inf-title">任務開始時間:</span><%= task.task_at.to_s(:db)
+          <span class="inf-title">任務開始時間:</span><%= task.task_at
           %>
         </p>
         <p>
           <span class="inf-title">任務結束時間:</span><%=
-          task.task_end.to_formatted_s(:month_and_year) %>
+          task.task_end %>
         </p>
         <p><span class="inf-title">任務地點:</span><%= task.address %></p>
       </div>
@@ -50,6 +50,8 @@
           <%= task.description %>
         </p>
       </div>
+      <button class="inf-open" id="inf-open">展開</button>
+      <!-- <input type="button" value="展開" class="inf-open" id="inf-open" /> -->
       <% if employer_of task %>
         <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
           目前此任務狀態：<%= task.state %>
@@ -61,8 +63,9 @@
         <div class="text-right mt-2 pr-3">
           <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
         </div>
-        <div class="text-right mt-2 pr-3">
-          <%= link_to '刪除此任務 x', task, class: "link-spec", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class="task-edit-link">
+          <%= link_to '編輯', edit_task_path(task), class: 'btn btn-edit' %> 
+          <%= link_to '刪除任務', task, class: 'btn btn-destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       <% else %>
         <div class="text-right mt-2 pr-3">
@@ -75,4 +78,3 @@
 </section>
 
 <br />
-
