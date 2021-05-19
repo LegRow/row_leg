@@ -11,21 +11,18 @@ Rails.application.routes.draw do
   
   resources :qrcodes, only: [:show]
   resources :rooms, only: [:index, :new, :create, :show]
-  resources :messages
+  resources :messages, only: [:create]
   
   resources :lists, only: [:index]
   resources :works, only: [:index]
-  
+
   resources :tasks do
     member do
       get 'confirm_applicant'
       get 'send_applicant_apply_email'
     end
   end
-
-  #測試用等暫時用不上路徑
-  resources :tests, only: [:index]
   
-  resources :aboutus, only: [:index, :new]
+  resources :aboutus, only: [:index]
 
 end

@@ -95,9 +95,21 @@ class TasksController < ApplicationController
     task.employer_confirm
     task.save
 
-    # 將 employee 寫入？應該寫在哪裡？
+    # 將 employee 寫入
+    # 通過User找到應徵者，把它塞入employee
+    employee = User.find_by(id: params[:confirm_employee][:applicant])
+    # 再把它指定給task裡的employee
+    task.employee = employee
+    # 任務儲存這裡可以跟上面整理成做一次
+    task.save
+    
+    # 寄信通知受雇者，參數@task就能拿到所有資料
+    UserMailer.employer_confirm_note(@task).deliver_now
 
+    # 告知雇主，目前任務正在等受雇者付押金
+    redirect_to tasks_path, notice: '已發送確認通知信給受雇者，待受雇者支付押金後，則表示任務已被承接'
   end
+
 
   private
   def find_task
