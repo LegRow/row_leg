@@ -3,9 +3,9 @@ class Task < ApplicationRecord
   
   acts_as_paranoid
   has_one :qrcode
-  belongs_to :user
   has_one :order
   has_one :room
+  belongs_to :user
 
   validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
   validate :buffer_time, :correct_time, :end_time, :reward_less

@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
     # if current_user.id == @room.task.user.id || curremt_user.id = task.接單者.id
       @rooms = Room.all
       @message = @room.messages.new
-      render 'index'
+      render 'show'
     # else 
     #   redirect_to rooms_path
     # end  

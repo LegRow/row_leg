@@ -20,8 +20,7 @@ Rails.application.routes.draw do
       get 'send_applicant_apply_email'
     end
   end
-
-  get 'lists/index'
-  get 'works/index'
+  resources :lists, only: [:index]
+  resources :works, only: [:index]
   
 end
