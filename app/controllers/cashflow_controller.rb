@@ -1,6 +1,5 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token
-  
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
@@ -20,8 +19,9 @@ class CashflowController < ApplicationController
       # 受雇者押金 20%
       paying_amount = params_for_newbpay["reward"].to_f * 0.2
       
-      #受雇者的訂單編號要 + B
+      #受雇者的訂單編號 + B
       params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
+      
     else
       paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
     end
@@ -67,15 +67,11 @@ class CashflowController < ApplicationController
       target_order_number = result.partition('=').last
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
-      task.employer_pay
-      
-      #小明狀態更改
-      # task.employee_pay
+      # 訂單號碼有無 B，執行event
+      merchant_order_number.include?("B")? task.employee_pay : task.employer_pay
     else
       puts "did not succeed"
     end
-
-
   end
 
   private
@@ -99,6 +95,10 @@ class CashflowController < ApplicationController
     return result
   end
 
+  # 判斷訂單編號有無 B
+  def check_order_number(employee_order)
+    employee_order.include?("B")
+  end
   # def strippadding(string)
   #   slast = string[-1].ord
   #   slastc = slast.chr
