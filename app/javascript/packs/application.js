@@ -15,3 +15,5 @@ ActiveStorage.start()
 
 
 import "stylesheets/application"
+import "packs/aboutus"
+
