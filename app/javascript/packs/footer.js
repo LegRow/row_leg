@@ -1,5 +1,14 @@
 document.addEventListener('turbolinks:load', () => {
+
+  const JsContact = document.getElementById("js-contact");
+  const MyForm = document.getElementById("myFrom");
+  const Xbutton = document.getElementById("xbutton");
+  const Confirm = ocument.getElementById("confirm");
+
+
+
     
+
 document.getElementById("js-contact").addEventListener('onclick',(e)=> {
       e.preventDefault()
       
