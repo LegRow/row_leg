@@ -1,4 +1,4 @@
-<header class="">
+<header>
   <nav class="nav-container">
     <div class="logo-box">
       <%= link_to root_path, class:"menu-link" do %> <%= image_tag("logo.png",
@@ -44,7 +44,7 @@
     </div>
   </nav>
   <div class="mt-24"></div>
-  <div class="mobile-menu hidden">
+  <div class="mobile-menu menu-default">
     <ul>
       <% if user_signed_in? %>
       <li>

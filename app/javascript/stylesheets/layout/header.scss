@@ -33,10 +33,10 @@
 
 // 漢堡選單外框
 .mobile-btn {
-  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all border-4 border-solid border-black;
+  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all border-4 border-solid border-black z-20;
   // 漢堡選單中間橫線
   .hamburger {
-    @apply w-12 h-2 bg-black rounded relative;
+    @apply w-12 h-2 bg-black rounded relative z-20;
   }
 }
 
@@ -82,14 +82,24 @@
   transform: rotate(-45deg) translate(35px, 35px);
 }
 
-.menu- .mobile-menu {
-  ul {
-    @apply text-center;
-
-    li {
-      a {
-        @apply block text-4xl my-4;
-      }
-    }
+.mobile-menu {
+  @apply flex flex-col w-full justify-center items-center -top-96  fixed z-10 bg-white bg-opacity-90 text-center;
+  a {
+    @apply block text-4xl my-4;
   }
+}
+
+.mobile-menu {
+  transition: all ease-in-out 0.5s;
+}
+
+.mobile-menu.menu-default {
+  visibility: hidden;
+}
+
+.mobile-menu.menu-active {
+  visibility: visible;
+  top: 95px;
+  height: 75vh;
+  display: block;
 }

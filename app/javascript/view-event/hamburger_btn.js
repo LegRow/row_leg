@@ -14,11 +14,11 @@ document.addEventListener("turbolinks:load", () => {
     if (!menuOpen) {
       mobileBtn.classList.add("open");
       menuOpen = true;
-      mobileMenu.classList.remove("hidden");
+      mobileMenu.className = "mobile-menu menu-active";
     } else {
       mobileBtn.classList.remove("open");
       menuOpen = false;
-      mobileMenu.classList.add("hidden");
+      mobileMenu.className = "mobile-menu menu-default";
     }
   });
 });
