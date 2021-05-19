@@ -21,8 +21,7 @@ class TasksController < ApplicationController
       @room = Room.new(room_params)
       @room.task_id = @task.id 
       @room.name = @task.store_name
-      @room.save
-      
+      @room.save     
       #-----自動建立此任務專屬聊天室----
 
       # task 一創立就要有訂單
@@ -59,8 +58,10 @@ class TasksController < ApplicationController
 
   def destroy
     @room = @task.room
-    @task.destroy
+    @messages = @room.messages
+    @messages.each { |message| message.delete }
     @room.destroy
+    @task.destroy
     redirect_to tasks_path, notice: '任務已刪除'
   end
 
