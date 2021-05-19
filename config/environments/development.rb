@@ -34,7 +34,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -77,6 +77,18 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host:'localhost', post: 3000 }
 
   # to use ngrok
-  config.hosts << "75caf3fb05bf.ngrok.io"
+  config.hosts << "dc53c52c6854.eu.ngrok.io"
+
+  # add the following SMTP setup
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    domain: config.hosts,
+    user_name: ENV["smtp_user_name"],
+    password: ENV["smtp_password"],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
 end

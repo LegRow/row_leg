@@ -1,0 +1,31 @@
+<div class="mt-20">
+  <%= testing_data = [
+    ['MerchantID', 'MS119996394'],
+    ['RespondType', 'JSON'],
+    ['TimeStamp', Time.now.to_i.to_s],
+    ['Version', '1.5'],
+    ['MerchantOrderNo', Time.now.to_i.to_s],
+    ['Amt', '93'],
+    ['ItemDesc', 'TEST'],
+    ['Email', 't5204713910@gmail.com'],
+    ['ReturnURL' ,"https://75caf3fb05bf.ngrok.io/cashflow/thankyou"]
+  ] %>
+</div>
+
+<%= Time.now.to_i %>
+
+<%= form_tag('https://ccore.newebpay.com/MPG/mpg_gateway', method: "post", id:"newebpay") do %>
+  <%= label_tag("MerchantID") %>
+  <%= text_field_tag("MerchantID", 'MS119996394') %>
+  <br>
+  <%= label_tag("TradeInfo") %>
+  <%= text_field_tag("TradeInfo", encrypt_aes(testing_data, Rails.application.credentials.newebpay[:key], Rails.application.credentials.newebpay[:iv])) %>
+  <br>
+  <%= label_tag("TradeSha") %>
+  <%= text_field_tag("TradeSha", encrypt_aes_sha256_uppercase(testing_data, Rails.application.credentials.newebpay[:key], Rails.application.credentials.newebpay[:iv])) %>
+  <br>
+  <%= label_tag("Version") %>
+  <%= text_field_tag("Version", '1.5') %>
+  <br>
+  <%= submit_tag("go") %>
+<% end %>
