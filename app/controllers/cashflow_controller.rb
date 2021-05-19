@@ -68,11 +68,10 @@ class CashflowController < ApplicationController
     else
       puts "did not succeed"
     end
-
-
   end
 
   private
+
   def aes_decrypt(trade_information, key, iv)
     result = hex2bin(trade_information)
     result = openssl_decrypt(result, key, iv)
