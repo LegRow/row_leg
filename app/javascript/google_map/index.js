@@ -1,3 +1,4 @@
+// 之後要整理跟模組化
 document.addEventListener('turbolinks:load', () => {
 
   // 以下是店家的位置 (要 show 在應徵者的頁面)
@@ -16,27 +17,32 @@ document.addEventListener('turbolinks:load', () => {
 
   window.initMap = function() {
     // 以下是店家位置
-    new google.maps.Map(maparea, option);
+    // new google.maps.Map(maparea, option);
 
-    // trigger google map current position, once succeed then trigger succeed function
-    navigator.geolocation.getCurrentPosition(succeed, fail)
+    // 更新 employee 位置 (function 都在下面)
+    updateEmployeePosition ()
 
-    function succeed(position) {
-      const latitude  = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      employeeLocation = [latitude, longitude]
+    function updateEmployeePosition () {
+      // trigger google map current position, once succeed then trigger succeed function
+      navigator.geolocation.getCurrentPosition(succeed, fail) // callbacks: succeed and fail
 
-      // 以下是 employee 的位置
-      let markerLocations = [
-        [25.009571560497424, 121.46213302250602], // 店家位置
-        employeeLocation // employee 位置（這就是要依照我的位置改變）
-       ];
+      function succeed(position) {
+        const latitude  = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        employeeLocation = [latitude, longitude]
+
+        // 以下是 employee 的位置
+        let markerLocations = [
+          [25.009571560497424, 121.46213302250602], // 店家位置
+          employeeLocation // employee 位置（這就是要依照我的位置改變）
+         ];
       
-      drawEmployeeAndStoreMarkers(markerLocations)
-    }
+        drawEmployeeAndStoreMarkers(markerLocations)
+      }
 
-    function fail() {
-      console.log("error!")
+      function fail() {
+        console.log("error!")
+      }
     }
 
     function drawEmployeeAndStoreMarkers (markerLocations) {
@@ -50,16 +56,9 @@ document.addEventListener('turbolinks:load', () => {
       }
     }
 
-    console.log("testing")
-    // // 每隔 30 秒更新一次位置
-    // setInterval(function(e) {
-    //   if (employeeLocation) {
-    //     markerLocations.setPosition(loc) // This will move the marker to the new location
-    //   };
-    // }, 30000)
-
   }
 
+  // 每 30 秒畫一次
   // setInterval(initMap, 30000)
 
 })
