@@ -33,10 +33,10 @@
 
 // 漢堡選單外框
 .mobile-btn {
-  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all border-4 border-solid border-black z-20;
+  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all border-4 border-solid border-black relative z-20;
   // 漢堡選單中間橫線
   .hamburger {
-    @apply w-12 h-2 bg-black rounded relative z-20;
+    @apply w-12 h-2 bg-black rounded relative;
   }
 }
 
