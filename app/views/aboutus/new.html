@@ -7,6 +7,8 @@
   <title>Document</title>
 </head>
 <body>
+
+<div id="box">
   <button class="accordion">如何註冊</button>
     <div class="panel">
       <p>首頁點選註冊開始註冊</p>
@@ -47,23 +49,7 @@
       <p>任務完成時，會請雇用者及排隊者掃描ＱＲＣＯＤＥ。
       </p>
     </div>
-    
-<script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-</script>
+</div>
 
 </body>
 </html>

@@ -15,18 +15,13 @@
 
 .text-title h1{
   border: rgb(243, 185, 164) 2px solid;
-  width:100px;
-  background-color:rgb(243, 185, 164) ;
+  width:90px;
+  background-color:rgb(243, 185, 164);
+  font-size: 30px;
 }
-
-.text-title h2{
-  border: rgb(243, 185, 164) 2px solid;
-  width:100px;
-  background-color:rgb(243, 185, 164) ;
-}
-
 .text-title p{
   font-size: 20px;
   color: chocolate;
   text-indent: 2em;
+  text-align: justify;
 }
