@@ -28,11 +28,34 @@
       }
 
       .task-desc {
-        @apply h-40 overflow-scroll text-gray-500;
+        @apply text-gray-500 relative h-40 overflow-hidden;
+
+        p {
+          @apply py-4 px-4;
+        }
+      }
+
+      .task-desc-spec {
+        height: auto;
+      }
+
+      .inf-open {
+        display: block;
+        margin-left: 95%;
+        margin-top: 10px;
+        font-weight: 600;
+        background-color: #aaa;
+        padding: 5px 5px;
+        border-radius: 3px;
+        color: #fff;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       .task-edit-link {
-        @apply absolute top-0 right-0;
+        @apply absolute top-0 right-4;
       }
     }
   }

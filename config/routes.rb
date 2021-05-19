@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
+
+
   root 'home#index'
-  
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+
   get 'cashflow/to_newebpay'
   post 'cashflow/thankyou'
   post 'cashflow/from_newebpay'
   
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  resources :qrcodes, only: [:show]
+  resources :rooms, only: [:index, :new, :create, :show]
+  resources :messages
   
-  resources :rooms, only: [:index, :show]
-  resources :messages, only: [:index, :new, :create]
   resources :lists, only: [:index]
   resources :works, only: [:index]
   
@@ -19,6 +22,10 @@ Rails.application.routes.draw do
       get 'send_applicant_apply_email'
     end
   end
+
   #測試用等暫時用不上路徑
   resources :tests, only: [:index]
+  
+  resources :aboutus, only: [:index, :new]
+
 end
