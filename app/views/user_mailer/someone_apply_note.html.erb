@@ -1,10 +1,11 @@
 <%= @employer.name %>，你好：
-
-有人應徵您的職缺
-
-如下：<%= @applicant.id %>
-
+<br>
+有人應徵您的職缺，如下：
+<br>
+<%= @applicant.id %>
+<br>
 如果您覺得此應徵者符合要求，請點選確認，我們將迅速為您安排
-
+<br>
+<br>
 <%= link_to '確認', controller: "tasks", id: @task.id, action: "confirm_applicant",
     confirm_employee: {task_id: @task.id, applicant: @applicant.id} %>
