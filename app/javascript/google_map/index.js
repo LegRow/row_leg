@@ -8,34 +8,32 @@ document.addEventListener('turbolinks:load', () => {
   }; 
 
   // 以下是 employee 的即時位置（要 show 在雇主的頁面）
-  const employee_map = document.getElementById("employee");
-  const employee_map_option = {
+  const employeeMap = document.getElementById("employee");
+  const employeeMapOption = {
     zoom: 14,
-    center: {lat: 25.03, lng: 121.30},
+    center: {lat: 25.009571560497424, lng: 121.46213302250602}, // 這邊之後也要填入店家位置
   };
-  // const marker = new google.maps.Marker({
-  //   position: {lat: 100.397, lng: 150.644},
-  //   map: employee_location_map,
-  // });
 
   window.initMap = function() {
     // 以下是店家位置
     new google.maps.Map(maparea, option);
 
     // 以下是 employee 的位置
-    const employee_location_map = new google.maps.Map(employee_map, employee_map_option);
-    const markerlocations = [
-      [25.03, 120.30], // 店家位置
-      [24.03, 121.30], // employee 位置
+    const employeeLocationMap = new google.maps.Map(employeeMap, employeeMapOption);
+    const employeeLocation = [25, 121.5]
+    const markerLocations = [
+      [25.009571560497424, 121.46213302250602], // 店家位置
+      employeeLocation // employee 位置（這就是要依照我的位置改變）
      ];
-    for(i  = 0;  i < markerlocations.length; i++) {
-      const marker = new google.maps.Marker({
-        position: new google.maps.LatLng(markerlocations[i][0], markerlocations[i][1]),
-        map: employee_location_map,
+    for(i  = 0;  i < markerLocations.length; i++) {
+      new google.maps.Marker({
+        position: new google.maps.LatLng(markerLocations[i][0], markerLocations[i][1]),
+        map: employeeLocationMap,
       });
     }
   }
 
+  // the function for google map script to callback
   initMap()
 
 })
