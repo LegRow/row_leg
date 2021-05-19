@@ -68,7 +68,7 @@ class CashflowController < ApplicationController
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
       # 訂單號碼有無 B，執行event
-      merchant_order_number.include?("B")? task.employee_pay : task.employer_pay
+      target_order_number.include?("B")? task.employee_pay : task.employer_pay
     else
       puts "did not succeed"
     end
@@ -94,11 +94,7 @@ class CashflowController < ApplicationController
     result = cipher.update(string)
     return result
   end
-
-  # 判斷訂單編號有無 B
-  def check_order_number(employee_order)
-    employee_order.include?("B")
-  end
+  
   # def strippadding(string)
   #   slast = string[-1].ord
   #   slastc = slast.chr
