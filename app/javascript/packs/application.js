@@ -9,4 +9,3 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "stylesheets/application"
-import "packs/footer"

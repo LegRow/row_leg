@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :qrcodes, only: [:show]
   resources :rooms, only: [:index, :new, :create, :show]
   resources :messages
-
+  resources :cussevers, only: [:index]
   devise_for :users
   resources :tests, only: [:index]
 

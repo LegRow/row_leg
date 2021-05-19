@@ -1,22 +1,9 @@
-<div id="myForm" class="form-popup">
-  <span class="closebtn" id="xbutton" onclick="closeSearch()" title="Close Overlay">×</span>
-  <div class=text>
-    <h1>Contact US</h1>
-    <p>想聯絡我們麻？</p>
-    <p>請mail給我們</p>
-    <div class="btn">
-      <button type="submit" id="confirm" onclick="closeForm()">確認</button>
-    </div>
-  </div>
-</div>
-
 <footer class="footer-container">
     <ul class="footer">
       <li class="footer-item">
         <a href="#" class="footer-link">合作店家</a>
       </li>
-      <li class="footer-item">
-        <a href="#" class="footer-link" id="js-contact" >聯絡客服</a>
+      <li class="footer-item"><%=link_to '聯絡客服', cussevers_path,class:"footer-link" %>
       </li>
       <li class="footer-item">
         <a href="#" class="footer-link">關於我們</a>
