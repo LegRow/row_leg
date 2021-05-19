@@ -11,10 +11,15 @@ Rails.application.routes.draw do
   
   resources :qrcodes, only: [:show]
   resources :rooms, only: [:index, :new, :create, :show]
+
+  resources :cussevers, only: [:index]
+  devise_for :users
+  resources :tests, only: [:index]
   resources :messages, only: [:create]
   
   resources :lists, only: [:index]
   resources :works, only: [:index]
+
 
   resources :tasks do
     member do
