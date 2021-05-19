@@ -69,6 +69,7 @@ class CashflowController < ApplicationController
       task = Task.find_by(id: target_order.task_id)
       # 訂單號碼有無 B，執行event
       target_order_number.include?("B")? task.employee_pay : task.employer_pay
+      task.save
     else
       puts "did not succeed"
     end

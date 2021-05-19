@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   before_action :check_user_column, only: :index
   def index
     
@@ -15,4 +16,5 @@ class HomeController < ApplicationController
       redirect_to edit_user_registration_path
     end
   end
+
 end
