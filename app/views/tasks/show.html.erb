@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<section class="task-show-container">
+<section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>">
   <div class="task-show-row">
     <div class="task-show-title">
       <h2>任務詳情</h2>
@@ -19,7 +19,7 @@
         <p><strong>結束:</strong><%= @task.task_end %></p>
         <p><strong>備註:</strong><%= @task.remarks %></p>
         <div class="task-show-link">
-          <% if author_of @task %>
+          <% if employer_of @task %>
           <div>
             <%= link_to '編輯', edit_task_path(@task), class: "btn-text my-2" %>
           </div>
