@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>">
+<section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>" data-employer-id="<%= @task.user_id %>">
   <div class="task-show-row">
     <div class="task-show-title">
       <h2>任務詳情</h2>
@@ -34,7 +34,9 @@
             <%= link_to '回到任務列', tasks_path, class: "btn-text my-2" %>
           </div>
           <div>
-            <% if not_employer_of @task %>
+            <% if employee_of @task %>
+              <%= button_tag '回報位置', id: "report_location" %>
+            <% elsif not_employer_of @task %>
               <%= link_to '應徵', controller: "tasks", action: "send_applicant_apply_email",
                   apply_information: {applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state} %>
             <% end %>
