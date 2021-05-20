@@ -11,6 +11,9 @@ class Task < ApplicationRecord
   has_one :order
   has_one :room
 
+  after_create :create_room_and_order
+  after_destroy :destroy_room
+
   validates :brief_description, presence: true
   validates :description, presence: true
   validates :address_city, presence: true
@@ -62,6 +65,7 @@ class Task < ApplicationRecord
     [address_city, address_district, address_street].join
   end
 
+
   private
 
   def buffer_time
@@ -95,4 +99,13 @@ class Task < ApplicationRecord
     # flash[:notice] = "Email has been sent."
   end
 
+  def create_room_and_order
+    @room = self.create_room
+    #訂單連動未做
+  end
+
+  def destroy_room
+    self.room.messages.destroy_all
+    self.room.destroy
+  end
 end
