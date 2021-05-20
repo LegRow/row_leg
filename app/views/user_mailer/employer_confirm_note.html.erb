@@ -1,0 +1,9 @@
+<%= @task.employee.name %>，您好：
+
+雇主<%= @task.user.name %>已確認您的應徵，請點選確認支付押金，以表示您順利承接此任務。
+
+# 點擊確認後去付款頁面
+<%= link_to '確認', controller: 'cashflow', action: 'to_newebpay',
+                    for_newebpay: {reward: @task.attributes["reward"],
+                    behalf: @task.attributes["behalf"],
+                    order_number: order.attributes["merchant_order_number"]} %>

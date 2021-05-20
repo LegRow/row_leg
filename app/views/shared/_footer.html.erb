@@ -3,15 +3,11 @@
     <li class="footer-item">
       <a href="#" class="footer-link">合作店家</a>
     </li>
-    <li class="footer-item" >
-      <a href="#" class="footer-link" onclick="openPopup()">聯絡客服</a>
+     <li class="footer-item"><%=link_to '聯絡客服', cussevers_path,class:"footer-link" %>
     </li>
-    <li class="footer-item">
-      <a href="show" class="footer-link">關於我們</a>
+    <li class="footer-item"><%= link_to '關於我們', aboutus_path, class:"footer-link" %>
     </li>
-    <li class="footer-item">
-      <a href="#" class="footer-link">常見問題</a>
-    </li>
+    <li class="footer-item"><%= link_to '常見問題', new_aboutu_path, class:"footer-link" %>
   </ul>
   <%= image_tag("logo.png", size: "150x55", :class => "footer-img")%>
   <p class="footer-copyright">

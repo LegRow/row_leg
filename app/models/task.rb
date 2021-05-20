@@ -4,11 +4,15 @@ class Task < ApplicationRecord
   acts_as_paranoid
   has_one :qrcode
   belongs_to :user
+
+  # 加上關聯，並作為選填
+  belongs_to :employee, class_name: 'User', optional: true
+
   has_one :order
   has_one :room
 
-  # validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
-  # validate :buffer_time, :correct_time, :end_time, :reward_less
+  validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
+  validate :buffer_time, :correct_time, :end_time, :reward_less
 
   # 阿美是雇主，小明是受僱者
   aasm column: :state do
