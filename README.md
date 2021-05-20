@@ -9,7 +9,7 @@
 $ bundle
 $ yarn install
 $ rails db:migrate
-$ foreman s -f Procfile.dev
+$ foreman s
 ```
 
 ## Group member :陳永哲，蕭惠心，徐御，鍾穆雍，鄭維倫，徐鳳臨
