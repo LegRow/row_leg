@@ -35,12 +35,12 @@
         <p><span class="inf-title">店名:</span><%= task.store_name %></p>
         <p><span class="inf-title">酬勞:</span><%= task.reward %></p>
         <p>
-          <span class="inf-title">任務開始時間:</span><%= task.task_at.to_s(:db)
+          <span class="inf-title">任務開始時間:</span><%= task.task_at
           %>
         </p>
         <p>
           <span class="inf-title">任務結束時間:</span><%=
-          task.task_end.to_formatted_s(:month_and_year) %>
+          task.task_end %>
         </p>
         <p><span class="inf-title">任務地點:</span><%= task.address %></p>
       </div>
@@ -52,11 +52,13 @@
       </div>
       <button class="inf-open" id="inf-open">展開</button>
       <!-- <input type="button" value="展開" class="inf-open" id="inf-open" /> -->
-      <% if author_of task %>
+      <% if employer_of task %>
         <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
           目前此任務狀態：<%= task.state %>
           <br>
+          <% if not employer_paid task %>
           <%= link_to 'Pay', controller: 'cashflow', action: 'to_newebpay',for_newebpay: {reward: task.reward, behalf: task.behalf, order_number: task.order.merchant_order_number} %>
+          <% end %>
         </div>
         <div class="text-right mt-2 pr-3">
           <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
@@ -68,6 +70,8 @@
       <% else %>
         <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           <%= link_to '應徵', task %>
+          <br>
+          <%= link_to '支付押金', controller: 'cashflow', action: 'to_newebpay',for_newebpay: {reward: (task.reward * 0.2).to_i, behalf: task.behalf, order_number: task.order.merchant_order_number + "B"} %>
         </div>
         <div class="text-right mt-2 pr-3">
           <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>

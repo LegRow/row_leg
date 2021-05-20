@@ -77,7 +77,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host:'localhost', post: 3000 }
 
   # to use ngrok
-  config.hosts << /[a-z0-9]+\.ngrok\.io/
+  config.hosts << "dc53c52c6854.eu.ngrok.io"
 
   # add the following SMTP setup
   config.action_mailer.delivery_method = :smtp

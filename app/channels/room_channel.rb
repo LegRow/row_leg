@@ -4,6 +4,6 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    # 目前設置 任務取消(手動/自動)聊天室自動關 所以不做設定了
   end
 end

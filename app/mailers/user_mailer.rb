@@ -11,4 +11,10 @@ class UserMailer < ApplicationMailer
     @task = task
     mail to: employer.email, subject: "row leg：有人應徵你的職缺"
   end
+
+  def employer_confirm_note(task)
+    @task = task
+    mail to: applicant.email, subject: "row leg：雇主同意應徵"
+  end
+
 end
