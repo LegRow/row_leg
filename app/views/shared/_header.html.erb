@@ -2,7 +2,6 @@
   <nav class="nav-container">
     <div class="logo-box">
       <%= link_to root_path, class:"menu-link" do %>
-      <%= image_tag("logo.png", size: "150x100")%>
       <% end %>
     </div>
     <ul class="menu ">
@@ -32,9 +31,9 @@
       <% end %>
       <li class="menu-item"><%= link_to '任務列', tasks_path, class:"menu-link" %></li>
 
-      <li class="menu-item"><%= link_to '關於我們', aboutus_path, class:"menu-link" %>
+      <li class="menu-item"><%= link_to '關於我們', about_us_path, class:"menu-link" %>
 
-      <li class="menu-item"><%= link_to '常見問題', new_aboutu_path, class:"menu-link" %>
+      <li class="menu-item"><%= link_to '常見問題', class:"menu-link" %>
     </ul>
   </nav>
   <div class='mt-24'></div>

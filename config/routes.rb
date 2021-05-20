@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :aboutus, only: [:index,:new]
+  get "/about_us" , to: "pages#about_us"
 
 end
