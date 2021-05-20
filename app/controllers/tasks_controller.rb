@@ -47,10 +47,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    # @room = @task.room
-    # @messages = @room.messages
-    # @messages.each { |message| message.delete }
-    # @room.destroy
     @task.destroy
     redirect_to tasks_path, notice: '任務已刪除'
   end
@@ -108,10 +104,6 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
   end
-
-  # def room_params
-  #   params.require(:task).permit(:name)
-  # end
 
   def order_params
     params.require(:task).permit(:merchant_order_number)
