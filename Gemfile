@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
-gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
@@ -18,21 +17,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'kaminari'
-gem 'hotwire-rails'
 gem "paranoia", "~> 2.2"
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0' 
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 gem 'pundit', '~> 2.1'
-gem 'rails-i18n', '~> 6.0'
 gem 'geocoder', '~> 1.6', '>= 1.6.7'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 gem "aasm", "~> 5.2"
-gem "figaro", "~> 1.2"
 
 # 管理機密資訊
-gem 'rqrcode', '~> 0.10.1'
+gem "figaro", "~> 1.2"
 
+gem 'rqrcode', '~> 0.10.1'
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-github'
@@ -42,11 +37,10 @@ gem 'whenever', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'foreman', '~> 0.87.2' 
+  gem 'foreman', '~> 0.87.2'
   gem 'hirb-unicode', '~> 0.0.5'
-  gem 'rspec-rails' 
-  gem 'factory_bot_rails' 
-  gem 'faker', '~> 2.17' 
+  gem 'factory_bot_rails'
+  gem 'faker', '~> 2.17'
 end
 
 group :development do
