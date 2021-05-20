@@ -76,6 +76,7 @@ class CashflowController < ApplicationController
   end
 
   private
+
   def aes_decrypt(trade_information, key, iv)
     result = hex2bin(trade_information)
     result = openssl_decrypt(result, key, iv)

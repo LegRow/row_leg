@@ -1,44 +1,15 @@
+# Row-leg - 5xRuby ASTRO Camp 7th Demo Day Project
 
-5/8號  更改時區台北
+### 以非復刻方式，模擬新創代排行業，練習資料庫關聯及建立，串台灣金流，串接Google Map API，網頁元素互動及即時通訊之JavaScript腳本撰寫。
 
-以下是新增的gem  
+### Ruby ~> 2.7.3
+### Rails ~> 6.1.3.2
 
-gem 'devise' 會員 bundle而已  
-gem 'kaminari' 分頁  bundle而已  
-gem "figaro" 安全Key  bundle而已  
-gem 'hotwire-rails' 先進技術  bundle而已  
-gem "paranoia", 假刪除  bundle而已  
+```
+$ bundle 
+$ yarn install
+$ rails db:migrate
+$ foreman s
+```
 
-gem 'redis'  
-gem 'sidekiq'  
-#上面兩個後台工具 bundle而已  
-
-5/8 gem 'rails-i18n'翻譯器 翻譯檔已加入  config/locales/zh-TW.yml  
-因為我偷懶 直接複製貼上 有可能失敗 沒生效實作時我再改  
-5/9 gem 'pundit' #建立管理者工具 bundle而已 
-5/9 gem 'geocoder', '~> 1.6', '>= 1.6.7'  
-5/9 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'  
-#上兩個 串接googlemap相關  
-
-
-
-group :development, :test do  
-  gem 'foreman' 快速開發(設定好了 foreman s 就可以了)  
-  gem 'hirb-unicode', #irb整齊表格  
-  gem 'rspec-rails' TDD用...不一定要用  
-  gem 'factory_bot_rails' 同上  
-  gem 'faker',  #假資料用  
-
-
-
-group :development, :test do  
-  gem 'foreman', 快速開發(設定好了 foreman s 就可以了)  
-  gem 'hirb-unicode', #irb整齊表格  
-  gem 'rspec-rails' TDD用...不一定要用  
-  gem 'factory_bot_rails' 同上  
-
-end  
-
-前端部分  
-yarn add axios, tailwindcss, Vue  
-tailwindcss 引入成功  
+## Group member :陳帥帥，蕭美美，徐帥帥，鍾帥帥，鄭帥帥，徐美美

@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
 
   before_action :check_user_column, only: :index
-  def index
-    
+  
+  def index 
   end
 
   private
