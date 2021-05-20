@@ -13,7 +13,6 @@
           <%= current_user.email %>
         </a>
       </li>
-
       <li class="menu-item">
         <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
       </li>
@@ -33,10 +32,10 @@
         <%= link_to '任務列', tasks_path, class:"menu-link" %>
       </li>
       <li class="menu-item">
-        <a href="aboutus" class="menu-link">關於我們</a>
+        <%= link_to '關於我們', aboutus_path, class:"menu-link"%>
       </li>
       <li class="menu-item">
-        <a href="aboutus/new" class="menu-link">常見問題</a>
+        <%= link_to '常見問題', questions_path, class:"menu-link"%>
       </li>
     </ul>
     <div class="mobile-btn">
@@ -65,11 +64,11 @@
       <li>
         <%= link_to '任務列', tasks_path, class:"menu-link" %>
       </li>
-      <li class="menu-item">
-        <a href="aboutus" class="menu-link">關於我們</a>
+      <li>
+        <%= link_to '關於我們', aboutus_path, class:"menu-link"%>
       </li>
-      <li class="menu-item">
-        <a href="aboutus/new" class="menu-link">常見問題</a>
+      <li>
+        <%= link_to '常見問題', questions_path, class:"menu-link"%>
       </li>
     </ul>
   </div>

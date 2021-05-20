@@ -1,11 +1,3 @@
-// document.addEventListener("turbolinks:load", () => {
-//   const hamburgerBtn = document.querySelector(".hamburger-button button");
-//   const mobileMenu = document.querySelector(".mobile-menu");
-
-//   hamburgerBtn.addEventListener("click", () => {
-//     mobileMenu.classList.toggle("hidden");
-//   });
-// });
 document.addEventListener("turbolinks:load", () => {
   const mobileBtn = document.querySelector(".mobile-btn");
   const mobileMenu = document.querySelector(".mobile-menu");
