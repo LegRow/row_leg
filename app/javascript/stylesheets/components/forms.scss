@@ -34,21 +34,16 @@
     @apply mb-4;
   }
 }
-.all-container{
-  display: flex;
-}
+
 .container{
-    margin-left: 35px;
+    margin: auto;
     font-size: 14px;
     overflow: auto;
-    height:100px;
+    height:300px;
     border: chocolate solid 4px;
-    width: 70%;
-
+    width:auto;
 }
 .container .text{
-    font-weight: bolder;
-    font-size: 15px;
     text-align: justify;
 }
 .foot{
@@ -59,7 +54,7 @@
 }
 
 .box{
-  margin-top: 80px;
+  display: flex;
 }
 .btnn{
       color: chocolate;
