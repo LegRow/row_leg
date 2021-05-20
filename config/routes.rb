@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   resources :qrcodes, only: [:show]
   resources :rooms, only: [:index, :new, :create, :show]
 
-  resources :cussevers, only: [:index]
-  
   resources :tests, only: [:index]
   resources :messages, only: [:create]
   
