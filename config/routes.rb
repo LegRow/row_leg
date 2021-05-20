@@ -29,4 +29,7 @@ Rails.application.routes.draw do
 
   get "/questions" , to: "pages#questions"
 
+  get "/customer_severs" , to: "pages#customer_severs"
+
+
 end

@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def questions
   end
+
+  def customer_severs
+  end
 end
