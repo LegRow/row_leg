@@ -5,8 +5,10 @@
 .logo-box {
   @apply flex items-center;
 }
+
 .menu {
   @apply hidden lg:flex text-gray-800 font-semibold;
+
   .menu-item {
     @apply mx-4;
 
@@ -23,7 +25,7 @@
     transparent 50%,
     $color-primary 50%
   );
-  background-size: 240%;
+  background-size: 255%;
   transition: all, 0.6s;
 
   &:hover {
@@ -84,6 +86,7 @@
 
 .mobile-menu {
   @apply flex flex-col w-full justify-center items-center -top-96  fixed z-10 bg-white bg-opacity-90 text-center;
+
   a {
     @apply block text-4xl my-4;
   }
