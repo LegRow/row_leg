@@ -10,6 +10,7 @@ class Task < ApplicationRecord
 
   has_one :order
   has_one :room
+  belongs_to :user
 
   validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
   validate :buffer_time, :correct_time, :end_time, :reward_less
@@ -27,10 +28,7 @@ class Task < ApplicationRecord
           # :employer_mailed,
           :employer_confirmed,
           :deal
-    
-    
-
-
+  
     # 阿美匯款，任務 state 轉為 employer_paid，這時候這個任務會出現在其他人的頁面上，大家可以來應徵。有人點應徵，且該任務目前狀態還沒到 employer_confirm，就可以一直寄信給阿美
     event :employer_pay do
       transitions from: :pending, to: :employer_paid
@@ -53,11 +51,7 @@ class Task < ApplicationRecord
       after do
         render 'qrcodes/show'
       end
-
     end
-
-
-
   end
   
   def address
