@@ -9,9 +9,8 @@
     <div>
       <% @rooms.each do |room| %>
         <% if room.task.user_id == current_user.id %>
-        <div class="bg-green-100 text-center text-3xl border-double border-4 border-light-blue-500">
-          <%= link_to room.task.store_name, room_path(room), :method => :get %>
-        </div>
+          <%= link_to room.task.store_name, room_path(room), :method => :get ,
+          class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
         <% end %>
       <% end %>
     </div>
@@ -26,9 +25,8 @@
     <div>
       <% @rooms.each do |room| %>
         <% if room.task.employee_id == current_user.id %>
-        <button class="bg-green-300  w-full text-center text-3xl border-double border-4 border-light-blue-500">
-          <%= link_to room.task.store_name, room_path(@room), :method => :get %>
-        </button>
+          <%= link_to room.task.store_name, room_path(@room), :method => :get ,
+          class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
         <% end %>
       <% end %>
     </div>
