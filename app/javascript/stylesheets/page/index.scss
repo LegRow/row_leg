@@ -5,7 +5,7 @@
     @apply relative;
 
     h1 {
-      @apply text-6xl mb-5;
+      @apply text-5xl sm:text-6xl mb-5;
 
       .title {
         @apply block tracking-wider mb-6;
@@ -49,9 +49,17 @@
 }
 
 .company-intro {
-  @apply max-w-6xl mx-auto grid grid-cols-2 gap-20 mb-28;
+  @apply max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-32 mb-28;
 
   .company-desc {
     @apply flex flex-col justify-center;
+  }
+
+  .company-img {
+    @apply flex justify-center items-center;
+
+    img {
+      @apply block;
+    }
   }
 }
