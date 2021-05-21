@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'cashflow/from_newebpay'
   resources :qrcodes, only: [:show]
   #首頁相關
-  root 'home#index'
+
   resources :aboutus, only: [:index]
   resources :questions, only: [:index]
   #任務頁面相關
