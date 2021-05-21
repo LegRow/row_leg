@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
 
   before_action :find_room, only: [:show]
+  before_action :join_to_chat, only: [:show]
   before_action :authenticate_user!
   before_action :current_user, only: [:show]
 
@@ -16,20 +17,11 @@ class RoomsController < ApplicationController
   end
 
   def create
-      #目前聊天室建立與task連動 如之後沒要手動開聯天室可刪
-      # @room = Room.new(room_params)
-      # @room.save
-      # redirect_to rooms_path
   end
 
   def show
-    # 擋不是雇主或乙方隨便進已存在聊天室 目前方便測試先關 乙方完成後要解開
-    # if current_user.id == @room.task.user.id || curremt_user.id = task.接單者.id
       @rooms = Room.all
       @message = @room.messages.new
-    # else
-    #   redirect_to rooms_path
-    # end
   end
 
   private
@@ -43,8 +35,10 @@ class RoomsController < ApplicationController
     end
   end
 
-  # def room_params
-  #   params.require(:room).permit(:name)
-  # end
-
+  def join_to_chat
+    #只有甲方乙方能進聊天室
+    if current_user.id != @room.task.user.id && current_user.id != @room.task.employee_id
+      redirect_to rooms_path
+    end
+  end
 end
