@@ -7,9 +7,6 @@ export default class extends Controller {
   static targets = []
 
   connect() {
-    // consumer.subscriptions.subscriptions.forEach((subscription) => {
-    //   consumer.subscriptions.remove(subscription)
-    // })
 
     const user_element = document.getElementById('messages');
     const room_id = Number(user_element.getAttribute('data-room-id'));
@@ -18,6 +15,7 @@ export default class extends Controller {
       connected() {
         const messageContainer = document.getElementById('messages')
         messageContainer.innerHTML = messageContainer.innerHTML
+        document.getElementById('messages').scrollTop = 9999999;
       },
 
       disconnected() {
@@ -37,6 +35,7 @@ export default class extends Controller {
 
         const messageContainer = document.getElementById('messages')
         messageContainer.innerHTML = messageContainer.innerHTML + html
+        document.getElementById('messages').scrollTop = 9999999;
       }
     });
   }

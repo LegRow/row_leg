@@ -35,9 +35,12 @@
     </div>
   </div>
   <div class="chat_inside w-1/2">
-    <div id="messages" class="flex-col chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
+    <div>
+      <div>你目前在任務<%= @room.task.brief_description %>的聊天室中</div>
+    </div>
+    <div id="messages" class="flex-col flex chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
       <% @room.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
+        <%= render 'messages/message', message: message, user: current_user %>
       <% end %>
     </div>
     <hr>
