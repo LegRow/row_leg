@@ -306,8 +306,6 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-  factory_bot_rails
-  faker (~> 2.17)
   figaro (~> 1.2)
   foreman (~> 0.87.2)
   geocoder (~> 1.6, >= 1.6.7)

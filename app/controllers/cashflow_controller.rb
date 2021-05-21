@@ -1,5 +1,6 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
