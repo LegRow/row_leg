@@ -1,5 +1,6 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
@@ -18,10 +19,8 @@ class CashflowController < ApplicationController
     if applicant
       # 受雇者押金 20%
       paying_amount = params_for_newbpay["reward"].to_f * 0.2
-      
       #受雇者的訂單編號 + B
       params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
-      
     else
       paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
     end
@@ -41,7 +40,7 @@ class CashflowController < ApplicationController
   end
 
   def from_newebpay
-    newebpay_posted = params
+    # newebpay_posted = params
     # 付款成功或失敗，藍新會傳一段大概如下的東西，就是上面的 params
     # Parameters: {
     #              "Status"=>"SUCCESS",
@@ -71,7 +70,7 @@ class CashflowController < ApplicationController
       target_order_number.include?("B")? task.employee_pay : task.employer_pay
       task.save
     else
-      puts "did not succeed"
+      # render or redirect
     end
   end
 
@@ -79,13 +78,11 @@ class CashflowController < ApplicationController
 
   def aes_decrypt(trade_information, key, iv)
     result = hex2bin(trade_information)
-    result = openssl_decrypt(result, key, iv)
-    return result
+    openssl_decrypt(result, key, iv)
   end
-  
+
   def hex2bin(hex)
-    bytes_string = [hex].pack('H*')
-    return bytes_string
+    [hex].pack('H*')
   end
 
   def openssl_decrypt(string, key, iv, cipher_method = 'aes-256-cbc')
@@ -93,10 +90,9 @@ class CashflowController < ApplicationController
     cipher.decrypt
     cipher.iv = iv
     cipher.key = key
-    result = cipher.update(string)
-    return result
+    cipher.update(string)
   end
-  
+
   # def strippadding(string)
   #   slast = string[-1].ord
   #   slastc = slast.chr
