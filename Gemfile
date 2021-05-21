@@ -18,6 +18,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'kaminari'
 gem "paranoia", "~> 2.2"
+
+# Use Redis adapter to run Action Cable in production
+gem 'redis', '~> 4.0'
+
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 gem 'pundit', '~> 2.1'
 gem 'geocoder', '~> 1.6', '>= 1.6.7'
@@ -41,6 +45,7 @@ group :development, :test do
   gem 'hirb-unicode', '~> 0.0.5'
   gem 'factory_bot_rails'
   gem 'faker', '~> 2.17'
+
 end
 
 group :development do

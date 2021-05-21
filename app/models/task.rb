@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   include AASM
-  
+
   acts_as_paranoid
   has_one :qrcode
   belongs_to :user
@@ -10,25 +10,32 @@ class Task < ApplicationRecord
 
   has_one :order
   has_one :room
-  belongs_to :user
 
-  validates :brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, presence: true
+  after_create :create_room_and_order
+  after_destroy :destroy_room
+
+  validates :brief_description, presence: true
+  validates :description, presence: true
+  validates :address_city, presence: true
+  validates :address_district, presence: true
+  validates :address_street, presence: true
+  validates :store_name, presence: true
+  validates :reward, presence: true
   validate :buffer_time, :correct_time, :end_time, :reward_less
 
   # 阿美是雇主，小明是受僱者
   aasm column: :state do
-    
+
     # 阿美創任務，任務 state 為 pending
     state :pending, initial: true
 
-    state :employer_paid, :employee_applied, :employer_mailed, :employer_confirmed, :employee_paid, :deal
-
     state :employer_paid,
-          # :employee_applied,
-          # :employer_mailed,
+          :employee_applied,
+          :employer_mailed,
           :employer_confirmed,
+          :employee_paid,
           :deal
-  
+
     # 阿美匯款，任務 state 轉為 employer_paid，這時候這個任務會出現在其他人的頁面上，大家可以來應徵。有人點應徵，且該任務目前狀態還沒到 employer_confirm，就可以一直寄信給阿美
     event :employer_pay do
       transitions from: :pending, to: :employer_paid
@@ -43,7 +50,7 @@ class Task < ApplicationRecord
     event :employee_pay do
       transitions from: :employer_confirmed, to: :deal
     end
-    
+
     # 訂單完成後，出現qrcode
     event :deal do
       transitions from: :employer_mailed, to: :deal
@@ -53,16 +60,16 @@ class Task < ApplicationRecord
       end
     end
   end
-  
+
   def address
     [address_city, address_district, address_street].join
   end
 
+
   private
 
   def buffer_time
-    buffer_time = (task_at) - (Time.now)
-    if buffer_time < 10800
+    if task_at < 3.hours.after
       errors.add(:task_at, "任務必須距離現在大於三小時")
     end
   end
@@ -74,14 +81,13 @@ class Task < ApplicationRecord
   end
 
   def end_time
-    end_time = (task_end - task_at)
-    if  end_time < 3599
+    if  (task_end - task_at) < 1.hours
       errors.add(:task_end, "結束時間需與起始時間最少相距一小時")
     end
   end
 
   def reward_less
-    if  reward == nil || reward < ((task_end - task_at)/3600).round * 200 
+    if  reward.nil? || reward < ((task_end - task_at)/3600).round * 200
       errors.add(:reward, "酬勞一小時最少200元")
     end
   end
@@ -93,4 +99,13 @@ class Task < ApplicationRecord
     # flash[:notice] = "Email has been sent."
   end
 
+  def create_room_and_order
+    @room = self.create_room
+    #訂單連動未做
+  end
+
+  def destroy_room
+    self.room.messages.destroy_all
+    self.room.destroy
+  end
 end
