@@ -13,8 +13,8 @@ export default class extends Controller {
 
     consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
       connected() {
-        const messageContainer = document.getElementById('messages')
-        messageContainer.innerHTML = messageContainer.innerHTML
+        // const messageContainer = document.getElementById('messages')
+        // messageContainer.innerHTML = messageContainer.innerHTML
         document.getElementById('messages').scrollTop = 9999999;
       },
 
