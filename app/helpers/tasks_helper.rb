@@ -1,5 +1,5 @@
 module TasksHelper
-  
+
   def employer_of(resource)
     user_signed_in? && resource.user_id == current_user.id
   end
@@ -14,4 +14,8 @@ module TasksHelper
     end
   end
 
+  def employer_confirmed(task)
+    if task.state == "employer_confirmed"
+    end
+  end
 end
