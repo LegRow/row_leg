@@ -1,10 +1,9 @@
 class MessagesController < ApplicationController
-  
+  before_action :authenticate_user!
+
   def create
-    @message = Message.new(message_params)
-    @message.user = current_user
-    @message.save
-    SendMessageJob.perform_now(@message, current_user)  
+    @message = current_user.messages.create(message_params)
+    SendMessageJob.perform_now(@message, current_user)
   end
 
   private
@@ -12,5 +11,5 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :room_id)
   end
-  
+
 end

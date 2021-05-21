@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   before_action :find_room, only: [:show]
   before_action :authenticate_user!
   before_action :current_user, only: [:show]
-  
+
   def index
     @rooms = Room.all
     @room = Room.new
@@ -27,25 +27,24 @@ class RoomsController < ApplicationController
     # if current_user.id == @room.task.user.id || curremt_user.id = task.接單者.id
       @rooms = Room.all
       @message = @room.messages.new
-      render 'show'
-    # else 
+    # else
     #   redirect_to rooms_path
-    # end  
+    # end
   end
 
   private
-  
+
   def find_room
     #為了防止使用者輸入還不存在的rooms/id
-    if Room.exists?(params[:id])
+    begin
       @room = Room.find(params[:id])
-    else
+    rescue
       redirect_to rooms_path
     end
   end
 
-  def room_params
-    params.require(:room).permit(:name)
-  end
+  # def room_params
+  #   params.require(:room).permit(:name)
+  # end
 
 end
