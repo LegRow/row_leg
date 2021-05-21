@@ -1,4 +1,5 @@
 document.addEventListener("turbolinks:load", () => {
+  // 漢堡選單控制
   const mobileBtn = document.querySelector(".mobile-btn");
   const mobileMenu = document.querySelector(".mobile-menu");
   let menuOpen = false;
@@ -25,14 +26,18 @@ document.addEventListener("turbolinks:load", () => {
   };
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      show();
-    } else {
-      hidden();
-    }
+    if (window.scrollY > 200) show();
+    else hidden();
   });
 
   pageTopBtn.addEventListener("click", () => {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  });
+
+  // 動態navbar控制
+  const navBar = document.querySelector(".nav-container");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 96) navBar.classList.add("sticky");
+    else navBar.classList.remove("sticky");
   });
 });

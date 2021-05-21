@@ -1,5 +1,13 @@
 .nav-container {
-  @apply fixed justify-between top-0 right-0 w-full flex justify-end py-4 px-3 bg-white z-10;
+  @apply absolute justify-between top-0 right-0 w-full flex justify-end py-4 px-3 bg-white z-10;
+}
+
+.nav-container {
+  transition: all 0.3s linear;
+}
+
+.nav-container.sticky {
+  @apply fixed opacity-75 py-2;
 }
 
 .logo-box {
