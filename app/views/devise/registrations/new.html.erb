@@ -48,13 +48,9 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
       </div>
       <label class="field">同意條款</label>
-      <div class="field">
-      <input type="radio"  value="已詳細閱讀"><label class="btnn">已詳細閱讀</label>
-    </div>
-    
 <div class="all-container">
   <div class="container">
-    <div class="text">腿排使用者隱私權協定:</div>
+    <div class="tit">腿排使用者隱私權協定:</div>
     <br>
     一、腿排的陳述與保證<br>
     腿排絕對尊重使用者的隱私和資訊，並會對此嚴密保護。我們對用戶做出如下解釋和說明：<br>
@@ -110,7 +106,9 @@
     </div>
       <div class="foot">腿排有限公司</div>
   </div>
-  
+  <div class="box">
+    <input type="radio"  value="已詳細閱讀"><label class="btnn">已詳細閱讀</label>
+  </div>
 </div>
     <div class="actions flex justify-center">
       <%= f.submit "提交", class: "btn btn-default" %>
