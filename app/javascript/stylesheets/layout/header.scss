@@ -6,7 +6,7 @@
   @apply flex items-center;
 }
 .menu {
-  @apply flex text-gray-800 font-semibold;
+  @apply hidden lg:flex text-gray-800 font-semibold;
   .menu-item {
     @apply mx-4;
 
@@ -29,4 +29,77 @@
   &:hover {
     background-position: 100%;
   }
+}
+
+// 漢堡選單外框
+.mobile-btn {
+  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all border-4 border-solid border-black relative z-20;
+  // 漢堡選單中間橫線
+  .hamburger {
+    @apply w-12 h-2 bg-black rounded relative;
+  }
+}
+
+.hamburger {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  transition: all 0.5s ease-in-out;
+}
+
+// 漢堡選單上下橫線
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  transition: all 0.5s ease-in-out;
+}
+
+.hamburger::before {
+  transform: translateY(-16px);
+}
+
+.hamburger::after {
+  transform: translateY(16px);
+}
+
+// 點擊後動畫
+// 中間橫線 左移淡出
+.mobile-btn.open .hamburger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+// 上下橫線
+.mobile-btn.open .hamburger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.mobile-btn.open .hamburger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+.mobile-menu {
+  @apply flex flex-col w-full justify-center items-center -top-96  fixed z-10 bg-white bg-opacity-90 text-center;
+  a {
+    @apply block text-4xl my-4;
+  }
+}
+
+.mobile-menu {
+  transition: all ease-in-out 0.5s;
+}
+
+.mobile-menu.menu-default {
+  visibility: hidden;
+}
+
+.mobile-menu.menu-active {
+  visibility: visible;
+  top: 95px;
+  height: 75vh;
+  display: block;
 }

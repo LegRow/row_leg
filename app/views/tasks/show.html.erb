@@ -19,7 +19,7 @@
         <p><strong>結束:</strong><%= @task.task_end %></p>
         <p><strong>備註:</strong><%= @task.remarks %></p>
         <div class="task-show-link">
-          <% if author_of @task %>
+          <% if employer_of @task %>
           <div>
             <%= link_to '編輯', edit_task_path(@task), class: "btn-text my-2" %>
           </div>
@@ -28,7 +28,6 @@
           </div>
           <% else %>
           <div>
-
             <% if current_user.id == @task.user_id %>
             <%= link_to '編輯', edit_task_path(@task), class: "btn-text my-2" %> |<% end %>
             <%= link_to '回到任務列', tasks_path, class: "btn-text my-2" %>

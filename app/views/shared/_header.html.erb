@@ -1,42 +1,90 @@
-<header class="">
+<header>
   <nav class="nav-container">
     <div class="logo-box">
+<<<<<<< HEAD
       <%= link_to root_path, class:"menu-link" do %>
         <%= image_tag("logo.png", size: "200x00", :class => "footer-img")%>
       <% end %>
+=======
+      <%= link_to root_path, class:"menu-link" do %> <%= image_tag("logo.png",
+      size: "150x100")%> <% end %>
+>>>>>>> develop
     </div>
-    <ul class="menu ">
+    <ul class="menu">
       <% if user_signed_in? %>
-
       <li class="menu-item">
         <!-- 看之後要不要用這條路徑連到個人任務業or個人聊天室之類的 -->
-        <a href="#" class="menu-link relative -top-2">
+        <a href="#" class="menu-link relative -top-1">
           <i class="fas fa-user-ninja text-3xl"></i>
           <%= current_user.email %>
         </a>
       </li>
-
-        <li class="menu-item">
-          <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
-        </li>
-        <li class="menu-item">
-          <%= link_to "登出", destroy_user_session_path, method: :delete, class:"menu-link" %>
-        </li>
+      <li class="menu-item">
+        <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
+      </li>
+      <li class="menu-item">
+        <%= link_to "登出", destroy_user_session_path, method: :delete,
+        class:"menu-link" %>
+      </li>
       <% else %>
-        <li class="menu-item">
-          <%= link_to "登入", new_user_session_path, class:"menu-link" %>
-        </li>
-        <li class="menu-item">
-          <%= link_to "註冊", new_user_registration_path, class:"menu-link" %>
-        </li>
+      <li class="menu-item">
+        <%= link_to "登入", new_user_session_path, class:"menu-link" %>
+      </li>
+      <li class="menu-item">
+        <%= link_to "註冊", new_user_registration_path, class:"menu-link" %>
+      </li>
       <% end %>
+<<<<<<< HEAD
       <li class="menu-item"><%= link_to '任務列', tasks_path, class:"menu-link" %></li>
 
       <li class="menu-item"><%= link_to '關於我們', about_us_path, class:"menu-link" %>
 
       <li class="menu-item"><%= link_to '常見問題', questions_path, class:"menu-link" %>
+=======
+      <li class="menu-item">
+        <%= link_to '任務列', tasks_path, class:"menu-link" %>
+      </li>
+      <li class="menu-item">
+        <%= link_to '關於我們', aboutus_path, class:"menu-link"%>
+      </li>
+      <li class="menu-item">
+        <%= link_to '常見問題', questions_path, class:"menu-link"%>
+      </li>
+>>>>>>> develop
     </ul>
+    <div class="mobile-btn">
+      <div class="hamburger"></div>
+    </div>
   </nav>
-  <div class='mt-24'></div>
+  <div class="mt-24"></div>
+  <div class="mobile-menu menu-default">
+    <ul>
+      <% if user_signed_in? %>
+      <li>
+        <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
+      </li>
+      <li>
+        <%= link_to "登出", destroy_user_session_path, method: :delete,
+        class:"menu-link" %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to "登入", new_user_session_path, class:"menu-link" %>
+      </li>
+      <li>
+        <%= link_to "註冊", new_user_registration_path, class:"menu-link" %>
+      </li>
+      <% end %>
+      <li>
+        <%= link_to '任務列', tasks_path, class:"menu-link" %>
+      </li>
+      <li>
+        <%= link_to '關於我們', aboutus_path, class:"menu-link"%>
+      </li>
+      <li>
+        <%= link_to '常見問題', questions_path, class:"menu-link"%>
+      </li>
+    </ul>
+  </div>
 </header>
 

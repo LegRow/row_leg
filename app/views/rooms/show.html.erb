@@ -9,9 +9,9 @@
     <div>
       <% @rooms.each do |room| %>
         <% if room.task.user_id == current_user.id %>
-        <button class="bg-green-100  w-full text-center text-3xl border-double border-4 border-light-blue-500">
+        <div class="bg-green-100 text-center text-3xl border-double border-4 border-light-blue-500">
           <%= link_to room.task.store_name, room_path(room) %>
-        </button>
+        </div>
         <% end %>
       <% end %>
     </div>
@@ -29,19 +29,16 @@
     <div class="w-full bg-gray-500 text-3xl text-center rounded-b-lg">
       您所接任務的專屬聊天室
     </div>
-
   </div>
   <div class="chat_inside w-1/2">
-
     <div id="messages" class="flex-col chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
-      沒有手動刪除聊天室跟對話功能  目前
       <% @room.messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>
     </div>
     <hr>
       <div class="chat_btn">
-        請先點選聊天室
+        <%= render 'messages/form', message: Message.new, room: @room %>
       </div>
   </div>
 </div>
