@@ -39,7 +39,6 @@
               <%= link_to '應徵', controller: "tasks", action: "send_applicant_apply_email",
                   apply_information: {applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state} %>
             <% end %>
-
           </div>
           <% end %>
         </div>
