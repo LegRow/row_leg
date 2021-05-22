@@ -20,7 +20,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-      # @rooms = Room.joins(:task).where(tasks: { user_id: current_user,   employee_id: employee_id })
       @rooms = Room.all
       @message = @room.messages.new
   end

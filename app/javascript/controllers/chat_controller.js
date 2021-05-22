@@ -13,9 +13,8 @@ export default class extends Controller {
 
     consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id }, {
       connected() {
-        // const messageContainer = document.getElementById('messages')
-        // messageContainer.innerHTML = messageContainer.innerHTML
-        document.getElementById('messages').scrollTop = 9999999;
+        const chatRoom = document.getElementById('messages');
+        chatRoom.scrollTop = chatRoom.scrollHeight;
       },
 
       disconnected() {
@@ -35,7 +34,8 @@ export default class extends Controller {
 
         const messageContainer = document.getElementById('messages')
         messageContainer.innerHTML = messageContainer.innerHTML + html
-        document.getElementById('messages').scrollTop = 9999999;
+        const chatRoom = document.getElementById('messages');
+        chatRoom.scrollTop = chatRoom.scrollHeight;
       }
     });
   }
