@@ -19,10 +19,8 @@ class CashflowController < ApplicationController
     if applicant
       # 受雇者押金 20%
       paying_amount = params_for_newbpay["reward"].to_f * 0.2
-
       #受雇者的訂單編號 + B
       params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
-
     else
       paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
     end

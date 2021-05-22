@@ -46,35 +46,31 @@
       </div>
       <button class="inf-open" id="inf-open">展開</button>
       <% if employer_of task %>
-      <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
-        目前此任務狀態：<%= task.state %>
-        <br />
-        <% if not employer_paid task %> <%= link_to 'Pay', controller:
-        'cashflow', action: 'to_newebpay',for_newebpay: {reward: task.reward,
-        behalf: task.behalf, order_number: task.order.merchant_order_number} %>
-        <% end %>
-      </div>
-      <div class="text-right mt-2 pr-3">
-        <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
-      </div>
-      <div class="task-edit-link">
-        <%= link_to '編輯', edit_task_path(task), class: 'btn btn-edit' %> <%=
-        link_to '刪除任務', task, class: 'btn btn-destroy', method: :delete,
-        data: { confirm: 'Are you sure?' } %>
-      </div>
+        <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+          目前此任務狀態：<%= task.state %>
+          <br>
+          <% if not employer_paid task %>
+          <%= link_to 'Pay', controller: 'cashflow', action: 'to_newebpay',for_newebpay: {reward: task.reward, behalf: task.behalf, order_number: task.order.merchant_order_number} %>
+          <% end %>
+        </div>
+        <div class="text-right mt-2 pr-3">
+          <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
+        </div>
+        <div class="task-edit-link">
+          <%= link_to '編輯', edit_task_path(task), class: 'btn btn-edit' %>
+          <%= link_to '刪除任務', task, class: 'btn btn-destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       <% else %>
-      <div
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        <%= link_to '應徵', task %>
-        <br />
-        <%= link_to '支付押金', controller: 'cashflow', action:
-        'to_newebpay',for_newebpay: {reward: (task.reward * 0.2).to_i, behalf:
-        task.behalf, order_number: task.order.merchant_order_number + "B"} %>
-      </div>
-      <div class="text-right mt-2 pr-3">
-        <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
-      </div>
+        <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <%= link_to '應徵', task %>
+          <br>
+          <% if employer_confirmed task %>
+          <%= link_to '支付押金', controller: 'cashflow', action: 'to_newebpay',for_newebpay: {reward: (task.reward * 0.2).to_i, behalf: task.behalf, order_number: task.order.merchant_order_number + "B"} %>
+          <% end %>
+        </div>
+        <div class="text-right mt-2 pr-3">
+          <%= link_to '點我看任務詳情 →', task, class: "link-spec" %>
+        </div>
       <% end %>
     </div>
     <% end %>

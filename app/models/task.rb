@@ -30,8 +30,6 @@ class Task < ApplicationRecord
     state :pending, initial: true
 
     state :employer_paid,
-          :employee_applied,
-          :employer_mailed,
           :employer_confirmed,
           :employee_paid,
           :deal
@@ -48,12 +46,16 @@ class Task < ApplicationRecord
 
     # 小明付完錢，訂單轉為成立
     event :employee_pay do
-      transitions from: :employer_confirmed, to: :deal
+      transitions from: :employer_confirmed, to: :employee_paid
     end
 
     # 訂單完成後，出現qrcode
-    event :deal do
-      transitions from: :employer_mailed, to: :deal
+    event :finish do
+      transitions from: :employee_paid, to: :deal
+
+      after do
+        render 'qrcodes/show'
+      end
     end
   end
 
