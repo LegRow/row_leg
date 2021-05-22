@@ -77,14 +77,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host:'localhost', post: 3000 }
 
   # to use ngrok
-  config.hosts << "dc53c52c6854.eu.ngrok.io"
+  config.hosts << ENV["ngrok_https"]
 
   # add the following SMTP setup
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.mailgun.org',
     port: 587,
-    domain: config.hosts,
+    domain: "rowleg.online",
     user_name: ENV["smtp_user_name"],
     password: ENV["smtp_password"],
     authentication: 'plain',
