@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  #會員相關
+  root 'home#index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   #金流相關
   get 'cashflow/to_newebpay'
@@ -8,12 +7,13 @@ Rails.application.routes.draw do
   post 'cashflow/from_newebpay'
   resources :qrcodes, only: [:show]
   #首頁相關
-  root 'home#index'
+
   resources :aboutus, only: [:index]
   resources :questions, only: [:index]
   #任務頁面相關
   resources :rooms, only: [:index, :new, :create, :show]
-  resources :cussevers, only: [:index]
+
+  resources :tests, only: [:index]
   resources :messages, only: [:create]
   resources :lists, only: [:index]
   resources :works, only: [:index]
@@ -24,4 +24,12 @@ Rails.application.routes.draw do
       get 'send_applicant_apply_email'
     end
   end
+
+  get "/about_us" , to: "pages#about_us"
+
+  get "/questions" , to: "pages#questions"
+
+  get "/customer_severs" , to: "pages#customer_severs"
+
+
 end

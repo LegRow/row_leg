@@ -34,23 +34,19 @@
     @apply mb-4;
   }
 }
-.all-container{
-  display: flex;
-}
-.container{
-    margin-left: 35px;
+
+.term-containerer{
+    margin: auto;
     font-size: 14px;
     overflow: auto;
-    height:100px;
+    height:300px;
     border: chocolate solid 4px;
-    width: 70%;
-
+    width:250px;
 }
 .container .text{
-    font-weight: bolder;
-    font-size: 15px;
     text-align: justify;
 }
+
 .foot{
     text-align: right;
 }
@@ -59,7 +55,7 @@
 }
 
 .box{
-  margin-top: 80px;
+  display: flex;
 }
 .btnn{
       color: chocolate;
