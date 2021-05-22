@@ -1,12 +1,22 @@
 .nav-container {
-  @apply fixed justify-between top-0 right-0 w-full flex justify-end py-4 px-3 bg-white z-10;
+  @apply absolute justify-between top-0 right-0 w-full flex justify-end py-4 px-3 bg-white z-10;
+}
+
+.nav-container {
+  transition: all 0.3s linear;
+}
+
+.nav-container.sticky {
+  @apply fixed opacity-75 py-2;
 }
 
 .logo-box {
   @apply flex items-center;
 }
+
 .menu {
   @apply hidden lg:flex text-gray-800 font-semibold;
+
   .menu-item {
     @apply mx-4;
 
@@ -23,7 +33,7 @@
     transparent 50%,
     $color-primary 50%
   );
-  background-size: 240%;
+  background-size: 255%;
   transition: all, 0.6s;
 
   &:hover {
@@ -84,6 +94,7 @@
 
 .mobile-menu {
   @apply flex flex-col w-full justify-center items-center -top-96  fixed z-10 bg-white bg-opacity-90 text-center;
+
   a {
     @apply block text-4xl my-4;
   }
@@ -102,4 +113,16 @@
   top: 95px;
   height: 75vh;
   display: block;
+}
+
+.pagetop-btn {
+  @apply fixed bottom-14 right-14 border-2 border-solid border-yellow-500 rounded-full h-11 w-11;
+
+  i {
+    @apply text-yellow-500 text-2xl;
+  }
+}
+
+.pagetop-btn {
+  transition: opacity 1s ease-in-out;
 }

@@ -1,27 +1,37 @@
-.header-about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
+.title-container {
+  @apply flex justify-center items-center mt-48 mb-16;
 
-.about-title {
-  margin-right: 100px;
-  & h1 {
-    font-size: 55px;
-    line-height: 1.35;
-    margin-bottom: 20px;
-  }
+  .title-box {
+    @apply relative;
 
-  & h2 {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 20px;
+    h1 {
+      @apply text-5xl sm:text-6xl mb-5;
+
+      .title {
+        @apply block tracking-wider mb-6;
+      }
+
+      .title-first {
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+      }
+
+      .title-second {
+        animation-name: moveInRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+      }
+    }
+
+    .know-more {
+      @apply hover:bg-yellow-500 text-2xl absolute -right-6;
+    }
   }
 }
 
 .highlight {
-  position: relative;
+  @apply relative;
 
   &::after {
     display: block;
@@ -38,8 +48,18 @@
   }
 }
 
-.index-task {
-  margin: 100px 0;
-  text-align: center;
-  font-size: 100px;
+.company-intro {
+  @apply max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-32 mb-28;
+
+  .company-desc {
+    @apply flex flex-col justify-center;
+  }
+
+  .company-img {
+    @apply flex justify-center items-center;
+
+    img {
+      @apply block;
+    }
+  }
 }
