@@ -1,66 +1,67 @@
-.task-title {
-  @apply w-full flex justify-between py-3;
-}
+.task-list {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 leading-10;
 
-.task-container {
-  @apply flex flex-col items-center mx-0 leading-6;
+  .task-item {
+    @apply flex flex-col bg-white shadow-lg rounded-xl;
 
-  .task-row {
-    @apply max-w-4xl flex flex-col justify-center;
+    .task-img {
+      @apply bg-city;
+    }
 
-    .task-list {
-      @apply relative leading-6 my-5 border-solid bg-white px-3 py-4 rounded shadow-md;
+    .task-img {
+      height: 200px;
+      background-size: cover;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
 
-      .task-item-title {
-        @apply mb-4;
+    .task-details {
+      @apply px-3 py-3 mt-2;
 
-        .task-item-title a {
-          @apply hover:text-gray-600;
-        }
+      .task-title {
+        @apply mb-2 relative font-bold ml-3;
       }
 
-      .task-inf .inf-title {
-        @apply text-right;
+      .task-title::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 3px;
+        height: 4px;
+        width: 70%;
+        background-color: $color-primary
       }
 
-      .task-inf p {
-        @apply my-2;
+      p {
+        @apply px-4 py-1 border-b border-solid border-gray-100;
       }
+    }
 
-      .task-desc {
-        @apply text-gray-500 relative h-40 overflow-hidden;
+    .task-footer {
+      @apply flex-grow flex justify-between items-end px-3 py-3;
 
-        p {
-          @apply py-4 px-4;
-        }
-      }
-
-      .task-desc-spec {
-        height: auto;
-      }
-
-      .inf-open {
-        display: block;
-        margin-left: 95%;
-        margin-top: 10px;
-        font-weight: 600;
-        background-color: #aaa;
-        padding: 5px 5px;
-        border-radius: 3px;
-        color: #fff;
-
-        &:hover {
-          opacity: 0.8;
-        }
-      }
-
-      .task-edit-link {
-        @apply absolute top-0 right-4;
+      .task-unpaid,.task-security-deposit {
+        @apply text-4xl mb-3 hover:opacity-80;
       }
     }
   }
 }
 
-.inf-title {
-  @apply font-bold text-gray-800;
+.task-more-btn {background-image: linear-gradient(to right, #FF8008 0%, #FFC837  51%, #FF8008  100%)}
+.task-more-btn {
+  margin: 10px;
+  padding: 8px 25px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 20px;
+  display: block;
+}
+
+.task-more-btn:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
