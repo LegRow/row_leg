@@ -4,7 +4,6 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "stylesheets/application";
 import "controllers";
-
 import "@fortawesome/fontawesome-free/css/all";
 import "../view-event/index";
 import "stylesheets/application"
