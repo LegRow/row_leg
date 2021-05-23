@@ -5,7 +5,7 @@
     @apply flex flex-col bg-white shadow-lg rounded-xl relative lg:text-lg;
   
     .task-img {
-      @apply bg-city relative;
+      @apply bg-yellow-600 relative;
 
       p {
         @apply absolute text-white text-4xl font-semibold font-mono bottom-3 right-2 opacity-70;
@@ -14,7 +14,6 @@
 
     .task-img {
       height: 200px;
-      background-size: cover;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
       border-radius: 0.75rem 0.75rem 0 0;
     }
