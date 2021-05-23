@@ -1,10 +1,10 @@
 document.addEventListener('turbolinks:load', function () {
 
-  const acc = document.getElementsByClassName("accordion");
+    const acc = document.getElementsByClassName("accordion");
+    let i;
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
 
-  var i;
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function () {
       this.classList.toggle("active");
       const panel = this.nextElementSibling;
       if (panel.style.display === "block") {
