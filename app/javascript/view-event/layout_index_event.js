@@ -16,11 +16,11 @@ document.addEventListener("turbolinks:load", () => {
   });
 
   const pageTopBtn = document.querySelector(".pagetop-btn");
-  const show = function() {
+  const show = function () {
     pageTopBtn.style.visibility = "visible";
     pageTopBtn.style.opacity = "1";
   };
-  const hidden = function() {
+  const hidden = function () {
     pageTopBtn.style.visibility = "hidden";
     pageTopBtn.style.opacity = "0";
   };
