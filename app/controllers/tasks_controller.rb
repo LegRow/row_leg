@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_task, only:[:edit, :update, :destroy]
-
+  before_action :check_sign_in
 
   def index
     @tasks = Task.all
@@ -87,8 +87,32 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: '已發送確認通知信給受雇者，待受雇者支付押金後，則表示成功承接'
   end
 
+  def qrcode_show
+    @task_url = task_finish_show_url(@task)
+  end
 
-  private
+  def finish_show
+    if check_employee?
+      render :finish_show
+    else
+      render 'error' , message: '非任務承接者'
+    end
+  end
+
+  def finish
+    if check_employee?
+      if @task.state == :deal
+        @task.finish!
+        render :finish
+      else
+        render 'error', message: '非deal,不能finish!'
+      end
+    else
+      render 'error', message: '非任務承接者'
+    end
+  end
+
+private
   def find_task
     begin
       @task = current_user.tasks.find(params[:id])
@@ -105,4 +129,11 @@ class TasksController < ApplicationController
     params.require(:task).permit(:merchant_order_number)
   end
 
+  def check_sign_in
+    redirect_to root_path unless signed_in?
+  end
+
+  def check_employee?
+    current_user == @task.employee
+  end
 end
