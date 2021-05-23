@@ -14,7 +14,7 @@ export default class extends Controller {
     const employeeMapOption = {
       // 地圖初始化設定：位置與縮放
       zoom: 14,
-      center: { lat: employeeMap.dataset.lat, lng: employeeMap.dataset.lng }, // 這邊之後也要填入店家位置
+      center: { lat: 25.009571560497424, lng: 121.46213302250602 }, // 這邊之後也要填入店家位置
     };
     const locationChannel = consumer.subscriptions.create(
       { channel: "LocationsChannel", employeeId: employeeId },
