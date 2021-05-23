@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'cashflow/to_newebpay'
   post 'cashflow/thankyou'
   post 'cashflow/from_newebpay'
-  resources :qrcodes, only: [:show]
+
 
   #任務頁面相關
   resources :rooms, only: [:index, :new, :create, :show]

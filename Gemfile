@@ -31,7 +31,7 @@ gem "aasm", "~> 5.2"
 # 管理機密資訊
 gem "figaro", "~> 1.2"
 
-gem 'rqrcode', '~> 0.10.1'
+
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-github'
