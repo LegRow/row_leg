@@ -34,8 +34,8 @@ class CashflowController < ApplicationController
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
       ['Email', 't5204713910@gmail.com'],
-      ['ReturnURL' , ENV["ngrok_https"] + "/cashflow/thankyou"],
-      ['NotifyURL', ENV["ngrok_https"] + "/cashflow/from_newebpay"]
+      ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
+      ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
   end
 
