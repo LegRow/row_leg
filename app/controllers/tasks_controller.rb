@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :finish_show, :qrcode_show, :finish]
   before_action :check_sign_in
 
+
   def index
     @tasks = Task.all
   end
@@ -95,7 +96,7 @@ class TasksController < ApplicationController
     if check_employee?
       render :finish_show
     else
-      render 'error', message: '非任務承接者'
+      render 'error', locals: { message: '非任務承接者' }
     end
   end
 
@@ -105,10 +106,10 @@ class TasksController < ApplicationController
         @task.finish!
         render :finish
       else
-        render 'error', message: '非deal,不能finish!'
+        render 'error', locals: { message: '非deal,不能finish!' }
       end
     else
-      render 'error', message: '非任務承接者'
+      render 'error', locals: { message: '非任務承接者' }
     end
   end
 
@@ -119,6 +120,10 @@ private
     rescue
       redirect_to tasks_path
     end
+  end
+
+  def find_employee
+    @task = Task.where(employee: current_user).find(params[:id])
   end
 
   def task_params
