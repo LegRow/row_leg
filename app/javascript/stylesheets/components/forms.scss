@@ -60,3 +60,21 @@
 .btnn {
   color: chocolate;
 }
+
+// validate
+
+.field.success input {
+  @apply border-green-300 border border-solid;
+}
+
+.field.error input {
+  @apply border border-solid border-red-600;
+}
+
+.field small {
+  @apply text-red-600 invisible;
+}
+
+.field.error small {
+  @apply text-red-600 visible;
+}
