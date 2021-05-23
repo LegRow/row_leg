@@ -34,8 +34,8 @@ class CashflowController < ApplicationController
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
       ['Email', 't5204713910@gmail.com'],
-      ['ReturnURL' , ENV["ngrok_https"] + "/cashflow/thankyou"],
-      ['NotifyURL', ENV["ngrok_https"] + "/cashflow/from_newebpay"]
+      ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
+      ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
   end
 
@@ -56,8 +56,8 @@ class CashflowController < ApplicationController
     trade_information = params["TradeInfo"]
     trade_sha256 = params["TradeSha"]
 
-    key = Rails.application.credentials.newebpay[:key]
-    iv = Rails.application.credentials.newebpay[:iv]
+    key = ENV["newebpay_key"]
+    iv = ENV["newebpay_iv"]
 
     # 解碼並更新付費狀態
     if status == "SUCCESS"
