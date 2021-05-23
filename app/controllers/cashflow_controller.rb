@@ -1,6 +1,6 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
@@ -10,7 +10,7 @@ class CashflowController < ApplicationController
     # ['MerchantOrderNo', Time.now.to_i.to_s],
     # ['Amt', '93'],
     # ['ItemDesc', 'TEST'],
-    # ['Email', 't5204713910@gmail.com'],
+    # ['Email', '藍新回傳訊息的信箱'],
     # ['ReturnURL' ,"/cashflow/thankyou"]
 
     params_for_newbpay = params["for_newebpay"]
@@ -33,7 +33,7 @@ class CashflowController < ApplicationController
       ['MerchantOrderNo', params_for_newbpay["order_number"]],
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
-      ['Email', 't5204713910@gmail.com'],
+      ['Email', ENV["email_for_newebpay"]],
       ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
       ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
