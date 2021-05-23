@@ -3,13 +3,13 @@
 
   .task-item {
     @apply flex flex-col bg-white shadow-lg rounded-xl relative lg:text-lg;
-  
+
     .task-img {
       @apply bg-yellow-600 relative;
 
       p {
         @apply absolute text-white text-4xl font-semibold font-mono bottom-3 right-2 opacity-70;
-      } 
+      }
     }
 
     .task-img {
@@ -26,13 +26,13 @@
       }
 
       .task-title::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -5px;
         left: 3px;
         height: 4px;
         width: 70%;
-        background-color: $color-primary
+        background-color: $color-primary;
       }
 
       p {
@@ -46,12 +46,12 @@
     .task-footer {
       @apply flex-grow flex justify-between items-end px-3 py-3;
 
-      .task-unpaid,.task-security-deposit {
+      .task-unpaid,
+      .task-security-deposit {
         @apply text-4xl mb-3 hover:opacity-80;
       }
 
       .task-more-btn {
-
         i {
           @apply hidden sm:inline-block ml-1;
         }
@@ -61,21 +61,28 @@
 }
 
 .task-item {
-  transition: all 0.3s ;
+  transition: all 0.3s;
 }
 
 .task-item:hover {
   transform: translateY(-1rem) scale(1.02);
 }
 
-.task-more-btn {background-image: linear-gradient(to right, #FF8008 0%, #FFC837  51%, #FF8008  100%)}
+.task-more-btn {
+  background-image: linear-gradient(
+    to right,
+    #ff8008 0%,
+    #ffc837 51%,
+    #ff8008 100%
+  );
+}
 .task-more-btn {
   margin: 10px;
   padding: 8px 25px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;            
+  color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 20px;
   display: block;
