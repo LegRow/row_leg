@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_task, only:[:edit, :update, :destroy]
+  before_action :find_task, only:[:edit, :update, :destroy, :finish_show, :qrcode_show, :finish]
   before_action :check_sign_in
 
   def index
@@ -95,7 +95,7 @@ class TasksController < ApplicationController
     if check_employee?
       render :finish_show
     else
-      render 'error' , message: '非任務承接者'
+      render 'error', message: '非任務承接者'
     end
   end
 
