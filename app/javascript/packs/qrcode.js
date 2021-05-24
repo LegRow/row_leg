@@ -1,13 +1,15 @@
 document.addEventListener('turbolinks:load', function(){
 
-    new QRCode(document.getElementById("qrcode"), "/qrcode?message=#{@target_url}");
+    const $qrcode = document.getElementById('qrcode');
 
-   let qrcode = new QRCode(document.getElementById("qrcode"), {
-      text: "/qrcode?message=#{@target_url}",
+    const message = $qrcode.dataset.message
+
+    new QRCode($qrcode, {
+      text: message,
       width: 128,
       height: 128,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
+      colorDark: '#000',
+      colorLight: '#fff',
       correctLevel: QRCode.CorrectLevel.H
-  });
+    })
 })
