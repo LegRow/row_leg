@@ -1,35 +1,29 @@
-.form-popup{
-  height: 100%;
-  width: 100%;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  position: fixed;
-  z-index: 1px;
-  
-}
-.text{
-  text-align: center;
-  border: 3px solid rgb(255, 174, 0);
-  width: 40%;
-  position: relative;
+.form-design {
+  width: 50%;
+  background-color: blanchedalmond;
+  padding: 12px;
+  border-radius: 5px;
   margin: auto;
+}
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  margin-top: 6px;
   font-size: 20px;
-  margin-top: 70px;
-  color: rgb(235, 154, 15);
-  background-color: rgb(238, 211, 175);
-}
-.btn{
-  text-align: right;
-  color:rgb(235, 154, 15);
-}
-.form-popup .closebtn{
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  color: blanchedalmond;
 }
 
-.form-popup .closebtn:hover {
-  color: #ccc;
+input[type="submit"] {
+  background-color: rgb(226, 156, 43);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 50%;
 }

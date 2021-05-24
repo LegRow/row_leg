@@ -1,6 +1,6 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
@@ -10,7 +10,7 @@ class CashflowController < ApplicationController
     # ['MerchantOrderNo', Time.now.to_i.to_s],
     # ['Amt', '93'],
     # ['ItemDesc', 'TEST'],
-    # ['Email', 't5204713910@gmail.com'],
+    # ['Email', '藍新回傳訊息的信箱'],
     # ['ReturnURL' ,"/cashflow/thankyou"]
 
     params_for_newbpay = params["for_newebpay"]
@@ -33,9 +33,9 @@ class CashflowController < ApplicationController
       ['MerchantOrderNo', params_for_newbpay["order_number"]],
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
-      ['Email', 't5204713910@gmail.com'],
-      ['ReturnURL' , ENV["ngrok_https"] + "/cashflow/thankyou"],
-      ['NotifyURL', ENV["ngrok_https"] + "/cashflow/from_newebpay"]
+      ['Email', ENV["email_for_newebpay"]],
+      ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
+      ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
   end
 
@@ -56,8 +56,8 @@ class CashflowController < ApplicationController
     trade_information = params["TradeInfo"]
     trade_sha256 = params["TradeSha"]
 
-    key = Rails.application.credentials.newebpay[:key]
-    iv = Rails.application.credentials.newebpay[:iv]
+    key = ENV["newebpay_key"]
+    iv = ENV["newebpay_iv"]
 
     # 解碼並更新付費狀態
     if status == "SUCCESS"

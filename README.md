@@ -1,8 +1,9 @@
 # Row-leg - 5xRuby ASTRO Camp 7th Demo Day Project
 
-### 模擬新創代排行業，練習資料庫關聯及建立，串接藍星金流，串接Google Map API，網頁元素互動及即時通訊之JavaScript腳本撰寫。
+### 模擬新創代排行業，練習資料庫關聯及建立，串接藍星金流，串接 Google Map API，網頁元素互動及即時通訊之 JavaScript 腳本撰寫。
 
 ### Ruby ~> 2.7.3
+
 ### Rails ~> 6.1.3.2
 
 ```

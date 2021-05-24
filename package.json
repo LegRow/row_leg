@@ -18,6 +18,10 @@
   "devDependencies": {
     "autoprefixer": "^9",
     "postcss": "^7",
+    "prettier": "^2.3.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "format": "prettier --write \"**/*.+(js|json|scss|html)\""
   }
 }

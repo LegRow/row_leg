@@ -1,11 +1,8 @@
-document.addEventListener('turbolinks:load', function(){
-
-    const acc = document.getElementsByClassName("accordion");
-    
-    var i;
-   
-    for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
+document.addEventListener("turbolinks:load", function () {
+  const acc = document.getElementsByClassName("accordion");
+  let i;
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
       this.classList.toggle("active");
       const panel = this.nextElementSibling;
       if (panel.style.display === "block") {
@@ -15,4 +12,4 @@ document.addEventListener('turbolinks:load', function(){
       }
     });
   }
-})
+});
