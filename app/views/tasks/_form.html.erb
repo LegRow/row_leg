@@ -43,7 +43,7 @@
     <%= f.number_field :reward, min: 200 %>
 
     <%= f.label "代墊金額新台幣:" %>
-    <%= f.number_field :behalf %>
+    <%= f.number_field :behalf, min: 0 %>
   </div>
 
   <div class="field task-input-special">
