@@ -34,13 +34,29 @@ document.addEventListener("turbolinks:load", () => {
     };
 
     signupBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-
       checkRequired(inputArr);
 
       checkLength(tel, 10);
       checkLength(bankAccount, 10);
       checkLength(password, 6);
+      console.log(4);
+
+      const checkError = inputArr.map(function (input) {
+        return input.parentElement.classList.contains("error");
+      });
+
+      console.log(checkError);
+      if (checkError.includes(true)) {
+        e.preventDefault();
+      }
+      // if (2 === 2) {
+      //   e.preventDefault();
+      //   console.log("阻擋");
+      //   return false;
+      // }
+      // const anyError = inputArr.forEach
+      // if ()
+      // if ()
     });
   }
 });
