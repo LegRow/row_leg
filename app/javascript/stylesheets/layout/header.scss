@@ -21,7 +21,7 @@
     @apply mx-4;
 
     .menu-link {
-      @apply inline-block py-3 px-5 text-xl;
+      @apply inline-block py-3 px-3 text-xl;
     }
   }
 }
@@ -116,7 +116,7 @@
 }
 
 .pagetop-btn {
-  @apply fixed bottom-14 right-14 border-2 border-solid border-yellow-500 rounded-full h-11 w-11;
+  @apply fixed bottom-14 right-14 border-2 border-solid border-yellow-500 rounded-full h-11 w-11 z-20;
 
   i {
     @apply text-yellow-500 text-2xl;

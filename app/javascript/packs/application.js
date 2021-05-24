@@ -6,14 +6,10 @@ import "stylesheets/application";
 import "controllers";
 import "@fortawesome/fontawesome-free/css/all";
 import "../view-event/index";
-import "stylesheets/application"
-import "packs/aboutus"
+import "stylesheets/application";
+import "packs/aboutus";
+
 
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
-
-
-
-
-

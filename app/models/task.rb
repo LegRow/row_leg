@@ -63,7 +63,6 @@ class Task < ApplicationRecord
     [address_city, address_district, address_street].join
   end
 
-
   private
 
   def buffer_time
