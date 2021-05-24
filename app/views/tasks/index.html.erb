@@ -50,11 +50,13 @@
             <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_task_path(task) %>
             <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
-          <% end %>
+        <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+          目前此任務狀態：<%= task.state %>
+          <br>
           <div class="task-footer">
             <% if employer_of task %>
             <div class="task-unpaid">
-              <% if not employer_paid task %><%= link_to '<i class="fas fa-credit-card"></i> Pay'.html_safe, controller:
+               <% if task.pending? %><%= link_to '<i class="fas fa-credit-card"></i> Pay'.html_safe, controller:
               'cashflow', action: 'to_newebpay',for_newebpay: {reward:
               task.reward, behalf: task.behalf, order_number:
               task.order.merchant_order_number} %>
@@ -63,9 +65,8 @@
             <% else %>
             <div class="task-security-deposit">
               <% if employer_confirmed task %><%= link_to '<i class="fas fa-handshake"></i> 支付押金'.html_safe,
-              controller: 'cashflow', action: 'to_newebpay',for_newebpay:
-              {reward: (task.reward * 0.2).to_i, behalf: task.behalf,
-              order_number: task.order.merchant_order_number + "B"} %>
+             to_newebpay_cashflow_url(reward: (task.reward * 0.2).to_i, behalf: task.behalf,
+              order_number: task.order.merchant_order_number + "B") %>
               <% end %>
             </div>
             <% end %>
