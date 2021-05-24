@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @tasks = Task.all

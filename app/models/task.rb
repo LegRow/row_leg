@@ -69,6 +69,7 @@ class Task < ApplicationRecord
   def address_changed?
     address_city_changed? || address_district_changed? || address_street_changed?
   end
+
   private
 
   def buffer_time
