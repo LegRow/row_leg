@@ -14,6 +14,9 @@ class Task < ApplicationRecord
   after_create :create_room_and_order
   after_destroy :destroy_room
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :brief_description, presence: true
   validates :description, presence: true
   validates :address_city, presence: true
@@ -63,6 +66,9 @@ class Task < ApplicationRecord
     [address_city, address_district, address_street].join
   end
 
+  def address_changed?
+    address_city_changed? || address_district_changed? || address_street_changed?
+  end
 
   private
 

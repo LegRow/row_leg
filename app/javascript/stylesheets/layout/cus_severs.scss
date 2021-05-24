@@ -19,7 +19,14 @@
   @apply text-white px-3 py-5 rounded cursor-pointer text-xl;
 }
 
-.cus-submit {
+.cs-submit {
+  display: block;
   background-color: rgb(226, 156, 43);
-  margin-left: 50%;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
 }

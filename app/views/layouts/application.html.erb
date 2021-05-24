@@ -9,7 +9,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkZCwD7ODJAaUlHw4NPzY6i8cEKSlOndQ&callback=initMap", async: true></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%="#{ENV['google_api_key']}"%>&callback", async: true></script>
   </head>
 
   <body>
