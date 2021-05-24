@@ -21,10 +21,10 @@ module CashflowHelper
   end
 
   def http_build_query(informations)
-    puts "========================================="
-    puts information
     result = []
     for information in informations
+      puts "========================================="
+      puts information
       result_part = CGI.escape(information[0]) + '=' + CGI.escape(information[1])
       result.append(result_part)
     end
