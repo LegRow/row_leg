@@ -6,17 +6,17 @@
     </div>
     <div class="task-show-box">
       <div class="task-show-inf">
-        <p class="text-2xl">
-          <strong>任務:</strong><%= @task.brief_description %>
+        <p class="text-3xl">
+          <strong>任務名稱：</strong><%= @task.brief_description %>
         </p>
-        <p><strong>任務內容:</strong><br /><%= @task.description %></p>
-        <p><strong>地址:</strong><%= @task.address %></p>
-        <p><strong>店名/位置:</strong><%= @task.store_name %></p>
-        <p><strong>酬勞:</strong><%= "新台幣#{@task.reward}" %></p>
-        <p><strong>代墊費用:</strong><%= "新台幣#{@task.behalf}" %></p>
-        <p><strong>開始時間:</strong><%= @task.task_at&.strftime('%Y-%m-%d%H:%M:%S') %></p>
-        <p><strong>結束時間:</strong><%= @task.task_end&.strftime('%Y-%m-%d%H:%M:%S') %></p>
-        <p><strong>備註:</strong><%= @task.remarks %></p>
+        <p><strong>任務內容：</strong><br /><%= @task.description %></p>
+        <p><i class="fas fa-store text-xl"></i><%= @task.store_name %></p>
+        <p><i class="fas fa-map-marked-alt text-xl"></i><%= @task.address %></p>
+        <p><i class="fas fa-hand-holding-usd text-xl"></i><%= "新台幣#{@task.reward}" %></p>
+        <p><i class="fas fa-dollar-sign text-xl"></i><%= "新台幣#{@task.behalf}" %></p>
+        <p><i class="fas fa-plane-departure text-xl"></i><%= @task.task_at %></p>
+        <p><i class="fas fa-plane-arrival text-xl"></i><%= @task.task_end %></p>
+        <p><i class="fas fa-comment-alt text-xl"></i><%= @task.remarks %></p>
         <div class="task-show-link">
           <div>
             <%= link_to '返回', tasks_path, class: "btn-text my-2" %>
