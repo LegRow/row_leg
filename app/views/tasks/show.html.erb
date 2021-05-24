@@ -2,7 +2,7 @@
 <section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>" data-employer-id="<%= @task.user_id %>" data-current-user="<%= current_user %>">
   <div class="task-show-row">
     <div class="task-show-title">
-      <h2>任務詳情</h2>
+      <h2 data-controller="store"% >任務詳情</h2>
     </div>
     <div class="task-show-box">
       <div class="task-show-inf">
@@ -37,7 +37,7 @@
           <% end %>
         </div>
       </div>
-      <div id="maparea" class="task-show-map"></div>
+      <div id="maparea" class="task-show-map" data-lat="<%= @task.latitude %>" data-lng="<%= @task.longitude %>" data-store-target="output"></div>
       <div id="employee" class="task-show-map"></div>
     </div>
   </div>
