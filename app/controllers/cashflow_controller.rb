@@ -68,7 +68,11 @@ class CashflowController < ApplicationController
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
       # 訂單號碼有無 B，執行event
-      target_order_number.include?("B")? task.employee_pay : task.employer_pay
+      if target_order_number.include?("B")
+        task.employee_pay
+      else
+        task.employer_pay
+      end
       task.save
     else
       # render or redirect
