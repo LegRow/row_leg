@@ -67,11 +67,16 @@ class CashflowController < ApplicationController
       target_order_number = result.partition('=').last
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
+      puts task
       # 訂單號碼有無 B，執行event
       if target_order_number.include?("B")
+        puts "============================="
         task.employee_pay
+        puts task
       else
+        puts "============================="
         task.employer_pay
+        puts task
       end
       task.save
     else
