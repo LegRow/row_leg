@@ -35,31 +35,53 @@
   }
 }
 
-.term-containerer{
-    margin: auto;
-    font-size: 14px;
-    overflow: auto;
-    height:300px;
-    border: chocolate solid 4px;
-    width:250px;
+.term-containerer {
+  margin: auto;
+  font-size: 14px;
+  overflow: auto;
+  height: 300px;
+  border: chocolate solid 4px;
+  width: 250px;
 }
-.container .text{
-    text-align: justify;
+.container .text {
+  text-align: justify;
 }
 
-.foot{
-    text-align: right;
-
+.foot {
+  text-align: right;
 }
 .tx {
   margin-left: 35px;
 }
 
-
-.box{
+.box {
   display: flex;
-
+  justify-content: center;
+  align-items: center;
 }
-.btnn {
-  color: chocolate;
+
+.check-agree {
+  @apply text-red-600;
+}
+
+// validate
+
+.field.success input {
+  @apply border-green-400 border border-solid;
+}
+
+.field.error input {
+  @apply border border-solid border-red-600;
+}
+
+.field small {
+  @apply text-red-600 invisible;
+}
+
+.field.error small {
+  @apply text-red-600 visible;
+}
+
+.agree-error {
+  @apply flex justify-center invisible;
 }

@@ -1,6 +1,6 @@
 class CashflowController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, only: [:from_newebpay, :thankyou]
+
   def to_newebpay
     # 串藍新至少要這些東西
     # ['MerchantID', 'MS119996394'],
@@ -10,17 +10,18 @@ class CashflowController < ApplicationController
     # ['MerchantOrderNo', Time.now.to_i.to_s],
     # ['Amt', '93'],
     # ['ItemDesc', 'TEST'],
-    # ['Email', 't5204713910@gmail.com'],
-    # ['ReturnURL' ,"/cashflow/thankyou"]
+    # ['Email', '藍新回傳訊息的信箱'],
+    # ['ReturnURL', "/cashflow/thankyou"]
 
     params_for_newbpay = params["for_newebpay"]
     applicant = params_for_newbpay["applicant"]
+    order_number = params_for_newbpay["order_number"]
 
     if applicant
       # 受雇者押金 20%
       paying_amount = params_for_newbpay["reward"].to_f * 0.2
       #受雇者的訂單編號 + B
-      params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
+      order_number = order_number + "B"
     else
       paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
     end
@@ -30,12 +31,12 @@ class CashflowController < ApplicationController
       ['RespondType', 'String'],
       ['TimeStamp', Time.now.to_i.to_s],
       ['Version', '1.5'],
-      ['MerchantOrderNo', params_for_newbpay["order_number"]],
+      ['MerchantOrderNo', order_number],
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
-      ['Email', 't5204713910@gmail.com'],
-      ['ReturnURL' , ENV["ngrok_https"] + "/cashflow/thankyou"],
-      ['NotifyURL', ENV["ngrok_https"] + "/cashflow/from_newebpay"]
+      ['Email', ENV["email_for_newebpay"]],
+      ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
+      ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
   end
 
@@ -56,22 +57,31 @@ class CashflowController < ApplicationController
     trade_information = params["TradeInfo"]
     trade_sha256 = params["TradeSha"]
 
-    key = Rails.application.credentials.newebpay[:key]
-    iv = Rails.application.credentials.newebpay[:iv]
+    key = ENV["newebpay_key"]
+    iv = ENV["newebpay_iv"]
 
     # 解碼並更新付費狀態
     if status == "SUCCESS"
       result = aes_decrypt(trade_information, key, iv)
       result = result.split("&")[5]
       target_order_number = result.partition('=').last
-      target_order = Order.find_by(merchant_order_number: target_order_number)
-      task = Task.find_by(id: target_order.task_id)
-      # 訂單號碼有無 B，執行event
-      target_order_number.include?("B")? task.employee_pay : task.employer_pay
+      if target_order_number.include?("B")
+        target_order_number.slice! "B"
+        target_order = Order.find_by(merchant_order_number: target_order_number)
+        task = Task.find_by(id: target_order.task_id)
+        task.employee_pay
+      else
+        target_order = Order.find_by(merchant_order_number: target_order_number)
+        task = Task.find_by(id: target_order.task_id)
+        task.employer_pay
+      end
       task.save
     else
       # render or redirect
     end
+  end
+
+  def thankyou
   end
 
   private

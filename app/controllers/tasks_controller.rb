@@ -56,13 +56,13 @@ class TasksController < ApplicationController
 
   def send_applicant_apply_email
     # 獲得雇主
-    employer_id = params["apply_information"]["employer_id"]
+    employer_id = params["employer_id"]
     @employer = User.find_by(id: employer_id)
     # 獲得應徵者
-    applicant_id = params["apply_information"]["applicant_id"]
+    applicant_id = params["applicant_id"]
     @applicant = User.find_by(id: applicant_id)
     # 獲得此 task
-    task_id = params["apply_information"]["task_id"]
+    task_id = params["task_id"]
     @task = Task.find_by(id: task_id)
     # 寄信通知雇主
     UserMailer.someone_apply_note(@employer, @applicant, @task).deliver_now
@@ -128,7 +128,7 @@ private
   end
 
   def task_params
-    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
+    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks, :latitude, :longitude)
   end
 
   def order_params

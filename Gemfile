@@ -13,21 +13,17 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'kaminari'
 gem "paranoia", "~> 2.2"
-
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
-
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 gem 'pundit', '~> 2.1'
 gem 'geocoder', '~> 1.6', '>= 1.6.7'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 gem "aasm", "~> 5.2"
-
 # 管理機密資訊
 gem "figaro", "~> 1.2"
 
@@ -43,9 +39,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2'
   gem 'hirb-unicode', '~> 0.0.5'
-  gem 'factory_bot_rails'
-  gem 'faker', '~> 2.17'
-
 end
 
 group :development do

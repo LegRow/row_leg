@@ -42,8 +42,8 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.url = 'https://rowlegfirst.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://rowlegfirst.herokuapp.com/', /http:\/\/rowlegfirst.herokuapp.com.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -63,7 +63,17 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "gem_yarn_init_production"
 
   config.action_mailer.perform_caching = false
-
+  config.action_mailer.default_url_options = { :host => 'rowlegfirst.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    domain: "rowleg.online",
+    user_name: ENV["smtp_user_name"],
+    password: ENV["smtp_password"],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
