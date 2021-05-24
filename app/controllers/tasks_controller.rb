@@ -52,7 +52,6 @@ class TasksController < ApplicationController
   end
 
   def send_applicant_apply_email
-    debugger
     # 獲得雇主
     employer_id = params["employer_id"]
     @employer = User.find_by(id: employer_id)
