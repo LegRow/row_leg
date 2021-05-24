@@ -3,10 +3,10 @@
   <%= text_field_tag("MerchantID", 'MS119996394') %>
   <br>
   <%= label_tag("TradeInfo") %>
-  <%= text_field_tag("TradeInfo", encrypt_aes(@data_for_newebpay, ENV["newebpay_key"], ENV["newebpay_iv"])) %>
+  <%= text_field_tag("TradeInfo", encrypt_aes("test", ENV["newebpay_key"], ENV["newebpay_iv"])) %>
   <br>
   <%= label_tag("TradeSha") %>
-  <%= text_field_tag("TradeSha", encrypt_aes_sha256_uppercase(@data_for_newebpay, ENV["newebpay_key"], ENV["newebpay_iv"])) %>
+  <%= text_field_tag("TradeSha", encrypt_aes_sha256_uppercase("test", ENV["newebpay_key"], ENV["newebpay_iv"])) %>
   <br>
   <%= label_tag("Version") %>
   <%= text_field_tag("Version", '1.5') %>
