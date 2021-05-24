@@ -14,6 +14,9 @@ class Task < ApplicationRecord
   after_create :create_room_and_order
   after_destroy :destroy_room
 
+  geocoded_by :address
+  after_validation :geocode
+
   validates :brief_description, presence: true
   validates :description, presence: true
   validates :address_city, presence: true
