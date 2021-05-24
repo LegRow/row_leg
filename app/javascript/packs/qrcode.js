@@ -1,3 +1,5 @@
+import QRCode from 'davidshimjs-qrcodejs'
+
 document.addEventListener('turbolinks:load', function(){
 
     const $qrcode = document.getElementById('qrcode');
