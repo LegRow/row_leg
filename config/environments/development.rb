@@ -80,11 +80,12 @@ Rails.application.configure do
   config.hosts << /[a-z0-9]+\.ngrok\.io/
 
   # add the following SMTP setup
+  config.action_mailer.default_url_options = { :host => 'rowlegfirst.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.mailgun.org',
     port: 587,
-    domain: "rowleg.online",
+    domain: config.hosts,
     user_name: ENV["smtp_user_name"],
     password: ENV["smtp_password"],
     authentication: 'plain',

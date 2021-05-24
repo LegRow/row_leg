@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @tasks = Task.all
@@ -97,7 +97,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks)
+    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks, :latitude, :longitude)
   end
 
   def order_params
