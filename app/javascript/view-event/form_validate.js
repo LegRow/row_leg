@@ -1,5 +1,6 @@
 document.addEventListener("turbolinks:load", () => {
   const signupForm = document.querySelector("#signup-form");
+
   if (signupForm) {
     const email = document.querySelector(".email");
     const name = document.querySelector(".name");
@@ -9,54 +10,107 @@ document.addEventListener("turbolinks:load", () => {
     const password = document.querySelector(".password");
     const password2 = document.querySelector(".password2");
     const signupBtn = document.querySelector(".btn");
-
+    const male = document.querySelector("#user_gender_male");
+    const female = document.querySelector("#user_gender_female");
+    const agree = document.querySelector("#agree");
     const inputArr = [email, name, age, tel, bankAccount, password, password2];
-    // 檢查欄位是否填寫
+
+    const showSuccess = function (input) {
+      input.parentElement.className = "field success";
+    };
+    const showError = function (input) {
+      input.parentElement.className = "field error";
+    };
+    // 檢查空欄
     const checkRequired = function (inputArr) {
       inputArr.forEach((input) => {
         if (input.value === "") {
-          input.parentElement.className = "field error";
+          showError(input);
           input.nextElementSibling.textContent = `${input.parentElement.firstElementChild.textContent}不能為空`;
         } else {
-          input.parentElement.className = "field success";
+          showSuccess(input);
         }
       });
     };
 
-    // 檢查長度
-    const checkLength = function (input, min) {
-      if (input.value.length < min) {
-        input.parentElement.className = "field error";
-        input.nextElementSibling.textContent = `${input.parentElement.firstElementChild.textContent}不能小於${min}碼`;
+    // 檢查信箱格式
+    function checkEmail(input) {
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (re.test(input.value.trim())) {
+        showSuccess(input);
       } else {
-        input.parentElement.className = "field success";
+        showError(input);
+        input.nextElementSibling.textContent = "信箱格式錯誤";
+      }
+    }
+
+    // 檢查電話 帳戶長度與是否為數字
+    const checkLength = function (input) {
+      if (input.value.length !== 10) {
+        showError(input);
+        input.nextElementSibling.textContent = `${input.parentElement.firstElementChild.textContent}必須為10碼`;
+      } else if (!/^[0-9]+$/.test(input.value)) {
+        showError(input);
+        input.nextElementSibling.textContent = `${input.parentElement.firstElementChild.textContent}必須為數字`;
+      } else {
+        showSuccess(input);
+      }
+    };
+
+    // 檢查密碼長度
+    const checkPasswordLength = function (input) {
+      if (input.value.length < 6) {
+        showError(input);
+        input.nextElementSibling.textContent = "密碼必須至少6碼";
+      }
+    };
+
+    // 檢查密碼是否一致
+    const checkPasswordMath = function (input1, input2) {
+      if (input1.value !== input2.value) {
+        showError(input2);
+        input2.nextElementSibling.textContent = "密碼不一致";
+      }
+    };
+
+    //  檢查checkbox
+    const checkBoxGender = function (option1, option2) {
+      if ((option1.checked === false) & (option2.checked === false)) {
+        option1.parentElement.lastElementChild.textContent = "請選擇性別";
+        option1.parentElement.lastElementChild.style.visibility = "visible";
+      } else {
+        option1.parentElement.lastElementChild.style.visibility = "hidden";
+      }
+    };
+
+    const checkBoxAgree = function (option) {
+      if (option.checked === false) {
+        alert("請勾選已詳細閱讀");
       }
     };
 
     signupBtn.addEventListener("click", (e) => {
       checkRequired(inputArr);
 
-      checkLength(tel, 10);
-      checkLength(bankAccount, 10);
-      checkLength(password, 6);
-      console.log(4);
+      checkEmail(email);
 
-      const checkError = inputArr.map(function (input) {
+      checkLength(tel);
+      checkLength(bankAccount);
+
+      checkPasswordLength(password);
+      checkPasswordMath(password, password2);
+
+      checkBoxGender(male, female);
+      checkBoxAgree(agree);
+
+      const hasError = inputArr.map(function (input) {
         return input.parentElement.classList.contains("error");
       });
 
-      console.log(checkError);
-      if (checkError.includes(true)) {
+      if (hasError.includes(true)) {
         e.preventDefault();
       }
-      // if (2 === 2) {
-      //   e.preventDefault();
-      //   console.log("阻擋");
-      //   return false;
-      // }
-      // const anyError = inputArr.forEach
-      // if ()
-      // if ()
     });
   }
 });

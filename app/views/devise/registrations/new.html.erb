@@ -28,20 +28,21 @@
 
     <div class="field">
       <%= f.label :age, "年齡"%><br />
-      <%= f.number_field :age, autofocus: true, class:"input age" %>
+      <%= f.number_field :age, autofocus: true, class:"input age", min:"0" %>
       <small>Error</small>
     </div>
 
     <div class="field">
       <%= f.label :tel, "電話"%><br />
-      <%= f.telephone_field :tel, autofocus: true, class:"input tel" %>
+      <%= f.telephone_field :tel, autofocus: true, class:"input tel",
+      placeholder:"需10碼" %>
       <small>Error</small>
     </div>
 
     <div class="field">
       <%= f.label :bank_account, "銀行帳戶"%><br />
       <%= f.text_field :bank_account, autofocus: true, class:"input
-      bank-account" %>
+      bank-account", placeholder:"需10碼" %>
       <small>Error</small>
     </div>
 
@@ -121,9 +122,8 @@
       <div class="foot">腿排有限公司</div>
     </div>
     <div class="box">
-      <input type="radio" value="已詳細閱讀" /><label class="btnn"
-        >已詳細閱讀</label
-      >
+      <input type="radio" value="已詳細閱讀" id="agree" />
+      <label class="check-agree">已詳細閱讀</label>
     </div>
     <div class="actions flex justify-center">
       <%= f.submit "提交", class: "btn btn-default"%>

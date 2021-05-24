@@ -56,15 +56,18 @@
 
 .box {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.btnn {
-  color: chocolate;
+
+.check-agree {
+  @apply text-red-600;
 }
 
 // validate
 
 .field.success input {
-  @apply border-green-300 border border-solid;
+  @apply border-green-400 border border-solid;
 }
 
 .field.error input {
@@ -77,4 +80,8 @@
 
 .field.error small {
   @apply text-red-600 visible;
+}
+
+.agree-error {
+  @apply flex justify-center invisible;
 }

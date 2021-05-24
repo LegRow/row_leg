@@ -5,25 +5,21 @@
   border-radius: 5px;
   margin: auto;
 }
-// input[type="text"],
-// select,
-// textarea {
-//   width: 100%;
-//   padding: 12px;
-//   border-radius: 3px;
-//   box-sizing: border-box;
-//   margin-bottom: 16px;
-//   margin-top: 6px;
-//   font-size: 20px;
-// }
 
-// input[type="submit"] {
-//   background-color: rgb(226, 156, 43);
-//   color: white;
-//   padding: 12px 20px;
-//   border-radius: 4px;
-//   cursor: pointer;
-//   font-size: 20px;
-//   text-align: center;
-//   margin-left: 50%;
-// }
+.cus-input,
+.cus-select,
+.cus-textarea {
+  @apply w-full py-3 px-3 box-border mb-4 mt-2 text-xl;
+}
+
+.cus-textarea {
+  @apply h-80;
+}
+.cus-submit {
+  @apply text-white px-3 py-5 rounded cursor-pointer text-xl;
+}
+
+.cus-submit {
+  background-color: rgb(226, 156, 43);
+  margin-left: 50%;
+}
