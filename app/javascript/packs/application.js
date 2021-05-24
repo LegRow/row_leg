@@ -9,6 +9,7 @@ import "../view-event/index";
 import "stylesheets/application";
 import "packs/aboutus";
 
+
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();

@@ -1,18 +1,14 @@
-<p id="notice"><%= notice %></p>
-<div class="flex">
-  <div class="m-auto">
-    <%= link_to '新增任務', new_task_path, class:"task-new link-spec" %>
-  </div>
-  <div class="m-auto">
-    <%= link_to '您發布的', lists_path, class:"task-new link-spec" %>
-  </div>
-  <div class="m-auto">
-    <%= link_to '您接下的', works_path, class:"task-new link-spec" %>
-  </div>
-  <div class="m-auto">
-    <%= link_to '聊天室', rooms_path, class:"task-new link-spec" %>
-  </div>
+
+<div class="w-1/2 mx-auto text-2xl">
+  <ul id="tabs" class="inline-flex w-full px-1 pt-2">
+    <li class="flex px-4 py-2 -mb-px font-black text-yellow-600  rounded-t opacity-95"><a
+        id="default-tab"><%= link_to '新增任務' , new_task_path %></a></li>
+    <li class="px-4 py-2 font-black text-yellow-600 rounded-t opacity-95"><%= link_to '發佈任務' , lists_path %></li>
+    <li class="px-4 py-2 font-black text-yellow-600 rounded-t opacity-95 border-b-4 border-yellow-900"><%= link_to '接下任務' , works_path %></li>
+    <li class="px-4 py-2 font-black text-yellow-600 rounded-t opacity-95"><%= link_to '聊天室' , rooms_path %></li>
+  </ul>
 </div>
+
 <main class="container px-7 mx-auto">
   <section>
     <div>
