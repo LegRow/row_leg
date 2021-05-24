@@ -17,7 +17,8 @@ textarea {
   font-size: 20px;
 }
 
-input[type="submit"] {
+.cs-submit {
+  display: block;
   background-color: rgb(226, 156, 43);
   color: white;
   padding: 12px 20px;
@@ -25,5 +26,5 @@ input[type="submit"] {
   cursor: pointer;
   font-size: 20px;
   text-align: center;
-  margin-left: 50%;
+  margin: auto;
 }
