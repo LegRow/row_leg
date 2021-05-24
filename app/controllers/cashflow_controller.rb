@@ -76,13 +76,11 @@ class CashflowController < ApplicationController
         task.employer_pay
       end
       task.save
-    else
-      # redirect_to root_path, notice: '付款失敗，請重新嘗試'
     end
   end
 
   def thankyou
-    redirect_to tasks_path
+    redirect_to tasks_path, notice: params['Status']
   end
 
   private
