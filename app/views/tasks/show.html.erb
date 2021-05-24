@@ -29,9 +29,9 @@
           <div>
             <% if employee_of @task %>
               <%= button_tag '回報位置', id: "report_location" %>
-            <% elsif not_employer_of @task %>
-              <%= link_to '應徵', {controller: "tasks", action: "send_applicant_apply_email"}, class: "btn-text my-2",
-                  apply_information: {applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state} %>
+            <% elsif not_employer_of(@task) && @task.employer_paid? %>
+              <%= link_to('應徵', { controller: "tasks", action: "send_applicant_apply_email",
+                  apply_information: {applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state}}, class: "btn-text my-2") %>
             <% end %>
           </div>
           <% end %>
