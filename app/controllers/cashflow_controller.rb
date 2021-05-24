@@ -11,7 +11,7 @@ class CashflowController < ApplicationController
     # ['Amt', '93'],
     # ['ItemDesc', 'TEST'],
     # ['Email', '藍新回傳訊息的信箱'],
-    # ['ReturnURL', "/cashflow/thankyou"]
+    # ['ReturnURL' ,"/cashflow/thankyou"]
 
     params_for_newbpay = params["for_newebpay"]
     applicant = params_for_newbpay["applicant"]
