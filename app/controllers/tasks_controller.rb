@@ -90,7 +90,7 @@ class TasksController < ApplicationController
   end
 
   def qrcode_show
-    @task_url = task_finish_show_url(@task)
+    @task_url = finish_show_task_url(@task)
   end
 
   def finish_show
