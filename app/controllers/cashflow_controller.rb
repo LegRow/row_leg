@@ -1,5 +1,5 @@
 class CashflowController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: [:from_newebpay, :thankyou]
 
   def to_newebpay
     # 串藍新至少要這些東西
@@ -15,12 +15,14 @@ class CashflowController < ApplicationController
 
     params_for_newbpay = params["for_newebpay"]
     applicant = params_for_newbpay["applicant"]
+    order_number = params_for_newbpay["order_number"]
 
     if applicant
       # 受雇者押金 20%
       paying_amount = params_for_newbpay["reward"].to_f * 0.2
       #受雇者的訂單編號 + B
-      params_for_newbpay["order_number"] = params_for_newbpay["order_number"] + "B"
+      order_number = order_number + "B"
+      debugger
     else
       paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
     end
@@ -30,7 +32,7 @@ class CashflowController < ApplicationController
       ['RespondType', 'String'],
       ['TimeStamp', Time.now.to_i.to_s],
       ['Version', '1.5'],
-      ['MerchantOrderNo', params_for_newbpay["order_number"]],
+      ['MerchantOrderNo', order_number],
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
       ['Email', ENV["email_for_newebpay"]],
@@ -67,11 +69,15 @@ class CashflowController < ApplicationController
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
       # 訂單號碼有無 B，執行event
+      debugger
       target_order_number.include?("B")? task.employee_pay : task.employer_pay
       task.save
     else
       # render or redirect
     end
+  end
+
+  def thankyou
   end
 
   private
