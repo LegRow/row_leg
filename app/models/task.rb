@@ -2,10 +2,6 @@ class Task < ApplicationRecord
   include AASM
 
   acts_as_paranoid
-
-  geocoded_by :address, latitude: :lat, longitude: :log
-  after_validation :geocode, :if => :address_changed?
-
   has_one :qrcode
   belongs_to :user
 
