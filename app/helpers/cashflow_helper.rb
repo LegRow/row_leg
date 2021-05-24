@@ -10,8 +10,6 @@ module CashflowHelper
   end
 
   def encrypt_aes(transaction_information, key, iv)
-    puts "========================================="
-    puts transaction_information
     result = http_build_query(transaction_information)
     result = addpadding(result)
     result = openssl_encrypt(result, key, iv)
@@ -23,8 +21,6 @@ module CashflowHelper
   def http_build_query(informations)
     result = []
     for information in informations
-      puts "========================================="
-      puts information
       result_part = CGI.escape(information[0]) + '=' + CGI.escape(information[1])
       result.append(result_part)
     end
