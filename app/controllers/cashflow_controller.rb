@@ -65,6 +65,7 @@ class CashflowController < ApplicationController
       result = aes_decrypt(trade_information, key, iv)
       result = result.split("&")[5]
       target_order_number = result.partition('=').last
+      target_order_number.slice! "B"
       target_order = Order.find_by(merchant_order_number: target_order_number)
       task = Task.find_by(id: target_order.task_id)
       puts task
