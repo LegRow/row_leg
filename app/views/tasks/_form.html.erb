@@ -22,7 +22,7 @@
     <%= f.label "任務所在城市" %>
     <%= f.text_field :address_city, placeholder: '目前只開放台北市(不能空白)', class: "input" %>
   </div>
-  
+
   <div class="field">
     <%= f.label "任務所在區" %>
     <%= f.text_field :address_district, placeholder: '請填入區(不能空白)', class: "input" %>
@@ -40,9 +40,9 @@
 
   <div class="field task-input-special">
     <%= f.label "酬勞新台幣:(一小時200)" %>
-    <%= f.number_field :reward, min: 200 %>  
+    <%= f.number_field :reward, min: 200 %>
 
-    <%= f.label "代買金額新台幣:" %>
+    <%= f.label "代墊金額新台幣:" %>
     <%= f.number_field :behalf %>
   </div>
 
@@ -60,7 +60,7 @@
     <%= f.label "備註欄" %>
     <%= f.text_field :remarks, placeholder: '備註事項', class: "input" %>
   </div>
-  
+
   <div class="field">
     <%= f.hidden_field :merchant_order_number, :value => Time.now.to_i.to_s %>
   </div>
@@ -68,6 +68,6 @@
   <div class="flex justify-center">
     <%= button_to "新增", {action: "create"}, {class: 'btn btn-default'} %>
   </div>
-  
+
 
 <% end %>
