@@ -2,6 +2,6 @@
 
 雇主<%= @task.user.name %>已確認您的應徵，請點選下方連結支付押金，以表示您確定承接此任務。
 <br>
-<%= link_to '連結', to_newebpay_cashflow_url(reward: (@task.attributes["reward"] * 0.2).to_i,
+<%= link_to '連結', cashflow_url("to_newebpay", reward: (@task.attributes["reward"] * 0.2).to_i,
                     behalf: @task.attributes["behalf"],
                     order_number: @task.order.attributes["merchant_order_number"] + "B") %>
