@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'cashflow/to_newebpay'
   post 'cashflow/thankyou'
   post 'cashflow/from_newebpay'
-  resources :qrcodes, only: [:show]
+
 
   #任務頁面相關
   resources :rooms, only: [:index, :new, :create, :show]
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     member do
       get 'confirm_applicant'
       get 'send_applicant_apply_email'
+      get 'qrcode_show'
+      get 'finish_show'
+      post :finish
     end
   end
 
