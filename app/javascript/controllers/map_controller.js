@@ -11,10 +11,12 @@ export default class extends Controller {
     const employerId = task.dataset.employerId;
     const currentUser = task.dataset.currentUser;
     const employeeMap = document.getElementById("employee");
+    const storeLatitude = Number(employeeMap.dataset.lat);
+    const storeLongitude = Number(employeeMap.dataset.lng);
     const employeeMapOption = {
       // 地圖初始化設定：位置與縮放
       zoom: 14,
-      center: { lat: 25.009571560497424, lng: 121.46213302250602 }, // 這邊之後也要填入店家位置
+      center: { lat: storeLatitude, lng: storeLongitude }, // 這邊之後也要填入店家位置
     };
     const locationChannel = consumer.subscriptions.create(
       { channel: "LocationsChannel", employeeId: employeeId },
@@ -33,7 +35,7 @@ export default class extends Controller {
           const employeeLocation = data["location"]["employeeLocation"];
           if (currentUser === employerId) {
             let markerLocations = [
-              [25.009571560497424, 121.46213302250602], // 店家位置
+              [storeLatitude, storeLongitude], // 店家位置
               employeeLocation, // employee 位置（這就是要依照我的位置改變）
             ];
             drawEmployeeAndStoreMarkers(markerLocations);
@@ -45,21 +47,6 @@ export default class extends Controller {
         },
       }
     );
-    function drawEmployeeAndStoreMarkers(markerLocations) {
-      const employeeLocationMap = new google.maps.Map(
-        employeeMap,
-        employeeMapOption
-      );
-      for (let i = 0; i < markerLocations.length; i++) {
-        new google.maps.Marker({
-          position: new google.maps.LatLng(
-            markerLocations[i][0],
-            markerLocations[i][1]
-          ),
-          map: employeeLocationMap,
-        });
-      }
-    }
     // 頁面如果是雇主，就只能收到應徵者的位置資訊；頁面如果是應徵者，就能打位置資訊給雇主，而且能更新位置在自己的頁面
     if (currentUser === employeeId) {
       console.log("employee 近來嘍");
@@ -67,7 +54,7 @@ export default class extends Controller {
       reportLocation.addEventListener("click", (e) => {
         e.preventDefault();
         // call google map
-        const currentPosition = navigator.geolocation.getCurrentPosition(
+        navigator.geolocation.getCurrentPosition(
           succeed,
           fail
         );
@@ -77,7 +64,7 @@ export default class extends Controller {
           const employeeLocation = [latitude, longitude];
           // 以下是 employee 的位置
           let markerLocations = [
-            [25.009571560497424, 121.46213302250602], // 店家位置
+            [storeLatitude, storeLongitude], // 店家位置
             employeeLocation, // employee 位置（這就是要依照我的位置改變）
           ];
           drawEmployeeAndStoreMarkers(markerLocations);
@@ -94,6 +81,26 @@ export default class extends Controller {
       });
     } else if (currentUser === employerId) {
       console.log("employer 近來嘍");
+      // call google map
+      let markerLocations = [
+        [storeLatitude, storeLongitude], // 店家位置
+      ];
+      drawEmployeeAndStoreMarkers(markerLocations);
+    };
+    function drawEmployeeAndStoreMarkers(markerLocations) {
+      const employeeLocationMap = new google.maps.Map(
+        employeeMap,
+        employeeMapOption
+      );
+      for (let i = 0; i < markerLocations.length; i++) {
+        new google.maps.Marker({
+          position: new google.maps.LatLng(
+            markerLocations[i][0],
+            markerLocations[i][1]
+          ),
+          map: employeeLocationMap,
+        });
+      }
     }
   }
 }
