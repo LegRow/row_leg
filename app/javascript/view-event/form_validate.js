@@ -99,6 +99,7 @@ document.addEventListener("turbolinks:load", () => {
       checkLength(bankAccount);
 
       checkPasswordLength(password);
+      checkPasswordLength(password2);
       checkPasswordMath(password, password2);
 
       checkBoxGender(male, female);
