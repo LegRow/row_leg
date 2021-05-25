@@ -91,21 +91,6 @@ export default class extends Controller {
         function fail() {
           console.log("error!");
         }
-        function drawEmployeeAndStoreMarkers(markerLocations) {
-          const employeeLocationMap = new google.maps.Map(
-            employeeMap,
-            employeeMapOption
-          );
-          for (let i = 0; i < markerLocations.length; i++) {
-            new google.maps.Marker({
-              position: new google.maps.LatLng(
-                markerLocations[i][0],
-                markerLocations[i][1]
-              ),
-              map: employeeLocationMap,
-            });
-          }
-        }
       });
     } else if (currentUser === employerId) {
       console.log("employer 近來嘍");

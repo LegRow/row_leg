@@ -8,6 +8,8 @@ export default class extends Controller {
     const maparea = document.getElementById("maparea");
     const lat = Number(maparea.dataset.lat);
     const lng = Number(maparea.dataset.lng);
+    console.log(lat)
+    console.log(lng)
     store_map = new google.maps.Map(maparea, {
       center: { lat: lat, lng: lng },
       zoom: 16,
