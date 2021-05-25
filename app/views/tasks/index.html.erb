@@ -26,7 +26,7 @@
       </div>
       <hr />
       <div class="task-list">
-        <% @tasks.each do |task| %>
+      <% @tasks.each do |task| %>
         <div class="task-item">
           <div class="task-img-box">
             <div class="task-img"><p>Taipei City</p></div>
@@ -50,13 +50,14 @@
             <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_task_path(task) %>
             <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
-        <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
-          目前此任務狀態：<%= task.state %>
-          <br>
+          <% end %>
+          <div class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+            目前此任務狀態: <%= task.state %>
+          </div>
           <div class="task-footer">
             <% if employer_of task %>
             <div class="task-unpaid">
-               <% if task.pending? %><%= link_to '<i class="fas fa-credit-card"></i> Pay'.html_safe, controller:
+              <% if task.pending? %><%= link_to '<i class="fas fa-credit-card"></i> Pay'.html_safe, controller:
               'cashflow', action: 'to_newebpay',for_newebpay: {reward:
               task.reward, behalf: task.behalf, order_number:
               task.order.merchant_order_number} %>
@@ -73,9 +74,10 @@
             <div class="task-more-btn">
               <%= link_to '點我看任務詳情<i class="fas fa-arrow-right"></i>'.html_safe, task%>
             </div>
+          
           </div>
         </div>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </section>
