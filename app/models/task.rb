@@ -55,10 +55,6 @@ class Task < ApplicationRecord
     # 訂單完成後，出現qrcode
     event :finish do
       transitions from: :employee_paid, to: :deal
-
-      after do
-        render 'qrcodes/show'
-      end
     end
   end
 
