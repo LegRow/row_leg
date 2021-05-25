@@ -1,4 +1,4 @@
-import QRCode from 'davidshimjs-qrcodejs'
+// import QRCode from 'davidshimjs-qrcodejs'
 
 document.addEventListener('turbolinks:load', function(){
 
@@ -12,5 +12,5 @@ document.addEventListener('turbolinks:load', function(){
     colorDark: '#000',
     colorLight: '#fff',
     correctLevel: QRCode.CorrectLevel.H
-  })
+  });
 })
