@@ -7,21 +7,10 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
-    @room = Room.new
-    @message = Message.new
-    @messages = Message.all
-  end
-
-  def new
-    @room = Room.new
-  end
-
-  def create
   end
 
   def show
-      @rooms = Room.all
-      @message = @room.messages.new
+    @message = @room.messages.new
   end
 
   private
