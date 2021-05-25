@@ -11,7 +11,6 @@ import "packs/aboutus"
 import "packs/qrcode"
 
 
-
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();

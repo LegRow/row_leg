@@ -4,7 +4,6 @@ class TasksController < ApplicationController
   # before_action :check_sign_in QRcode設置的 討論後決定是否留下
   before_action :find_employee, only: [:finish_show, :finish]
 
-
   def index
     @tasks = Task.all
   end

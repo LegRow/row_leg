@@ -76,12 +76,11 @@ class CashflowController < ApplicationController
         task.employer_pay
       end
       task.save
-    else
-      # render or redirect
     end
   end
 
   def thankyou
+    redirect_to tasks_path, notice: params['Status']
   end
 
   private
