@@ -16,7 +16,9 @@ export default class extends Controller {
           chatRoom.scrollTop = chatRoom.scrollHeight;
         },
 
-        disconnected() {},
+        disconnected() {
+
+        },
 
         received(data) {
           const user_element = document.getElementById("messages");

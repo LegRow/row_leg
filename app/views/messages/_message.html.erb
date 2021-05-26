@@ -1,4 +1,4 @@
 <div class="m-2">
-    <p id="newmessage" class="p-1.5 bg-yellow-400 rounded-2xl inline-block text-2xl <%= 'me' if message.user == current_user %>"><%= message.content %><br><span class='text-sm'><%= message.created_at&.strftime('%m-%d %H:%M') %></span></p>
+    <p id="newmessage" class="p-1.5 bg-yellow-400 rounded-2xl inline-block text-2xl <%= 'me' if message.user == current_user %>"><%= message.content %><br><span class='text-sm'><%= "#{message.user.name}/#{message.created_at&.strftime('%m-%d %H:%M')}" %></span></p>
 </div>
 
