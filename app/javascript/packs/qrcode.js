@@ -1,7 +1,7 @@
 import QRCode from 'davidshimjs-qrcodejs'
 
 document.addEventListener('turbolinks:load', function(){
-
+  if (document.getElementById('qrcode')) {
   const $qrcode = document.getElementById('qrcode');
   const message = $qrcode.dataset.message;
 
@@ -13,4 +13,5 @@ document.addEventListener('turbolinks:load', function(){
     colorLight: '#fff',
     correctLevel: QRCode.CorrectLevel.H
   });
+  }
 })
