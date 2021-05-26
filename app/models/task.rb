@@ -69,8 +69,8 @@ class Task < ApplicationRecord
   private
 
   def buffer_time
-    if task_at < 3.hours.after
-      errors.add(:task_at, "任務必須距離現在大於三小時")
+    if state == :pending && task_at < 3.hours
+      errors.add(:task_at, '任務需離現在大於三小時')
     end
   end
 
@@ -87,7 +87,8 @@ class Task < ApplicationRecord
   end
 
   def reward_less
-    if  reward.nil? || reward < ((task_end - task_at)/3600).round * 200
+    task_duration = ((task_end - task_at) / 1.hour).round
+    if reward.blank? || reward < task_duration * 200
       errors.add(:reward, "酬勞一小時最少200元")
     end
   end
