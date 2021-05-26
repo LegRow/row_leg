@@ -9,7 +9,7 @@ import "../view-event/index";
 import "stylesheets/application"
 import "packs/aboutus"
 import "./message"
-// import "packs/qrcode"
+import "packs/qrcode"
 
 
 Rails.start();

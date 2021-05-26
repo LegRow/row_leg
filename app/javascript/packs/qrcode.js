@@ -1,4 +1,4 @@
-// import QRCode from 'davidshimjs-qrcodejs'
+import QRCode from 'davidshimjs-qrcodejs'
 
 document.addEventListener('turbolinks:load', function(){
 
