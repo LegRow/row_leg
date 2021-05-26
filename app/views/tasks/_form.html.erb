@@ -19,18 +19,19 @@
     <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容', class: "input task-form-textarea" %>
     <small>不能空白</small>
   </div>
-  <div class="city-selector-set">
-      <select class="county"></select>
-      <select class="district"></select>
+  <div class="city-selector-set mb-4">
+      <label for="district">任務所在區</label>
+      <select class="county" id="county" name="city"></select>
+      <select class="district" id="district"></select>
       <small class="city-selector-error">請選擇縣市/區域</small>
   </div>
 
-  <div class="field">
+  <div class="field hidden">
     <%= f.label "任務所在城市" %>
     <%= f.text_field :address_city, placeholder: '目前只開放台北市(不能空白)', class: "input" %>
   </div>
 
-  <div class="field">
+  <div class="field hidden">
     <%= f.label "任務所在區" %>
     <%= f.text_field :address_district, placeholder: '請填入區(不能空白)', class: "input" %>
   </div>
@@ -59,6 +60,17 @@
     <%= f.label "任務起始時間(發布時間要在起始時間3小時前)" %>
     <%= f.datetime_select :task_at %>
   </div>
+
+  <div class="mb-4">
+    <label for="thePickerStart">任務起始時間</label>
+    <input type="text" id="thePickerStart">
+  </div>
+
+  <div class="mb-4">
+    <label for="thePickerEnd">任務結束時間</label>
+    <input type="text" id="thePickerEnd">
+  </div>
+  
 
   <div class="field task-input-special">
     <%= f.label "任務結束時間(要比起始間晚,最少一小時)" %>

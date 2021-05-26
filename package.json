@@ -10,6 +10,7 @@
     "@types/jquery.qrcode": "^0.12.29",
     "axios": "^0.21.1",
     "davidshimjs-qrcodejs": "^0.0.2",
+    "flatpickr": "^4.6.9",
     "qrcode": "^1.4.4",
     "stimulus": "^2.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
