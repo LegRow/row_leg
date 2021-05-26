@@ -1,51 +1,35 @@
-<div class="text-3xl" data-controller="chat" >
-  Hello,<%= current_user.name %>
-</div>
-<div class="chat_box w-full flex ">
-  <div class="chat_inside flex-col w-1/4 overflow-auto">
-    <div class="w-full bg-gray-300 text-3xl text-center rounded-t-lg">
-      您發布任務的專屬聊天室
-    </div>
-    <div>
-      <% @rooms.each do |room| %>
-        <% if room.task.user_id == current_user.id %>
-          <%= link_to room.task.store_name, room_path(room), :method => :get ,
-          class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="w-full bg-gray-300 text-3xl text-center rounded-b-lg">
-      您發布任務的專屬聊天室
-    </div>
+<div class="flex-row w-auto border border-yellow-600">
+<%# 第一區塊 聊天室資訊  請注意不要把下面的data-controller="chat"刪掉 %>
+  <div data-controller="chat" class="flex border border-green-600">
+    <div>Hello,<%= current_user.name %><br>
+    <span>共<%= @room.user.uniq.count %>位成員</span></div>
+    <% if row_leg_room %>
+      <div class="m-auto inline-block border border-red-600">
+        這是您的跑腿任務:<%= "請去#{@room.task.store_name}幫忙排隊" %><br>
+        請於:<%= "#{@room.task.task_at&.strftime('%m-%d/%H:%M')}前到達執行任務" %>
+      </div>
+    <% end%>
+    <% if user_room %>
+      <div class="m-auto inline-block border border-red-600">
+        這是您發布的任務:<%= "位於#{@room.task.store_name}" %><br>
+        請於:<%= "#{@room.task.task_end&.strftime('%m-%d/%H:%M')}前到達交接" %>
+      </div>
+    <% end%>
+      <div >
+        <%= link_to "返回聊天室列表", rooms_path, class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-fuchsia-600' %>
+      </div>
   </div>
-  <div class="chat_inside list w-1/4 overflow-auto">
-    <div class="w-full bg-gray-500 text-3xl text-center rounded-t-lg">
-      您所接任務的專屬聊天室
-    </div>
-    <div>
-      <% @rooms.each do |room| %>
-        <% if room.task.employee_id == current_user.id %>
-          <%= link_to room.task.store_name, room_path(@room), :method => :get ,
-          class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="w-full bg-gray-500 text-3xl text-center rounded-b-lg">
-      您所接任務的專屬聊天室
-    </div>
-  </div>
-  <div class="chat_inside w-1/2">
-    <div>
-      <div>你目前在任務<%= @room.task.brief_description %>的聊天室中</div>
-    </div>
-    <div id="messages" class="flex-col flex chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
+<%# 第二區塊 %>
+  <div calss="m-auto w-10/12">
+    <div id="messages" class="h-96 flex-col flex overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
       <% @room.messages.each do |message| %>
         <%= render 'messages/message', message: message %>
       <% end %>
     </div>
     <hr>
-      <div class="chat_btn">
-        <%= render 'messages/form', message: Message.new, room: @room %>
-      </div>
+    <div class="">
+      <%= render 'messages/form', message: Message.new, room: @room %>
+    </div>
   </div>
 </div>
+
