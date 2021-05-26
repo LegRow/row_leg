@@ -49,7 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # 清洗更新欄位
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:tel, :bank_account, :password])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :tel, :bank_account, :password])
   end
 
   # The path used after sign up.
