@@ -1,0 +1,22 @@
+<aside class="fixed flex flex-col mt-4 h-auto items-center">
+  <ul id="tabs" class="list-reset flex flex-row md:flex-col text-center md:text-left">
+    <li class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4 text-orange-600">
+      <a id="default-tab">
+        <i class="far fa-plus-square"></i>
+        <%= link_to '新增任務' , new_task_path %>
+      </a>
+    </li>
+    <li class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4 text-orange-600">
+      <i class="fas fa-tasks"></i>
+      <%= link_to '發佈任務' , lists_path %>
+    </li>
+    <li class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4 text-orange-600">
+      <i class="fas fa-shoe-prints"></i>
+      <%= link_to '接下任務' , works_path %>
+    </li>
+    <li class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4 text-orange-600">
+      <i class="fas fa-comments"></i>
+      <%= link_to '聊天室' , rooms_path %>
+    </li>
+  </ul>
+</aside>
