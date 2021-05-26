@@ -10,12 +10,19 @@
 
   <div class="field">
     <%= f.label "任務簡介" %>
-    <%= f.text_field :brief_description, placeholder: '任務簡介(不能空白)', class: "input" %>
+    <%= f.text_field :brief_description, placeholder: '任務簡介', class: "input" %>
+    <small>不能空白</small>
   </div>
 
   <div class="field">
     <%= f.label "內容描述" %>
-    <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容(不能空白)', class: "input task-form-textarea" %>
+    <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容', class: "input task-form-textarea" %>
+    <small>不能空白</small>
+  </div>
+  <div class="city-selector-set">
+      <select class="county"></select>
+      <select class="district"></select>
+      <small class="city-selector-error">請選擇縣市/區域</small>
   </div>
 
   <div class="field">
@@ -30,12 +37,14 @@
 
   <div class="field">
     <%= f.label "街道完整訊息" %>
-    <%= f.text_field :address_street, placeholder: '街道完整訊息(不能空白)', class: "input" %>
+    <%= f.text_field :address_street, placeholder: '街道完整訊息', class: "input" %>
+    <small>不能空白</small>
   </div>
 
   <div class="field">
     <%= f.label "店名/其他訊息" %>
-    <%= f.text_field :store_name, placeholder: '店名/其他訊息(不能空白)', class: "input" %>
+    <%= f.text_field :store_name, placeholder: '店名/其他訊息', class: "input" %>
+    <small>不能空白</small>
   </div>
 
   <div class="field task-input-special">
