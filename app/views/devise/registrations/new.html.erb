@@ -1,5 +1,5 @@
-<section class="form-container">
-  <div class="form-box">
+<section class="w-full max-w-md mx-auto my-8">
+  <div class="border border-gray-300 rounded-lg px-8 pt-6 pb-8">
     <h2 class="form-title">註冊</h2>
     <hr />
     <%= form_for(resource, as: resource_name, url:
@@ -8,8 +8,7 @@
 
     <div class="field mt-2">
       <%= f.label :email, "信箱" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",
-      class:"input email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input email" %>
       <small>Error</small>
     </div>
 

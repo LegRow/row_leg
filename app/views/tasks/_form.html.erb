@@ -8,60 +8,62 @@
     </ul>
   <% end %>
 
-  <div class="field">
+  <div class="field pt-6">
     <%= f.label "任務簡介" %>
-    <%= f.text_field :brief_description, placeholder: '任務簡介(不能空白)', class: "input" %>
+    <%= f.text_field :brief_description , class: "input" %>
   </div>
 
-  <div class="field">
+  <div class="field pt-6">
     <%= f.label "內容描述" %>
-    <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容(不能空白)', class: "input task-form-textarea" %>
+    <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容', class: "input task-form-textarea" %>
   </div>
 
-  <div class="field">
-    <%= f.label "任務所在城市" %>
-    <%= f.text_field :address_city, placeholder: '目前只開放台北市(不能空白)', class: "input" %>
+  <div class="field pt-6">
+    <%= f.label "城市" %>
+    <%= f.text_field :address_city, placeholder: '目前只開放台北市', class: "input" %>
   </div>
 
-  <div class="field">
-    <%= f.label "任務所在區" %>
-    <%= f.text_field :address_district, placeholder: '請填入區(不能空白)', class: "input" %>
+  <div class="field pt-6">
+    <%= f.label "區" %>
+    <%= f.text_field :address_district, placeholder: '請填入區', class: "input" %>
   </div>
 
-  <div class="field">
-    <%= f.label "街道完整訊息" %>
-    <%= f.text_field :address_street, placeholder: '街道完整訊息(不能空白)', class: "input" %>
+  <div class="field pt-6">
+    <%= f.label "街道" %>
+    <%= f.text_field :address_street, placeholder: '街道完整訊息', class: "input" %>
   </div>
 
-  <div class="field">
+  <div class="field pt-6">
     <%= f.label "店名/其他訊息" %>
-    <%= f.text_field :store_name, placeholder: '店名/其他訊息(不能空白)', class: "input" %>
+    <%= f.text_field :store_name, class: "input" %>
   </div>
 
-  <div class="field task-input-special">
-    <%= f.label "酬勞新台幣:(一小時200)" %>
+  <div class="field task-input-special pt-6">
+    <%= f.label "酬勞 & 代墊金額：" %>
+    <br>
     <%= f.number_field :reward, min: 200 %>
-
-    <%= f.label "代墊金額新台幣:" %>
+    <%= '&' %>
     <%= f.number_field :behalf, min: 0 %>
   </div>
 
-  <div class="field task-input-special">
+  <div class="field task-input-special pt-6">
     <%= f.label "任務起始時間(發布時間要在起始時間3小時前)" %>
+    <br>
     <%= f.datetime_select :task_at %>
   </div>
 
-  <div class="field task-input-special">
+  <div class="field task-input-special pt-6">
     <%= f.label "任務結束時間(要比起始間晚,最少一小時)" %>
+    <br>
     <%= f.datetime_select :task_end %>
   </div>
 
-  <div class="field">
+  <div class="field pt-6">
     <%= f.label "備註欄" %>
-    <%= f.text_field :remarks, placeholder: '備註事項', class: "input" %>
+    <%= f.text_field :remarks, class: "input" %>
   </div>
 
-  <div class="field">
+  <div class="field pt-6">
     <%= f.hidden_field :merchant_order_number, :value => Time.now.to_i.to_s %>
   </div>
 
