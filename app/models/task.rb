@@ -24,7 +24,9 @@ class Task < ApplicationRecord
   validates :address_street, presence: true
   validates :store_name, presence: true
   validates :reward, presence: true
-  validate :buffer_time, :correct_time, :end_time, :reward_less
+
+  validate :correct_time, :end_time, :reward_less
+  validate :buffer_time, on: :create
 
   # 阿美是雇主，小明是受僱者
   aasm column: :state do
@@ -67,9 +69,9 @@ class Task < ApplicationRecord
   end
 
   private
-
+  #後來發現pending?沒法判斷  因為任務就還沒有建立 沒有狀態
   def buffer_time
-    if state == :pending && task_at < 3.hours
+    if task_at < 3.hours.from_now
       errors.add(:task_at, '任務需離現在大於三小時')
     end
   end
