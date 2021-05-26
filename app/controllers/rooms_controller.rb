@@ -9,8 +9,16 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def new
+    @room = Room.new
+  end
+
+  def create
+  end
+
   def show
-    @message = Message.new
+    #@message = @room.messages.new 這個寫法不知為何造成對話框內多一個空白
+    @message = Message.new #這個寫法不會有多空白 但是變沒輸入又可以送出 用js處理了
   end
 
   private
