@@ -1,21 +1,17 @@
-<aside class="fixed absolute">
+<aside class="fixed z-20">
   <!-- computer version -->
   <section id="side-navigation" class="hidden lg:block flex flex-col mt-6 h-auto items-center p-3">
     <div class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4">
-      <i class="far fa-plus-square"></i>
-      <%= link_to '新增任務' , new_task_path %>
+      <%= link_to '<i class="far fa-plus-square"></i>新增任務'.html_safe, new_task_path %>
     </div>
     <div class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4">
-      <i class="fas fa-tasks"></i>
-      <%= link_to '發佈任務' , lists_path %>
+      <%= link_to '<i class="fas fa-tasks"></i>發佈任務'.html_safe, lists_path %>
     </div>
     <div class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4">
-      <i class="fas fa-shoe-prints"></i>
-      <%= link_to '接下任務' , works_path %>
+      <%= link_to '<i class="fas fa-shoe-prints"></i>接下任務'.html_safe, works_path %>
     </div>
     <div class="flex items-center justify-center flex-col hover:bg-gray-200 w-full py-4">
-      <i class="fas fa-comments"></i>
-      <%= link_to '聊天室' , rooms_path %>
+      <%= link_to '<i class="fas fa-comments"></i>聊天室'.html_safe, rooms_path %>
     </div>
   </section>
   
