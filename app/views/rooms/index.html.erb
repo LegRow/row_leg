@@ -1,59 +1,84 @@
-<div class="w-1/2 mx-auto text-2xl">
-  <ul id="tabs" class="inline-flex w-full px-1 pt-2">
-    <li class="flex px-4 py-2 -mb-px font-black text-yellow-600 rounded-t opacity-95"><a
-        id="default-tab"><%= link_to '新增任務' , new_task_path %></a></li>
-    <li class="px-4 py-2 font-black text-yellow-600 rounded-t opacity-95"><%= link_to '發佈任務' , lists_path %></li>
-    <li class="px-4 py-2 font-black text-yellow-600 rounded-t opacity-95"><%= link_to '接下任務' , works_path %></li>
-    <li class="px-4 py-2 font-black text-yellow-600 rounded-t opacity-95 border-b-4 border-yellow-900"><%= link_to '聊天室' , rooms_path %></li>
-  </ul>
-</div>
-
-<div class="text-3xl" data-controller="chat" >
-  Hello,<%= current_user.name %>
-</div>
-<div class="chat_box w-full flex ">
-  <div class="chat_inside flex-col w-1/4 overflow-auto">
-    <div class="w-full bg-gray-300 text-3xl text-center rounded-t-lg">
-      您發布任務的專屬聊天室
-    </div>
-    <div>
-      <% @rooms.each do |room| %>
-        <% if room.task.user_id == current_user.id %>
-          <%= link_to room.task.store_name, room_path(room), :method => :get ,
-          class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="w-full bg-gray-300 text-3xl text-center rounded-b-lg">
-      您發布任務的專屬聊天室
-    </div>
-  </div>
-  <div class="chat_inside list w-1/4 overflow-auto">
-    <div class="w-full bg-gray-500 text-3xl text-center rounded-t-lg">
-      您所接任務的專屬聊天室
-    </div>
-    <div>
-      <% @rooms.each do |room| %>
-        <% if room.task.employee_id == current_user.id %>
-          <%= link_to room.task.store_name, room_path(room), :method => :get ,
-          class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="w-full bg-gray-500 text-3xl text-center rounded-b-lg">
-      您所接任務的專屬聊天室
-    </div>
-  </div>
-  <div class="chat_inside w-1/2">
-    <div id="messages" class="flex-col chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
-      這邊可能會放一張圖或其他
-      <% @room.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
-      <% end %>
-    </div>
-    <hr>
-      <div class="chat_btn">
-        請先點選聊天室才能對話喔
+<!-- 第一區塊 招呼語 -->
+<section class="hidden lg:flex">
+  <div class="m-auto w-9/12">
+    <p class="p-1 text-3xl">
+      聊天室
+    </p>
+    <p>
+      雇主 <i class="fas fa-user-tie"></i>
+      員工 <i class="fas fa-walking"></i>
+    </p>
+    <div class="flex">
+      <!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
+      <section class="w-1/2 mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-user-tie"></i></p>
+          <div class="h-80 overflow-scroll">
+            <div class="">
+              <% @rooms.each do |room| %>
+                <% if user_room_list(room) %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+      <div class="w-1/12">
       </div>
+      <!-- 第三區塊 接受的任務 -->
+      <section class="w-1/2 mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-walking"></i></p>
+          <div class="h-80 overflow-scroll">
+            <div>
+              <% @rooms.each do |room| %>
+                <% if row_leg_room_list(room) %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="lg:hidden flex">
+  <div class="m-auto w-9/12">
+    <p class="p-1 text-3xl">
+      聊天室
+    </p>
+    <p>
+      雇主 <i class="fas fa-user-tie"></i>
+      員工 <i class="fas fa-walking"></i>
+    </p>
+    <div class="flex flex-col">
+      <!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
+      <section class="mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-user-tie"></i></p>
+          <div class="h-80 overflow-scroll">
+            <div class="">
+              <% @rooms.each do |room| %>
+                <% if user_room_list(room) %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+      <div class="w-1/12">
+      </div>
+      <!-- 第三區塊 接受的任務 -->
+      <section class="mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-walking"></i></p>
+          <div class="h-80 overflow-scroll">
+            <div>
+              <% @rooms.each do |room| %>
+                <% if row_leg_room_list(room) %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+    </div>
+  </div>
+</section>

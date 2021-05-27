@@ -80,7 +80,7 @@ class CashflowController < ApplicationController
   end
 
   def thankyou
-    redirect_to tasks_path, notice: params['Status']
+    redirect_to tasks_path, notice: "操作成功，請確認訂單狀態。"
   end
 
   private

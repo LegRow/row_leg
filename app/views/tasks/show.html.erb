@@ -1,30 +1,28 @@
-<p id="notice"><%= notice %></p>
 <section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>" data-employer-id="<%= @task.user_id %>" data-current-user="<%= current_user.id %>">
   <div class="task-show-row" data-controller="map">
-    <div class="task-show-title">
+    <div class="font-bold py-2 px-4 rounded">
       <h2 data-controller="store"% >任務詳情</h2>
     </div>
     <div class="task-show-box">
       <div class="task-show-inf">
-        <p class="text-3xl">
+        <p class="text-2xl">
           <strong>任務名稱：</strong><%= @task.brief_description %>
         </p>
         <p><strong>任務內容：</strong><br /><%= @task.description %></p>
-        <p><i class="fas fa-store text-xl"></i><%= @task.store_name %></p>
-        <p><i class="fas fa-map-marked-alt text-xl"></i><%= @task.address %></p>
-        <p><i class="fas fa-hand-holding-usd text-xl"></i><%= "新台幣#{@task.reward}" %></p>
-        <p><i class="fas fa-dollar-sign text-xl"></i><%= "新台幣#{@task.behalf}" %></p>
-        <p><i class="fas fa-plane-departure text-xl"></i><%= @task.task_at %></p>
-        <p><i class="fas fa-plane-arrival text-xl"></i><%= @task.task_end %></p>
-        <p><i class="fas fa-comment-alt text-xl"></i><%= @task.remarks %></p>
-        <div class="task-show-link">
-          <div>
-            <%= link_to '返回', tasks_path, class: "btn-text my-2" %>
-          </div>
+        <p><i class="fas fa-store text-xl"></i> <%= @task.store_name %></p>
+        <p><i class="fas fa-map-marked-alt text-xl"></i> <%= @task.address %></p>
+        <p><i class="fas fa-hand-holding-usd text-xl"></i> <%= "$#{@task.reward}NT（酬勞）" %>
+           <i class="fas fa-dollar-sign text-xl"></i> <%= "#{@task.behalf}NT（代墊金額）" %>
+        </p>
+        <p><i class="fas fa-plane-departure text-xl"></i> <%= @task.task_at&.strftime('%Y-%m-%d %H:%M:%S') %></p>
+        <p><i class="fas fa-plane-arrival text-xl"></i> <%= @task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %></p>
+        <p><i class="fas fa-comment-alt text-xl"></i> <%= @task.remarks %></p>
+        <div class="">
+          <div class= "pt-4">
+            <%= link_to '返回', tasks_path, class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
           <% if employer_of @task %>
-          <div>
-            <%= link_to '編輯', edit_task_path(@task), class: "btn-text my-2" %>
-          </div>
+              <%= link_to '編輯', edit_task_path(@task), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
+            </div>
           <% else %>
           <div>
             <% if employee_of @task %>
@@ -36,7 +34,8 @@
           <% end %>
         </div>
       </div>
-      <div id="employee" class="task-show-map" data-lat="<%= @task.latitude %>" data-lng="<%= @task.longitude %>" data-store-target="output"></div>
+      <div id="employee" class="sm: lg:px-5 py-5 border-2 w-9/12" data-lat="<%= @task.latitude %>" data-lng="<%= @task.longitude %>" data-store-target="output">
+      </div>
     </div>
   </div>
 </section>
