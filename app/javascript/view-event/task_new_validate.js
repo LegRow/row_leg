@@ -2,17 +2,18 @@ import TwCitySelector from "tw-city-selector";
 
 document.addEventListener("turbolinks:load", () => {
   const newTaskForm = document.querySelector("#new_task");
-  // TwCitySelector 產生台灣市區下拉選單
-  new TwCitySelector({
-    el: ".city-selector-set",
-    elCounty: ".county",
-    elDistrict: ".district",
-    elZipcode: ".zipcode",
-    countyValue: "台北市",
-    only: ["台北市"],
-  });
-
-  if (newTaskForm) {
+  const editTaskForm = document.querySelector(".edit_task");
+  if (newTaskForm || editTaskForm) {
+    // TwCitySelector 產生台灣市區下拉選單
+    new TwCitySelector({
+      el: ".city-selector-set",
+      elCounty: ".county",
+      elDistrict: ".district",
+      elZipcode: ".zipcode",
+      countyValue: "台北市",
+      only: ["台北市"],
+    });
+    
     const county = document.querySelector(".county");
     const district = document.querySelector(".district");
 

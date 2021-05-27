@@ -60,10 +60,11 @@
     <%= f.datetime_select :task_end %>
   </div>
 
-  <div class="field task-input-special pt-6">
-    <%= f.label "酬勞新台幣:(一小時200)" %>
+  <div class="field task-input-special pt-6 mt-4">
+    <%= f.label "酬勞 & 代墊金額：" %>
+    <br>
     <%= f.number_field :reward, min: 200 %>
-    <%= f.label "代墊金額新台幣:" %>
+    <%= '&' %>
     <%= f.number_field :behalf, min: 0 %>
     <small class="reward-message">Error</small>
   </div>
