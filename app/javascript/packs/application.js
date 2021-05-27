@@ -10,6 +10,7 @@ import "packs/qrcode";
 import "stylesheets/application"
 import "packs/aboutus"
 import "./message"
+import "./partner"
 
 Rails.start();
 Turbolinks.start();
