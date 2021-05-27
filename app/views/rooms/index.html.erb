@@ -1,13 +1,17 @@
 <!-- 第一區塊 招呼語 -->
-<div class="w-screen border border-yellow-600 flex">
-  <div class="border border-indigo-600 m-auto w-9/12 text-center">
-      <p class="inline-block bg-yellow-400 rounded-lg p-1 font-serif text-3xl">
-        Hello,<%= current_user.name %>,以下是您的聊天室清單
-      </p>
-      <div class="flex border border-indigo-700">
-<!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
-        <div class="w-1/2 mt-4 bg-yellow-100 rounded-lg p-1 font-serif text-3xl text-center border border-yellow-700">
-          <p>您是雇主的</p>
+<section class="hidden lg:flex">
+  <div class="m-auto w-9/12">
+    <p class="p-1 text-3xl">
+      聊天室
+    </p>
+    <p>
+      雇主 <i class="fas fa-user-tie"></i>
+      員工 <i class="fas fa-walking"></i>
+    </p>
+    <div class="flex">
+      <!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
+      <section class="w-1/2 mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-user-tie"></i></p>
           <div class="h-80 overflow-scroll">
             <div class="">
               <% @rooms.each do |room| %>
@@ -17,10 +21,12 @@
               <% end %>
             </div>
           </div>
-        </div>
-<!-- 第三區塊 接受的任務 -->
-        <div class="w-1/2 mt-4 bg-green-400 rounded-lg p-1 font-serif text-3xl text-center border border-yellow-700">
-          <p>您幫忙腿排的</p>
+      </section>
+      <div class="w-1/12">
+      </div>
+      <!-- 第三區塊 接受的任務 -->
+      <section class="w-1/2 mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-walking"></i></p>
           <div class="h-80 overflow-scroll">
             <div>
               <% @rooms.each do |room| %>
@@ -30,7 +36,49 @@
               <% end %>
             </div>
           </div>
-        </div>
-      </div>
+      </section>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="lg:hidden flex">
+  <div class="m-auto w-9/12">
+    <p class="p-1 text-3xl">
+      聊天室
+    </p>
+    <p>
+      雇主 <i class="fas fa-user-tie"></i>
+      員工 <i class="fas fa-walking"></i>
+    </p>
+    <div class="flex flex-col">
+      <!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
+      <section class="mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-user-tie"></i></p>
+          <div class="h-80 overflow-scroll">
+            <div class="">
+              <% @rooms.each do |room| %>
+                <% if user_room_list(room) %>
+                  <%= link_to "日期:#{room.task.task_at&.strftime('%m-%d--%H:%M')}\n/\n位於#{room.task.store_name}", room_path(room), :method => :get, class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-fuchsia-600' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+      <div class="w-1/12">
+      </div>
+      <!-- 第三區塊 接受的任務 -->
+      <section class="mt-4 rounded-lg p-1 text-3xl text-center border border-yellow-700">
+          <p><i class="fas fa-walking"></i></p>
+          <div class="h-80 overflow-scroll">
+            <div>
+              <% @rooms.each do |room| %>
+                <% if row_leg_room_list(room) %>
+                  <%= link_to "日期:#{room.task.task_at&.strftime('%m-%d--%H:%M')}\n/\n位於#{room.task.store_name}", room_path(room), :method => :get ,class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-red-300' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </section>
+    </div>
+  </div>
+</section>
