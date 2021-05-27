@@ -19,7 +19,7 @@
     <%= f.text_area :description, cols: 20, rows: 4, placeholder: '請說明詳細內容', class: "input task-form-textarea" %>
     <small>不能空白</small>
   </div>
-  <div class="city-selector-set mb-4">
+  <div class="city-selector-set mb-8">
       <label for="district">任務所在區</label>
       <select class="county" id="county" name="city"></select>
       <select class="district" id="district"></select>
@@ -49,32 +49,22 @@
   </div>
 
   <div class="field task-input-special">
+    <%= f.label "任務起始時間" %><span class="start-message">(發布時間要在起始時間3小時前)</span>
+    <%= f.datetime_select :task_at %>
+  </div>
+
+  <div class="field task-input-special">
+    <%= f.label "任務結束時間" %><span class="end-message">(要比起始間晚,最少一小時)</span>
+    <%= f.datetime_select :task_end %>
+  </div>
+
+  <div class="field task-input-special">
     <%= f.label "酬勞新台幣:(一小時200)" %>
     <%= f.number_field :reward, min: 200 %>
 
     <%= f.label "代墊金額新台幣:" %>
     <%= f.number_field :behalf, min: 0 %>
-  </div>
-
-  <div class="field task-input-special">
-    <%= f.label "任務起始時間(發布時間要在起始時間3小時前)" %>
-    <%= f.datetime_select :task_at %>
-  </div>
-
-  <div class="mb-4">
-    <label for="thePickerStart">任務起始時間</label>
-    <input type="text" id="thePickerStart">
-  </div>
-
-  <div class="mb-4">
-    <label for="thePickerEnd">任務結束時間</label>
-    <input type="text" id="thePickerEnd">
-  </div>
-  
-
-  <div class="field task-input-special">
-    <%= f.label "任務結束時間(要比起始間晚,最少一小時)" %>
-    <%= f.datetime_select :task_end %>
+    <small class="reward-message">Error</small>
   </div>
 
   <div class="field">
@@ -89,6 +79,4 @@
   <div class="flex justify-center">
     <%= button_to "新增", {action: "create"}, {class: 'btn btn-default'} %>
   </div>
-
-
 <% end %>

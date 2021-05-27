@@ -82,7 +82,7 @@
   @apply border border-solid border-red-600;
 }
 .field small {
-  @apply text-red-600 invisible;
+  @apply invisible;
 }
 
 .field.error small {
@@ -97,3 +97,11 @@
   @apply inline-block invisible;
 }
 
+.field .reward-message {
+  @apply block;
+}
+
+.start-message.error,
+.end-message.error {
+  @apply text-red-600;
+}
