@@ -6,11 +6,10 @@ import "stylesheets/application";
 import "controllers";
 import "@fortawesome/fontawesome-free/css/all";
 import "../view-event/index";
+import "packs/qrcode";
 import "stylesheets/application"
 import "packs/aboutus"
 import "./message"
-import "packs/qrcode"
-
 
 Rails.start();
 Turbolinks.start();

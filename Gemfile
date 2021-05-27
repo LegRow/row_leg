@@ -27,7 +27,6 @@ gem "aasm", "~> 5.2"
 # 管理機密資訊
 gem "figaro", "~> 1.2"
 
-
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-github'
@@ -57,3 +56,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
+
+gem "rails-i18n", "~> 6.0"

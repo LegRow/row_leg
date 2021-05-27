@@ -1,0 +1,16 @@
+.alert-set {
+  display: block;
+  &:hover .alert {
+    opacity: 0;
+  }
+  .alert {
+    vertical-align: baseline;
+    transition: all linear 1s;
+  }
+  .alert-alert {
+    @apply text-red-300 bg-red-500 py-4 text-lg text-center font-sans;
+  }
+  .alert-notice {
+    @apply text-green-200 bg-green-500 py-4 text-lg text-center font-sans;
+  }
+}

@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
     if current_user.bank_account.blank? || current_user.tel.blank?
       session[:visited_check] = true
-      redirect_to edit_user_registration_path
+      redirect_to edit_user_registration_path, notice: "提醒：您還有尚未填寫的欄位！"
     end
   end
 end

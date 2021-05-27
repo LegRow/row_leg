@@ -9,9 +9,8 @@ document.addEventListener('turbolinks:load', function(){
     text: message,
     width: 128,
     height: 128,
-    colorDark: '#000',
-    colorLight: '#fff',
-    correctLevel: QRCode.CorrectLevel.H
-  });
+    colorDark: "#000",
+    colorLight: "#fff",
+    correctLevel: QRCode.CorrectLevel.H,
   }
 })
