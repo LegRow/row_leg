@@ -74,8 +74,15 @@
   @apply border border-solid border-red-600;
 }
 
+.field.success textarea {
+  @apply border-green-400 border border-solid;
+}
+
+.field.error textarea {
+  @apply border border-solid border-red-600;
+}
 .field small {
-  @apply text-red-600 invisible;
+  @apply invisible;
 }
 
 .field.error small {
@@ -84,4 +91,17 @@
 
 .agree-error {
   @apply flex justify-center invisible;
+}
+
+.city-selector-error {
+  @apply inline-block invisible;
+}
+
+.field .reward-message {
+  @apply block;
+}
+
+.start-message.error,
+.end-message.error {
+  @apply text-red-600;
 }

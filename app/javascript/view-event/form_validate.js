@@ -21,7 +21,6 @@ document.addEventListener("turbolinks:load", () => {
     const showError = function (input) {
       input.parentElement.className = "field error";
     };
-    // 檢查空欄
     const checkRequired = function (inputArr) {
       inputArr.forEach((input) => {
         if (input.value === "") {
@@ -45,7 +44,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     }
 
-    // 檢查電話 帳戶長度與是否為數字
     const checkLength = function (input) {
       if (input.value.length !== 10) {
         showError(input);
@@ -58,7 +56,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     };
 
-    // 檢查密碼長度
     const checkPasswordLength = function (input) {
       if (input.value.length < 6) {
         showError(input);
@@ -66,7 +63,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     };
 
-    // 檢查密碼是否一致
     const checkPasswordMath = function (input1, input2) {
       if (input1.value !== input2.value) {
         showError(input2);
@@ -74,7 +70,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     };
 
-    //  檢查checkbox
     const checkBoxGender = function (option1, option2) {
       if ((option1.checked === false) & (option2.checked === false)) {
         option1.parentElement.lastElementChild.textContent = "請選擇性別";
