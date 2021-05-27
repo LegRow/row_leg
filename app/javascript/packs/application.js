@@ -8,7 +8,8 @@ import "@fortawesome/fontawesome-free/css/all";
 import "../view-event/index";
 import "stylesheets/application"
 import "packs/aboutus"
-// import "packs/qrcode"
+import "./message"
+import "packs/qrcode"
 
 
 Rails.start();
