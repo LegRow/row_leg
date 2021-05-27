@@ -122,7 +122,7 @@ private
     begin
       @task = Task.where(employee_id: current_user.id).find(params[:id])
     rescue
-      redirect_to tasks_path
+       render 'error', locals: { message: '非任務承接者' }
     end
   end
 
