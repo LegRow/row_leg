@@ -1,6 +1,6 @@
 <div class="fas fa-hand-point-down text-2xl m-4">請按完成</div>
  <%= form_with url: finish_task_path(@task), local: true do |f| %>
-   <div class="w-20 m-3 text-4xl text-yellow-900  border-yellow-500 dark:bg-yellow-400 | p-4 border-solid rounded-xl border-2 | flex justify-around cursor-pointer | hover:bg-yellow-400"><%= f.submit '完成'%></div>
+   <div class="w-20 m-6 text-4xl text-yellow-900  border-yellow-500 bg-yellow-400 | p-4 border-solid rounded-2xl border-4 | flex justify-around cursor-pointer | hover:bg-yellow-400"><%= f.submit '完成'%></div>
  <% end %>
 </div>
 
