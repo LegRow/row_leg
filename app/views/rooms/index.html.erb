@@ -16,7 +16,7 @@
             <div class="">
               <% @rooms.each do |room| %>
                 <% if user_room_list(room) %>
-                  <%= link_to "日期:#{room.task.task_at&.strftime('%m-%d--%H:%M')}\n/\n位於#{room.task.store_name}", room_path(room), :method => :get, class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-fuchsia-600' %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
                 <% end %>
               <% end %>
             </div>
@@ -31,7 +31,7 @@
             <div>
               <% @rooms.each do |room| %>
                 <% if row_leg_room_list(room) %>
-                  <%= link_to "日期:#{room.task.task_at&.strftime('%m-%d--%H:%M')}\n/\n位於#{room.task.store_name}", room_path(room), :method => :get ,class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-red-300' %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
                 <% end %>
               <% end %>
             </div>
@@ -58,7 +58,7 @@
             <div class="">
               <% @rooms.each do |room| %>
                 <% if user_room_list(room) %>
-                  <%= link_to "日期:#{room.task.task_at&.strftime('%m-%d--%H:%M')}\n/\n位於#{room.task.store_name}", room_path(room), :method => :get, class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-fuchsia-600' %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
                 <% end %>
               <% end %>
             </div>
@@ -73,7 +73,7 @@
             <div>
               <% @rooms.each do |room| %>
                 <% if row_leg_room_list(room) %>
-                  <%= link_to "日期:#{room.task.task_at&.strftime('%m-%d--%H:%M')}\n/\n位於#{room.task.store_name}", room_path(room), :method => :get ,class: 'bg-yellow-400 w-full inline-block text-center text-2xl m-px border-2 border-red-300' %>
+                  <%= link_to "#{room.task.task_at&.strftime('%m-%d--%H:%M')}@#{room.task.store_name}", room_path(room), :method => :get, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
                 <% end %>
               <% end %>
             </div>
