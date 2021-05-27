@@ -3,8 +3,8 @@ namespace :task_test do
   task auto_destroy_tasks: :environment do
     @tasks = Task.all
     @tasks.each do |task|
-      if (task.task_at - Time.now) < 1800
-        task.room.messages.each { |message| message.delete }
+      if (task.task_at - Time.now) < 3.hours
+        task.room.messages.destroy_all
         task.room.destroy
         task.destroy
       end
