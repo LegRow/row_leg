@@ -20,19 +20,19 @@
         <div class="">
           <div class= "pt-4">
             <%= link_to '返回', tasks_path, class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
-            <% if employer_of @task %>
-              <%= link_to '編輯', edit_task_path(@task), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
-              <%= link_to 'qrcode', qrcode_show_task_path(@task), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
-            </div>
-          <% else %>
+          <% if employer_of @task %>
+            <%= link_to '編輯', edit_task_path(@task), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
+            <%= link_to 'qrcode', qrcode_show_task_path(@task), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
+          </div>
           <div>
+          <% else %>
             <% if employee_of @task %>
               <%= button_tag '回報位置', id: "report_location" %>
             <% elsif not_employer_of(@task) && @task.employer_paid? %>
               <%= link_to '應徵', send_applicant_apply_email_task_url(applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state), class: "btn-text my-2" %>
             <% end %>
-          </div>
           <% end %>
+          </div>
         </div>
       </div>
       <div id="employee" class="sm: lg:px-5 py-5 border-2 w-9/12" data-lat="<%= @task.latitude %>" data-lng="<%= @task.longitude %>" data-store-target="output">
