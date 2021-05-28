@@ -9,9 +9,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage: (theme) => ({
-        rowleg: "url('../images/rowleg.jpg')",
-      }),
       colors: {
         "light-blue": colors.lightBlue,
         cyan: colors.cyan,
