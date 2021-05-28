@@ -24,8 +24,12 @@
           </div>
           <% if employer_of task %>
           <div class="task-edit">
-            <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_task_path(task) %>
-            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to edit_task_path(task) do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+            <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }  do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
           </div>
           <% end %>
           <div class="py-2 px-4">
@@ -36,22 +40,29 @@
           <div class="task-footer">
             <% if employer_of task %>
             <div class="task-unpaid">
-              <% if task.pending? %><%= link_to '<i class="fas fa-credit-card"></i> Pay'.html_safe, controller:
-              'cashflow', action: 'to_newebpay',for_newebpay: {reward:
-              task.reward, behalf: task.behalf, order_number:
-              task.order.merchant_order_number} %>
+              <% if task.pending? %>
+                <%= link_to controller:
+                  'cashflow', action: 'to_newebpay',for_newebpay: {reward:
+                  task.reward, behalf: task.behalf, order_number:
+                  task.order.merchant_order_number} do %>
+                  <i class="fas fa-credit-card"></i> Pay
+                <% end %>
               <% end %>
             </div>
             <% else %>
             <div class="task-security-deposit">
-              <% if employer_confirmed task %><%= link_to '<i class="fas fa-handshake"></i> 支付押金'.html_safe,
-             to_newebpay_cashflow_url(reward: (task.reward * 0.2).to_i, behalf: task.behalf,
-              order_number: task.order.merchant_order_number + "B") %>
+              <% if employer_confirmed task %>
+                <%= link_to to_newebpay_cashflow_url(reward: (task.reward * 0.2).to_i, behalf: task.behalf,
+                order_number: task.order.merchant_order_number + "B") do %>
+                  <i class="fas fa-handshake"></i> 支付押金
+                <% end %>
               <% end %>
             </div>
             <% end %>
             <div class="task-more-btn">
-              <%= link_to '點我看任務詳情<i class="fas fa-arrow-right"></i>'.html_safe, task%>
+              <%= link_to task do %>
+                點我看任務詳情<i class="fas fa-arrow-right"></i>
+              <% end %>
             </div>
           
           </div>
