@@ -1,13 +1,14 @@
-<div class="container mx-auto h-screen bg-rowleg bg-center bg-cover">
-  <div class="pt-20 w-1/2 m-auto text-left font-serif">
-    <h1 class="text-6xl bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-800">關於我們</h1>
+<div class="container grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 mx-auto px-7">
+  <div class="aboutus-img flex justify-center">
+    <%= image_pack_tag("about_us.jpeg", size: "620x350")%>
   </div>
-  <div class="pt-10 w-1/2 text-left m-auto text-2xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-800">
+  <div class="pt-10 m-auto text-2xl font-sans text-gray-600">
     <p>腿排是一個人力媒合服務平台。</p>
     <p>為您做任何您想做的事情。</p>
     <p>想吃什麼懶得排嗎？</p>
     <p>還是天氣太熱不想在太陽底下排隊購買東西呢？</p>
     <p>現在動手馬上發布任務</p>
-    <p>就會找到願意替你犧牲奉獻代你排隊的人。</p>
+    <p class="mb-4">就會找到願意替你犧牲奉獻代你排隊的人。</p>
+    <%= link_to "加入我們", new_user_registration_path, class:"about-us-link bg-yellow-400 p-3" %>
   </div>
 </div>
