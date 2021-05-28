@@ -27,6 +27,8 @@ gem "aasm", "~> 5.2"
 # 管理機密資訊
 gem "figaro", "~> 1.2"
 
+# gem "newebpay", path: "./lib/newebpay.rb"
+
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-github'
