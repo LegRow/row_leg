@@ -7,10 +7,11 @@ import "controllers";
 import "@fortawesome/fontawesome-free/css/all";
 import "../view-event/index";
 import "packs/qrcode";
-import "stylesheets/application"
-import "packs/aboutus"
-import "./message"
-import "./partner"
+import "packs/aboutus";
+import "./message";
+import "./partner";
+
+const images = require.context("../images", true);
 
 Rails.start();
 Turbolinks.start();

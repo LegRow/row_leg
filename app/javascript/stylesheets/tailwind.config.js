@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        rowleg: "url('img/rowleg.jpg')",
+        rowleg: "url('../images/rowleg.jpg')",
       }),
       colors: {
         "light-blue": colors.lightBlue,
