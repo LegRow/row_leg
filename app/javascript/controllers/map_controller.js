@@ -54,10 +54,7 @@ export default class extends Controller {
       reportLocation.addEventListener("click", (e) => {
         e.preventDefault();
         // call google map
-        navigator.geolocation.getCurrentPosition(
-          succeed,
-          fail
-        );
+        navigator.geolocation.getCurrentPosition(succeed, fail);
         function succeed(position) {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
@@ -86,19 +83,44 @@ export default class extends Controller {
         [storeLatitude, storeLongitude], // 店家位置
       ];
       drawEmployeeAndStoreMarkers(markerLocations);
-    };
+    }
     function drawEmployeeAndStoreMarkers(markerLocations) {
       const employeeLocationMap = new google.maps.Map(
         employeeMap,
         employeeMapOption
       );
+
+      const markers = [
+        {
+          img: "https://image.flaticon.com/icons/png/512/287/287224.png",
+          content: "商店位置",
+        },
+        {
+          img: "https://image.flaticon.com/icons/png/512/287/287226.png",
+          content: "排隊員位置",
+        },
+      ];
+
       for (let i = 0; i < markerLocations.length; i++) {
-        new google.maps.Marker({
+        const marker = new google.maps.Marker({
           position: new google.maps.LatLng(
             markerLocations[i][0],
             markerLocations[i][1]
           ),
           map: employeeLocationMap,
+          icon: {
+            url: markers[i].img,
+            scaledSize: new google.maps.Size(45, 45),
+          },
+          animation: google.maps.Animation.DROP,
+        });
+
+        const infowindow = new google.maps.InfoWindow({
+          content: markers[i].content,
+        });
+
+        marker.addListener("click", () => {
+          infowindow.open(employeeMap, marker);
         });
       }
     }
