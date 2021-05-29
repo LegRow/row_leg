@@ -83,6 +83,12 @@ export default class extends Controller {
         [storeLatitude, storeLongitude], // 店家位置
       ];
       drawEmployeeAndStoreMarkers(markerLocations);
+    } else {
+      console.log("看熱鬧的 近來摟");
+      let markerLocations = [
+        [storeLatitude, storeLongitude]
+      ];
+      drawEmployeeAndStoreMarkers(markerLocations);
     }
     function drawEmployeeAndStoreMarkers(markerLocations) {
       const employeeLocationMap = new google.maps.Map(
