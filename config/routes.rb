@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
 
   #任務頁面相關
-  resources :rooms, only: [:index, :new, :create, :show]
+  resources :rooms, only: [:index, :new, :create, :show] do
+    get 'tip' #建立一個讓前端打資訊到後端的通道
+  end
   resources :tests, only: [:index]
   resources :messages, only: [:create]
   resources :lists, only: [:index]

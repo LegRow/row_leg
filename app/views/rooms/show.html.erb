@@ -14,7 +14,7 @@
         請於：<%= "#{@room.task.task_end&.strftime('%m-%d/%H:%M')} 前到達交接" %>
       </div>
     <% end%>
-    <div class="w-3/12 inline-block text-center text-2xl m-px hover:opacity-60 ">
+    <div class="w-3/12 inline-block text-center text-2xl m-px hover:opacity-60 typing_tip">
       <%= @room.user.uniq.count %>位成員
     </div>
       <div class="flex-grow text-center">

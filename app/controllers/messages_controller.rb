@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.create(message_params)
     SendMessageJob.perform_now(@message, current_user)
+    #send_helper在 app/jobs裡
   end
 
   private
