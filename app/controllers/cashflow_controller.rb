@@ -35,7 +35,7 @@ class CashflowController < ApplicationController
       ['MerchantOrderNo', order_number],
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
-      ['Email', ENV["email_for_newebpay"]],
+      ['Email', ''],
       ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
       ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
