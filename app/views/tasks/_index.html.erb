@@ -23,6 +23,7 @@
                 <%= task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %>
               </p>
               <p class="task-place"><span><i class="fas fa-map-marker-alt"></i>：</span><%= task.address %></p>
+              <p class="task-place"><span><i class="fas fa-user"></i>：</span><%= task.user.name %></p>
             </div>
             <% if employer_of task %>
             <div class="task-edit">
