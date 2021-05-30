@@ -1,21 +1,21 @@
 <section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>" data-employer-id="<%= @task.user_id %>" data-current-user="<%= current_user.id %>">
   <div class="task-show-row" data-controller="map">
     <div class="font-bold py-2 px-4 rounded">
-      <h2 data-controller="store"% >任務詳情</h2>
+      <h2 class="text-5xl text-yellow-900" data-controller="store"% ><i class="fas fa-thumbtack"></i>任務詳情</h2>
     </div>
     <div class="task-show-box">
       <div class="task-show-inf">
         <p class="text-2xl">
           <strong>任務名稱：</strong><%= @task.brief_description %>
         </p>
-        <p><strong>任務內容：</strong><br /><%= @task.description %></p>
-        <p><i class="fas fa-store text-xl"></i> <%= @task.store_name %></p>
-        <p><i class="fas fa-map-marker-alt text-xl"></i> <%= @task.address %></p>
-        <p><i class="fas fa-coins text-xl"></i> <%= "$#{@task.reward}NT（酬勞）" %>
-          <i class="fas fa-hand-holding-usd text-xl"></i> <%= "#{@task.behalf}NT（代墊金額）" %>
+        <p class="text-lg"><strong>任務內容：</strong><br /><%= @task.description %></p>
+        <p class="text-lg font-bold"><i class="fas fa-store mr-1"></i>商店名：<%= @task.store_name %></p>
+        <p class="text-lg font-bold"><i class="fas fa-map-marker-alt mr-1"></i>地址：<%= @task.address %></p>
+        <p class="text-lg font-bold"><i class="fas fa-coins text-lg mr-1 "></i>酬勞：<%= "$#{@task.reward} NT" %> &
+          <i class="fas fa-hand-holding-usd text-lg"></i><%= "#{@task.behalf}NT（代墊金額）" %>
         </p>
-        <p><i class="fas fa-hourglass-start text-xl"></i> <%= @task.task_at&.strftime('%Y-%m-%d %H:%M:%S') %></p>
-        <p><i class="fas fa-hourglass-end text-xl"></i> <%= @task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %></p>
+        <p class="text-lg font-bold"><i class="fas fa-hourglass-start text-lg mr-1"></i>起始：<%= @task.task_at&.strftime('%Y-%m-%d %H:%M:%S') %></p>
+        <p class="text-lg font-bold"><i class="fas fa-hourglass-end text-lg mr-1"></i>結束：<%= @task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %></p>
         <p><i class="fas fa-comment-alt text-xl"></i> <%= @task.remarks %></p>
         <div class="">
           <div class= "pt-4">
