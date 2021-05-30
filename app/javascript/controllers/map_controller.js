@@ -85,9 +85,7 @@ export default class extends Controller {
       drawEmployeeAndStoreMarkers(markerLocations);
     } else {
       console.log("看熱鬧的 近來摟");
-      let markerLocations = [
-        [storeLatitude, storeLongitude]
-      ];
+      let markerLocations = [[storeLatitude, storeLongitude]];
       drawEmployeeAndStoreMarkers(markerLocations);
     }
     function drawEmployeeAndStoreMarkers(markerLocations) {
@@ -129,6 +127,96 @@ export default class extends Controller {
           infowindow.open(employeeMap, marker);
         });
       }
+
+      if (markerLocations[1]) {
+        console.log(markerLocations[0], markerLocations[1]);
+        console.log(123);
+        // const line = new google.maps.Polyline({
+        //   path: [
+        //     { lat: markerLocations[0][0], lng: markerLocations[0][1] },
+        //     { lat: markerLocations[1][0], lng: markerLocations[1][1] },
+        //   ],
+        //   map: employeeLocationMap,
+        // });
+        // 使用directionAPI 計算兩點距離與所需時間
+        let directionsService = new google.maps.DirectionsService();
+        // 使用directionsRenderer實體 將兩點距離渲染到地圖上
+        let directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(employeeLocationMap);
+        // 設定路徑
+        const route = {
+          origin: {
+            lat: markerLocations[0][0],
+            lng: markerLocations[0][1],
+          },
+          destination: {
+            lat: markerLocations[1][0],
+            lng: markerLocations[1][1],
+          },
+          travelMode: "WALKING",
+          // provideRouteAlternatives: true,
+        };
+
+        directionsService.route(route, function (response, status) {
+          if (status !== "OK") {
+            window.alert("Directions request failed due to " + status);
+            return;
+          } else {
+            console.log(response);
+            console.log(response.routes); //得到一個array 裡面有一個object 這個object的legs key裡有很多資訊 如距離 要花多少時間等等
+            // directionsRenderer.setDirections(response); // Add route to the map
+            const directionsData = response.routes[0].legs[0]; // Get data about the mapped route
+            console.log(directionsData);
+            // if (!directionsData) {
+            //   window.alert("Directions request failed");
+            //   return;
+            // } else {
+            //   document.getElementById("msg").innerHTML +=
+            //     " Driving distance is " +
+            //     directionsData.distance.text +
+            //     " (" +
+            //     directionsData.duration.text +
+            //     ").";
+            // }
+          }
+        });
+      }
     }
   }
 }
+
+//  var leg = response.routes[0].legs[0];
+//  makeMarker(leg.start_location, icons.start, "title", map);
+//  makeMarker(leg.end_location, icons.end, "title", map);
+
+// function makeMarker(position, icon, title, map) {
+//      new google.maps.Marker({
+//        position: position,
+//        map: map,
+//        icon: icon,
+//        title: title,
+//      });
+//    }
+
+//  var icons = {
+//    start: new google.maps.MarkerImage(
+//      // URL
+//      "http://maps.google.com/mapfiles/ms/micons/blue.png",
+//      // (width,height)
+//      new google.maps.Size(44, 32),
+//      // The origin point (x,y)
+//      new google.maps.Point(0, 0),
+//      // The anchor point (x,y)
+//      new google.maps.Point(22, 32)
+//    ),
+//    end: new google.maps.MarkerImage(
+//      // URL
+//      "http://maps.google.com/mapfiles/ms/micons/green.png",
+//      // (width,height)
+//      new google.maps.Size(44, 32),
+//      // The origin point (x,y)
+//      new google.maps.Point(0, 0),
+//      // The anchor point (x,y)
+//      new google.maps.Point(22, 32)
+//    ),
+//  };
