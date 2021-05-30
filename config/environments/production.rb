@@ -63,12 +63,12 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "gem_yarn_init_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { :host => 'rowlegfirst.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'rowlegfirst.herokuapp.com', :protocol => 'https' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.mailgun.org',
     port: 587,
-    domain: "rowleg.online",
+    domain: 'sandboxa6d1bd63cec64129a7e566ac54cca4ef.mailgun.org',
     user_name: ENV["smtp_user_name"],
     password: ENV["smtp_password"],
     authentication: 'plain',
