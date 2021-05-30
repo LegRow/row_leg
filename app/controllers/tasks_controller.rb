@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
-  before_action :find_task, only:[:edit, :update, :destroy, :finish_show, :qrcode_show]
+  before_action :find_task, only:[:edit, :update, :destroy, :qrcode_show]
   before_action :authenticate_user!, except: [:index]
-  # before_action :check_sign_in QRcode設置的 討論後決定是否留下
   before_action :find_employee, only: [:finish_show, :finish]
 
   def index
@@ -87,13 +86,13 @@ class TasksController < ApplicationController
     # 告知雇主，目前任務正在等受雇者付押金
     redirect_to tasks_path, notice: '已發送確認通知信給受雇者，待受雇者支付押金後，則表示成功承接'
   end
-
+  #轉網址帶資料
   def qrcode_show
     @task_url = finish_show_task_url(@task)
   end
-
+  #我先用醜的寫法
   def finish_show
-    if check_employee?
+    if current_user.id == @task.employee_id
       render :finish_show
     else
       render 'error', locals: { message: '非任務承接者' }
@@ -101,15 +100,12 @@ class TasksController < ApplicationController
   end
 
   def finish
-    if check_employee?
-      if @task.state == :deal
-        @task.finish!
-        render :finish
-      else
-        render 'error', locals: { message: '非deal,不能finish!' }
-      end
+  #這是post不用擋 狀態也不用去判斷 因為永哲有設定 只有:employee_paids能變deal
+  #提醒試試用js來做吧
+    if @task.finish!
+      render :finish
     else
-      render 'error', locals: { message: '非任務承接者' }
+      redirect_to tasks_path
     end
   end
 
@@ -123,22 +119,18 @@ private
   end
 
   def find_employee
-    @task = Task.where(employee: current_user).find(params[:id])
+    begin
+      @task = Task.where(employee_id: current_user.id).find(params[:id])
+    rescue
+       render 'error', locals: { message: '非任務承接者' }
+    end
   end
 
   def task_params
-    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks, :latitude, :longitude)
+    params.require(:task).permit(:brief_description, :description, :address_city, :address_district, :address_street, :store_name, :reward, :behalf, :task_at, :task_end, :remarks, :latitude, :longitude, :buffer_time)
   end
 
   def order_params
     params.require(:task).permit(:merchant_order_number)
-  end
-
-  def check_sign_in
-    redirect_to root_path unless signed_in?
-  end
-
-  def check_employee?
-    current_user == @task.employee
   end
 end

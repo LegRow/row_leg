@@ -9,13 +9,18 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundImage: (theme) => ({
-        rowleg: "url('img/rowleg.jpg')",
-      }),
       colors: {
         "light-blue": colors.lightBlue,
         cyan: colors.cyan,
       },
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      'xxl': '1500px',
+      '3xl': '1740px',
     },
   },
   variants: {

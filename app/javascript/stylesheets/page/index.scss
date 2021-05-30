@@ -63,3 +63,7 @@
     }
   }
 }
+
+.pusher {
+  @apply hidden lg:block lg:w-1/12 lg:h-full 3xl:hidden; 
+}

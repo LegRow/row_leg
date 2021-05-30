@@ -1,5 +1,6 @@
 class CashflowController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:from_newebpay, :thankyou]
+  include Newebpay
 
   def to_newebpay
     # 串藍新至少要這些東西
@@ -80,39 +81,7 @@ class CashflowController < ApplicationController
   end
 
   def thankyou
-    redirect_to tasks_path, notice: params['Status']
+    redirect_to tasks_path, notice: "操作成功，請確認訂單狀態。"
   end
-
-  private
-
-  def aes_decrypt(trade_information, key, iv)
-    result = hex2bin(trade_information)
-    openssl_decrypt(result, key, iv)
-  end
-
-  def hex2bin(hex)
-    [hex].pack('H*')
-  end
-
-  def openssl_decrypt(string, key, iv, cipher_method = 'aes-256-cbc')
-    cipher = OpenSSL::Cipher.new(cipher_method)
-    cipher.decrypt
-    cipher.iv = iv
-    cipher.key = key
-    cipher.update(string)
-  end
-
-  # def strippadding(string)
-  #   slast = string[-1].ord
-  #   slastc = slast.chr
-  #   pcheck = string[-slast]
-  #   if (string.match("/#{slastc}{#{slast}}/"))
-  #     puts "============================"
-  #     puts true
-  #   else
-  #     puts "============================"
-  #     puts false
-  #   end
-  # end
 
 end

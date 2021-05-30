@@ -1,48 +1,36 @@
-<div class="border bg-yellow-50">
-  <div class="flex text-3xl">
-    Hello,<%= current_user.name %>
-  </div>
-  <div class="flex">
-    <div class="w-1/5 pb-6 md:block bg-yellow-200">
-      <div class="px-4 mb-2 text-2xl ">發布任務的聊天室</div>
-          <span class="pr-1 ">
-            <% @rooms.each do |room| %>
-              <% if room.task.user_id == current_user.id %>
-              <%= link_to room.task.store_name, room_path(room), :method => :get ,
-              class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
-              <% end %>
-            <% end %>
-          </span>
-      </div>
+<div class="w-10/12 m-auto border-4 border-green-500 bg-green-200 rounded-md">
+<%# 第一區塊 聊天室資訊  請注意不要把下面的data-controller="chat"刪掉 %>
+  <div data-controller="chat" class="flex items-center bg-green-400">
 
-    <div class="w-1/5 pb-6 contents md:block bg-yellow-300">
-      <div class="px-4 mb-2 text-2xl">接任務的專屬聊天室</div>
-        <span class="pr-1 text-grey-light">
-          <% @rooms.each do |room| %>
-            <% if room.task.employee_id == current_user.id %>
-            <%= link_to room.task.store_name, room_path(@room), :method => :get ,
-            class: 'bg-green-100 w-full inline-block text-center text-3xl border-double border-4 border-light-blue-500' %>
-            <% end %>
-          <% end %>
-        </span>
+    <% if row_leg_room %>
+      <div class="w-8/12 animate-pulse bg-green-300 text-xl p-1 rounded">
+        這是您的跑腿任務：<%= "位於#{@room.task.store_name}" %><br>
+        請於：<%= "#{@room.task.task_at&.strftime('%m月%d日%H:%M')} 前到達執行任務" %>
       </div>
-
-      <div class="w-3/5 pb-6 md:block">
-      <div class="px-4 mb-2 text-2xl">你目前在任務<%= @room.task.brief_description %>的聊天室中</div>
-        <span class=" text-yellow-900">
-          <div id="messages" class="flex-col flex chat_scroll overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
-              <% @room.messages.each do |message| %>
-              <%= render 'messages/message', message: message %>
-              <% end %>
-          </div>
-        </span>
-        <div class="chat_btn bottom:0  ">
-          <%= render 'messages/form', message: Message.new, room: @room %>
-        </div>
+    <% end%>
+    <% if user_room %>
+      <div class="w-8/12 animate-pulse bg-blue-400 text-xl p-1">
+        這是您發布的任務：<%= "#{@room.task.store_name}" %><br>
+        請於：<%= "#{@room.task.task_end&.strftime('%m-%d/%H:%M')} 前到達交接" %>
+      </div>
+    <% end%>
+    <div class="w-3/12 inline-block text-center text-2xl m-px hover:opacity-60 typing_tip">
+      <%= @room.user.uniq.count %>位成員
     </div>
+      <div class="flex-grow text-center">
+        <%= link_to "返回", rooms_path, class: 'inline-block text-center text-3xl m-px hover:opacity-60' %>
+      </div>
+  </div>
+<%# 第二區塊 %>
+  <div calss="m-auto w-10/12">
+    <div id="messages" class="h-96 flex-col flex overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
+      <% @room.messages.each do |message| %>
+        <%= render 'messages/message', message: message %>
+      <% end %>
+    </div>
+    <hr>
+    <div class="">
+      <%= render 'messages/form', message: Message.new, room: @room %>
+    </div>
+  </div>
 </div>
-
-
-
-
-

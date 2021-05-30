@@ -74,7 +74,7 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.action_mailer.default_url_options = { host:'localhost', post: 3000 }
+  config.action_mailer.default_url_options = { host:'localhost', port: 3000 }
 
   # to use ngrok
   config.hosts << /[a-z0-9]+\.ngrok\.io/
@@ -85,7 +85,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.mailgun.org',
     port: 587,
-    domain: config.hosts,
+    domain: 'sandboxa6d1bd63cec64129a7e566ac54cca4ef.mailgun.org',
     user_name: ENV["smtp_user_name"],
     password: ENV["smtp_password"],
     authentication: 'plain',

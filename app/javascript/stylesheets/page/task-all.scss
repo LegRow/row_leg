@@ -92,3 +92,9 @@
   background-position: right center;
   color: #fff;
 }
+
+// sidebar
+
+.far.fa-plus-square, .fas.fa-tasks, .fas.fa-shoe-prints, .fas.fa-comments {
+  @apply block text-center;
+}

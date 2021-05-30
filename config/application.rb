@@ -10,6 +10,7 @@ module GemYarnInit
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.autoloader = :classic
+    config.autoload_paths += %W(#{config.root}/lib)
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -17,6 +18,7 @@ module GemYarnInit
     #
     config.time_zone = "Taipei"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.i18n.default_locale = "en"
+    config.i18n.default_locale = "zh-TW"
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   end
 end

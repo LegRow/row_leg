@@ -7,9 +7,6 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
-    @room = Room.new
-    @message = Message.new
-    @messages = Message.all
   end
 
   def new
@@ -20,8 +17,14 @@ class RoomsController < ApplicationController
   end
 
   def show
-      @rooms = Room.all
-      @message = @room.messages.new
+    #@message = @room.messages.new 這個寫法不知為何造成對話框內多一個空白
+    @message = Message.new
+  end
+  # 自定義傳送事件方法 給app/javascript/controllers/caht_controller.js用
+  # ActionCable.server.broadcast即為廣播 房號後可帶所需資訊。type為命名慣例
+  def tip
+    ActionCable.server.broadcast "room_channel_#{params[:room_id]}", type: 'tip', user_id: current_user.id
+    head :no_content #HTTP status code 200 無內容物
   end
 
   private
@@ -38,7 +41,7 @@ class RoomsController < ApplicationController
   def join_to_chat
     #只有甲方乙方能進聊天室
     if current_user.id != @room.task.user.id && current_user.id != @room.task.employee_id
-      redirect_to rooms_path
+      redirect_to rooms_path, alert: "請勿隨意操作路徑！"
     end
   end
 end
