@@ -146,12 +146,12 @@ export default class extends Controller {
         // 設定路徑
         const route = {
           origin: {
-            lat: markerLocations[0][0],
-            lng: markerLocations[0][1],
-          },
-          destination: {
             lat: markerLocations[1][0],
             lng: markerLocations[1][1],
+          },
+          destination: {
+            lat: markerLocations[0][0],
+            lng: markerLocations[0][1],
           },
           travelMode: "WALKING",
           // provideRouteAlternatives: true,
@@ -164,9 +164,38 @@ export default class extends Controller {
           } else {
             console.log(response);
             console.log(response.routes); //得到一個array 裡面有一個object 這個object的legs key裡有很多資訊 如距離 要花多少時間等等
-            // directionsRenderer.setDirections(response); // Add route to the map
+            directionsRenderer.setDirections(response); // Add route to the map
             const directionsData = response.routes[0].legs[0]; // Get data about the mapped route
             console.log(directionsData);
+            const icons = {
+              start: new google.maps.MarkerImage(
+                "https://image.flaticon.com/icons/png/512/287/287224.png",
+                new google.maps.Size(45, 45)
+              ),
+              end: new google.maps.MarkerImage(
+                "https://image.flaticon.com/icons/png/512/287/287226.png",
+                new google.maps.Size(45, 45)
+              ),
+            };
+            makeMarker(
+              directionsData.start_location,
+              icons.start,
+              employeeLocationMap
+            );
+            makeMarker(
+              directionsData.end_location,
+              icons.end,
+              employeeLocationMap
+            );
+
+            function makeMarker(position, icon, map) {
+              new google.maps.Marker({
+                position: position,
+                icon: icon,
+                map: map,
+              });
+            }
+
             // if (!directionsData) {
             //   window.alert("Directions request failed");
             //   return;
