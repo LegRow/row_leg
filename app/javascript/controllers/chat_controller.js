@@ -29,7 +29,7 @@ export default class extends Controller {
         disconnected() {
         },
         received(data) {
-          // 這一區塊處理聊天室收到資訊怎麼處理 一開始只有設定對話 後來需求事件 所以將後端打來的資訊分為兩種 message及tip
+          // 這一區塊處理聊天室收到資訊怎麼處理 一開始只有設定對話 後來需求事件 所以將後端打來的資訊分為兩種 message及tip, 應該可以再多設定一個方法(區塊)專門處理事件.研究中
           if (data.type === 'message') {
             const user_element = document.getElementById("messages");
             const user_id = Number(user_element.getAttribute("data-user-id"));
@@ -45,20 +45,35 @@ export default class extends Controller {
             messageContainer.innerHTML = messageContainer.innerHTML + html;
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
+            // 假設從"後端"打回來 不是message  data.type都是加工來的 看send_message_job跟 rooms_controller
           }else if(data.type === 'tip'){
             const showTypingPlace = document.querySelector('.typing_tip')
             const messageinput = document.querySelector('.messageinput')
             const whoTyping = document.getElementById('messageController')
             // 因為這是抓自己螢幕上的current_user所以取名me
             const me = whoTyping.dataset.currentUser
-            // 這個是抓傳送事件的人是誰
+            // 這個是抓傳送事件的人是誰 data在這就是指那個事件
             const who = data.user_id
             if (me != who) {
-
+            //未觸發前 沒事
+            //鍵盤觸發後 其實先清除timeout 及觸發"打字ing" 當keyup 啟動"靜悄悄"
+            //之後狀態就一直是靜悄悄了 除非再碰鍵盤
+              let timer, cleantimeout = 3000;
+              messageinput.addEventListener('keypress', ifKeypress())
+              messageinput.addEventListener('keyup', ifKeyup())
+              function ifKeypress(e) {
+                window.clearTimeout(timer);
+                showTypingPlace.innerHTML = "對方正在打字"
+              }
+              function ifKeyup(e) {
+                timer = window.setTimeout(()=>{
+                showTypingPlace.innerHTML = "現在靜悄悄"
+                }, cleantimeout)
+              }
             }
           }
-        },
+        }
       }
-    );
+    )
   }
 }
