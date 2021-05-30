@@ -23,6 +23,10 @@
                 <span><i class="fas fa-hourglass-end"></i>：</span>
                 <%= task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %>
               </p>
+              <p class="task-end">
+                <span><i class="fas fa-user"><%= task.employer_name %>
+                </i></span>
+              </p>
             </div>
             <% if employer_of task %>
             <div class="task-edit">
