@@ -7,9 +7,9 @@ document.addEventListener('turbolinks:load', function(){
 
   new QRCode($qrcode, {
     text: message,
-    width: 128,
-    height: 128,
-    colorDark: '#000',
+    width: 200,
+    height: 200,
+    colorDark: '#805300',
     colorLight: '#fff',
     correctLevel: QRCode.CorrectLevel.H
   });
