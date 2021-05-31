@@ -18,6 +18,23 @@ document.addEventListener("turbolinks:load", () => {
       }
     });
   }
+   if (taskList) {
+    const taskstateAll = document.querySelectorAll(".task-state");
+    taskstateAll.forEach((taskstate) => {
+      if (taskstate.dataset.state === "pending") {
+        taskstate.style.background = "MediumOrchid";
+      } else if (
+        taskstate.dataset.state === "employer_paid" ||
+        taskstate.dataset.state === "employer_confirmed"
+      ) {
+        taskstate.style.background = "Crimson";
+      } else if (taskstate.dataset.state === "employee_paid") {
+        taskstate.style.background = "SteelBlue";
+      } else if (taskstate.dataset.state === "deal") {
+        taskstate.style.background = "LightSlateGray";
+      }
+    });
+  }
   if (taskList && !taskItem) {
     const h2 = document.createElement("h2");
     const newDiv = document.createElement("div");
