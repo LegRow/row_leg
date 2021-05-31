@@ -15,6 +15,10 @@ module.exports = {
       colors: {
         "light-blue": colors.lightBlue,
         cyan: colors.cyan,
+        orange: {
+          primary: '#ffcb03',
+          darker: '#ffbb00',
+        }
       },
     },
     screens: {

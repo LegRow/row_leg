@@ -43,10 +43,10 @@
 
 // 漢堡選單外框
 .mobile-btn {
-  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all border-4 border-solid border-black relative z-20;
+  @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all relative z-20;
   // 漢堡選單中間橫線
   .hamburger {
-    @apply w-12 h-2 bg-black rounded relative;
+    @apply w-12 h-1 bg-orange-darker rounded relative;
   }
 }
 
@@ -61,8 +61,8 @@
   content: "";
   position: absolute;
   width: 48px;
-  height: 8px;
-  background-color: #000;
+  height: 4px;
+  background-color: #ffbb00;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
   transition: all 0.5s ease-in-out;
