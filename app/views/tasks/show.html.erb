@@ -1,7 +1,8 @@
 <section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>" data-employer-id="<%= @task.user_id %>" data-current-user="<%= current_user.id %>">
   <div class="task-show-row" data-controller="map">
-    <div class="font-bold py-2 px-4 rounded">
-      <h2 class="text-5xl text-yellow-900" data-controller="store"% ><i class="fas fa-thumbtack"></i>任務詳情</h2>
+    <div class="font-bold py-2 px-4 rounded flex items-center">
+      <h2 data-controller="store" class="w-1/2 text-5xl text-yellow-900" ><i class="fas fa-thumbtack"></i>任務詳情</h2>
+      <h4 class="map-progress w-1/2 animate-pulse text-red-500" id="map-progress"></h4>
     </div>
     <div class="task-show-box">
       <div class="task-show-inf">
