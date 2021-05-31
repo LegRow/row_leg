@@ -37,9 +37,12 @@ gem 'omniauth-rails_csrf_protection'
 gem 'whenever', '~> 1.0'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2'
   gem 'hirb-unicode', '~> 0.0.5'
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development do
