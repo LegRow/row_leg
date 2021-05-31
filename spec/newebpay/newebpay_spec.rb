@@ -20,4 +20,7 @@ RSpec.describe "newebpay" do
     end
   end
 
+  context "when params to newebpay" do
+  end
+
 end
