@@ -1,12 +1,10 @@
 module Newebpay
-  
-  # encoding
+
   def encrypt_aes_sha256_uppercase(transaction_information, key, iv)
     result = encrypt_aes(transaction_information, key, iv)
     result = 'HashKey=' + key + '&' + result + '&HashIV=' + iv  
     result = Digest::SHA256.hexdigest(result)
-    result = result.upcase
-    return result
+    result.upcase
   end
 
   def encrypt_aes(transaction_information, key, iv)
@@ -14,8 +12,7 @@ module Newebpay
     result = addpadding(result)
     result = openssl_encrypt(result, key, iv)
     result = bin2hex(result)
-    result = trim(result)
-    return result
+    trim(result)
   end
 
   def http_build_query(informations)
@@ -24,14 +21,13 @@ module Newebpay
       result_part = CGI.escape(information[0]) + '=' + CGI.escape(information[1])
       result.append(result_part)
     end
-    return result.join("&")
+    result.join("&")
   end
 
   def addpadding(string, blocksize = 32)
     len = string.length
     pad = blocksize - (len % blocksize)
-    string = string + pad.chr() * pad
-    return string
+    string + pad.chr() * pad
   end
 
   def openssl_encrypt(string, key, iv, cipher_method = 'aes-256-cbc')
@@ -39,17 +35,15 @@ module Newebpay
     cipher.encrypt
     cipher.iv = iv
     cipher.key = key
-    result = cipher.update(string)
-    return result
+    cipher.update(string)
   end
 
   def bin2hex(bytes)
-    hex_string = bytes.unpack('H*')
-    return hex_string
+    bytes.unpack('H*')
   end
 
   def trim(data)
-    return data.first.strip
+    data.first.strip
   end
 
   def aes_decrypt(trade_information, key, iv)
@@ -67,6 +61,14 @@ module Newebpay
     cipher.iv = iv
     cipher.key = key
     cipher.update(string)
+  end
+
+  def decode(trade_information_for_order_number)
+    key = ENV["newebpay_key"]
+    iv = ENV["newebpay_iv"]
+    result = aes_decrypt(trade_information, key, iv)
+    result = result.split("&")[5]
+    order_number = result.partition('=').last
   end
 
 end

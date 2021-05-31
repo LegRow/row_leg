@@ -56,16 +56,10 @@ class CashflowController < ApplicationController
     # 我們要抓的就是 MerchantOrderNo=1620984982 (task.order.merchant_order_number)
     status = params["Status"]
     trade_information = params["TradeInfo"]
-    trade_sha256 = params["TradeSha"]
-
-    key = ENV["newebpay_key"]
-    iv = ENV["newebpay_iv"]
 
     # 解碼並更新付費狀態
     if status == "SUCCESS"
-      result = aes_decrypt(trade_information, key, iv)
-      result = result.split("&")[5]
-      target_order_number = result.partition('=').last
+      target_order_number = decode trade_information
       if target_order_number.include?("B")
         target_order_number.slice! "B"
         target_order = Order.find_by(merchant_order_number: target_order_number)
