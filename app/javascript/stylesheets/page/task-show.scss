@@ -4,14 +4,6 @@
   .task-show-row {
     @apply flex flex-col;
 
-    .task-show-title {
-      @apply bg-gray-600 mb-4;
-
-      & h2 {
-        @apply text-center text-5xl text-white;
-      }
-    }
-
     .task-show-box {
       @apply flex;
 

@@ -129,21 +129,14 @@ export default class extends Controller {
       }
 
       if (markerLocations[1]) {
-        console.log(markerLocations[0], markerLocations[1]);
-        console.log(123);
-        // const line = new google.maps.Polyline({
-        //   path: [
-        //     { lat: markerLocations[0][0], lng: markerLocations[0][1] },
-        //     { lat: markerLocations[1][0], lng: markerLocations[1][1] },
-        //   ],
-        //   map: employeeLocationMap,
-        // });
         // 使用directionAPI 計算兩點距離與所需時間
         let directionsService = new google.maps.DirectionsService();
-        // 使用directionsRenderer實體 將兩點距離渲染到地圖上
-        let directionsRenderer = new google.maps.DirectionsRenderer();
+        // 使用directionsRenderer 將兩點間路徑條渲染到地圖上
+        let directionsRenderer = new google.maps.DirectionsRenderer({
+          suppressMarkers: true,
+        });
         directionsRenderer.setMap(employeeLocationMap);
-        // 設定路徑
+        // 設定起點 目的地等option
         const route = {
           origin: {
             lat: markerLocations[1][0],
@@ -153,99 +146,26 @@ export default class extends Controller {
             lat: markerLocations[0][0],
             lng: markerLocations[0][1],
           },
-          travelMode: "WALKING",
-          // provideRouteAlternatives: true,
+          travelMode: "DRIVING",
         };
-
-        directionsService.route(route, function (response, status) {
+        // route request成功後會得到一個DirectionsResult跟status
+        directionsService.route(route, function (result, status) {
           if (status !== "OK") {
             window.alert("Directions request failed due to " + status);
             return;
           } else {
-            console.log(response);
-            console.log(response.routes); //得到一個array 裡面有一個object 這個object的legs key裡有很多資訊 如距離 要花多少時間等等
-            directionsRenderer.setDirections(response); // Add route to the map
-            const directionsData = response.routes[0].legs[0]; // Get data about the mapped route
-            console.log(directionsData);
-            const icons = {
-              start: new google.maps.MarkerImage(
-                "https://image.flaticon.com/icons/png/512/287/287224.png",
-                new google.maps.Size(45, 45)
-              ),
-              end: new google.maps.MarkerImage(
-                "https://image.flaticon.com/icons/png/512/287/287226.png",
-                new google.maps.Size(45, 45)
-              ),
-            };
-            makeMarker(
-              directionsData.start_location,
-              icons.start,
-              employeeLocationMap
-            );
-            makeMarker(
-              directionsData.end_location,
-              icons.end,
-              employeeLocationMap
-            );
+            directionsRenderer.setDirections(result);
+            // 這個object的legs屬性裡就是我們要的各種資料 如兩點距離、要花多少時間等等
+            const directionsData = result.routes[0].legs[0];
+            const distance = directionsData.distance.text;
+            const duration = directionsData.duration.text;
+            const mapProgress = document.querySelector("#map-progress");
 
-            function makeMarker(position, icon, map) {
-              new google.maps.Marker({
-                position: position,
-                icon: icon,
-                map: map,
-              });
-            }
-
-            // if (!directionsData) {
-            //   window.alert("Directions request failed");
-            //   return;
-            // } else {
-            //   document.getElementById("msg").innerHTML +=
-            //     " Driving distance is " +
-            //     directionsData.distance.text +
-            //     " (" +
-            //     directionsData.duration.text +
-            //     ").";
-            // }
+            mapProgress.textContent = `距離目的地:${distance} 最快:${duration}後抵達`;
+            window.setTimeout(() => (mapProgress.textContent = ""), 15000);
           }
         });
       }
     }
   }
 }
-
-//  var leg = response.routes[0].legs[0];
-//  makeMarker(leg.start_location, icons.start, "title", map);
-//  makeMarker(leg.end_location, icons.end, "title", map);
-
-// function makeMarker(position, icon, title, map) {
-//      new google.maps.Marker({
-//        position: position,
-//        map: map,
-//        icon: icon,
-//        title: title,
-//      });
-//    }
-
-//  var icons = {
-//    start: new google.maps.MarkerImage(
-//      // URL
-//      "http://maps.google.com/mapfiles/ms/micons/blue.png",
-//      // (width,height)
-//      new google.maps.Size(44, 32),
-//      // The origin point (x,y)
-//      new google.maps.Point(0, 0),
-//      // The anchor point (x,y)
-//      new google.maps.Point(22, 32)
-//    ),
-//    end: new google.maps.MarkerImage(
-//      // URL
-//      "http://maps.google.com/mapfiles/ms/micons/green.png",
-//      // (width,height)
-//      new google.maps.Size(44, 32),
-//      // The origin point (x,y)
-//      new google.maps.Point(0, 0),
-//      // The anchor point (x,y)
-//      new google.maps.Point(22, 32)
-//    ),
-//  };
