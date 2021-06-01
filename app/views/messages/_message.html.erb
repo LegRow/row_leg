@@ -1,7 +1,7 @@
 <div class="flex w-full">
-    <% if message.user != current_user %>
-    <div id= "cover" class="">
-        <%= image_tag url_for(message.user.cover) , style: 'height:70px;width:70px;padding: 5px;margin-top: 5px;border-radius: 50%;' %>
+    <% if message.user != current_user && message.user.cover.attached? %>
+    <div>
+        <%= image_tag url_for(message.user.cover) , class: 'headimg' %>
     </div>
     <% end %>
     <div class="<%= 'right' if message.user == current_user %>">
