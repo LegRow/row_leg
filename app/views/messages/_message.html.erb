@@ -1,7 +1,7 @@
 <div class="flex w-full">
     <% if message.user != current_user %>
-    <div class="">
-        <%= image_tag message.user.cover , style: 'height:70px;width:70px;padding: 5px;margin-top: 5px;border-radius: 50%;' %>
+    <div id= "cover" class="">
+        <%= image_tag url_for(message.user.cover) , style: 'height:70px;width:70px;padding: 5px;margin-top: 5px;border-radius: 50%;' %>
     </div>
     <% end %>
     <div class="<%= 'right' if message.user == current_user %>">
