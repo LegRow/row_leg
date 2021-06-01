@@ -11,7 +11,7 @@ import "packs/aboutus";
 import "./message";
 import "./partner";
 
-const images = require.context("../images", true);
+require.context("../images", true);
 
 Rails.start();
 Turbolinks.start();
