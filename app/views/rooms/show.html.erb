@@ -24,7 +24,7 @@
   <div calss="m-auto w-10/12">
     <div id="messages" class="h-96 flex-col flex overflow-auto rounded-md border-2 border-gray-500" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
       <% @room.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
+        <%= render 'messages/message', message: message, current_user: current_user %>
       <% end %>
     </div>
     <hr>

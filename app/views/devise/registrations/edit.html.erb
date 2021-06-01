@@ -43,6 +43,11 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
     </div>
 
+    <div class="field">
+      <%= f.label :cover, "來個封面吧?"%><br>
+      <%= f.file_field :cover %>
+    </div>
+
     <div class="actions flex justify-center">
       <%= f.submit "更新", class: "btn btn-default" %>
     </div>
