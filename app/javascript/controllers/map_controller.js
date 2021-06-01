@@ -159,10 +159,11 @@ export default class extends Controller {
             const directionsData = result.routes[0].legs[0];
             const distance = directionsData.distance.text;
             const duration = directionsData.duration.text;
-            const mapProgress = document.querySelector("#map-progress");
-
-            mapProgress.textContent = `距離目的地:${distance} 最快:${duration}後抵達`;
-            window.setTimeout(() => (mapProgress.textContent = ""), 15000);
+            const mapProgress = document.querySelectorAll(".map-progress");
+            mapProgress.forEach((el) => {
+              el.textContent = `距離目的地:${distance} 最快:${duration}後抵達`;
+              window.setTimeout(() => (el.textContent = ""), 15000);
+            });
           }
         });
       }
