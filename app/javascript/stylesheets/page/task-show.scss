@@ -5,31 +5,59 @@
     @apply flex flex-col;
 
     .task-show-title {
-      @apply bg-gray-600 mb-4;
+      @apply font-bold py-2 px-4 rounded flex items-center;
 
       & h2 {
-        @apply text-center text-5xl text-white;
+        @apply md:w-1/2 text-5xl text-yellow-900;
+      }
+
+      .map-progress {
+        @apply hidden relative -left-20 top-9 animate-pulse text-red-500 md:block md:w-1/2;
       }
     }
 
     .task-show-box {
-      @apply flex;
+      @apply flex flex-col items-center md:flex-row;
 
-      .task-show-inf {
-        @apply px-5 py-5 w-8/12;
+      .task-show-info {
+        @apply w-full px-5 py-5 iPhone-Plus:text-center md:text-left md:w-5/12;
 
         & p {
-          @apply my-2;
+          @apply my-2 text-lg font-bold;
+
+          & i {
+            @apply mr-1;
+          }
         }
 
-        .task-show-link {
-          @apply flex justify-between text-xl;
+        .info-title {
+          @apply text-2xl;
+        }
+
+        .info-desc {
+          @apply font-normal;
+        }
+
+        .btn-box {
+          @apply flex justify-center md:block;
         }
       }
 
       .task-show-map {
-        @apply px-5 py-5 border-2 w-5/12;
+        @apply h-96 w-full lg:px-5 py-5 border-2 md:w-7/12;
+      }
+
+      .map-progress.map-progress-mobile {
+        @apply block animate-pulse text-red-500 text-xl md:hidden;
       }
     }
   }
+}
+
+.back-btn {
+  @apply hidden md:inline-block;
+}
+
+.back-btn-mobile {
+  @apply block relative mt-5 md:hidden;
 }

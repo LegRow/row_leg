@@ -63,7 +63,7 @@ export default class extends Controller {
               messageinput.addEventListener('keyup', ifKeyup())
               function ifKeypress(e) {
                 window.clearTimeout(timer);
-                showTypingPlace.innerHTML = "對方正在打字"
+                showTypingPlace.innerHTML = "正在打字"
               }
               function ifKeyup(e) {
                 timer = window.setTimeout(()=>{

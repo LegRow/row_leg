@@ -1,5 +1,6 @@
 require_relative "boot"
 require "rails/all"
+require "./lib/cloudflare_proxy"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,5 +21,7 @@ module GemYarnInit
     # config.eager_load_paths << Rails.root.join("extras")
     config.i18n.default_locale = "zh-TW"
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    # 解決Cloudflare https match問題
+    config.middleware.use ::CloudflareProxy
   end
 end

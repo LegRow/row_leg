@@ -15,9 +15,14 @@ module.exports = {
       colors: {
         "light-blue": colors.lightBlue,
         cyan: colors.cyan,
+        orange: {
+          primary: '#ffcb03',
+          darker: '#ffbb00',
+        }
       },
     },
     screens: {
+      'iPhone-Plus': '414px',
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
