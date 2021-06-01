@@ -21,6 +21,8 @@ RSpec.describe "newebpay" do
   end
 
   context "when params to newebpay" do
+    it "successfully encodes" do
+    end
   end
 
 end
