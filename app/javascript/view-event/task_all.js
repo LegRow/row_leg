@@ -6,15 +6,19 @@ document.addEventListener("turbolinks:load", () => {
     taskstateAll.forEach((taskstate) => {
       if (taskstate.dataset.state === "pending") {
         taskstate.textContent = "請先付款，任務才可發佈成功";
+        taskstate.style.background = "MediumOrchid";
       } else if (
         taskstate.dataset.state === "employer_paid" ||
         taskstate.dataset.state === "employer_confirmed"
       ) {
         taskstate.textContent = "等待應徵者中...";
+        taskstate.style.background = "Crimson";
       } else if (taskstate.dataset.state === "employee_paid") {
         taskstate.textContent = "任務進行中";
+        taskstate.style.background = "SteelBlue";
       } else if (taskstate.dataset.state === "deal") {
         taskstate.textContent = "任務結束";
+        taskstate.style.background = "LightSlateGray";
       }
     });
   }

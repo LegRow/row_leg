@@ -1,13 +1,12 @@
 <!-- 第一區塊 招呼語 -->
 <section class="hidden lg:flex">
   <div class="m-auto w-9/12">
-    <p class="p-1 text-3xl">
+    <p class="fas fa-comments p-1 text-3xl">
       聊天室
     </p>
-    <p>
-      雇主 <i class="fas fa-user-tie"></i>
-      員工 <i class="fas fa-walking"></i>
-    </p>
+      <i class="fas fa-user-tie">雇主</i>
+      <i class="fas fa-walking">員工</i>
+      <i class=" fas fa-undo font-semibold text-red-800"><%= link_to tasks_path do %>返回<% end %></i>
     <div class="flex">
       <!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
       <section class="w-1/2 mt-4 h-80 rounded-lg p-1 text-3xl text-center border border-yellow-700">
