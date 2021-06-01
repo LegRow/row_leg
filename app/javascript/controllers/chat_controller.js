@@ -55,10 +55,9 @@ export default class extends Controller {
             // 這個是抓傳送事件的人是誰 data在這就是指那個事件
             const who = data.user_id
             if (me != who) {
-            //未觸發前 沒事
-            //鍵盤觸發後 其實先清除timeout 及觸發"打字ing" 當keyup 啟動"靜悄悄"
-            //之後狀態就一直是靜悄悄了 除非再碰鍵盤
-              let timer, cleantimeout = 5000;
+            //需重寫
+              let timer = 3000;
+              let cleantimeout = 4000;
               messageinput.addEventListener('keypress', ifKeypress())
               messageinput.addEventListener('keyup', ifKeyup())
               function ifKeypress(e) {
