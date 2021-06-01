@@ -37,7 +37,7 @@
             <% if employer_of task %>
             <div class="task-unpaid">
               <% if task.pending? %><%= link_to '<i class="fas fa-credit-card"></i> Pay'.html_safe, controller:
-              'cashflow', action: 'to_newebpay',for_newebpay: {reward:
+              'cashflow', action: 'to_newebpay', {reward:
               task.reward, behalf: task.behalf, order_number:
               task.order.merchant_order_number} %>
               <% end %>

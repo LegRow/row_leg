@@ -26,7 +26,7 @@ class TasksController < ApplicationController
       # 直接跳轉去付款頁面
       redirect_to controller: 'cashflow',
                   action: 'to_newebpay',
-                  for_newebpay: {
+                  {
                     reward: @task.reward,
                     behalf: @task.behalf,
                     order_number: @task.order.merchant_order_number

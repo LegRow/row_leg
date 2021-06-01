@@ -14,17 +14,16 @@ class CashflowController < ApplicationController
     # ['Email', '藍新回傳訊息的信箱'],
     # ['ReturnURL', "/cashflow/thankyou"]
 
-    params_for_newbpay = params["for_newebpay"]
-    applicant = params_for_newbpay["applicant"]
-    order_number = params_for_newbpay["order_number"]
+    applicant = params["applicant"]
+    order_number = params["order_number"]
 
     if applicant
       # 受雇者押金 20%
-      paying_amount = params_for_newbpay["reward"].to_f * 0.2
+      paying_amount = params["reward"].to_f * 0.2
       #受雇者的訂單編號 + B
       order_number = order_number + "B"
     else
-      paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
+      paying_amount = params["reward"].to_i + params["behalf"].to_i
     end
 
     @data_for_newebpay = [
