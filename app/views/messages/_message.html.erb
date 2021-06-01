@@ -1,4 +1,11 @@
-<div class="m-2">
-    <p id="newmessage" class="p-1.5 bg-yellow-400 rounded-2xl inline-block text-2xl <%= 'me' if message.user == current_user %>"><%= message.content %><br><span class='text-sm'><%= "#{message.user.name}於#{message.created_at&.strftime('%m月%d日 %H:%M')}" %></span></p>
+<div class="flex w-full">
+    <% if message.user != current_user %>
+    <div class="">
+        <%= image_tag message.user.cover , style: 'height:70px;width:70px;padding: 5px;margin-top: 5px;border-radius: 50%;' %>
+    </div>
+    <% end %>
+    <div class="<%= 'right' if message.user == current_user %>">
+        <span id="newmessage" class="p-1.5 bg-yellow-400 rounded-2xl m-2 p-1 inline-block text-2xl <%= 'me' if message.user == current_user %>"><%= message.content %><br><span class='text-sm'><%= "#{message.user.name}於#{message.created_at&.strftime('%m月%d日 %H:%M')}" %></span></span>
+    </div>
 </div>
 

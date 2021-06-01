@@ -1,5 +1,8 @@
 .me {
-  float: right;
   background-color: rgb(21, 206, 113);
   text-align: right;
+}
+.right {
+  justify-content: flex-end;
+  margin-left: auto;
 }

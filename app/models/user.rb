@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :messages
   has_many :rooms ,through: :messages
+  has_one_attached :cover
+  validates :cover, content_type: [:png, :jpg, :jpeg]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
