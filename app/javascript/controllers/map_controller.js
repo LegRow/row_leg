@@ -137,6 +137,8 @@ export default class extends Controller {
         });
         directionsRenderer.setMap(employeeLocationMap);
         // 設定起點 目的地等option
+        const travelMode = document.querySelector("#travelMode").value;
+        console.log(travelMode);
         const route = {
           origin: {
             lat: markerLocations[1][0],
@@ -146,7 +148,7 @@ export default class extends Controller {
             lat: markerLocations[0][0],
             lng: markerLocations[0][1],
           },
-          travelMode: "DRIVING",
+          travelMode: travelMode,
         };
         // route request成功後會得到一個DirectionsResult跟status
         directionsService.route(route, function (result, status) {
@@ -161,7 +163,7 @@ export default class extends Controller {
             const duration = directionsData.duration.text;
             const mapProgress = document.querySelectorAll(".map-progress");
             mapProgress.forEach((el) => {
-              el.textContent = `距離目的地:${distance} 最快:${duration}後抵達`;
+              el.textContent = `距離目的地:${distance} 最快:${duration}`;
               window.setTimeout(() => (el.textContent = ""), 15000);
             });
           }

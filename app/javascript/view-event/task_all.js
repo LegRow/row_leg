@@ -2,8 +2,8 @@ document.addEventListener("turbolinks:load", () => {
   const taskList = document.querySelector(".task-list");
   const taskItem = document.querySelector(".task-item");
   if (taskList) {
-    const taskstateAll = document.querySelectorAll(".task-state");
-    taskstateAll.forEach((taskstate) => {
+    const allTaskstate = document.querySelectorAll(".task-state");
+    allTaskstate.forEach((taskstate) => {
       if (taskstate.dataset.state === "pending") {
         taskstate.textContent = "請先付款，任務才可發佈成功";
         taskstate.style.background = "MediumOrchid";
