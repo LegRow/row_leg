@@ -7,8 +7,12 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def mytask
+  def mytasks
     @tasks = current_user.tasks
+  end
+
+  def myworks
+    @tasks = current_user.works
   end
 
   def show
