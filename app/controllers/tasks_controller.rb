@@ -7,6 +7,10 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def lists
+    @tasks = current_user.tasks
+  end
+
   def show
     @task = Task.find(params[:id])
   end

@@ -16,10 +16,13 @@ Rails.application.routes.draw do
     get 'tip' #建立一個讓前端打資訊到後端的通道
   end
   resources :messages, only: [:create]
-  resources :lists, only: [:index]
   resources :works, only: [:index]
 
   resources :tasks do
+    collection  do
+      get :lists
+    end
+
     member do
       get 'confirm_applicant'
       get 'send_applicant_apply_email'
