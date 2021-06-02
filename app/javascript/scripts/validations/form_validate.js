@@ -4,16 +4,13 @@ document.addEventListener("turbolinks:load", () => {
   if (signupForm) {
     const email = document.querySelector(".email");
     const name = document.querySelector(".name");
-    const age = document.querySelector(".age");
     const tel = document.querySelector(".tel");
     const bankAccount = document.querySelector(".bank-account");
     const password = document.querySelector(".password");
     const password2 = document.querySelector(".password2");
     const signupBtn = document.querySelector(".btn");
-    const male = document.querySelector("#user_gender_male");
-    const female = document.querySelector("#user_gender_female");
     const agree = document.querySelector("#agree");
-    const inputArr = [email, name, age, tel, bankAccount, password, password2];
+    const inputArr = [email, name, tel, bankAccount, password, password2];
 
     const showSuccess = function (input) {
       input.parentElement.className = "field success";
@@ -70,15 +67,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     };
 
-    const checkBoxGender = function (option1, option2) {
-      if ((option1.checked === false) & (option2.checked === false)) {
-        option1.parentElement.lastElementChild.textContent = "請選擇性別";
-        option1.parentElement.lastElementChild.style.visibility = "visible";
-      } else {
-        option1.parentElement.lastElementChild.style.visibility = "hidden";
-      }
-    };
-
     const checkBoxAgree = function (option) {
       if (option.checked === false) {
         alert("請勾選已詳細閱讀");
@@ -97,7 +85,6 @@ document.addEventListener("turbolinks:load", () => {
       checkPasswordLength(password2);
       checkPasswordMath(password, password2);
 
-      checkBoxGender(male, female);
       checkBoxAgree(agree);
 
       const hasError = inputArr.map(function (input) {
