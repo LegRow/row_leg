@@ -18,19 +18,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :gender, "性別"%><br />
-      <%= f.radio_button(:gender, "male") %><span> 男 </span> <%=
-      f.radio_button(:gender, "female") %><span> 女 </span>
-      <small>Error</small>
-    </div>
-
-    <div class="field">
-      <%= f.label :age, "年齡"%><br />
-      <%= f.number_field :age, autofocus: true, class:"input age", min:"0" %>
-      <small>Error</small>
-    </div>
-
-    <div class="field">
       <%= f.label :tel, "電話"%><br />
       <%= f.telephone_field :tel, autofocus: true, class:"input tel",
       placeholder:"需10碼" %>

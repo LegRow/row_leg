@@ -3,7 +3,6 @@
     <h2 class="form-title">編輯會員資料</h2>
     <hr>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "layouts/flash_messages", resource: resource %>
 
     <div class="field">
       <%= f.label :email, "信箱" %><br />
