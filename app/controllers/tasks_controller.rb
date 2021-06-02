@@ -93,7 +93,7 @@ class TasksController < ApplicationController
   #我先用醜的寫法
   def finish_show
     if current_user.id == @task.employee_id
-      render :finish
+      render :finish_show
     else
       render 'error', locals: { message: '非任務承接者' }
     end
