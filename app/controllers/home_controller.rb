@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     return unless user_signed_in?
     return if session[:visited_check].present?
 
-    if current_user.bank_account.blank? || current_user.tel.blank?
+    if current_user.not_qualified?
       session[:visited_check] = true
       redirect_to edit_user_registration_path, notice: "提醒：您還有尚未填寫的欄位！"
     end

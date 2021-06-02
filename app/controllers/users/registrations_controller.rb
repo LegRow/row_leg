@@ -44,7 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # 清洗註冊欄位
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :tel, :bank_account,])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :tel, :bank_account])
   end
 
   # 清洗更新欄位
