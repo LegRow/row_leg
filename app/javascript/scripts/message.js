@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function () {
-  if (document.querySelector('.messageinput')) {
-    const messageInput = document.querySelector('.messageinput')
+  const messageInput = document.querySelector('.messageinput')
+  if (messageInput) {
     const messagesubmit = document.querySelector('.messagesubmit')
     messagesubmit.addEventListener('click', function() {
     if (messageInput.value == "" ) {
