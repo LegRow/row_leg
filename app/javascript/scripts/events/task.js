@@ -1,6 +1,7 @@
 document.addEventListener("turbolinks:load", () => {
   const taskList = document.querySelector(".task-list");
   const taskItem = document.querySelector(".task-item");
+
   if (taskList) {
     const allTaskstate = document.querySelectorAll(".task-state");
     allTaskstate.forEach((taskstate) => {
