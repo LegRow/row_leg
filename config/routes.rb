@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     member do
       get 'confirm_applicant'
       get 'send_applicant_apply_email'
-      get 'qrcode_show'
+      get 'qrcode'
       get 'finish_show'
       post :finish
     end

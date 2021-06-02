@@ -22,7 +22,7 @@
             <%= link_to '返回', tasks_path, class: "task-show-btn back-btn" %>
           <% if employer_of @task %>
             <%= link_to '編輯', edit_task_path(@task), class: "task-show-btn" %>
-            <%= link_to 'qrcode', qrcode_show_task_path(@task), class: "task-show-btn" %>
+            <%= link_to 'qrcode', qrcode_task_path(@task), class: "task-show-btn" %>
           </div>
           <div>
           <% else %>
