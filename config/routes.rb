@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     member do
       get 'confirm_applicant'
       get 'send_applicant_apply_email'
-      get 'qrcode_show'
+      get 'qrcode'
       get 'finish_show'
       post :finish
     end
@@ -33,6 +33,6 @@ Rails.application.routes.draw do
 
   get "/about_us" , to: "pages#about_us"
   get "/questions" , to: "pages#questions"
-  get "/customer_severs" , to: "pages#customer_severs"
+  get "/services" , to: "pages#services"
   get "/partner", to: "pages#partner"
 end

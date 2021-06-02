@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only:[:edit, :update, :destroy, :qrcode_show]
+  before_action :find_task, only:[:edit, :update, :destroy, :qrcode]
   before_action :authenticate_user!, except: [:index]
   before_action :find_employee, only: [:finish_show, :finish]
 
@@ -95,7 +95,7 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: '已發送確認通知信給受雇者，待受雇者支付押金後，則表示成功承接'
   end
   #轉網址帶資料
-  def qrcode_show
+  def qrcode
     @task_url = finish_show_task_url(@task)
   end
   #我先用醜的寫法
