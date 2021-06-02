@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def lists
+  def mytask
     @tasks = current_user.tasks
   end
 
