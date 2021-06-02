@@ -55,8 +55,7 @@ export default class extends Controller {
         // call google map
         navigator.geolocation.getCurrentPosition(succeed, fail);
         function succeed(position) {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
+          const { latitude, longitude } = position.coords;
           const employeeLocation = [latitude, longitude];
           // 以下是 employee 的位置
           let markerLocations = [
@@ -160,7 +159,7 @@ export default class extends Controller {
             const mapProgress = document.querySelectorAll(".map-progress");
             mapProgress.forEach((el) => {
               el.textContent = `距離目的地:${distance} 最快:${duration}`;
-              window.setTimeout(() => (el.textContent = ""), 15000);
+              setTimeout(() => (el.textContent = ""), 15000);
             });
           }
         });
