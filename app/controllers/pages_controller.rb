@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   def questions
   end
 
-  def customer_severs
+  def services
   end
 end
