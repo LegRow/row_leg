@@ -1,0 +1,25 @@
+.chat-rooms-title {
+  @apply mt-36;
+
+  & h2 {
+    @apply text-6xl text-orange-primary font-serif font-bold relative;
+  }
+}
+
+.chat-rooms-title h2::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: -100px;
+  width: 280px;
+  height: 1px;
+  display: block;
+  background-color: #facc08;
+  transform: rotate(-46deg);
+}
+
+.far.fa-plus-square.chat-room-icon,
+.fas.fa-tasks.chat-room-icon,
+.fas.fa-shoe-prints.chat-room-icon {
+  @apply inline-block;
+}
