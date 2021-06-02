@@ -1,5 +1,5 @@
 import "./qrcode";
-import "./aboutus";
+import "./question";
 import "./message";
 import "./partner";
 import "./events";
