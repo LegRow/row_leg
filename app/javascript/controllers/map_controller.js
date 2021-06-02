@@ -49,7 +49,6 @@ export default class extends Controller {
     );
     // 頁面如果是雇主，就只能收到應徵者的位置資訊；頁面如果是應徵者，就能打位置資訊給雇主，而且能更新位置在自己的頁面
     if (currentUser === employeeId) {
-      console.log("employee 近來嘍");
       const reportLocation = document.getElementById("report_location");
       reportLocation.addEventListener("click", (e) => {
         e.preventDefault();
@@ -77,14 +76,12 @@ export default class extends Controller {
         }
       });
     } else if (currentUser === employerId) {
-      console.log("employer 近來嘍");
       // call google map
       let markerLocations = [
         [storeLatitude, storeLongitude], // 店家位置
       ];
       drawEmployeeAndStoreMarkers(markerLocations);
     } else {
-      console.log("看熱鬧的 近來摟");
       let markerLocations = [[storeLatitude, storeLongitude]];
       drawEmployeeAndStoreMarkers(markerLocations);
     }
