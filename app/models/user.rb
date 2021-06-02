@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :tasks
+  has_many :works , class_name: 'Task', foreign_key: 'employee_id'
   has_many :messages
   has_many :rooms ,through: :messages
   has_one_attached :cover
