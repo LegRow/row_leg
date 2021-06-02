@@ -135,7 +135,6 @@ export default class extends Controller {
         directionsRenderer.setMap(employeeLocationMap);
         // 設定起點 目的地等option
         const travelMode = document.querySelector("#travelMode").value;
-        console.log(travelMode);
         const route = {
           origin: {
             lat: markerLocations[1][0],
