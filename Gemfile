@@ -41,8 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2'
   gem 'hirb-unicode', '~> 0.0.5'
-  gem "vcr"
-  gem "webmock"
 end
 
 group :development do
@@ -56,10 +54,10 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
-
 gem "rails-i18n", "~> 6.0"
