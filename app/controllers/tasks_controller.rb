@@ -24,13 +24,11 @@ class TasksController < ApplicationController
       # 等到有人應徵，就寄出通知信
       # SomeoneApplyTaskNoticeJob.perform_later(@task)
       # 直接跳轉去付款頁面
-      redirect_to controller: 'cashflow',
-                  action: 'to_newebpay',
-                  {
-                    reward: @task.reward,
-                    behalf: @task.behalf,
-                    order_number: @task.order.merchant_order_number
-                  }
+      redirect_to cashflow_to_newebpay_path(
+        reward: @task.reward,
+        behalf: @task.behalf,
+        order_number: @task.order.merchant_order_number
+      )
     else
       render :new
     end
