@@ -9,13 +9,9 @@ export default class extends Controller {
     const room_id = Number(user_element.getAttribute("data-room-id"));
     // 這邊開始加工 監聽輸入框 做什麼還是先放received(data)處理
     const messageinput = document.querySelector('.messageinput')
-    messageinput.addEventListener("input", (e)=>{
+    messageinput.addEventListener("input", ()=>{
       fetch (`/rooms/${room_id}/tip`)
     })
-    messageinput.addEventListener("click", (e)=>{
-      fetch (`/rooms/${room_id}/tip`)
-    })
-
     consumer.subscriptions.create(
       { channel: "RoomChannel", room_id: room_id },
       {
@@ -56,18 +52,17 @@ export default class extends Controller {
             const who = data.user_id
             if (me != who) {
             //需重寫
-              let timer = 3000;
-              let cleantimeout = 4000;
-              messageinput.addEventListener('keypress', ifKeypress())
+              let timerID;
+              messageinput.addEventListener('keydown', ifKeypress())
               messageinput.addEventListener('keyup', ifKeyup())
-              function ifKeypress(e) {
-                window.clearTimeout(timer);
+              function ifKeypress() {
+                window.clearTimeout(timerID);
                 showTypingPlace.innerHTML = "正在打字"
               }
-              function ifKeyup(e) {
-                timer = window.setTimeout(()=>{
+              function ifKeyup() {
+                timerID = window.setTimeout(()=>{
                 showTypingPlace.innerHTML = "現在靜悄悄"
-                }, cleantimeout)
+                }, 3000)
               }
             }
           }
