@@ -14,31 +14,20 @@ class CashflowController < ApplicationController
     # ['Email', '藍新回傳訊息的信箱'],
     # ['ReturnURL', "/cashflow/thankyou"]
 
-    params_for_newbpay = params["for_newebpay"]
-    applicant = params_for_newbpay["applicant"]
-    order_number = params_for_newbpay["order_number"]
+    applicant = params["applicant"]
+    order_number = params["order_number"]
 
     if applicant
       # 受雇者押金 20%
-      paying_amount = params_for_newbpay["reward"].to_f * 0.2
+      paying_amount = params["reward"].to_f * 0.2
       #受雇者的訂單編號 + B
       order_number = order_number + "B"
     else
-      paying_amount = params_for_newbpay["reward"].to_i + params_for_newbpay["behalf"].to_i
+      paying_amount = params["reward"].to_i + params["behalf"].to_i
     end
 
-    @data_for_newebpay = [
-      ['MerchantID', 'MS119996394'],
-      ['RespondType', 'String'],
-      ['TimeStamp', Time.now.to_i.to_s],
-      ['Version', '1.5'],
-      ['MerchantOrderNo', order_number],
-      ['Amt', paying_amount.to_s],
-      ['ItemDesc', 'TEST'],
-      ['Email', ''],
-      ['ReturnURL' , ENV["web_https"] + "/cashflow/thankyou"],
-      ['NotifyURL', ENV["web_https"] + "/cashflow/from_newebpay"]
-    ]
+    data_for_newebpay(order_number, paying_amount)
+
   end
 
   def from_newebpay
@@ -56,16 +45,11 @@ class CashflowController < ApplicationController
     # 我們要抓的就是 MerchantOrderNo=1620984982 (task.order.merchant_order_number)
     status = params["Status"]
     trade_information = params["TradeInfo"]
-    trade_sha256 = params["TradeSha"]
 
-    key = ENV["newebpay_key"]
-    iv = ENV["newebpay_iv"]
-
+    
     # 解碼並更新付費狀態
     if status == "SUCCESS"
-      result = aes_decrypt(trade_information, key, iv)
-      result = result.split("&")[5]
-      target_order_number = result.partition('=').last
+      target_order_number = decode trade_information
       if target_order_number.include?("B")
         target_order_number.slice! "B"
         target_order = Order.find_by(merchant_order_number: target_order_number)
@@ -84,4 +68,18 @@ class CashflowController < ApplicationController
     redirect_to tasks_path, notice: "操作成功，請確認訂單狀態。"
   end
 
+  def data_for_newebpay(order_number, paying_amount)
+    @data_for_newebpay = [
+      ['MerchantID', 'MS119996394'],
+      ['RespondType', 'String'],
+      ['TimeStamp', Time.now.to_i.to_s],
+      ['Version', '1.5'],
+      ['MerchantOrderNo', order_number],
+      ['Amt', paying_amount.to_s],
+      ['ItemDesc', 'TEST'],
+      ['Email', ENV["email_for_newebpay"]],
+      ['ReturnURL' , "https://" + ENV["web_https"] + "/cashflow/thankyou"],
+      ['NotifyURL', "https://" + ENV["web_https"] + "/cashflow/from_newebpay"]
+    ]
+  end
 end

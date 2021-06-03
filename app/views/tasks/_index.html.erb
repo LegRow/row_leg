@@ -43,10 +43,8 @@
               <% if employer_of task %>
               <div class="task-unpaid">
                 <% if task.pending? %>
-                  <%= link_to controller:
-                    'cashflow', action: 'to_newebpay',for_newebpay: {reward:
-                    task.reward, behalf: task.behalf, order_number:
-                    task.order.merchant_order_number} do %>
+                  <%= link_to cashflow_to_newebpay_path(reward: task.reward, behalf: task.behalf,
+                  order_number: task.order.merchant_order_number) do %>
                     <i class="fas fa-credit-card"></i> Pay
                   <% end %>
                 <% end %>
@@ -54,7 +52,7 @@
               <% else %>
               <div class="task-security-deposit">
                 <% if employer_confirmed task %>
-                  <%= link_to to_newebpay_cashflow_url(reward: (task.reward * 0.2).to_i, behalf: task.behalf,
+                  <%= link_to cashflow_to_newebpay_path(reward: (task.reward * 0.2).to_i, behalf: task.behalf,
                   order_number: task.order.merchant_order_number + "B") do %>
                     <i class="fas fa-handshake"></i> 支付押金
                   <% end %>

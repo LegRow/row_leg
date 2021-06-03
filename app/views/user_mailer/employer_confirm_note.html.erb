@@ -4,6 +4,6 @@
 <br>
 <br>
 <%= link_to '連結', controller: 'cashflow', action: 'to_newebpay',
-                    for_newebpay: {reward: (@task.attributes["reward"] * 0.2).to_i,
+                    {reward: (@task.attributes["reward"] * 0.2).to_i,
                     behalf: @task.attributes["behalf"],
                     order_number: @task.order.attributes["merchant_order_number"] + "B"} %>
