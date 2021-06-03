@@ -113,10 +113,11 @@ class Task < ApplicationRecord
   end
 
   def self.search(search)
-     if search
-       where(['address_district LIKE ? OR store_name LIKE ?', "%#{search}%", "%#{search}%"])
-     else
-       all
+    if search
+      where(['address_district LIKE ? OR store_name LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+      all
     end
   end
+  
 end
