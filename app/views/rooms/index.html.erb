@@ -1,56 +1,57 @@
-<section class="max-w-7xl mx-auto mb-32">
-  <div class='chat-rooms-title'>
-    <h2>Chat Rooms</h2>
-    <h3 class='text-4xl text-orange-darker'>聊天室</h3>
+<section class="chat-rooms-container">
+  <div class="chat-rooms-head">
+    <h2 class="chat-rooms-title">Chat Rooms</h2>
+    <h3 class="chat-rooms-subtitle">聊天室</h3>
   </div>
-  <div class="flex"> 
-    <div class='pt-14 pb-28'>
-      <ul>
-        <li class='mb-4 font-semibold'>
+  <div class="chat-rooms-box"> 
+    <div class="chat-rooms-sidebar">
+      <ul class="sidebar-list">
+        <li class="sidebar-item">
           <%= link_to new_task_path do %>
             <i class="far fa-plus-square chat-room-icon"></i>新增任務
           <% end %>
         </li>
-        <li class='mb-4 font-semibold'>
+        <li class="sidebar-item">
           <%= link_to mytasks_tasks_path do %>
             <i class="fas fa-tasks chat-room-icon"></i>您發佈的任務
           <% end %>
         </li>
-        <li class='mb-4 font-semibold'>
+        <li class="sidebar-item">
           <%= link_to myworks_tasks_path do %>
             <i class="fas fa-shoe-prints chat-room-icon"></i>您接下的任務
           <% end %>
         </li>
       </ul>
     </div>
-    <div class='pl-7'>
-      <div class='my-4 text-3xl'>
-        <button><i class="fas fa-running"></i>聯絡排隊員</button>
-        <button><i class="fas fa-user-tie"></i>聯絡雇主</button>
+    <div class="chat-rooms-content">
+      <div class="chat-rooms-role">
+        <button class="role-btn employee-btn role-btn-active"><i class="fas fa-running"></i>聯絡排隊員</button>
+        <button class="role-btn employer-btn"><i class="fas fa-user-tie"></i>聯絡雇主</button>
       </div>
-      <hr>
-      <div class=''>
-        <ul>
+      <div class="chat-rooms-info">
+        <ul class="employee-rooms">
           <% @rooms.each do |room| %>
             <% if user_room_list(room) %>
-              <li>
+              <li class="rooms">
                 <%= link_to room_path(room), :method => :get do%>
-                  <%= "#{room.task.user.name}"%>
-                  <%= "#{room.task.store_name}"%>
-                  <span><%= "#{room.task.task_at&.strftime('日期:%m月%d號  時間:%H點%M分')}"%></span>
+                  <span class="text-2xl"><%= "#{room.task.user.name}"%></span>
+                  商店:<%= "#{room.task.store_name}"%><br>
+                  <%= "#{room.task.address}"%>
+                  <small><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
                 <% end %>
               </li>
             <% end %>
           <% end %>
         </ul>
-        <ul class="hidden">
+        <ul class="employer-rooms hidden">
           <% @rooms.each do |room| %>
             <% if row_leg_room_list(room) %>
-              <li>
+              <li class="rooms">
                 <%= link_to room_path(room), :method => :get do%>
-                  <%= "#{room.task.user.name}"%>
-                  <%= "#{room.task.store_name}"%>
-                  <span><%= "#{room.task.task_at&.strftime('日期:%m月%d號  時間:%H點%M分')}"%></span>
+                  <span class="text-2xl"><%= "#{room.task.user.name}"%></span>
+                  商店:<%= "#{room.task.store_name}"%><br>
+                  <%= "#{room.task.address}"%>
+                  <small><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
                 <% end%>
               </li>
             <% end %>

@@ -1,12 +1,60 @@
-.chat-rooms-title {
-  @apply mt-36;
+.chat-rooms-container {
+  @apply max-w-7xl mx-auto mb-32;
 
-  & h2 {
-    @apply text-6xl text-orange-primary font-serif font-bold relative;
+  .chat-rooms-head {
+    @apply mt-36;
+
+    .chat-rooms-title {
+      @apply text-6xl text-orange-primary font-sans font-bold relative;
+    }
+
+    .chat-rooms-subtitle {
+      @apply text-4xl text-orange-darker;
+    }
+  }
+
+  .chat-rooms-box {
+    @apply flex;
+
+    .chat-rooms-sidebar {
+      @apply pt-14 pb-28;
+
+      .sidebar-list {
+        .sidebar-item {
+          @apply mb-4 font-semibold;
+        }
+      }
+    }
+
+    .chat-rooms-content {
+      @apply pl-7;
+
+      .chat-rooms-role {
+        @apply my-4 text-3xl relative;
+
+        .employee-btn,.employer-btn {
+          @apply pb-3 text-gray-400;
+        }
+        
+        .employee-btn.role-btn-active, .employer-btn.role-btn-active {
+          @apply border-b-4 border-solid border-orange-primary text-gray-900;
+        }
+
+        .employee-btn {
+          @apply mr-5;
+        }
+      }
+
+      .chat-rooms-info {
+        .rooms {
+          @apply px-2 py-3 mb-3 bg-gray-50 rounded-lg;
+        }
+      }
+    }
   }
 }
 
-.chat-rooms-title h2::after {
+.chat-rooms-title::after {
   content: "";
   position: absolute;
   top: 60px;
@@ -16,6 +64,16 @@
   display: block;
   background-color: #facc08;
   transform: rotate(-46deg);
+}
+
+.chat-rooms-role::after {
+  content:  "";
+  position: absolute;
+  bottom: 0;
+  width: 140%;
+  height: 1px;
+  display: block;
+  background-color: #ccc;
 }
 
 .far.fa-plus-square.chat-room-icon,
