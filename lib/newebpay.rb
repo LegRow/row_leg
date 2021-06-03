@@ -66,7 +66,7 @@ module Newebpay
   def decode(trade_information_for_order_number)
     key = ENV["newebpay_key"]
     iv = ENV["newebpay_iv"]
-    result = aes_decrypt(trade_information, key, iv)
+    result = aes_decrypt(trade_information_for_order_number, key, iv)
     result = result.split("&")[5]
     order_number = result.partition('=').last
   end
