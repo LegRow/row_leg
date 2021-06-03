@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :find_employee, only: [:finish_show, :finish]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.search(params[:search])
   end
 
   def mytasks
