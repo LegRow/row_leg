@@ -1,41 +1,57 @@
 <section class="task-show-container" id = "<%= "task_" + @task.id.to_s %>" data-employee-id="<%= @task.employee_id %>" data-employer-id="<%= @task.user_id %>" data-current-user="<%= current_user.id %>">
   <div class="task-show-row" data-controller="map">
-    <div class="font-bold py-2 px-4 rounded">
-      <h2 data-controller="store"% >任務詳情</h2>
+    <div class="task-show-title">
+      <h2 data-controller="store"><i class="fas fa-thumbtack"></i>任務詳情</h2>
+      <h4 class="map-progress"></h4>
     </div>
     <div class="task-show-box">
-      <div class="task-show-inf">
-        <p class="text-2xl">
+      <div class="task-show-info">
+        <p class="info-title">
           <strong>任務名稱：</strong><%= @task.brief_description %>
         </p>
-        <p><strong>任務內容：</strong><br /><%= @task.description %></p>
-        <p><i class="fas fa-store text-xl"></i> <%= @task.store_name %></p>
-        <p><i class="fas fa-map-marked-alt text-xl"></i> <%= @task.address %></p>
-        <p><i class="fas fa-hand-holding-usd text-xl"></i> <%= "$#{@task.reward}NT（酬勞）" %>
-           <i class="fas fa-dollar-sign text-xl"></i> <%= "#{@task.behalf}NT（代墊金額）" %>
-        </p>
-        <p><i class="fas fa-plane-departure text-xl"></i> <%= @task.task_at&.strftime('%Y-%m-%d %H:%M:%S') %></p>
-        <p><i class="fas fa-plane-arrival text-xl"></i> <%= @task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %></p>
-        <p><i class="fas fa-comment-alt text-xl"></i> <%= @task.remarks %></p>
-        <div class="">
+        <p class="info-desc"><strong>任務內容：</strong><br /><%= @task.description %></p>
+        <p><i class="fas fa-store"></i>商店名：<%= @task.store_name %></p>
+        <p><i class="fas fa-map-marker-alt"></i>地址：<%= @task.address %></p>
+        <p><i class="fas fa-hourglass-start"></i>起始：<%= @task.task_at&.strftime('%Y-%m-%d %H:%M:%S') %></p>
+        <p><i class="fas fa-hourglass-end"></i>結束：<%= @task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %></p>
+        <p><i class="fas fa-coins"></i>酬勞：<%= "$ #{@task.reward} NT" %></p>
+        <p><i class="fas fa-hand-holding-usd"></i>代墊金額：<%= "$ #{@task.behalf} NT" %></p>
+        <p><i class="fas fa-comment-alt"></i> <%= @task.remarks %></p>
+        <div class="btn-box">
           <div class= "pt-4">
-            <%= link_to '返回', tasks_path, class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
           <% if employer_of @task %>
-              <%= link_to '編輯', edit_task_path(@task), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full" %>
-            </div>
-          <% else %>
-          <div>
-            <% if employee_of @task %>
-              <%= button_tag '回報位置', id: "report_location" %>
-            <% elsif not_employer_of(@task) && @task.employer_paid? %>
-              <%= link_to '應徵', send_applicant_apply_email_task_url(applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state), class: "btn-text my-2" %>
-            <% end %>
+            <%= link_to '編輯', edit_task_path(@task), class: "task-show-btn" %>
+            <%= link_to 'qrcode', qrcode_task_path(@task), class: "task-show-btn" %>
           </div>
+          <div>
+          <% else %>
+            <% if employee_of @task %>
+            <div class="report-location">
+              <select name="travelMode" id="travelMode">
+                <option value="">選擇前往方式後回報</option>
+                <option value="DRIVING">開車</option>
+                <option value="WALKING">走路 </option>
+                <option value="TRANSIT">大眾運輸</option>
+                <option value="BICYCLING">腳踏車</option>
+              </select>
+              <%= button_tag type: 'submit', class: "report-btn task-show-btn", id: "report_location" do %>
+                <i class="far fa-hand-point-down"></i>回報位置
+              <% end %>
+            </div>
+            <% elsif not_employer_of(@task) && @task.employer_paid? %>
+              <%= link_to '應徵', send_applicant_apply_email_task_url(applicant_id: current_user, employer_id: @task.user_id ,task_id: @task.id, task_tate: @task.state), class: "task-show-btn apply-btn" %>
+            <% end %>
           <% end %>
+          </div>
         </div>
       </div>
-      <div id="employee" class="sm: lg:px-5 py-5 border-2 w-9/12" data-lat="<%= @task.latitude %>" data-lng="<%= @task.longitude %>" data-store-target="output">
+      <div id="employee" class="task-show-map" data-lat="<%= @task.latitude %>" data-lng="<%= @task.longitude %>" data-store-target="output">
       </div>
+      <h4 class="map-progress map-progress-mobile"></h4>
+      <%= link_to '返回', tasks_path, class: "task-show-btn back-btn-mobile" %>
     </div>
+    <%= link_to tasks_path, class: "back-btn" do %>
+      <i class="fas fa-times"></i>
+    <% end %>
   </div>
 </section>

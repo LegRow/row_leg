@@ -92,3 +92,30 @@
   background-position: right center;
   color: #fff;
 }
+
+.task-list.no-task {
+  @apply flex flex-col justify-center items-center;
+}
+
+.notfound-msg {
+  @apply text-red-500 font-bold;
+}
+
+.not-found {
+  @apply bg-notfound;
+}
+
+.not-found {
+  height: 40vh;
+  width: 40vh;
+  background-size: cover;
+  background-position: center;
+}
+// sidebar
+
+.far.fa-plus-square,
+.fas.fa-tasks,
+.fas.fa-shoe-prints,
+.fas.fa-comments {
+  @apply block text-center;
+}

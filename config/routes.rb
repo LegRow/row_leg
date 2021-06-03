@@ -12,17 +12,20 @@ Rails.application.routes.draw do
 
 
   #任務頁面相關
-  resources :rooms, only: [:index, :new, :create, :show]
-  resources :tests, only: [:index]
+  resources :rooms, only: [:index, :new, :create, :show] do
+    get 'tip' #建立一個讓前端打資訊到後端的通道
+  end
   resources :messages, only: [:create]
-  resources :lists, only: [:index]
-  resources :works, only: [:index]
-
   resources :tasks do
+    collection  do
+      get :mytasks
+      get :myworks
+    end
+
     member do
       get 'confirm_applicant'
       get 'send_applicant_apply_email'
-      get 'qrcode_show'
+      get 'qrcode'
       get 'finish_show'
       post :finish
     end
@@ -30,5 +33,6 @@ Rails.application.routes.draw do
 
   get "/about_us" , to: "pages#about_us"
   get "/questions" , to: "pages#questions"
-  get "/customer_severs" , to: "pages#customer_severs"
+  get "/services" , to: "pages#services"
+  get "/partner", to: "pages#partner"
 end

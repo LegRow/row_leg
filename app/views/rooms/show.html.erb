@@ -1,32 +1,35 @@
 <div class="w-10/12 m-auto">
 <%# 第一區塊 聊天室資訊  請注意不要把下面的data-controller="chat"刪掉 %>
-  <div data-controller="chat" class="flex justify-center items-center">
-    <span><%= @room.user.uniq.count %>位成員</span>
+  <div data-controller="chat" class="flex items-center">
     <% if row_leg_room %>
-      <div class="m-auto inline-block">
-        這是您的跑腿任務：<%= "於#{@room.task.store_name}幫忙排隊" %><br>
-        請於：<%= "#{@room.task.task_at&.strftime('%m-%d/%H:%M')} 前到達執行任務" %>
+      <div class="w-8/12 animate-pulse text-xl text-center p-1 rounded-md bg-green-400">
+        這是您的跑腿任務：<%= "位於#{@room.task.store_name}" %>。
+        請於：<%= "#{@room.task.task_at&.strftime('%m月%d日%H:%M')} 前到達執行任務" %>
       </div>
     <% end%>
     <% if user_room %>
-      <div class="m-auto inline-block">
-        這是您發布的任務：<%= "#{@room.task.store_name}" %><br>
+      <div class="w-8/12 animate-pulse text-xl text-center p-1 rounded-md bg-blue-400">
+        這是您發布的任務：<%= "位於#{@room.task.store_name}" %>。
         請於：<%= "#{@room.task.task_end&.strftime('%m-%d/%H:%M')} 前到達交接" %>
       </div>
     <% end%>
-      <div >
-        <%= link_to "返回", rooms_path, class: 'w-full inline-block text-center text-2xl m-px hover:opacity-60' %>
+    <div class="w-3/12 inline-block text-center text-2xl m-px hover:opacity-60 typing_tip">
+      顯示對方有無打字
+    </div>
+      <div class="flex-grow text-center">
+        <%= link_to "返回", rooms_path, class: 'inline-block text-center text-3xl m-px hover:opacity-60 rounded-md bg-red-400 p-1' %>
       </div>
   </div>
 <%# 第二區塊 %>
   <div calss="m-auto w-10/12">
-    <div id="messages" class="h-96 flex-col flex overflow-auto" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
+    <div id="messages" class="h-96 flex-col flex overflow-auto rounded-md border-2 border-gray-500" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
       <% @room.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
+      <%# 請幫我加一個div先hidden 定位在 id="message"附近 %>
+        <%= render 'messages/message', message: message, current_user: current_user %>
       <% end %>
     </div>
     <hr>
-    <div class="">
+    <div class="rounded-md border-2 border-gray-500">
       <%= render 'messages/form', message: Message.new, room: @room %>
     </div>
   </div>

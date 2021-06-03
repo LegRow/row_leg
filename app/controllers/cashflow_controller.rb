@@ -82,5 +82,4 @@ class CashflowController < ApplicationController
       ['NotifyURL', "https://" + ENV["web_https"] + "/cashflow/from_newebpay"]
     ]
   end
-
 end

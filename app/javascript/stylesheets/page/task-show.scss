@@ -2,34 +2,74 @@
   @apply max-w-5xl mx-auto my-20;
 
   .task-show-row {
-    @apply flex flex-col;
+    @apply flex flex-col relative;
 
     .task-show-title {
-      @apply bg-gray-600 mb-4;
+      @apply font-bold py-2 px-4 rounded flex items-center;
 
       & h2 {
-        @apply text-center text-5xl text-white;
+        @apply md:w-1/2 text-5xl text-yellow-900;
+      }
+
+      .map-progress {
+        @apply hidden relative -left-20 top-9 animate-pulse text-red-500 md:block md:w-1/2;
       }
     }
 
     .task-show-box {
-      @apply flex;
+      @apply flex flex-col items-center md:flex-row;
 
-      .task-show-inf {
-        @apply px-5 py-5 w-8/12;
+      .task-show-info {
+        @apply w-full px-5 py-5 iPhone-Plus:text-center md:text-left md:w-5/12;
 
         & p {
-          @apply my-2;
+          @apply my-2 text-lg font-bold;
+
+          & i {
+            @apply mr-1;
+          }
         }
 
-        .task-show-link {
-          @apply flex justify-between text-xl;
+        .info-title {
+          @apply text-2xl;
+        }
+
+        .info-desc {
+          @apply font-normal;
+        }
+
+        .btn-box {
+          @apply flex justify-center md:block;
+
+          .report-location {
+            @apply flex flex-col items-center lg:flex-row;
+
+            & select {
+              @apply border border-solid border-gray-50 rounded-md shadow cursor-pointer px-2 py-2 mb-5;
+            }
+          }
         }
       }
 
       .task-show-map {
-        @apply px-5 py-5 border-2 w-5/12;
+        @apply h-96 w-full lg:px-5 py-5 border-2 md:w-7/12;
+      }
+
+      .map-progress.map-progress-mobile {
+        @apply block animate-pulse text-red-500 text-xl md:hidden;
       }
     }
   }
+}
+
+.back-btn {
+  @apply hidden md:inline-block absolute top-1 right-1 rounded-xl px-2 py-2 text-gray-700 hover:bg-red-500 hover:text-white;
+}
+
+.back-btn-mobile {
+  @apply block relative mt-5 md:hidden;
+}
+
+.fas.fa-times {
+  @apply text-4xl;
 }

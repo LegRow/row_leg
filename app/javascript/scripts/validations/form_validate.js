@@ -4,16 +4,13 @@ document.addEventListener("turbolinks:load", () => {
   if (signupForm) {
     const email = document.querySelector(".email");
     const name = document.querySelector(".name");
-    const age = document.querySelector(".age");
     const tel = document.querySelector(".tel");
     const bankAccount = document.querySelector(".bank-account");
     const password = document.querySelector(".password");
     const password2 = document.querySelector(".password2");
     const signupBtn = document.querySelector(".btn");
-    const male = document.querySelector("#user_gender_male");
-    const female = document.querySelector("#user_gender_female");
     const agree = document.querySelector("#agree");
-    const inputArr = [email, name, age, tel, bankAccount, password, password2];
+    const inputArr = [email, name, tel, bankAccount, password, password2];
 
     const showSuccess = function (input) {
       input.parentElement.className = "field success";
@@ -21,7 +18,6 @@ document.addEventListener("turbolinks:load", () => {
     const showError = function (input) {
       input.parentElement.className = "field error";
     };
-    // 檢查空欄
     const checkRequired = function (inputArr) {
       inputArr.forEach((input) => {
         if (input.value === "") {
@@ -45,7 +41,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     }
 
-    // 檢查電話 帳戶長度與是否為數字
     const checkLength = function (input) {
       if (input.value.length !== 10) {
         showError(input);
@@ -58,7 +53,6 @@ document.addEventListener("turbolinks:load", () => {
       }
     };
 
-    // 檢查密碼長度
     const checkPasswordLength = function (input) {
       if (input.value.length < 6) {
         showError(input);
@@ -66,21 +60,10 @@ document.addEventListener("turbolinks:load", () => {
       }
     };
 
-    // 檢查密碼是否一致
     const checkPasswordMath = function (input1, input2) {
       if (input1.value !== input2.value) {
         showError(input2);
         input2.nextElementSibling.textContent = "密碼不一致";
-      }
-    };
-
-    //  檢查checkbox
-    const checkBoxGender = function (option1, option2) {
-      if ((option1.checked === false) & (option2.checked === false)) {
-        option1.parentElement.lastElementChild.textContent = "請選擇性別";
-        option1.parentElement.lastElementChild.style.visibility = "visible";
-      } else {
-        option1.parentElement.lastElementChild.style.visibility = "hidden";
       }
     };
 
@@ -102,7 +85,6 @@ document.addEventListener("turbolinks:load", () => {
       checkPasswordLength(password2);
       checkPasswordMath(password, password2);
 
-      checkBoxGender(male, female);
       checkBoxAgree(agree);
 
       const hasError = inputArr.map(function (input) {
