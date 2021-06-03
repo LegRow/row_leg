@@ -111,4 +111,12 @@ class Task < ApplicationRecord
     self.room.messages.destroy_all
     self.room.destroy
   end
+
+  def self.search(search)
+     if search
+       where(['address_district LIKE ? OR store_name LIKE ?', "%#{search}%", "%#{search}%"])
+     else
+       all
+    end
+  end
 end
