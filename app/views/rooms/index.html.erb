@@ -1,57 +1,60 @@
-<section class="chat-rooms-container">
-  <div class="chat-rooms-head">
-    <h2 class="chat-rooms-title">Chat Rooms</h2>
-    <h3 class="chat-rooms-subtitle">聊天室</h3>
+<section class="chat-room-container">
+  <div class="chat-room-head">
+    <h2 class="chat-room-title">Chat Room</h2>
+    <h3 class="chat-room-subtitle">聊天室</h3>
   </div>
-  <div class="chat-rooms-box"> 
-    <div class="chat-rooms-sidebar">
+  <div class="chat-room-box"> 
+    <div class="chat-room-sidebar">
       <ul class="sidebar-list">
         <li class="sidebar-item">
           <%= link_to new_task_path do %>
-            <i class="far fa-plus-square chat-room-icon"></i>新增任務
+            <i class="far fa-plus-square fa-fw chat-room-icon"></i>新增任務
           <% end %>
         </li>
         <li class="sidebar-item">
           <%= link_to mytasks_tasks_path do %>
-            <i class="fas fa-tasks chat-room-icon"></i>您發佈的任務
+            <i class="fas fa-tasks fa-fw chat-room-icon"></i>您發佈的任務
           <% end %>
         </li>
         <li class="sidebar-item">
           <%= link_to myworks_tasks_path do %>
-            <i class="fas fa-shoe-prints chat-room-icon"></i>您接下的任務
+            <i class="fas fa-shoe-prints fa-fw chat-room-icon"></i>您接下的任務
           <% end %>
         </li>
       </ul>
     </div>
-    <div class="chat-rooms-content">
-      <div class="chat-rooms-role">
+    <div class="chat-room-content">
+      <div class="chat-room-role">
         <button class="role-btn employee-btn role-btn-active"><i class="fas fa-running"></i>聯絡排隊員</button>
         <button class="role-btn employer-btn"><i class="fas fa-user-tie"></i>聯絡雇主</button>
+        <%= link_to tasks_path, class: "back-to-task" do %>
+          <i class=" fas fa-undo"></i>返回
+        <% end %>
       </div>
-      <div class="chat-rooms-info">
-        <ul class="employee-rooms">
+      <div class="chat-room-info">
+        <ul class="employee-room">
           <% @rooms.each do |room| %>
             <% if user_room_list(room) %>
-              <li class="rooms">
-                <%= link_to room_path(room), :method => :get do%>
-                  <span class="text-2xl"><%= "#{room.task.user.name}"%></span>
-                  商店:<%= "#{room.task.store_name}"%><br>
-                  <%= "#{room.task.address}"%>
-                  <small><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
+              <li class="room">
+                <%= link_to room_path(room), :method => :get, class: "room-link" do%>
+                  <span class="room-user"><%= "#{room.task.user.name}"%></span>
+                  <i class="fas fa-store fa-fw"></i>：<%= "#{room.task.store_name}"%>
+                  <i class="fas fa-map-marker-alt fa-fw"></i>：<%= "#{room.task.address}"%>
+                  <small class="room-time"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
                 <% end %>
               </li>
             <% end %>
           <% end %>
         </ul>
-        <ul class="employer-rooms hidden">
+        <ul class="employer-room hidden">
           <% @rooms.each do |room| %>
             <% if row_leg_room_list(room) %>
-              <li class="rooms">
-                <%= link_to room_path(room), :method => :get do%>
-                  <span class="text-2xl"><%= "#{room.task.user.name}"%></span>
-                  商店:<%= "#{room.task.store_name}"%><br>
-                  <%= "#{room.task.address}"%>
-                  <small><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
+              <li class="room">
+                <%= link_to room_path(room), :method => :get, class: "room-link" do%>
+                  <span class="room-user"><%= "#{room.task.user.name}"%></span>
+                  <i class="fas fa-store fa-fw"></i>：<%= "#{room.task.store_name}"%>
+                  <i class="fas fa-map-marker-alt fa-fw"></i>：<%= "#{room.task.address}"%>
+                  <small class="room-time"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
                 <% end%>
               </li>
             <% end %>
@@ -59,6 +62,7 @@
         </ul>
       </div>
     </div>
+    <div class="chat-room-img"></div>
   </div>
 </section>
 <!-- 第一區塊 招呼語 -->

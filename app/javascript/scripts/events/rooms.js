@@ -1,11 +1,11 @@
 document.addEventListener("turbolinks:load", () => {
-  const roomsContainer = document.querySelector(".chat-rooms-container");
+  const roomsContainer = document.querySelector(".chat-room-container");
 
   if (roomsContainer) {
-    const roomsRole = document.querySelector(".chat-rooms-role");
+    const roomsRole = document.querySelector(".chat-room-role");
     const roleBtns = document.querySelectorAll(".role-btn");
-    const employeeRooms = document.querySelector(".employee-rooms");
-    const employerRooms = document.querySelector(".employer-rooms");
+    const employeeRoom = document.querySelector(".employee-room");
+    const employerRoom = document.querySelector(".employer-room");
     roomsRole.addEventListener("click", (e) => {
       const clicked = e.target.closest(".role-btn");
       if (!clicked) return;
@@ -16,11 +16,11 @@ document.addEventListener("turbolinks:load", () => {
       });
 
       if (clicked.classList.contains("employee-btn")) {
-        employeeRooms.style.display = "block";
-        employerRooms.style.display = "none";
+        employeeRoom.style.display = "block";
+        employerRoom.style.display = "none";
       } else if (clicked.classList.contains("employer-btn")) {
-        employerRooms.style.display = "block";
-        employeeRooms.style.display = "none";
+        employerRoom.style.display = "block";
+        employeeRoom.style.display = "none";
       }
     });
   }
