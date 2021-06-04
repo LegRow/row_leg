@@ -1,88 +1,51 @@
-# Row-leg - Be lazy not guilty!  
+# Row Leg 腿排
 
-### 排隊的時間往往無味且無謂，想想如果有人能跟你交換，讓你處理更重要的事，多麼方便。 
-### 當沒事做宅在家裡發呆滑手遊，這段純屬虛度的時光如果能夠賺錢，多麼快樂。 
-### <font color=#008000>這個網站就是要把這兩件事</font>
-# 混合在一起 ~~~
+Row Leg 是一個代排媒合網站 🧍
 
-[Row-leg](https://www.rowleg.online) 
-首頁:符合手機用戶的使用介面 以[Tailwindcss](https://tailwindcss.com/)設計處理
-![image](https://user-images.githubusercontent.com/79121183/119486976-6e166f80-bd8b-11eb-8cb1-7f2c77d20bfe.png)
-***
+如果你受夠頂著大太陽、翻著白眼站在無止盡的人潮隊伍中，
+如果你沒事做、宅在家裡發呆、滑手遊，
+這將是一個可以改變無趣日常的網站。
 
-### 完整的會員制度
-Devise與第三方登入整合
+網站連結：https://www.rowleg.online
 
-![image](https://user-images.githubusercontent.com/79121183/119500662-9eb1d580-bd9a-11eb-8d4e-9910f6b64ff8.png)
-***
+## 功能介紹
 
-### 安全的金流轉帳
-[NewebPay 藍星金流](https://www.newebpay.com/)
+- 會員系統與第三方登入整合，還可上傳喜歡的照片作為頭貼。
+- 串接 [NewebPay 藍星金流](https://www.newebpay.com/) 作為線上支付工具。
+- 使用 Rails 內建 [Action Mailer](https://guides.rubyonrails.org/action_mailer_basics.html) 收發信件，確立雙方任務達成協議。
+- 串接 [Google Map](https://developers.google.com/maps/documentation) 讓腿腿們回報當前定位，還可以選擇交通方式計算時間。
+- 應用 [Action Cable](https://guides.rubyonrails.org/action_cable_overview.html) 建立即時聊天室。
+- 腿腿掃描 [QRcode](https://github.com/davidshimjs/qrcodejs) 回報任務完成，輕鬆交接。
 
-![金流](https://user-images.githubusercontent.com/79121183/119488188-d6198580-bd8c-11eb-8fbe-c7e7533cdc93.png)
-***
+## 安裝流程
 
-### 雙向即時定位
-串接Google Map API及使用[STIMULUS](https://stimulus.hotwire.dev/handbook/origin)編寫JavaScript
+```
+$ git clone 此專案
+$ cd 到此專案的資料夾
+$ bundle install
+$ yarn install
+$ 啟動 postgresql
+$ rails db:migrate
+$ foreman s -f Procfile.dev
+```
 
-![map](https://user-images.githubusercontent.com/79121183/119489200-0877b280-bd8e-11eb-8348-b73a82e96ff9.png)
-***
+## 使用技術
 
-### 站內信件保護雙方
-使用Simple Mail Transfer Protocol及使用[sidekiq](https://github.com/mperham/sidekiq)增加網站效能
+- Ruby 版本：2.7.3
+- Rails 版本：6.1.3.2
+- 前端：Tailwind CSS / JavaScript / Stimulus
+- 後端：Ruby on Rails / Redis
+- 部署：Heroku
+- 資料庫：PostgreSQL
+- 版本控制與專案管理：Git / GitHub
+- 第三方登入：Google / GitHub
+- API 串接：藍新金流 / Google Map / Amazon S3
+- 其他技術：Action Cable / QRcode
 
-![mail1](https://user-images.githubusercontent.com/79121183/119492408-a28d2a00-bd91-11eb-8985-9630332be162.png)
-***
+## 團隊成員
 
-### 即時通訊掌握對方
-Action Cable應用
-***
-
-### QRcode交易確認
-前後端完美結合
-***
-
-### 資料庫建立清楚
-![image](https://user-images.githubusercontent.com/79121183/119496346-fd288500-bd95-11eb-8558-b7dd82173537.png)
-***
-
-
-<tr>
-  <td>Ruby:~2.7.3</td>
-</tr>
-<br />
-<tr>
-  前端技術:
-  <td>Tailwindcss</td>
-  <td>/JavaScript</td>
-  <td>/STIMULUS</td>
-</tr>
-<br />
-<tr>
-  後端技術:
-  <td>Rails~6.1.3</td>
-  <td>/Devise</td>
-  <td>/Action Cable</td>
-</tr>
-<br />
-<tr>
-  資料庫:
-  <td>PostgreSQL</td>
-</tr>
-<br />
-<tr>
-  API使用:
-  <td>藍新金流</td>
-  <td>/Google Map</td>
-</tr>
-<br />
-<tr>
-  版本控制:
-  <td>Git/GitHub</td>
-</tr>
-<br />
-<tr>
-  團隊成員:
-  <td>陳永哲，蕭惠心，徐御，徐鳳臨，鍾穆雍</td>
-</tr>
-
+- [nauosika](https://github.com/nauosika)
+- [YCChen_Victor](https://github.com/YCChenVictor)
+- [hsufenglin](https://github.com/hsufenglin)
+- [yuRicky09](https://github.com/yuRicky09)
+- [NoelHsiao](https://github.com/huihsinhsiao)
