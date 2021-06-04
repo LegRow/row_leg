@@ -78,8 +78,8 @@ class CashflowController < ApplicationController
       ['Amt', paying_amount.to_s],
       ['ItemDesc', 'TEST'],
       ['Email', ENV["email_for_newebpay"]],
-      ['ReturnURL' , "https://" + ENV["web_https"] + "/cashflow/thankyou"],
-      ['NotifyURL', "https://" + ENV["web_https"] + "/cashflow/from_newebpay"]
+      ['ReturnURL' , "https://" + ENV["web_https_test"] + "/cashflow/thankyou"],
+      ['NotifyURL', "https://" + ENV["web_https_test"] + "/cashflow/from_newebpay"]
     ]
   end
 end

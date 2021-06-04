@@ -95,13 +95,6 @@ class Task < ApplicationRecord
     end
   end
 
-  def send_email_to_employer
-    puts "send mail" # 確定會 call 這個 function，之後再寫
-    # user = User.find.where(Task.id: params[])
-    # UserMailer.someone_apply_note(user)
-    # flash[:notice] = "Email has been sent."
-  end
-
   def create_room_and_order
     @room = self.create_room
     #訂單連動未做
