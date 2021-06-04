@@ -6,7 +6,7 @@ RSpec.describe "newebpay", type: :feature do
 
   # # 這邊的測試比較像是 feature test，會以 selenium 去進行自動化操控，反正只要可以得到我們想得到的藍新回 post 即可
   driver = Selenium::WebDriver.for(:chrome)
-  let(:website) do ENV["web_https_test"] end # 這個之後應該要可以直接去抓 ngrok terminal 裡的網址，而且這個之後要不開啟網頁（headless），這是要接藍新的 post
+  let(:website) do ENV["web_https"] end # 這個之後應該要可以直接去抓 ngrok terminal 裡的網址，而且這個之後要不開啟網頁（headless），這是要接藍新的 post
 
   test_task = FactoryBot.create(:task)
 
