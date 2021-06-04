@@ -1,11 +1,27 @@
-<div class="flex w-full">
+<div class="flex my-6">
     <% if message.user != current_user && message.user.cover.attached? %>
     <div>
         <%= image_tag url_for(message.user.cover) , class: 'headimg' %>
     </div>
     <% end %>
-    <div class="<%= 'right' if message.user == current_user %>">
-        <span id="newmessage" class="p-1.5 bg-yellow-400 rounded-2xl m-2 p-1 inline-block text-2xl <%= 'me' if message.user == current_user %>"><%= message.content %><br><span class='text-sm'><%= "#{message.user.name}於#{message.created_at&.strftime('%m月%d日 %H:%M')}" %></span></span>
+    <div class="message">
+        <% if message.user == current_user %>
+          <p id="newmessage" class="me">
+            <span class="my-text">
+                <small class="message-my-name"><%= message.user.name %></small>
+                <%= message.content %>
+                <small class="message-my-time"><%= message.created_at&.strftime('%m.%d %H:%M') %></small>
+            </span>
+          </p>
+        <% else %>
+        <p id="newmessage" class="opsite">
+            <span class="opsite-text">
+                <small class="message-opsite-name"><%= message.user.name %></small>
+                <%= message.content %>
+                <small class="message-opsite-time"><%= message.created_at&.strftime('%m.%d %H:%M') %></small>
+            </span>
+        </p>
+        <% end %>
     </div>
 </div>
 

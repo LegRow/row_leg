@@ -26,9 +26,7 @@ document.addEventListener("turbolinks:load", () => {
   if (taskList && !taskItem) {
     const h2 = document.createElement("h2");
     const newDiv = document.createElement("div");
-    const footer = document.querySelector(".footer-container");
 
-    footer.classList.add("fix-footer");
     h2.innerText = "查無任務";
     h2.classList.add("notfound-msg");
     taskList.classList.add("no-task");
