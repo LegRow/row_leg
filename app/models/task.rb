@@ -113,7 +113,7 @@ class Task < ApplicationRecord
 
   def self.search(search)
     if search
-      self.where(['address_and_store LIKE ?', "%#{search}%"])
+      self.includes([:user, :order]).where(['address_and_store LIKE ?', "%#{search}%"])
     else
       includes([:user, :order])
     end
