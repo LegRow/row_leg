@@ -23,7 +23,7 @@
 <%# 第二區塊 %>
   <div calss="m-auto w-10/12">
     <div id="messages" class="h-96 flex-col flex overflow-auto rounded-md border-2 border-gray-500" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
-      <% @room.messages.each do |message| %>
+      <% @room.messages.includes([:user]).each do |message| %>
       <%# 請幫我加一個div先hidden 定位在 id="message"附近 %>
         <%= render 'messages/message', message: message, current_user: current_user %>
       <% end %>
