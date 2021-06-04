@@ -114,9 +114,9 @@ class Task < ApplicationRecord
 
   def self.search(search)
     if search
-        where(['address_district LIKE ? OR store_name LIKE ?', "%#{search}%", "%#{search}%"])
+      where(['address_district LIKE ? OR store_name LIKE ?', "%#{search}%", "%#{search}%"])
     else
-        includes([:user], [:order])
+      includes([:user], [:order])
     end
   end
 end
