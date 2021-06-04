@@ -72,7 +72,6 @@ class Task < ApplicationRecord
 
   def build_address_and_store
     self.address_and_store = [address, store_name].join(' ')
-
   end
 
   private
