@@ -1,7 +1,8 @@
 document.addEventListener('turbolinks:load', function () {
-  if (document.querySelector('.messageinput')) {
-    const messageInput = document.querySelector('.messageinput')
-    const messagesubmit = document.querySelector('.messagesubmit')
+  const messageInput = document.querySelector('.messageinput')
+  const messagesubmit = document.querySelector('.messagesubmit')
+
+  if (messageInput) {
     messagesubmit.addEventListener('click', function() {
     if (messageInput.value == "" ) {
       messagesubmit.disabled = true;

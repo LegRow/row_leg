@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       backgroundImage: (theme) => ({
         notfound: "url('../images/notfound.jpg')",
+        cat: "url('../images/cat.png')",
       }),
       colors: {
         "light-blue": colors.lightBlue,

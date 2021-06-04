@@ -41,7 +41,18 @@ Rails.application.configure do
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { :host => ENV['web_https_test'], :protocol => 'https' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    domain: 'sandboxa6d1bd63cec64129a7e566ac54cca4ef.mailgun.org',
+    user_name: ENV["smtp_user_name"],
+    password: ENV["smtp_password"],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

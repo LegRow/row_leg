@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :find_employee, only: [:finish_show, :finish]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.search(params[:search])
   end
 
   def mytasks
@@ -128,7 +128,7 @@ private
     begin
       @task = Task.where(employee_id: current_user.id).find(params[:id])
     rescue
-       render 'error', locals: { message: '非任務承接者' }
+      render 'error', locals: { message: '非任務承接者' }
     end
   end
 

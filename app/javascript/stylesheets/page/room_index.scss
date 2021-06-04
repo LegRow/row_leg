@@ -1,0 +1,110 @@
+.chat-room-container {
+  @apply max-w-5xl mx-auto mb-32;
+
+  .chat-room-head {
+    @apply mt-36;
+
+    .chat-room-title {
+      @apply text-6xl text-orange-primary font-sans font-bold relative;
+    }
+
+    .chat-room-subtitle {
+      @apply text-4xl text-orange-darker;
+    }
+  }
+
+  .chat-room-box {
+    @apply flex justify-center;
+
+    .chat-room-sidebar {
+      @apply pt-14 pb-28;
+
+      .sidebar-list {
+        .sidebar-item {
+          @apply mb-5 block py-2 px-1 hover:bg-gray-200;
+        }
+      }
+    }
+
+    .chat-room-content {
+      @apply pl-7 w-2/5 relative;
+
+      .chat-room-role {
+        @apply my-4 text-3xl relative;
+
+        .employee-btn,
+        .employer-btn {
+          @apply pb-3 text-gray-400;
+        }
+
+        .employee-btn.role-btn-active,
+        .employer-btn.role-btn-active {
+          @apply border-b-4 border-solid border-orange-primary text-gray-900;
+        }
+
+        .employee-btn {
+          @apply mr-5;
+        }
+
+        .back-to-task {
+          @apply inline-block absolute -top-14 -right-96 py-2 px-2 hover:bg-gray-200;
+        }
+      }
+
+      .chat-room-info {
+        .room {
+          @apply relative text-gray-700;
+
+          .room-user {
+            @apply text-2xl block mb-2 text-black;
+          }
+
+          .room-link {
+            @apply block bg-gray-50 hover:bg-gray-200 px-2 py-3 mb-3  rounded-lg;
+          }
+
+          .room-time {
+            @apply absolute top-1 right-1;
+          }
+        }
+      }
+    }
+
+    .chat-room-img {
+      @apply bg-cat w-96 h-96 relative top-40 left-48;
+    }
+  }
+}
+
+.chat-room-title::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: -100px;
+  width: 280px;
+  height: 1px;
+  display: block;
+  background-color: #facc08;
+  transform: rotate(-46deg);
+}
+
+.chat-room-role::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 140%;
+  height: 1px;
+  display: block;
+  background-color: #ccc;
+}
+
+.far.fa-plus-square.chat-room-icon,
+.fas.fa-tasks.chat-room-icon,
+.fas.fa-shoe-prints.chat-room-icon {
+  @apply inline-block text-base;
+}
+
+.chat-room-img {
+  background-size: cover;
+  background-position: center;
+}
