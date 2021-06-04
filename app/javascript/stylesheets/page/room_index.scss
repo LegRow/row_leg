@@ -32,11 +32,13 @@
       .chat-room-role {
         @apply my-4 text-3xl relative;
 
-        .employee-btn,.employer-btn {
+        .employee-btn,
+        .employer-btn {
           @apply pb-3 text-gray-400;
         }
-        
-        .employee-btn.role-btn-active, .employer-btn.role-btn-active {
+
+        .employee-btn.role-btn-active,
+        .employer-btn.role-btn-active {
           @apply border-b-4 border-solid border-orange-primary text-gray-900;
         }
 
@@ -87,26 +89,13 @@
 }
 
 .chat-room-role::after {
-  content:  "";
+  content: "";
   position: absolute;
   bottom: 0;
   width: 140%;
   height: 1px;
   display: block;
   background-color: #ccc;
-}
-
-.chat-room-content::before {
-  content: "";
-  position: absolute;
-  bottom: -128px;
-  left: -240px;
-  display: block;
-  width: 0;
-  height: 0;
-  border: 120px solid #ffcc78;
-  border-color: transparent #ffcc78 #ffcc78 transparent;
-  opacity: 0.5;
 }
 
 .far.fa-plus-square.chat-room-icon,
@@ -119,4 +108,3 @@
   background-size: cover;
   background-position: center;
 }
-

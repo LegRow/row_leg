@@ -28,7 +28,7 @@
         <button class="role-btn employee-btn role-btn-active"><i class="fas fa-running"></i>聯絡排隊員</button>
         <button class="role-btn employer-btn"><i class="fas fa-user-tie"></i>聯絡雇主</button>
         <%= link_to tasks_path, class: "back-to-task" do %>
-          <i class=" fas fa-undo"></i>返回
+          <i class="fas fa-undo"></i>返回
         <% end %>
       </div>
       <div class="chat-room-info">
@@ -65,60 +65,3 @@
     <div class="chat-room-img"></div>
   </div>
 </section>
-<!-- 第一區塊 招呼語 -->
-<!-- <section class="">
-  <div class="">
-    <p class="">
-      聊天室
-    </p>
-      <i class=" fas fa-undo font-semibold text-red-800"><%= link_to tasks_path do %>返回<% end %></i>
-    <div class=""> -->
-      <!-- 第二區塊 發布任務的聊天室 設計有高度有限 超過捲軸-->
-      <!-- <section class="">
-          <div class="">
-            <i class="fas fa-user-tie"></i>
-          </div>
-          <div class="">
-            <div class="">
-              <% @rooms.each do |room| %>
-                <div class="">
-                  <% if user_room_list(room) %>
-                  <div class="">
-                    <%= link_to "#{room.task.store_name}", room_path(room), :method => :get, class: 'text-left text-2xl m-px hover:opacity-60 p-2'%>
-                  </div>
-                  <div class="">
-                    <%= "#{room.task.task_at&.strftime('日期:%m月%d號  時間:%H點%M分')}"%>
-                  </div>
-                <% end %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-      </section>
-      <div class="">
-      </div> -->
-      <!-- 第三區塊 接受的任務 -->
-      <!-- <section class="">
-        <div class="">
-          <i class="fas fa-walking"></i>
-        </div>
-        <div class="">
-          <div class="">
-            <% @rooms.each do |room| %>
-              <div class="">
-                <% if row_leg_room_list(room) %>
-                  <div class="">
-                    <%= link_to "#{room.task.store_name}", room_path(room), :method => :get, class: 'text-left text-2xl m-px hover:opacity-60 p-2'%>
-                  </div>
-                  <div class="">
-                    <%= "#{room.task.task_at&.strftime('日期:%m月%d號  時間:%H點%M分')}"%>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-</section> -->
