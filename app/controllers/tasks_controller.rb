@@ -8,11 +8,11 @@ class TasksController < ApplicationController
   end
 
   def mytasks
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.includes([:order])
   end
 
   def myworks
-    @tasks = current_user.works
+    @tasks = current_user.works.includes([:user])
   end
 
   def show

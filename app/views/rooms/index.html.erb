@@ -3,7 +3,7 @@
     <h2 class="chat-room-title">Chat Room</h2>
     <h3 class="chat-room-subtitle">聊天室</h3>
   </div>
-  <div class="chat-room-box"> 
+  <div class="chat-room-box">
     <div class="chat-room-sidebar">
       <ul class="sidebar-list">
         <li class="sidebar-item">
@@ -33,7 +33,7 @@
       </div>
       <div class="chat-room-info">
         <ul class="employee-room">
-          <% @rooms.each do |room| %>
+          <% @rooms.includes([:task]).each do |room| %>
             <% if user_room_list(room) %>
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
@@ -47,7 +47,7 @@
           <% end %>
         </ul>
         <ul class="employer-room hidden">
-          <% @rooms.each do |room| %>
+          <% @rooms.includes([:task]).each do |room| %>
             <% if row_leg_room_list(room) %>
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
