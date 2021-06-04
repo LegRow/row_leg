@@ -44,6 +44,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2'
   gem 'hirb-unicode', '~> 0.0.5'
+  gem 'bullet', '~> 6.1', '>= 6.1.4'
 end
 
 group :development do
