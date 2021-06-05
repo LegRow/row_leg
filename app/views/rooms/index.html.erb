@@ -37,7 +37,11 @@
             <% if user_room_list(room) %>
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
-                  <span class="room-user"><%= "#{room.task.user.name}"%></span>
+                  <% if room.task.employee == nil %>
+                    <span class="room-user">尚未有人應徵</span>
+                    <% elsif room.task.employee %>
+                      <span class="room-user"><%= "#{room.task.employee.name}"%></span>
+                  <% end %>
                   <i class="fas fa-store fa-fw"></i>：<%= "#{room.task.store_name}"%>
                   <i class="fas fa-map-marker-alt fa-fw"></i>：<%= "#{room.task.address}"%>
                   <small class="room-time"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>

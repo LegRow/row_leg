@@ -1,0 +1,167 @@
+.room-no-employee {
+  @apply flex flex-col justify-center items-center h-96 text-4xl text-red-500;
+}
+
+.room-show-container {
+  @apply container mx-auto my-32 px-4 py-5;
+
+  .room-show-main {
+    @apply flex;
+
+    .room-task-info {
+      @apply px-1 lg:w-1/4;
+      p {
+        @apply mb-3 border-b border-solid border-gray-200;
+      }
+
+      .room-task-title {
+        @apply text-5xl text-orange-primary font-sans font-bold relative;
+      }
+
+      .room-task-subtitle {
+        @apply text-4xl text-orange-darker mb-8;
+      }
+
+      .room-task-desc {
+        @apply text-2xl mb-5 relative font-bold ml-2 border-none;
+      }
+
+      .room-task-time {
+        @apply text-xl;
+
+        span {
+          @apply text-2xl text-red-500;
+        }
+      }
+    }
+
+    .room-show-content {
+      @apply flex flex-col ml-4 bg-white lg:w-3/4;
+
+      .messages-head {
+        @apply py-2 px-2 shadow-sm flex justify-between bg-orange-primary;
+
+        p {
+          @apply font-semibold;
+        }
+
+        .back-to-chat {
+          @apply inline-block;
+        }
+      }
+
+      .messages-main {
+        @apply h-96 border border-solid border-gray-200;
+
+        .message {
+          @apply flex-grow;
+
+          .opsite {
+            .opsite-text {
+              @apply bg-gray-100 inline-block py-3 px-2 ml-4 relative rounded;
+
+              .message-opsite-name {
+                @apply absolute -top-5 left-0 w-40;
+              }
+
+              .message-opsite-time {
+                @apply absolute bottom-0 text-xs text-gray-500;
+              }
+            }
+          }
+
+          .me {
+            @apply text-right;
+
+            .my-text {
+              @apply inline-block py-3 px-2 mr-5 relative rounded;
+
+              .message-my-name {
+                @apply absolute -top-5 right-0 w-40;
+              }
+
+              .message-my-time {
+                @apply absolute bottom-0 text-xs text-gray-500;
+              }
+            }
+          }
+        }
+      }
+
+      .messages-footer {
+        @apply pt-6 pb-2 px-2 border border-solid border-gray-200;
+        
+        .messageinput {
+          @apply flex-grow focus:outline-none bg-gray-50 py-2 px-2 rounded-md;
+        }
+
+        .messagesubmit {
+          @apply ml-3;
+        }
+
+        .typing_tip {
+          @apply h-4 w-full text-white;
+        }
+      }
+    }
+  }
+}
+
+.room-task-desc::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 3px;
+  height: 4px;
+  width: 70%;
+  background-color: $color-primary;
+}
+
+.opsite-img {
+  height: 70px;
+  width: 70px;
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+}
+
+.messages-main {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.message-my-time {
+  left: -68px;
+}
+
+.message-opsite-time {
+  right: -68px;
+}
+
+.my-text {
+  background-color: #ffcc78;
+}
+
+.my-text::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  right: -10px;
+  display: block;
+  width: 0;
+  height: 0;
+  border: 5px solid #ffcc78;
+  border-color: #ffcc78 transparent transparent #ffcc78;
+}
+
+.opsite-text::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -10px;
+  display: block;
+  width: 0;
+  height: 0;
+  border: 5px solid #f3f4f6;
+  border-color: #f3f4f6 #f3f4f6 transparent transparent;
+}

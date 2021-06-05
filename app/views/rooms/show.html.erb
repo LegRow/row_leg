@@ -1,36 +1,52 @@
-<div class="w-10/12 m-auto">
-<%# 第一區塊 聊天室資訊  請注意不要把下面的data-controller="chat"刪掉 %>
-  <div data-controller="chat" class="flex items-center">
-    <% if row_leg_room %>
-      <div class="w-8/12 animate-pulse text-xl text-center p-1 rounded-md bg-green-400">
-        這是您的跑腿任務：<%= "位於#{@room.task.store_name}" %>。
-        請於：<%= "#{@room.task.task_at&.strftime('%m月%d日%H:%M')} 前到達執行任務" %>
-      </div>
-    <% end%>
-    <% if user_room %>
-      <div class="w-8/12 animate-pulse text-xl text-center p-1 rounded-md bg-blue-400">
-        這是您發布的任務：<%= "位於#{@room.task.store_name}" %>。
-        請於：<%= "#{@room.task.task_end&.strftime('%m-%d/%H:%M')} 前到達交接" %>
-      </div>
-    <% end%>
-    <div class="w-3/12 inline-block text-center text-2xl m-px hover:opacity-60 typing_tip">
-      <%# 顯示對方有無打字 %>
-    </div>
-      <div class="flex-grow text-center">
-        <%= link_to "返回", rooms_path, class: 'inline-block text-center text-3xl m-px hover:opacity-60 rounded-md bg-red-400 p-1' %>
-      </div>
+<% if @room.task.employee == nil%>
+  <div class="room-no-employee">
+    <p>尚未有人應徵，聊天室功能未開啟</p>
+    <%= link_to "點我返回", rooms_path, class: 'inline-block text-center text-3xl hover:opacity-60 rounded-md mt-5' %>
   </div>
-<%# 第二區塊 %>
-  <div calss="m-auto w-10/12">
-    <div id="messages" class="h-96 flex-col flex overflow-auto rounded-md border-2 border-gray-500" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
-      <% @room.messages.each do |message| %>
-      <%# 請幫我加一個div先hidden 定位在 id="message"附近 %>
-        <%= render 'messages/message', message: message, current_user: current_user %>
+<% else %>
+<section class="room-show-container">
+  <div data-controller="chat" class="room-show-main">
+    <div class="room-task-info">
+      <h3 class="room-task-title">Chat Room</h3>
+      <h4 class="room-task-subtitle">聊天室</h4>
+      <p class="room-task-desc">此聊天室的任務資訊</p>
+      <p ><i class="fas fa-store fa-fw"></i>：<%= @room.task.store_name %></p>
+      <p><i class="fas fa-map-marker-alt fa-fw"></i>：<%= @room.task.address %></p>
+      <p><i class="fas fa-coins fa-fw"></i>：<%= @room.task.reward %></p>
+      <% if user_room %>
+        <p class="room-task-time">請於<span><%= @room.task.task_end&.strftime('%m.%d %H:%M') %></span>前與排隊員交接</p>
+      <% end %>
+      <% if row_leg_room %>
+        <p class="room-task-time">請於<span><%= @room.task.task_at&.strftime('%m.%d %H:%M') %></span>前到達任務目的地</p>
       <% end %>
     </div>
-    <hr>
-    <div class="rounded-md border-2 border-gray-500">
-      <%= render 'messages/form', message: Message.new, room: @room %>
+    <div class="room-show-content">
+      <div class="messages-head">
+        <% if user_room %>
+          <p>排隊員:<%= @room.task.employee.name%></p>
+        <% end %>
+        <% if row_leg_room %>
+          <p>雇主:<%= @room.task.user.name %></p>
+        <% end %>
+        <%= link_to rooms_path, class: "back-to-chat" do %>
+          <i class="fas fa-undo"></i>返回
+        <% end %>
+      </div>
+      <div class="messages-main" id="messages" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
+          <% @room.messages.each do |message| %>
+          <%# 請幫我加一個div先hidden 定位在 id="message"附近 %>
+            <%= render 'messages/message', message: message, current_user: current_user %>
+          <% end %>
+      </div>
+      <div class="messages-footer">
+        <div>
+          <%= render 'messages/form', message: Message.new, room: @room %>
+        </div>
+        <small class="typing_tip">
+          對方無打字
+        </small>
+      </div>
     </div>
   </div>
-</div>
+</section>
+<% end %>

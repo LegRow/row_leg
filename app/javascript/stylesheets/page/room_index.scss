@@ -76,7 +76,7 @@
   }
 }
 
-.chat-room-title::after {
+.chat-room-title::after,.room-task-title::after {
   content: "";
   position: absolute;
   top: 60px;

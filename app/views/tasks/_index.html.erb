@@ -21,18 +21,18 @@
             </div>
             <div class="task-details">
               <h3 class="task-title"><%= task.brief_description %></h3>
-              <p class="task-store"><span><i class="fas fa-store"></i>：</span><%= task.store_name %></p>
-              <p class="task-place"><span><i class="fas fa-map-marker-alt"></i>：</span><%= task.address %></p>
+              <p class="task-store"><span><i class="fas fa-store fa-fw"></i>：</span><%= task.store_name %></p>
+              <p class="task-place"><span><i class="fas fa-map-marker-alt fa-fw"></i>：</span><%= task.address %></p>
               <p class="task-start">
-                <span><i class="fas fa-hourglass-start"></i>：</span>
+                <span><i class="fas fa-hourglass-start fa-fw"></i>：</span>
                 <%= task.task_at&.strftime('%Y-%m-%d %H:%M:%S') %>
               </p>
               <p class="task-end">
-                <span><i class="fas fa-hourglass-end"></i>：</span>
+                <span><i class="fas fa-hourglass-end fa-fw"></i>：</span>
                 <%= task.task_end&.strftime('%Y-%m-%d %H:%M:%S') %>
               </p>
-              <p class="task-pay"><span><i class="fas fa-coins"></i>：</span><%= task.reward %></p>
-              <p class="task-place"><span><i class="fas fa-user"></i>：</span><%= task.user.name %></p>
+              <p class="task-pay"><span><i class="fas fa-coins fa-fw"></i>：</span><%= task.reward %></p>
+              <p class="task-place"><span><i class="fas fa-user fa-fw"></i>：</span><%= task.user.name %></p>
             </div>
             <% if employer_of task %>
             <div class="task-edit">
