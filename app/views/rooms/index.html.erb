@@ -33,7 +33,7 @@
       </div>
       <div class="chat-room-info">
         <ul class="employee-room">
-          <% @rooms.each do |room| %>
+          <% @rooms.includes([task: :employee]).each do |room| %>
             <% if user_room_list(room) %>
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
