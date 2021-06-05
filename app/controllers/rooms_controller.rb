@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
   before_action :current_user, only: [:show]
 
   def index
-    @rooms = Room.includes([task: :user])
+    @rooms = Room.includes(task: [:user])
   end
 
   def new
