@@ -46,24 +46,27 @@ export default class extends Controller {
             const showTypingPlace = document.querySelector('.typing_tip')
             const messageinput = document.querySelector('.messageinput')
             const whoTyping = document.getElementById('messageController')
+            const opsiteName = document.querySelector(".message-opsite-name")
             // 因為這是抓自己螢幕上的current_user所以取名me
             const me = whoTyping.dataset.currentUser
             // 這個是抓傳送事件的人是誰 data在這就是指那個事件
             const who = data.user_id
+            const donetyping = function () {
+              showTypingPlace.style.color = 'white';
+              showTypingPlace.textContent = '對方無打字';
+            }
             if (me != who) {
             //需重寫
               let timerID;
-              messageinput.addEventListener('keydown', ifKeypress())
-              messageinput.addEventListener('keyup', ifKeyup())
-              function ifKeypress() {
-                window.clearTimeout(timerID);
-                showTypingPlace.innerHTML = "正在打字"
-              }
-              function ifKeyup() {
-                timerID = window.setTimeout(()=>{
-                showTypingPlace.innerHTML = "現在靜悄悄"
-                }, 3000)
-              }
+              messageinput.addEventListener('keydown', () => {
+                clearTimeout(timerID);
+                showTypingPlace.style.color = 'gray';
+                showTypingPlace.textContent = `${opsiteName.textContent}正在輸入...`;
+              })
+              messageinput.addEventListener('keyup', () => {
+                clearTimeout(timerID);
+                timerID = setTimeout(donetyping, 5000);
+              })
             }
           }
         }

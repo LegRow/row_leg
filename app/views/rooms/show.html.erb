@@ -39,9 +39,12 @@
           <% end %>
       </div>
       <div class="messages-footer">
-        <div class="rounded-md border-2 border-gray-500">
+        <div>
           <%= render 'messages/form', message: Message.new, room: @room %>
         </div>
+        <small class="typing_tip">
+          對方無打字
+        </small>
       </div>
     </div>
   </div>

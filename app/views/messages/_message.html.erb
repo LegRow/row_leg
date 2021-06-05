@@ -1,27 +1,27 @@
 <div class="flex my-6">
-    <% if message.user != current_user && message.user.cover.attached? %>
+  <% if message.user != current_user && message.user.cover.attached? %>
     <div>
-        <%= image_tag url_for(message.user.cover) , class: 'headimg' %>
+      <%= image_tag url_for(message.user.cover) , class: 'opsite-img' %>
     </div>
-    <% end %>
-    <div class="message">
-        <% if message.user == current_user %>
-          <p id="newmessage" class="me">
-            <span class="my-text">
-                <small class="message-my-name"><%= message.user.name %></small>
-                <%= message.content %>
-                <small class="message-my-time"><%= message.created_at&.strftime('%m.%d %H:%M') %></small>
-            </span>
-          </p>
-        <% else %>
-        <p id="newmessage" class="opsite">
-            <span class="opsite-text">
-                <small class="message-opsite-name"><%= message.user.name %></small>
-                <%= message.content %>
-                <small class="message-opsite-time"><%= message.created_at&.strftime('%m.%d %H:%M') %></small>
-            </span>
+  <% end %>
+    <div class="message self-end">
+      <% if message.user == current_user %>
+        <p id="newmessage" class="me">
+          <span class="my-text">
+            <small class="message-my-name"><%= message.user.name %></small>
+            <%= message.content %>
+            <small class="message-my-time"><%= message.created_at&.strftime('%m.%d %H:%M') %></small>
+          </span>
         </p>
-        <% end %>
+      <% else %>
+        <p id="newmessage" class="opsite">
+          <span class="opsite-text">
+            <small class="message-opsite-name"><%= message.user.name %></small>
+            <%= message.content %>
+            <small class="message-opsite-time"><%= message.created_at&.strftime('%m.%d %H:%M') %></small>
+          </span>
+        </p>
+      <% end %>
     </div>
 </div>
 
