@@ -11,6 +11,8 @@ class Task < ApplicationRecord
   has_one :order
   has_one :room
 
+  before_save :build_address_and_store
+
   after_create :create_room_and_order
   after_destroy :destroy_room
 
@@ -68,6 +70,10 @@ class Task < ApplicationRecord
     address_city_changed? || address_district_changed? || address_street_changed?
   end
 
+  def build_address_and_store
+    self.address_and_store = [address, store_name].join(' ')
+  end
+
   private
   #後來發現pending?沒法判斷  因為任務就還沒有建立 沒有狀態
   def buffer_time
@@ -107,9 +113,9 @@ class Task < ApplicationRecord
 
   def self.search(search)
     if search
-      where(['address_district LIKE ? OR store_name LIKE ?', "%#{search}%", "%#{search}%"])
+      self.includes([:user, :order]).where(['address_and_store LIKE ?', "%#{search}%"])
     else
-      includes([:user], [:order])
+      includes([:user, :order])
     end
   end
 end
