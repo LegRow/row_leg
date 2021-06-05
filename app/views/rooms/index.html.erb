@@ -33,7 +33,7 @@
       </div>
       <div class="chat-room-info">
         <ul class="employee-room">
-          <% @rooms.includes([:task]).each do |room| %>
+          <% @rooms.each do |room| %>
             <% if user_room_list(room) %>
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
@@ -47,7 +47,7 @@
           <% end %>
         </ul>
         <ul class="employer-room hidden">
-          <% @rooms.includes([:task]).each do |room| %>
+          <% @rooms.each do |room| %>
             <% if row_leg_room_list(room) %>
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
