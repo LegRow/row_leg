@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   has_one :order
   has_one :room
 
-  before_save :build_address_and_store
+  # before_save :build_address_and_store
 
   after_create :create_room_and_order
   after_destroy :destroy_room
