@@ -1,10 +1,11 @@
-<div class="flex">
-  <div class="m-auto">
-    <h2>快速搜尋</h2>
-    <%= form_tag tasks_path, method: :get do %>
-        <%= text_field_tag :search, params[:search], placeholder: "搜尋" %>
-        <%= submit_tag "送出", name: nil %>
-    <% end %>
+<div class="flex search-container">
+  <div class="m-auto search-wrap">
+    <div class="search-box">
+      <%= form_tag tasks_path, method: :get do %>
+        <%= text_field_tag :search, params[:search], placeholder: "請輸入店名或地址", class:"search-input" %>
+        <%= submit_tag "送出", name: nil, class:"search-btn" %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="flex">
