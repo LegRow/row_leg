@@ -22,6 +22,9 @@
     </div>
     <div class="room-show-content">
       <div class="messages-head">
+        <%= link_to rooms_path, class: "mobile-back-to-chat" do %>
+          <i class="fas fa-angle-left"></i>
+        <% end %>
         <% if user_room %>
           <p>排隊員:<%= @room.task.employee.name%></p>
         <% end %>
