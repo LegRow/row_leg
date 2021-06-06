@@ -22,6 +22,10 @@
   }
 }
 
+.form-title {
+  @apply text-center text-gray-700;
+}
+
 .form-box {
   background-color: #fafafa;
 }
@@ -67,19 +71,19 @@
 // validate
 
 .field.success input {
-  @apply border-green-400 border border-solid;
+  @apply border-green-400 border-solid border-4;
 }
 
 .field.error input {
-  @apply border border-solid border-red-600;
+  @apply border-4 border-solid border-red-600;
 }
 
 .field.success textarea {
-  @apply border-green-400 border border-solid;
+  @apply border-green-400 border-4 border-solid;
 }
 
 .field.error textarea {
-  @apply border border-solid border-red-600;
+  @apply border-4 border-solid border-red-600;
 }
 .field small {
   @apply invisible;
