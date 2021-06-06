@@ -15,7 +15,7 @@
   @apply bg-red-600 inline-block mx-2 my-2;
 }
 
-.task-show-btn {
+.task-show-btn, .rooms-index-btn {
   @apply bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full;
 }
 

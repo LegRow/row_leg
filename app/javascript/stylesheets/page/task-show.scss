@@ -67,7 +67,7 @@
 }
 
 .back-btn-mobile {
-  @apply block relative mt-5 md:hidden;
+  @apply inline-block relative mt-5 md:hidden;
 }
 
 .fas.fa-times {
