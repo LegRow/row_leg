@@ -8,10 +8,10 @@ export default class extends Controller {
     const user_element = document.getElementById("messages");
     const room_id = Number(user_element.getAttribute("data-room-id"));
     // 這邊開始加工 監聽輸入框 做什麼還是先放received(data)處理
-    const messageinput = document.querySelector('.messageinput')
-    messageinput.addEventListener("input", ()=>{
-      fetch (`/rooms/${room_id}/tip`)
-    })
+    const messageinput = document.querySelector(".messageinput");
+    messageinput.addEventListener("input", () => {
+      fetch(`/rooms/${room_id}/tip`);
+    });
     consumer.subscriptions.create(
       { channel: "RoomChannel", room_id: room_id },
       {
@@ -22,11 +22,10 @@ export default class extends Controller {
           const chatRoom = document.getElementById("messages");
           chatRoom.scrollTop = chatRoom.scrollHeight;
         },
-        disconnected() {
-        },
+        disconnected() {},
         received(data) {
           // 這一區塊處理聊天室收到資訊怎麼處理 一開始只有設定對話 後來需求事件 所以將後端打來的資訊分為兩種 message及tip, 應該可以再多設定一個方法(區塊)專門處理事件.研究中
-          if (data.type === 'message') {
+          if (data.type === "message") {
             const user_element = document.getElementById("messages");
             const user_id = Number(user_element.getAttribute("data-user-id"));
 
@@ -42,35 +41,35 @@ export default class extends Controller {
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
             // 假設從"後端"打回來 不是message  data.type都是加工來的 看send_message_job跟 rooms_controller
-          }else if(data.type === 'tip'){
-            const showTypingPlace = document.querySelector('.typing_tip')
-            const messageinput = document.querySelector('.messageinput')
-            const whoTyping = document.getElementById('messageController')
-            const opsiteName = document.querySelector(".message-opsite-name")
+          } else if (data.type === "tip") {
+            const showTypingPlace = document.querySelector(".typing_tip");
+            const messageinput = document.querySelector(".messageinput");
+            const whoTyping = document.getElementById("messageController");
+            const opsiteName = document.querySelector(".message-opsite-name");
             // 因為這是抓自己螢幕上的current_user所以取名me
-            const me = whoTyping.dataset.currentUser
+            const me = whoTyping.dataset.currentUser;
             // 這個是抓傳送事件的人是誰 data在這就是指那個事件
-            const who = data.user_id
+            const who = data.user_id;
             const donetyping = function () {
-              showTypingPlace.style.color = 'white';
-              showTypingPlace.textContent = '對方無打字';
-            }
-            if (me != who) {
+              showTypingPlace.style.color = "white";
+              showTypingPlace.textContent = "對方無打字";
+            };
             //需重寫
-              let timerID;
-              messageinput.addEventListener('keydown', () => {
-                clearTimeout(timerID);
-                showTypingPlace.style.color = 'gray';
-                showTypingPlace.textContent = `${opsiteName.textContent}正在輸入...`;
-              })
-              messageinput.addEventListener('keyup', () => {
-                clearTimeout(timerID);
-                timerID = setTimeout(donetyping, 5000);
-              })
-            }
+            // if (me != who) {
+            //   let timerID;
+            //   messageinput.addEventListener('keydown', () => {
+            //     clearTimeout(timerID);
+            //     showTypingPlace.style.color = 'gray';
+            //     showTypingPlace.textContent = `${opsiteName.textContent}正在輸入...`;
+            //   })
+            //   messageinput.addEventListener('keyup', () => {
+            //     clearTimeout(timerID);
+            //     timerID = setTimeout(donetyping, 5000);
+            //   })
+            // }
           }
-        }
+        },
       }
-    )
+    );
   }
 }
