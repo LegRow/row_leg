@@ -1,5 +1,14 @@
+body {
+  position: relative;
+}
+
 .alert-set {
   display: block;
+  position: absolute;
+  top: -143px;
+  left: 0;
+  width: 100%;
+
   &:hover .alert {
     opacity: 0;
   }
