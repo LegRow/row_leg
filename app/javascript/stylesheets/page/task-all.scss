@@ -119,3 +119,37 @@
 .fas.fa-comments {
   @apply block text-center;
 }
+
+// search box
+.search-wrap {
+  position: relative;
+  width: 1500px;
+  height: 60px;
+
+  .search-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1;
+    background: #bebcba;
+  }
+
+  .search-btn:hover {
+    background: #979694;
+  }
+}
