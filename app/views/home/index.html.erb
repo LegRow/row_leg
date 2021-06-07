@@ -1,24 +1,15 @@
-<main class="container px-5 mx-auto" id="container">
+<main class="container mx-auto" id="container">
   <section class="title-container">
-    <div class="title-box">
-      <h1>
-        <span class="title title-second"
-          >腿腿代排 <span class="highlight"> 值得信賴</span></span
-        >
-      </h1>
-    </div>
-  </section>
-  <section class="company-intro">
     <div class="company-img">
-      <%= image_pack_tag("homepage.jpeg", size: "600x350")%>
+      <%= image_pack_tag("home-image.png", size: "800x420")%>
     </div>
-    <div class="company-desc">
-      <h2 class='highlight font-extrabold'>ROW LEG</h2>
-        <div class="px-5 italic text-xl font-medium">
-          <div class="leading-9">我們致力於讓有時間的人可以銷售時間。</div>
-          <div class="leading-9">我們致力於讓有沒有時間的人可以買時間。</div>
-          <div class="leading-9">趕快加入我們，讓我們一起互助互惠。</div>
-        </div>
+    <div class="title-box">
+      <h1>生活，就是這麼簡單！</h1>
+      <p>想吃名店美食卻沒有時間排隊？</p>
+      <p>搶不到限量商品的號碼牌？</p>
+      <div class="mt-6">
+        <%= link_to "開始使用", new_user_registration_path, class:"about-us-link bg-yellow-400 p-3" %>
+      </div>
     </div>
   </section>
 </main>
