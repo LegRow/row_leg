@@ -45,6 +45,10 @@
   }
 }
 
+.sidebar.sidebar-active {
+  @apply bg-orange-primary;
+}
+
 // 漢堡選單外框
 .mobile-btn {
   @apply lg:hidden flex justify-center items-center w-16 h-16 cursor-pointer transition-all relative z-20;
