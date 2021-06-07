@@ -3,13 +3,13 @@
 }
 
 .room-show-container {
-  @apply container mx-auto my-32 px-4 py-5;
+  @apply w-full lg:mx-auto lg:mt-32 lg:px-4 lg:py-5 xl:px-8 xxl:px-24;
 
   .room-show-main {
-    @apply flex;
+    @apply flex flex-col items-center lg:flex-row  xl:items-start;
 
     .room-task-info {
-      @apply px-1 lg:w-1/4;
+      @apply hidden px-1 lg:block lg:w-1/4;
       p {
         @apply mb-3 border-b border-solid border-gray-200;
       }
@@ -36,22 +36,26 @@
     }
 
     .room-show-content {
-      @apply flex flex-col ml-4 bg-white lg:w-3/4;
+      @apply flex flex-col w-full bg-white lg:ml-4 lg:w-3/4 lg:h-auto;
 
       .messages-head {
-        @apply py-2 px-2 shadow-sm flex justify-between bg-orange-primary;
+        @apply py-2 px-2 shadow-sm flex items-center xl:justify-between bg-orange-primary;
 
         p {
           @apply font-semibold;
         }
 
         .back-to-chat {
-          @apply inline-block;
+          @apply hidden xl:inline-block;
+        }
+
+        .mobile-back-to-chat {
+          @apply text-3xl mr-5 xl:hidden;
         }
       }
 
       .messages-main {
-        @apply h-96 border border-solid border-gray-200;
+        @apply h-96 border border-solid border-gray-200 flex-grow;
 
         .message {
           @apply flex-grow;
@@ -106,6 +110,17 @@
     }
   }
 }
+
+.room-show-content {
+  height: 75vh;
+} 
+
+@media (min-width: 321px){
+  .room-show-content {
+    height: 78vh;
+  }   
+}
+
 
 .room-task-desc::after {
   content: "";

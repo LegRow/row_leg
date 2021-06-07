@@ -68,4 +68,29 @@
     </div>
     <div class="chat-room-img"></div>
   </div>
+  <%= link_to '返回', tasks_path, class: "rooms-index-btn back-btn-mobile" %>
+</section>
+<section id="bottom-navigation" class="md:hidden block fixed inset-x-0 bottom-0 bg-white z-10">
+	<div id="tabs" class="flex justify-between">
+		<div class="w-full hover:bg-gray-200 justify-center inline-block text-center pt-2 pb-1">
+      <%= link_to new_task_path do %>
+        <i class="far fa-plus-square"></i>新增任務
+      <% end %>
+		</div>
+		<div class="w-full hover:bg-gray-200 justify-center inline-block text-center pt-2 pb-1">
+			<%= link_to mytasks_tasks_path do %>
+        <i class="fas fa-tasks"></i>您發佈的任務
+      <% end %>
+		</div>
+		<div class="w-full hover:bg-gray-200 justify-center inline-block text-center pt-2 pb-1">
+      <%= link_to myworks_tasks_path do %>
+        <i class="fas fa-shoe-prints"></i>您接下的任務
+      <% end %>
+		</div>
+		<div class="w-full hover:bg-gray-200 justify-center inline-block text-center pt-2 pb-1">
+			<%= link_to rooms_path do %>
+        <i class="fas fa-comments"></i>聊天室
+      <% end %>
+		</div>
+	</div>
 </section>

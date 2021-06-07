@@ -1,36 +1,36 @@
 .chat-room-container {
-  @apply max-w-5xl mx-auto mb-32;
+  @apply flex flex-col items-center lg:block max-w-7xl mx-auto mb-32;
 
   .chat-room-head {
-    @apply mt-36;
+    @apply my-10 lg:mt-36 lg:pl-12 xl:pl-0;
 
     .chat-room-title {
-      @apply text-6xl text-orange-primary font-sans font-bold relative;
+      @apply text-5xl lg:text-6xl text-orange-primary font-sans font-bold relative;
     }
 
     .chat-room-subtitle {
-      @apply text-4xl text-orange-darker;
+      @apply text-3xl lg:text-4xl text-orange-darker;
     }
   }
 
   .chat-room-box {
-    @apply flex justify-center;
+    @apply flex justify-center px-3 lg:px-0 md:w-full;
 
     .chat-room-sidebar {
-      @apply pt-14 pb-28;
+      @apply pt-14 pb-28 hidden md:block;
 
       .sidebar-list {
         .sidebar-item {
-          @apply mb-5 block py-2 px-1 hover:bg-gray-200;
+          @apply mb-5 block py-2 px-1 hover:bg-gray-200 md:w-auto;
         }
       }
     }
 
     .chat-room-content {
-      @apply pl-7 w-2/5 relative;
+      @apply  relative w-full md:w-auto md:pl-7;
 
       .chat-room-role {
-        @apply my-4 text-3xl relative;
+        @apply my-4 relative text-2xl md:text-3xl;
 
         .employee-btn,
         .employer-btn {
@@ -47,7 +47,7 @@
         }
 
         .back-to-task {
-          @apply inline-block absolute -top-14 -right-96 py-2 px-2 hover:bg-gray-200;
+          @apply absolute -top-14 py-2 px-2 hover:bg-gray-200 hidden md:inline-block md:-right-12 lg:-right-28 xl:-right-96;
         }
       }
 
@@ -56,7 +56,7 @@
           @apply relative text-gray-700;
 
           .room-user {
-            @apply text-2xl block mb-2 text-black;
+            @apply block mb-2 text-black text-xl md:text-2xl;
           }
 
           .room-link {
@@ -71,7 +71,7 @@
     }
 
     .chat-room-img {
-      @apply bg-cat w-96 h-96 relative top-40 left-48;
+      @apply hidden xl:block bg-cat xl:left-0 w-96 h-96 relative top-40 left-40;
     }
   }
 }
@@ -81,18 +81,23 @@
   position: absolute;
   top: 60px;
   left: -100px;
-  width: 280px;
+  width: 220px;
   height: 1px;
   display: block;
   background-color: #facc08;
   transform: rotate(-46deg);
+}
+@media (min-width: 1024px) {
+  .chat-room-title::after {
+    width: 280px;
+  }
 }
 
 .chat-room-role::after {
   content: "";
   position: absolute;
   bottom: 0;
-  width: 140%;
+  width: 100%;
   height: 1px;
   display: block;
   background-color: #ccc;
