@@ -15,10 +15,14 @@
 }
 
 .menu {
-  @apply hidden lg:flex text-gray-800 font-semibold;
+  @apply hidden lg:flex items-center text-gray-800 font-semibold;
 
   .menu-item {
     @apply mr-4;
+
+    .user-icon {
+      @apply inline-block h-12 w-12 object-cover; 
+    }
 
     .menu-link {
       @apply inline-block py-3 px-3 text-lg;
@@ -91,7 +95,15 @@
   @apply flex flex-col w-full justify-center items-center -top-96  fixed z-10 bg-white bg-opacity-90 text-center;
 
   a {
-    @apply block text-4xl my-4;
+    @apply block text-4xl my-4 flex items-center justify-center;
+
+    .user-icon {
+      @apply inline-block h-12 w-12 object-cover self-center; 
+    }
+
+    span {
+      @apply self-center;
+    }
   }
 }
 
@@ -120,4 +132,8 @@
 
 .pagetop-btn {
   transition: opacity 1s ease-in-out;
+}
+
+.user-icon {
+  border-radius: 50%;
 }
