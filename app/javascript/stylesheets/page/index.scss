@@ -1,12 +1,11 @@
 .title-container {
-  @apply flex justify-center items-center mt-48 mb-16;
+  @apply grid grid-cols-1 md:grid-cols-2 justify-center items-center mt-48 mb-16 font-sans;
 
   .title-box {
-    @apply relative;
+    @apply relative m-auto;
 
     h1 {
-      @apply text-5xl sm:text-6xl mb-5;
-
+      @apply lg:text-5xl text-2xl mb-5;
       .title {
         @apply block tracking-wider mb-6;
       }
@@ -22,6 +21,14 @@
         animation-duration: 1s;
         animation-timing-function: ease-out;
       }
+    }
+
+    p {
+      @apply text-gray-800 lg:text-2xl text-xl;
+    }
+
+    h1 {
+      color: #5f5b7c;
     }
 
     .know-more {
@@ -65,5 +72,5 @@
 }
 
 .pusher {
-  @apply hidden lg:block lg:w-1/12 lg:h-full 3xl:hidden; 
+  @apply hidden lg:block lg:w-1/12 lg:h-full 3xl:hidden;
 }
