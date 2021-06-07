@@ -1,12 +1,16 @@
 <% if user_signed_in? %>
   <li class="menu-item">
-    <a href="#" class="menu-link relative -top-1">
-      <i class="fas fa-user-ninja text-3xl"></i>
-      <%= current_user.name %>
-    </a>
-  </li>
-  <li class="menu-item">
-    <%= link_to "編輯", edit_user_registration_path, class: "menu-link" %>
+    <% if current_user.cover.url %>
+      <%= link_to edit_user_registration_path, class: "menu-link" do %>
+        <%= image_tag current_user.cover.url , class: 'user-icon' %>
+        <span><%= current_user.name %></span>
+      <% end %>
+    <% else %>
+      <%= link_to edit_user_registration_path, class: "menu-link relative -top-1" do %>
+        <i class="fas fa-user-ninja text-3xl"></i>
+        <%= current_user.name %>
+      <% end %>
+    <% end %>
   </li>
   <li class="menu-item">
     <%= link_to "登出", destroy_user_session_path, method: :delete, class:"menu-link" %>
