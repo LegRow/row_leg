@@ -1,0 +1,15 @@
+<div class="flex">
+  <div class="m-auto">
+    <div class="">
+      消失的雇主，像極了前女友，回不來了。<br>
+      任務查核已超過一小時，可點選下方完成鈕完成任務
+    </div>
+    <div class="fas fa-hand-point-down text-2xl m-4">請按完成</div>
+      <%= form_with url: finish_task_path(@task), local: true do |f| %>
+        <div class="w-20 m-6 text-4xl text-yellow-900  border-yellow-500 bg-yellow-400 | p-4 border-solid rounded-2xl border-4 | flex justify-around cursor-pointer | hover:bg-yellow-400">
+          <%= f.submit '完成'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

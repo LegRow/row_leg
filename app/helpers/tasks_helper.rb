@@ -13,13 +13,17 @@ module TasksHelper
     if task.state == "employer_paid"
     end
   end
-  
+
   def employer_confirmed(task)
     if task.state == "employer_confirmed"
     end
   end
-  
+
   def employee_of(task)
     user_signed_in? && task.employee_id == current_user.id && task.employee_paid?
+  end
+
+  def over_end_time
+    Time.now - @task.task_end > 1.hours && current_user.id == @task.employee_id
   end
 end
