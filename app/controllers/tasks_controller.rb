@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :qrcode]
   before_action :authenticate_user!, except: [:index]
   before_action :find_employee, only: [:finish_show, :finish]
-
   def index
     @tasks = Task.search(params[:search])
   end
@@ -106,9 +105,10 @@ class TasksController < ApplicationController
   end
 
   def finish
-  #這是post不用擋 狀態也不用去判斷 因為永哲有設定 只有:employee_paids能變deal
+  #這是post不用擋 狀態也不用去判斷 因為永哲有設定 只有:employee_paid能變deal
   #提醒試試用js來做吧
     if @task.finish!
+      self.build_bill
       render :finish
     else
       redirect_to tasks_path
@@ -138,5 +138,14 @@ private
 
   def order_params
     params.require(:task).permit(:merchant_order_number)
+  end
+
+  def build_bill
+    @task.bill = Bill.new
+    @task.bill.title = @task.address_and_store
+    @task.bill.pay_who = @task.employee.name
+    @task.bill.pay_to = @task.employee.bank_account
+    @task.bill.need_pay = @task.reward * 1.1
+    @task.bill.save
   end
 end

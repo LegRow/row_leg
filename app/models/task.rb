@@ -10,6 +10,7 @@ class Task < ApplicationRecord
 
   has_one :order
   has_one :room
+  has_one :bill
 
   before_save :build_address_and_store
 
@@ -115,7 +116,7 @@ class Task < ApplicationRecord
     if search
       self.includes([:user, :order]).where(['address_and_store LIKE ?', "%#{search}%"])
     else
-      includes([:user, :order])
+      includes([:user])
     end
   end
 end
