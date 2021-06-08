@@ -2,6 +2,11 @@
   <div class="task-show-row" data-controller="map">
     <div class="task-show-title">
       <h2 data-controller="store"><i class="fas fa-thumbtack"></i>任務詳情</h2>
+      <% if over_end_time %>
+      <div class="w-4/12">
+        <p><%= link_to "雇主失蹤?", employer_missing_task_path(@task), class: "task-show-btn" %></p>
+      </div>
+      <% end %>
       <h4 class="map-progress"></h4>
     </div>
     <div class="task-show-box">

@@ -74,15 +74,6 @@ class Task < ApplicationRecord
     self.address_and_store = [address, store_name].join(' ')
   end
 
-  def when_employer_missing(@task)
-    if Time.now - @task.task_end > 1.hours && @task.state :employee_paid
-      @task.finish
-      redirect_to employer_missing_path
-    else
-      redirect_to not_yet_path
-    end
-  end
-
   private
   #後來發現pending?沒法判斷  因為任務就還沒有建立 沒有狀態
   def buffer_time
