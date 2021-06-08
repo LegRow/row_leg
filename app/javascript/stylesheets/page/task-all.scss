@@ -121,35 +121,19 @@
 }
 
 // search box
-.search-wrap {
-  position: relative;
-  width: 1500px;
-  height: 60px;
+.search-container {
+  @apply mt-8;
+  .search-wrap {
+    @apply flex justify-center items-center lg:justify-end;
 
-  .search-input {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 100%;
-    outline: none;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 10px 20px;
-  }
+    .search-box {
+      .search-input {
+        @apply py-3 px-1 iPhone-Plus:px-5 outline-none rounded;
+      }
 
-  .search-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 60px;
-    height: 100%;
-    cursor: pointer;
-    z-index: 1;
-    background: #bebcba;
-  }
-
-  .search-btn:hover {
-    background: #979694;
+      .search-btn {
+        @apply inline-block cursor-pointer w-14 h-full py-3 px-2 bg-gray-300 text-center hover:bg-gray-400 rounded;
+      }
+    }
   }
 }
