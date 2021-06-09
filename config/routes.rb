@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'send_applicant_apply_email'
       get 'qrcode'
       get 'finish_show'
+      get 'employer_missing'
       post :finish
     end
   end

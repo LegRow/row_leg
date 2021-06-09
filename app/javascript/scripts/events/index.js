@@ -1,4 +1,4 @@
 import "./home";
 import "./task";
-import "./menu";
+import "./sidebar";
 import "./rooms";

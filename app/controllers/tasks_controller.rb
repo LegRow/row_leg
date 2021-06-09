@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :qrcode]
   before_action :authenticate_user!, except: [:index]
-  before_action :find_employee, only: [:finish_show, :finish]
+  before_action :find_employee, only: [:finish_show, :finish, :employer_missing]
+  before_action :end_time_not_yet, only: [:employer_missing]
+
   def index
     @tasks = Task.search(params[:search])
   end
@@ -115,6 +117,9 @@ class TasksController < ApplicationController
     end
   end
 
+  def employer_missing
+  end
+
 private
   def find_task
     begin
@@ -147,5 +152,13 @@ private
     @task.bill.pay_to = @task.employee.bank_account
     @task.bill.need_pay = @task.reward * 1.1
     @task.bill.save
+  end
+  
+  def end_time_not_yet
+    if Time.now - @task.task_end > 1.hours && @task.state == "employee_paid"
+      render :employer_missing
+    else
+      render 'error', locals: { message: '時間還沒到，再試著挽回吧?' }
+    end
   end
 end

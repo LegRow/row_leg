@@ -11,6 +11,29 @@ document.addEventListener("turbolinks:load", () => {
     const signupBtn = document.querySelector(".btn");
     const agree = document.querySelector("#agree");
     const inputArr = [email, name, tel, bankAccount, password, password2];
+    const showModalBtn = document.querySelector(".show-modal-btn");
+    const closeModalBtn = document.querySelector(".close-modal-btn");
+    const term = document.querySelector(".term-containerer");
+    const overlay = document.querySelector(".overlay");
+
+    // 同意條款pop up
+    showModalBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      term.classList.remove("term-hidden");
+      overlay.classList.remove("term-hidden");
+    });
+
+    closeModalBtn.addEventListener("click", () => {
+      term.classList.add("term-hidden");
+      overlay.classList.add("term-hidden");
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !term.classList.contains("term-hidden")) {
+        term.classList.add("term-hidden");
+        overlay.classList.add("term-hidden");
+      }
+    });
 
     const showSuccess = function (input) {
       input.parentElement.className = "field success";
