@@ -7,24 +7,19 @@ export default class extends Controller {
   connect() {
     const user_element = document.getElementById("messages");
     const room_id = Number(user_element.getAttribute("data-room-id"));
-    // 這邊開始加工 監聽輸入框 做什麼還是先放received(data)處理
-    const messageinput = document.querySelector(".messageinput");
-    messageinput.addEventListener("input", () => {
-      fetch(`/rooms/${room_id}/tip`);
-    });
+    const chatRoomState = document.getElementById("join-or-leave");
+    const leaveRoom = document.getElementById('leave')
     consumer.subscriptions.create(
       { channel: "RoomChannel", room_id: room_id },
       {
         connected() {
-          // 這邊加這個一樣利用這通道打回去 讓ActionCable廣播 同房間內可以收到通知
-          // 可再作為其他用途,目前所帶資訊current_user.id 可以加工帶時間或帶任務狀況
-          // fetch (`/rooms/${room_id}/tip`) 例如 對方連線了
+          fetch(`/rooms/${room_id}/tip`)
           const chatRoom = document.getElementById("messages");
           chatRoom.scrollTop = chatRoom.scrollHeight;
         },
-        disconnected() {},
+        disconnected() {
+        },
         received(data) {
-          // 這一區塊處理聊天室收到資訊怎麼處理 一開始只有設定對話 後來需求事件 所以將後端打來的資訊分為兩種 message及tip, 應該可以再多設定一個方法(區塊)專門處理事件.研究中
           if (data.type === "message") {
             const user_element = document.getElementById("messages");
             const user_id = Number(user_element.getAttribute("data-user-id"));
@@ -38,38 +33,58 @@ export default class extends Controller {
 
             const messageContainer = document.getElementById("messages");
             messageContainer.innerHTML = messageContainer.innerHTML + html;
+            myNonsense()
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
             // 假設從"後端"打回來 不是message  data.type都是加工來的 看send_message_job跟 rooms_controller
           } else if (data.type === "tip") {
-            const showTypingPlace = document.querySelector(".typing_tip");
-            const messageinput = document.querySelector(".messageinput");
-            const whoTyping = document.getElementById("messageController");
-            const opsiteName = document.querySelector(".message-opsite-name");
-            // 因為這是抓自己螢幕上的current_user所以取名me
-            const me = whoTyping.dataset.currentUser;
-            // 這個是抓傳送事件的人是誰 data在這就是指那個事件
-            const who = data.user_id;
-            const donetyping = function () {
-              showTypingPlace.style.color = "white";
-              showTypingPlace.textContent = "對方無打字";
-            };
-            //需重寫
-            // if (me != who) {
-            //   let timerID;
-            //   messageinput.addEventListener('keydown', () => {
-            //     clearTimeout(timerID);
-            //     showTypingPlace.style.color = 'gray';
-            //     showTypingPlace.textContent = `${opsiteName.textContent}正在輸入...`;
-            //   })
-            //   messageinput.addEventListener('keyup', () => {
-            //     clearTimeout(timerID);
-            //     timerID = setTimeout(donetyping, 5000);
-            //   })
-            // }
+            const user = data.user_id;
+            const userRoom = document.getElementById('messages');
+            const me = userRoom.dataset.userId ;
+            const otherName = data.user_name;
+            if (user != me) {
+              chatRoomState.innerHTML = `${otherName} 飄洋過海來看你`;
+            }
           }
-        },
+        }
       }
-    );
+    )
   }
+}
+
+
+
+const nonsensess = [
+  "出門請戴好口罩。",
+  "回家記得好好洗手。",
+  "不要顧看這裡，看我們Demo!",
+  "終於到了這一天了!",
+  "ASTRO Camp 招生中!",
+  "想台詞很辛苦...",
+  "遇事不決，量子力學。",
+  "分享，訂閱，按讚。",
+  "學會React，年薪百萬。",
+  "學會Vue，年薪百萬。",
+  "在哪裡跌倒，在哪裡躺下。",
+  "愛釣魚的孩子不會變壞!",
+  "是說.....",
+  "現在感受不到，以後就知道了。",
+  "大家早安呀。",
+  "放下偶像包袱。",
+  "勇敢發問。",
+  "這一組叫Row-Leg!",
+  "這個特效其實很簡單。",
+  "這行字打有反。",
+  "我想知道Demo員會不會笑場?",
+  "不要看到英文就不看!",
+  "學會React + Vue，人生過一半!",
+  "每當我閉眼，就會看不見。",
+  "感情路順遂，因為都沒人。",
+  "若是沒有勇氣，你還有氧氣。",
+  "在給我五分鐘。",
+]
+
+function myNonsense() {
+  const randomNumber = Math.floor( Math.random() * (nonsensess.length));
+  document.getElementById("join-or-leave").innerHTML = nonsensess[randomNumber]
 }
