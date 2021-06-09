@@ -22,14 +22,14 @@
     </div>
     <div class="room-show-content">
       <div class="messages-head">
-        <%= link_to rooms_path, class: "mobile-back-to-chat" do %>
+        <%= link_to rooms_path,id:"leave", class: "mobile-back-to-chat" do %>
           <i class="fas fa-angle-left"></i>
         <% end %>
         <% if user_room %>
-          <p>排隊員:<%= @room.task.employee.name%></p>
+          <p id="join-or-leave">排隊員:<%= @room.task.employee.name%></p>
         <% end %>
         <% if employee_room %>
-          <p>雇主:<%= @room.task.user.name %></p>
+          <p id="join-or-leave">雇主:<%= @room.task.user.name %></p>
         <% end %>
         <%= link_to rooms_path, class: "back-to-chat" do %>
           <i class="fas fa-undo"></i>返回
@@ -37,7 +37,6 @@
       </div>
       <div class="messages-main" id="messages" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
           <% @room.messages.includes([:user]).each do |message| %>
-          <%# 請幫我加一個div先hidden 定位在 id="message"附近 %>
             <%= render 'messages/message', message: message, current_user: current_user %>
           <% end %>
       </div>

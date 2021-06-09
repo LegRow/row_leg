@@ -23,7 +23,7 @@ class RoomsController < ApplicationController
   # 自定義傳送事件方法 給app/javascript/controllers/caht_controller.js用
   # ActionCable.server.broadcast即為廣播 房號後可帶所需資訊。type為命名慣例
   def tip
-    ActionCable.server.broadcast "room_channel_#{params[:room_id]}", type: 'tip', user_id: current_user.id
+    ActionCable.server.broadcast "room_channel_#{params[:room_id]}", type: 'tip', user_id: current_user.id , user_name: current_user.name
     head :no_content #HTTP status code 200 無內容物
   end
 
