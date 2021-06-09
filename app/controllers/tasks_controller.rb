@@ -3,21 +3,23 @@ class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :find_employee, only: [:finish_show, :finish, :employer_missing]
   before_action :end_time_not_yet, only: [:employer_missing]
+  before_action :tasks_list, only: [:mytasks, :myworks, :index]
 
   def index
-    @tasks = Task.search(params[:search])
   end
 
   def mytasks
-    @tasks = current_user.tasks.includes([:order])
   end
 
   def myworks
-    @tasks = current_user.works.includes([:user])
   end
 
   def show
-    @task = Task.find(params[:id])
+    begin
+      @task = Task.find(params[:id])
+    rescue
+      redirect_to tasks_path, alert: '請重新操作！'
+    end
   end
 
   def new
@@ -162,12 +164,24 @@ private
     @task.bill.need_pay = @task.reward * 1.1
     @task.bill.save
   end
-  
+
   def end_time_not_yet
     if Time.now - @task.task_end > 1.hours && @task.state == "employee_paid"
       render :employer_missing
     else
       render 'error', locals: { message: '時間還沒到，再試著挽回吧?' }
     end
+  end
+
+  # 判斷 aciton，再用 scope 去串聯
+  def tasks_list
+    @tasks = case action_name
+             when "mytasks"
+               current_user.tasks.includes(:order)
+             when "myworks"
+               current_user.works.includes(:user)
+             else
+               Task.includes([:user, :order])
+             end.updated_desc.search_address_store(params[:search])
   end
 end

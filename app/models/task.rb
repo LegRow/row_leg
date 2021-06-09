@@ -5,6 +5,9 @@ class Task < ApplicationRecord
   has_one :qrcode
   belongs_to :user
 
+  scope :updated_desc, -> { order(updated_at: :desc) }
+  scope :search_address_store, ->(search) { where('address_and_store LIKE ?', "%#{search}%") if search.present? }
+
   # 加上關聯，並作為選填
   belongs_to :employee, class_name: 'User', optional: true
 
@@ -114,13 +117,5 @@ class Task < ApplicationRecord
   def destroy_room
     self.room.messages.destroy_all
     self.room.destroy
-  end
-
-  def self.search(search)
-    if search
-      self.includes([:user, :order]).where(['address_and_store LIKE ?', "%#{search}%"])
-    else
-      includes([:user])
-    end
   end
 end
