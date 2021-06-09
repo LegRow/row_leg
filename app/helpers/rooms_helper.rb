@@ -14,4 +14,8 @@ module RoomsHelper
   def employee_room?(room)
     room.task.employee_id == current_user.id
   end
+
+  def room_add_messages(room)
+    room.messages.last.user != current_user
+  end
 end

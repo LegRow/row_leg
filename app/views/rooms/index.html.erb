@@ -35,32 +35,37 @@
         <ul class="employee-room">
           <% @rooms.includes([task: :employee]).each do |room| %>
             <% if user_room?(room) %>
+            <div class="<%= 'animate-pulse bg-red-600' if room_add_messages(room) %>">
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
                   <% if room.task.employee == nil %>
-                    <span class="room-user">尚未有人應徵</span>
+                    <span class="room-user ">尚未有人應徵</span>
                     <% elsif room.task.employee %>
-                      <span class="room-user"><%= "#{room.task.employee.name}"%></span>
+                      <span class="room-user <%= 'animate-pulse' if room_add_messages(room) %>"><%= "#{room.task.employee.name}"%></span>
                   <% end %>
                   <i class="fas fa-store fa-fw"></i>：<%= "#{room.task.store_name}"%>
                   <i class="fas fa-map-marker-alt fa-fw"></i>：<%= "#{room.task.address}"%>
-                  <small class="room-time"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
+                  <small class="room-time <%= 'animate-pulse' if room_add_messages(room) %>"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
                 <% end %>
               </li>
+            </div>
             <% end %>
           <% end %>
         </ul>
         <ul class="employer-room hidden">
           <% @rooms.each do |room| %>
             <% if employee_room?(room) %>
+            <div class="<%= 'animate-pulse bg-red-600' if room_add_messages(room) %>">
               <li class="room">
                 <%= link_to room_path(room), :method => :get, class: "room-link" do%>
                   <span class="room-user"><%= "#{room.task.user.name}"%></span>
+
                   <i class="fas fa-store fa-fw"></i>：<%= "#{room.task.store_name}"%>
                   <i class="fas fa-map-marker-alt fa-fw"></i>：<%= "#{room.task.address}"%>
-                  <small class="room-time"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
+                  <small class="room-time <%= 'animate-pulse hasNewMessages' if room_add_messages(room) %>"><%= "#{room.task.task_at&.strftime('開始日:20%y.%m.%d')}"%></small>
                 <% end%>
               </li>
+            </div>
             <% end %>
           <% end %>
         </ul>
