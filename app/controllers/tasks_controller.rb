@@ -44,6 +44,11 @@ class TasksController < ApplicationController
   end
 
   def edit
+    if @task.state == "pending"
+      @task.edit
+    else
+      redirect_to task_path(@task), alert: '目前任務狀態已無法直接修改!'
+    end
   end
 
   def update
@@ -55,8 +60,12 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
-    redirect_to tasks_path, notice: '任務已刪除'
+    if @task.can_destroy?
+      @task.destroy
+      redirect_to tasks_path, notice: '任務已刪除'
+    else
+      redirect_to tasks_path, alert: "任務狀態已不能直接刪除了!"
+    end
   end
 
   def send_applicant_apply_email

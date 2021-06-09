@@ -75,6 +75,10 @@ class Task < ApplicationRecord
     self.address_and_store = [address, store_name].join(' ')
   end
 
+  def can_destroy?
+    ["pending", "employer_paid", "deal"].include?(self.state)
+  end
+
   private
   #後來發現pending?沒法判斷  因為任務就還沒有建立 沒有狀態
   def buffer_time
