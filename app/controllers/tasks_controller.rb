@@ -107,9 +107,10 @@ class TasksController < ApplicationController
   end
 
   def finish
-  #這是post不用擋 狀態也不用去判斷 因為永哲有設定 只有:employee_paids能變deal
+  #這是post不用擋 狀態也不用去判斷 因為永哲有設定 只有:employee_paid能變deal
   #提醒試試用js來做吧
     if @task.finish!
+      self.build_bill
       render :finish
     else
       redirect_to tasks_path
@@ -144,6 +145,15 @@ private
     params.require(:task).permit(:merchant_order_number)
   end
 
+  def build_bill
+    @task.bill = Bill.new
+    @task.bill.title = @task.address_and_store
+    @task.bill.pay_who = @task.employee.name
+    @task.bill.pay_to = @task.employee.bank_account
+    @task.bill.need_pay = @task.reward * 1.1
+    @task.bill.save
+  end
+  
   def end_time_not_yet
     if Time.now - @task.task_end > 1.hours && @task.state == "employee_paid"
       render :employer_missing
