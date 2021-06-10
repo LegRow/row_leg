@@ -11,6 +11,6 @@ class SendMessageJob < ApplicationJob
       locals: {message: message, current_user: nil},
       )
 
-    ActionCable.server.broadcast "room_channel_#{message.room_id}", mine: mine, theirs: theirs, message: message, type: 'message'
+    ActionCable.server.broadcast "room_channel_#{message.room_id}", mine: mine, theirs: theirs, message: message, type: 'message', user_id: current_user.id
   end
 end
