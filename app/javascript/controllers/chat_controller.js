@@ -9,6 +9,9 @@ export default class extends Controller {
     const room_id = Number(user_element.getAttribute("data-room-id"));
     const chatRoomState = document.getElementById("join-or-leave");
     const leaveRoom = document.getElementById('leave')
+    leaveRoom.addEventListener('click', ()=> {
+      fetch(`/rooms/${room_id}/tip_leave`)
+    })
     consumer.subscriptions.create(
       { channel: "RoomChannel", room_id: room_id },
       {
@@ -20,6 +23,11 @@ export default class extends Controller {
         disconnected() {
         },
         received(data) {
+          // 狀態區
+          const user = data.user_id;
+          const userRoom = document.getElementById('messages');
+          const me = userRoom.dataset.userId ;
+          const otherName = data.user_name;
           if (data.type === "message") {
             const user_element = document.getElementById("messages");
             const user_id = Number(user_element.getAttribute("data-user-id"));
@@ -37,12 +45,12 @@ export default class extends Controller {
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
           } else if (data.type === "tip") {
-            const user = data.user_id;
-            const userRoom = document.getElementById('messages');
-            const me = userRoom.dataset.userId ;
-            const otherName = data.user_name;
             if (user != me) {
-              chatRoomState.innerHTML = `${otherName} 飄洋過海來看你`;
+              chatRoomState.innerHTML = `${otherName} 已進入聊天室`;
+            }
+          } else if (data.type === "tip_leave") {
+            if (user != me){
+              chatRoomState.innerHTML = `<p class="animate-pulse bg-red-400 p-1 rounded-lg">${otherName} 已離開聊天室</p>`;
             }
           }
         }
@@ -52,7 +60,7 @@ export default class extends Controller {
 }
 
 
-
+//放這邊 夥伴們看一下內容跟怎麼調用
 const nonsensess = [
   "Rowleg提醒您:出門請戴好口罩。",
   "Rowleg提醒您:回家記得好好洗手。",
