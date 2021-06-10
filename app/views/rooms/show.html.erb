@@ -22,7 +22,7 @@
     </div>
     <div class="room-show-content">
       <div class="messages-head">
-        <%= link_to rooms_path,id:"leave", class: "mobile-back-to-chat" do %>
+        <%= link_to rooms_path,id:"leave", class: "mobile-back-to-chat", method: 'get' do %>
           <i class="fas fa-angle-left"></i>
         <% end %>
         <% if user_room %>
