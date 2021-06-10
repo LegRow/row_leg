@@ -42,10 +42,11 @@ export default class extends Controller {
             const messageContainer = document.getElementById("messages");
             messageContainer.innerHTML = messageContainer.innerHTML + html;
             myNonsense()
-            if (user != me) {
-              console.log("123");
-              dindong()
-            }
+            // 音效功能先關
+            // if (user != me) {
+            //   console.log("123");
+            //   dindong()
+            // }
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
           } else if (data.type === "tip") {
@@ -99,8 +100,8 @@ function myNonsense() {
   const randomNumber = Math.floor( Math.random() * (nonsensess.length));
   document.getElementById("join-or-leave").innerHTML = nonsensess[randomNumber]
 }
-
-function dindong() {
-  const dindong = new Audio('/assets/inroom.mp3')
-  dindong.play()
-}
+// 音效功能先關
+// function dindong() {
+//   const dindong = new Audio('/assets/inroom.mp3')
+//   dindong.play()
+// }
