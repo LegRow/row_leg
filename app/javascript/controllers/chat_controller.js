@@ -36,7 +36,6 @@ export default class extends Controller {
             myNonsense()
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
-            // 假設從"後端"打回來 不是message  data.type都是加工來的 看send_message_job跟 rooms_controller
           } else if (data.type === "tip") {
             const user = data.user_id;
             const userRoom = document.getElementById('messages');
@@ -55,33 +54,32 @@ export default class extends Controller {
 
 
 const nonsensess = [
-  "出門請戴好口罩。",
-  "回家記得好好洗手。",
+  "Rowleg提醒您:出門請戴好口罩。",
+  "Rowleg提醒您:回家記得好好洗手。",
   "不要顧看這裡，看我們Demo!",
   "終於到了這一天了!",
-  "ASTRO Camp 招生中!",
-  "想台詞很辛苦...",
-  "遇事不決，量子力學。",
-  "分享，訂閱，按讚。",
-  "學會React，年薪百萬。",
-  "學會Vue，年薪百萬。",
-  "在哪裡跌倒，在哪裡躺下。",
-  "愛釣魚的孩子不會變壞!",
-  "是說.....",
-  "現在感受不到，以後就知道了。",
-  "大家早安呀。",
-  "放下偶像包袱。",
-  "勇敢發問。",
+  `<a href="https://astro.5xruby.tw/" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:ASTRO Camp 招生中!</a>`,
+  "名言分享:遇事不決，量子力學。",
+  `<a href="https://5xruby.tw/courses/code-for-girl" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:不是只有男生會寫程式。</a>`,
+  `<a href="https://5xruby.tw/courses/react" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:學會React，年薪百萬。</a>`,
+  `<a href="https://5xruby.tw/courses/vue-js" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:學會Vue，年薪百萬。</a>`,
+  `<a href="https://5xruby.tw/courses/git" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:全台灣最強Git教學!</a>`,
+  "名言分享:在哪裡跌倒，在哪裡躺下。",
+  "猜猜誰說的:我還要去釣魚。",
+  "猜猜誰說的:是說.....",
+  "猜猜誰說的:現在感受不到，以後就知道了。",
+  "猜猜誰說的:大家早安呀。",
+  "猜猜誰說的:放下偶像包袱。",
+  "猜猜誰說的:勇敢發問。",
   "這一組叫Row-Leg!",
   "這個特效其實很簡單。",
   "這行字打有反。",
-  "我想知道Demo員會不會笑場?",
-  "不要看到英文就不看!",
-  "學會React + Vue，人生過一半!",
-  "每當我閉眼，就會看不見。",
-  "感情路順遂，因為都沒人。",
-  "若是沒有勇氣，你還有氧氣。",
-  "在給我五分鐘。",
+  "我想看Demo員笑場!",
+  "猜猜誰說的:不要看到英文就不看!",
+  "學不會JS的人說的:學會React + Vue，人生過一半!",
+  "名言分享:每當我閉眼，就會看不見。",
+  "名言分享:感情路順遂，因為都沒人。",
+  "名言分享:若是沒有勇氣，你還有氧氣。",
 ]
 
 function myNonsense() {
