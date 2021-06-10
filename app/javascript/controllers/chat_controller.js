@@ -47,6 +47,7 @@ export default class extends Controller {
           } else if (data.type === "tip") {
             if (user != me) {
               chatRoomState.innerHTML = `${otherName} 已進入聊天室`;
+              roomSound()
             }
           } else if (data.type === "tip_leave") {
             if (user != me){
@@ -66,12 +67,12 @@ const nonsensess = [
   "Rowleg提醒您:回家記得好好洗手。",
   "不要顧看這裡，看我們Demo!",
   "終於到了這一天了!",
-  `<a href="https://astro.5xruby.tw/" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:ASTRO Camp 招生中!</a>`,
+  `<a href="https://astro.5xruby.tw/" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">AD:ASTRO Camp 招生中!</a>`,
   "名言分享:遇事不決，量子力學。",
-  `<a href="https://5xruby.tw/courses/code-for-girl" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:不是只有男生會寫程式。</a>`,
-  `<a href="https://5xruby.tw/courses/react" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:學會React，年薪百萬。</a>`,
-  `<a href="https://5xruby.tw/courses/vue-js" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:學會Vue，年薪百萬。</a>`,
-  `<a href="https://5xruby.tw/courses/git" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">廣告:全台灣最強Git教學!</a>`,
+  `<a href="https://5xruby.tw/courses/code-for-girl" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">AD:不是只有男生會寫程式。</a>`,
+  `<a href="https://5xruby.tw/courses/react" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">AD:學會React，年薪百萬。</a>`,
+  `<a href="https://5xruby.tw/courses/vue-js" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">AD:學會Vue，年薪百萬。</a>`,
+  `<a href="https://5xruby.tw/courses/git" target=_blank class="animate-pulse bg-green-400 p-1 rounded-lg">AD:全台灣最強Git教學!</a>`,
   "名言分享:在哪裡跌倒，在哪裡躺下。",
   "猜猜誰說的:我還要去釣魚。",
   "猜猜誰說的:是說.....",
@@ -93,4 +94,9 @@ const nonsensess = [
 function myNonsense() {
   const randomNumber = Math.floor( Math.random() * (nonsensess.length));
   document.getElementById("join-or-leave").innerHTML = nonsensess[randomNumber]
+}
+
+function roomSound() {
+  const dindong = new Audio('/assets/inroom.mp3');
+  dindong.play();
 }

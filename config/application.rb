@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module GemYarnInit
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.assets.precompile << "audios/*"
     config.load_defaults 6.1
     config.autoloader = :classic
     config.autoload_paths += %W(#{config.root}/lib)
