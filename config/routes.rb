@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   #任務頁面相關
   resources :rooms, only: [:index, :new, :create, :show] do
     get 'tip' #建立一個讓前端打資訊到後端的通道
+    get 'tip_leave'
   end
   resources :messages, only: [:create]
   resources :tasks do

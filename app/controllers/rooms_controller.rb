@@ -25,6 +25,11 @@ class RoomsController < ApplicationController
     head :no_content #HTTP status code 200 無內容物
   end
 
+  def tip_leave
+    ActionCable.server.broadcast "room_channel_#{params[:room_id]}", type: 'tip_leave', user_id: current_user.id , user_name: current_user.name
+    head :no_content #HTTP status code 200 無內容物
+  end
+
   private
 
   def find_room

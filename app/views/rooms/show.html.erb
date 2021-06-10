@@ -8,7 +8,7 @@
   <div data-controller="chat" class="room-show-main">
     <div class="room-task-info">
       <h3 class="room-task-title">Chat Room</h3>
-      <h4 class="room-task-subtitle">聊天室</h4>
+      <h4 class="room-task-subtitle" id="<%= @room.user.count %>">聊天室</h4>
       <p class="room-task-desc">此聊天室的任務資訊</p>
       <p ><i class="fas fa-store fa-fw"></i>：<%= @room.task.store_name %></p>
       <p><i class="fas fa-map-marker-alt fa-fw"></i>：<%= @room.task.address %></p>
