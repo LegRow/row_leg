@@ -46,9 +46,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    if @task.state == "pending"
-      @task.edit
-    else
+    if @task.state != "pending"
       redirect_to task_path(@task), alert: '目前任務狀態已無法直接修改!'
     end
   end
