@@ -16,6 +16,6 @@ module RoomsHelper
   end
 
   def room_add_messages(room)
-    room.messages.last.user != current_user
+    room.messages.last != nil && room.messages.last.user != current_user
   end
 end
