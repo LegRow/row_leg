@@ -15,9 +15,11 @@
       <p><i class="fas fa-coins fa-fw"></i>：<%= @room.task.reward %></p>
       <% if user_room %>
         <p class="room-task-time">請於<span><%= @room.task.task_end&.strftime('%m/%d %H:%M') %></span>前與排隊員交接</p>
+        <button id="open-audio" class="audio-close">開啟對方傳訊提醒</button>
       <% end %>
       <% if employee_room %>
         <p class="room-task-time">請於<span><%= @room.task.task_at&.strftime('%m/%d %H:%M') %></span>前到達任務目的地</p>
+        <button id="open-audio" class="audio-close">開啟對方傳訊提醒</button>
       <% end %>
     </div>
     <div class="room-show-content">
@@ -35,9 +37,6 @@
           <i class="fas fa-undo"></i>返回
         <% end %>
       </div>
-      <audio id="musicplayer" autoplay class="">
-  <source src="inroom.mp3">
-</audio>
       <div class="messages-main" id="messages" data-room-id="<%= @room.id %>" data-user-id="<%= current_user.id %>">
           <% @room.messages.includes([:user]).each do |message| %>
             <%= render 'messages/message', message: message, current_user: current_user %>
@@ -55,3 +54,7 @@
   </div>
 </section>
 <% end %>
+
+<div id="set-audio">
+
+</div>

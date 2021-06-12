@@ -1,10 +1,23 @@
-import { Context, Controller } from "stimulus";
+import { Controller } from "stimulus";
 import consumer from "../channels/consumer";
 
 export default class extends Controller {
   static targets = [];
 
   connect() {
+    // 偉大的google說沒跟網頁互動就不准自動有音效,所以我們只能先互動了
+    const openAudio = document.getElementById('open-audio')
+    const setAudio = document.getElementById('set-audio')
+    openAudio.addEventListener('click', ()=>{
+      openAudio.classList.toggle('audio-open')
+      if (openAudio.textContent === '開啟對方傳訊提醒') {
+        openAudio.textContent = '關閉對方訊息提醒';
+        setAudio.innerHTML = `<audio id="allow-audio" autoplay><source id="set_audio" src="/assets/inroom.mp3"></audio>`;
+      }else {
+        openAudio.textContent = '開啟對方傳訊提醒';
+        setAudio.innerHTML = '';
+      }
+    })
     const user_element = document.getElementById("messages");
     const room_id = Number(user_element.getAttribute("data-room-id"));
     const chatRoomState = document.getElementById("join-or-leave");
@@ -43,16 +56,14 @@ export default class extends Controller {
             messageContainer.innerHTML = messageContainer.innerHTML + html;
             myNonsense()
             // 音效功能先關
-            // if (user != me) {
-            //   console.log("123");
-            //   dindong()
-            // }
+            if (user != me && document.getElementById('allow-audio')) {
+              dindong()
+            }
             const chatRoom = document.getElementById("messages");
             chatRoom.scrollTop = chatRoom.scrollHeight;
           } else if (data.type === "tip") {
             if (user != me) {
               chatRoomState.innerHTML = `${otherName} 已進入聊天室`;
-
             }
           } else if (data.type === "tip_leave") {
             if (user != me){
@@ -101,7 +112,8 @@ function myNonsense() {
   document.getElementById("join-or-leave").innerHTML = nonsensess[randomNumber]
 }
 // 音效功能先關
-// function dindong() {
-//   const dindong = new Audio('/assets/inroom.mp3')
-//   dindong.play()
-// }
+function dindong() {
+  const dindong = new Audio('/assets/inroom.mp3')
+  dindong.play()
+}
+

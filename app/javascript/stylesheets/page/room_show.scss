@@ -113,12 +113,12 @@
 
 .room-show-content {
   height: 75vh;
-} 
+}
 
 @media (min-width: 321px){
   .room-show-content {
     height: 78vh;
-  }   
+  }
 }
 
 
@@ -180,4 +180,12 @@
   height: 0;
   border: 5px solid #f3f4f6;
   border-color: #f3f4f6 #f3f4f6 transparent transparent;
+}
+
+.audio-close{
+  padding: 5px;
+  background-color: green;
+}
+.audio-open{
+  background-color: red;
 }
