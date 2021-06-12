@@ -13,7 +13,7 @@ document.addEventListener("turbolinks:load", () => {
       countyValue: "台北市",
       only: ["台北市"],
     });
-    
+
     const county = document.querySelector(".county");
     const district = document.querySelector(".district");
 
@@ -137,6 +137,7 @@ document.addEventListener("turbolinks:load", () => {
       ) {
         e.preventDefault();
       }
+      inputArr[0].focus();
     });
   }
 });

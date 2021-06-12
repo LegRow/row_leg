@@ -117,6 +117,7 @@ document.addEventListener("turbolinks:load", () => {
       if (hasError.includes(true)) {
         e.preventDefault();
       }
+      inputArr[0].focus();
     });
   }
 });
