@@ -6,7 +6,7 @@ document.addEventListener("turbolinks:load", () => {
     const allTaskstate = document.querySelectorAll(".task-state");
     allTaskstate.forEach((taskstate) => {
       if (taskstate.dataset.state === "pending") {
-        taskstate.textContent = "請先付款，任務才可發佈成功";
+        taskstate.textContent = "此任務尚未提供應徵";
         taskstate.style.background = "MediumOrchid";
       } else if (
         taskstate.dataset.state === "employer_paid" ||
