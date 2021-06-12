@@ -20,7 +20,7 @@ module TasksHelper
   end
 
   def employee_of(task)
-    user_signed_in? && task.employee_id == current_user.id && task.employee_paid?
+    user_signed_in? && task.employee_id == current_user.id && task.employer_confirmed?
   end
 
   def over_end_time
