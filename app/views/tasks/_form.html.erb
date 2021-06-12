@@ -49,15 +49,17 @@
   </div>
 
   <div class="field task-input-special pt-6">
-    <%= f.label "任務起始時間" %><span class="start-message">(需距離現在至少3小時)</span>
+    <%= f.label "任務起始時間" %>
     <br>
     <%= f.datetime_select :task_at %>
+    <p class="start-message time-set">需距離現在至少3小時</p>
   </div>
 
   <div class="field task-input-special pt-6">
-    <%= f.label "任務結束時間" %><span class="end-message">(與起始時間相隔至少一小時)</span>
+    <%= f.label "任務結束時間" %>
     <br>
     <%= f.datetime_select :task_end %>
+    <p class="end-message time-set">與起始時間相隔至少一小時</p>
   </div>
 
   <div class="field task-input-special pt-6 mt-4">

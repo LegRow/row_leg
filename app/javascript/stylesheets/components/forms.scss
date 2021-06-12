@@ -83,8 +83,14 @@
   @apply hidden;
 }
 
-// validate
+.time-set {
+  @apply text-gray-400 text-xs tracking-wide;
+}
 
+// validate
+.field.success {
+  @apply w-max;
+}
 .field.success input {
   @apply border-green-400 border-solid border-4;
 }
