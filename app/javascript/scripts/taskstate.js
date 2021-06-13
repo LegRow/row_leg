@@ -33,13 +33,13 @@ document.addEventListener("turbolinks:load", function () {
       stateTwo.classList.add('animate-bounce')
       stateThree.classList.add('animate-bounce')
       stateFour.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者準備要埋伏了!"
+      stateText.innerHTML = "忍者準備埋伏!"
     } else if (taskStateNow > (4 * judgmentTaskState)){
       stateOne.classList.add('animate-bounce')
       stateTwo.classList.add('animate-bounce')
       stateThree.classList.add('animate-bounce')
       stateFour.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者等超過一小時就不等了!"
+      stateText.innerHTML = "忍者白等中!"
     }
   }
 })
