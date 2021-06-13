@@ -20,6 +20,10 @@ module TasksHelper
   end
 
   def employee_of(task)
+    user_signed_in? && task.employee_id == current_user.id && task.employee_paid?
+  end
+
+  def employee_pay(task)
     user_signed_in? && task.employee_id == current_user.id && task.employer_confirmed?
   end
 
