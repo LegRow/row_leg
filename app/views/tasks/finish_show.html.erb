@@ -1,11 +1,11 @@
 <div class="flex">
   <div class="m-auto">
-    <div class="fas fa-hand-point-down text-2xl m-4">
+    <div class="fas fa-hand-point-down animate-bounce text-yellow-600 text-2xl m-4">
       請按完成
     </div>
     <%= form_with url: finish_task_path(@task), local: true do |f| %>
-    <div class="w-20 m-6 text-4xl text-yellow-900  border-yellow-500 bg-yellow-400 | p-4 border-solid rounded-2xl border-4 | flex justify-around cursor-pointer | hover:bg-yellow-400">
-      <%= f.submit '完成'%>
+    <div class="w-20 m-6 text-4xl text-yellow-900">
+      <%= f.submit '完成', class: "border-yellow-500  | p-4 border-solid rounded-2xl border-4 | flex justify-around cursor-pointer | hover:bg-yellow-400"%>
     </div>
     <% end %>
     </div>
