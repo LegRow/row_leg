@@ -61,7 +61,7 @@
               </div>
               <% else %>
               <div class="task-security-deposit">
-                <% if employee_of task %>
+                <% if employee_pay task %>
                   <%= link_to cashflow_to_newebpay_path(reward: (task.reward * 0.2).to_i, behalf: task.behalf,
                   order_number: task.order.merchant_order_number + "B") do %>
                     <i class="fas fa-handshake"></i> 押金
