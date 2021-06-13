@@ -10,11 +10,11 @@ export default class extends Controller {
     const setAudio = document.getElementById('set-audio')
     openAudio.addEventListener('click', ()=>{
       openAudio.classList.toggle('audio-open')
-      if (openAudio.textContent === '開啟對方傳訊提醒') {
-        openAudio.textContent = '關閉對方訊息提醒';
+      if (openAudio.textContent === '開啟音效') {
+        openAudio.textContent = '關閉音效';
         setAudio.innerHTML = `<audio id="allow-audio" autoplay><source id="set_audio" src="/assets/inroom.mp3"></audio>`;
       }else {
-        openAudio.textContent = '開啟對方傳訊提醒';
+        openAudio.textContent = '開啟音效';
         setAudio.innerHTML = '';
       }
     })
