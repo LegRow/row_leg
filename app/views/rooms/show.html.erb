@@ -21,12 +21,14 @@
         <p class="room-task-time">請於<span><%= @room.task.task_at&.strftime('%m/%d %H:%M') %></span>前到達任務目的地</p>
         <button id="open-audio" class="audio-close">關閉音效</button>
       <% end %>
-      <div class="flex mt-6" id="Ninja" data-task-start="<%= @room.task.task_at %>" data-task-end="<%= @room.task.task_end %>" data-time-now="<%= Time.now %>">
-          <div class="fas fa-user-ninja ml-4 text-yellow-600" id="state-1"></div>
-          <div class="fas fa-user-ninja ml-4 text-yellow-600" id="state-2"></div>
-          <div class="fas fa-user-ninja ml-4 text-yellow-600" id="state-3"></div>
-          <div class="fas fa-user-ninja ml-4 text-yellow-600" id="state-4"></div>
-          <div class="ml-4 mb-1 text-yellow-600" id="task-state"></div>
+      <div class="flex-row -ml-4 mt-5" id="Ninja" data-task-start="<%= @room.task.task_at %>" data-task-end="<%= @room.task.task_end %>" data-time-now="<%= Time.now %>">
+        <div>
+          <div class="fas fa-running ml-4 text-yellow-600 text-xl" id="state-1"></div>
+          <div class="fas fa-running ml-4 text-yellow-600 text-xl" id="state-2"></div>
+          <div class="fas fa-running ml-4 text-yellow-600 text-xl" id="state-3"></div>
+          <div class="fas fa-running ml-4 text-yellow-600 text-xl" id="state-4"></div>
+        </div>
+        <div class="ml-4 mb-10 text-yellow-600 text-xl" id="task-state"></div>
       </div>
     </div>
     <div class="room-show-content">

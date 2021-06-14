@@ -15,31 +15,49 @@ document.addEventListener("turbolinks:load", function () {
     const stateText = document.getElementById('task-state')
     //開始波動拳
     if (taskStateNow < 0 ) {
-      stateText.innerHTML = "忍者尚未啟動!"
+      stateText.innerHTML = "任務開始時間未到!"
     } else if (taskStateNow <= judgmentTaskState) {
       stateOne.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者才剛開始跑!"
+      stateText.innerHTML = "任務剛開始!"
     } else if (taskStateNow <= (2 * judgmentTaskState)) {
       stateOne.classList.add('animate-bounce')
-      stateTwo.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者快到一半了!"
+      setTimeout(() => {
+        stateTwo.classList.add('animate-bounce')
+      }, 400);
+      stateText.innerHTML = "任務時間快過一半!"
     } else if (taskStateNow <= (3 * judgmentTaskState)) {
       stateOne.classList.add('animate-bounce')
-      stateTwo.classList.add('animate-bounce')
-      stateThree.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者努力衝刺!"
+      setTimeout(() => {
+        stateTwo.classList.add('animate-bounce')
+      }, 400);
+      setTimeout(() => {
+        stateThree.classList.add('animate-bounce')
+      }, 900);
+      stateText.innerHTML = "任務接近結束!"
     } else if (taskStateNow > (3 * judgmentTaskState) && taskStateNow <= (4 * judgmentTaskState)) {
       stateOne.classList.add('animate-bounce')
-      stateTwo.classList.add('animate-bounce')
-      stateThree.classList.add('animate-bounce')
-      stateFour.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者準備埋伏!"
+      setTimeout(() => {
+        stateTwo.classList.add('animate-bounce')
+      }, 400);
+      setTimeout(() => {
+        stateThree.classList.add('animate-bounce')
+      }, 900);
+      setTimeout(() => {
+        stateFour.classList.add('animate-bounce')
+      }, 1400);
+      stateText.innerHTML = "請準備交接!"
     } else if (taskStateNow > (4 * judgmentTaskState)){
       stateOne.classList.add('animate-bounce')
-      stateTwo.classList.add('animate-bounce')
-      stateThree.classList.add('animate-bounce')
-      stateFour.classList.add('animate-bounce')
-      stateText.innerHTML = "忍者白等中!"
+      setTimeout(() => {
+        stateTwo.classList.add('animate-bounce')
+      }, 400);
+      setTimeout(() => {
+        stateThree.classList.add('animate-bounce')
+      }, 900);
+      setTimeout(() => {
+        stateFour.classList.add('animate-bounce')
+      }, 1400);
+      stateText.innerHTML = "任務已經超時!"
     }
   }
 })
