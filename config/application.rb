@@ -24,5 +24,6 @@ module GemYarnInit
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     # 解決Cloudflare https match問題
     config.middleware.use ::CloudflareProxy
+    config.serve_static_assets = true
   end
 end
