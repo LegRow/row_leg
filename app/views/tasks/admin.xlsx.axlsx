@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+# axlsx 3,4,5行是可以改樣式，請看他的官方文件 暫時不研究樣式了
+  wb.styles do |style|
+    project_heading = style.add_style(b: true, sz: 14)
+    heading = style.add_style(b: true)
+
+    wb.add_worksheet(name: "Bills") do |sheet|
+      # Create the header row
+      sheet.add_row ["匯款對象", "匯款金額", "匯款帳號", "任務執行時間"]
+      # Create entries for each item
+      @bills.each do |bill|
+        sheet.add_row [bill.user.name, bill.need_pay, bill.user.bank_account, bill.task.task_end]
+    end
+  end
+end

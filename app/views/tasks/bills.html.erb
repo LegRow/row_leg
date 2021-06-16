@@ -1,0 +1,34 @@
+<div class="flex flex-col w-11/12">
+  <div class="border-2 w-11/12 m-auto text-xl">您好,<%= current_user.name %>。<br>
+  您查詢月份累積:<%= @bills.count %>次腿腿任務。<br>
+  你查詢月份目前累積酬勞:<%= @bills.sum(&:need_pay) %>元整。<br>
+  以下是完成任務清單。<br>
+  <%= form_tag bills_tasks_path, method: :get do %>
+    <%= text_field_tag :search, params[:search], placeholder: "輸入月份數字即可", class:"search-input" %>
+    <%= submit_tag "月份:送出", name: nil, class:"search-btn" %>
+  <% end %>
+  </div>
+  <div>
+    <table class="m-auto border-2 w-11/12">
+      <thead class="border-2">
+        <tr>
+          <td class="p-2 border-2 w-2/12">雇主</td>
+          <td class="p-2 border-2 w-4/12">地點</td>
+          <td class="p-2 border-2 w-2/12">酬勞</td>
+          <td class="p-2 border-2 w-4/12">完成時間</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bills.each do |bill| %>
+        <tr>
+          <td class="p-2 border-2"><%= bill.task.user.name %></td>
+          <td class="p-2 border-2"><%= bill.title %></td>
+          <td class="p-2 border-2"><%= bill.need_pay %></td>
+          <td class="p-2 border-2"><%= bill.task.task_end %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+</div>
+

@@ -14,6 +14,27 @@ class TasksController < ApplicationController
   def myworks
   end
 
+  def bills
+    @bills = current_user.bills.search(params[:search])
+  end
+
+  def admin
+    if current_user.role == "admin"
+      @bills = Bill.all.adminsearch(params[:search])
+      # 建立如果收到指令要下載資料 要做什麼
+      respond_to do |format|
+        format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=每月應匯款清單.xlsx"
+        }
+        format.html { render :admin }
+      end
+    else
+      redirect_to tasks_path ,alert: "猜對了，但是你不能進來看喔!"
+    end
+  end
+
   def show
     begin
       @task = Task.find(params[:id])
@@ -118,8 +139,8 @@ class TasksController < ApplicationController
   def finish
   #這是post不用擋 狀態也不用去判斷 因為永哲有設定 只有:employee_paid能變deal
   #提醒試試用js來做吧
-    if @task.finish!
-      self.build_bill
+  if @task.finish!
+    self.build_bill
       render :finish
     else
       redirect_to tasks_path
@@ -154,12 +175,14 @@ private
     params.require(:task).permit(:merchant_order_number)
   end
 
+  #很醜的寫法，很醜，請不用參考當作知道就好
   def build_bill
-    @task.bill = Bill.new
+    @task.bill = current_user.bills.new
     @task.bill.title = @task.address_and_store
     @task.bill.pay_who = @task.employee.name
     @task.bill.pay_to = @task.employee.bank_account
     @task.bill.need_pay = @task.reward * 1.1
+    @task.bill.task_time = @task.task_end&.strftime('%m').to_i
     @task.bill.save
   end
 

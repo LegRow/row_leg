@@ -19,8 +19,11 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :tasks do
     collection  do
+      get :admin
       get :mytasks
       get :myworks
+      get :bills
+      get :admin
     end
 
     member do

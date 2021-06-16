@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_074924) do
+ActiveRecord::Schema.define(version: 2021_06_15_142552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_074924) do
     t.bigint "task_id", null: false
     t.string "pay_who"
     t.bigint "user_id", null: false
+    t.string "task_time"
     t.index ["task_id"], name: "index_bills_on_task_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
