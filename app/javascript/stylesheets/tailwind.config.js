@@ -12,6 +12,7 @@ module.exports = {
       backgroundImage: (theme) => ({
         notfound: "url('../images/notfound.jpg')",
         cat: "url('../images/cat.png')",
+        city: "linear-gradient(to right, #48556380, #29323c73),url('../images/city.jpg')",
       }),
       colors: {
         "light-blue": colors.lightBlue,
