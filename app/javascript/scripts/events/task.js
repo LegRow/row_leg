@@ -16,7 +16,7 @@ document.addEventListener("turbolinks:load", () => {
         taskstate.style.background = "Crimson";
       } else if (taskstate.dataset.state === "employee_paid") {
         taskstate.textContent = "任務進行中";
-        taskstate.style.background = "SteelBlue";
+        taskstate.style.background = "bg-orange-primary";
       } else if (taskstate.dataset.state === "deal") {
         taskstate.textContent = "任務結束";
         taskstate.style.background = "LightSlateGray";

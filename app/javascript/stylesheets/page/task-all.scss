@@ -5,7 +5,7 @@
     @apply flex flex-col bg-white shadow-lg rounded-xl relative lg:text-lg;
 
     .task-img {
-      @apply bg-yellow-600 relative;
+      @apply bg-city bg-top bg-cover relative;
 
       p {
         @apply absolute text-white text-4xl font-semibold font-mono bottom-3 right-2 opacity-70;
